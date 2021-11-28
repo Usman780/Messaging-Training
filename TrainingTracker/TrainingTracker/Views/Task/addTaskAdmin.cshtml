@@ -1,0 +1,312 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using TrainingTracker.Models;
+@using TrainingTracker.BL;
+@using TrainingTracker.HelpingClasses
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+}
+<style>
+    #backbtn {
+        margin-left: 20px;
+    }
+</style>
+@{
+    Department d = new DepartmentBL().getDepartmentsById(ViewBag.deptId);
+}
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li><a href="@Url.Action("displayDivision","Utilities")">Division</a></li>
+            <li><a href="@Url.Action("displayDivisionDetails","Utilities" , new { sid =  General_Purpose.EncryptId(Convert.ToInt32(d.DivisionID)),page1="Division"})">@d.Division.Name</a></li>
+            <li><a href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(d.Id)  })">@d.Name</a></li>
+            <li class="active">Add Task</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+<br />
+<a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid = General_Purpose.EncryptId(ViewBag.deptId)})">Back</a>
+<br />
+<br />
+<div class="content">
+    @if (logedinuser.Role == 1)
+    {
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <center><h3 class="panel-title"><b>Create Task</b></h3></center>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        @*<li>
+                                <a data-action="collapse"></a>
+                            </li>
+                            <li>
+                                <a data-action="reload"></a>
+                            </li>*@
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="panel-body">
+                <form class="form-horizontal form-validate-jquery" method="post" action="@Url.Action("AddTask", "Task")" enctype="multipart/form-data">
+                    <fieldset class="content-group">
+                        <legend class="text-bold">
+                            <span class="text-danger">*</span> Fields are Mandatory to Fill
+                        </legend>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">
+                                Task Name
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-4">
+                                <input type="text" name="Name" onkeyup="VerifyTaskName()" id="taskname" maxlength="49" class="form-control" required="required" placeholder="Please enter task name">
+                            </div>
+                            <label class="control-label col-lg-offset-1 col-lg-1 text-bold">
+                                CEUs
+
+                            </label>
+                            <div class="col-lg-4">
+                                <input type="number" min="0" step="0.01" maxlength="9" name="CEU" class="form-control" placeholder="Please enter CEUs">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">
+                                Task type
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-4">
+                                <select class="select" required="required" name="TaskTypeID">
+                                    <option selected disabled value="">Select Type</option>
+                                    @foreach (var item in ViewBag.taskTypes)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+                            </div>
+                            <label class="control-label col-lg-1 col-lg-offset-1 text-bold">
+                                Cost ($)
+
+                            </label>
+                            <div class="col-lg-4">
+                                <input type="number" min="0" step="0.01" name="Cost_" class="form-control" placeholder="Please enter cost">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="DepartmentId" id="DeptID" value="@ViewBag.deptId" />
+
+                        <div class="form-group">
+
+                            <label class="control-label col-lg-2 text-bold">
+                                Hours
+
+                            </label>
+                            <div class="col-lg-4">
+                                @*<input type="number" min="0" maxlength="9" name="Hours" class="form-control" placeholder="Please enter hours">*@
+                                <select class="select-results-color" name="Hours">
+                                    <option value="">Select Hours</option>
+                                    <option value="0.5">0.5</option>
+                                    <option value="1">1</option>
+                                    <option value="1.5">1.5</option>
+                                    <option value="2">2</option>
+                                    <option value="2.5">2.5</option>
+                                    <option value="3">3</option>
+                                    <option value="3.5">3.5</option>
+                                    <option value="4">4</option>
+                                    <option value="4.5">4.5</option>
+                                    <option value="5">5</option>
+                                    <option value="5.5">5.5</option>
+                                    <option value="6">6</option>
+                                    <option value="6.5">6.5</option>
+                                    <option value="7">7</option>
+                                    <option value="7.5">7.5</option>
+                                    <option value="8">8</option>
+                                    <option value="8.5">8.5</option>
+                                    <option value="9">9</option>
+                                    <option value="9.5">9.5</option>
+                                    <option value="10">10</option>
+                                    <option value="10.5">10.5</option>
+                                    <option value="11">11</option>
+                                    <option value="11.5">11.5</option>
+                                    <option value="12">12</option>
+                                    <option value="12.5">12.5</option>
+                                    <option value="13">13</option>
+                                    <option value="13.5">13.5</option>
+                                    <option value="14">14</option>
+                                    <option value="14.5">14.5</option>
+                                    <option value="15">15</option>
+                                    <option value="15.5">15.5</option>
+                                    <option value="16">16</option>
+                                    <option value="16.5">16.5</option>
+                                    <option value="17">17</option>
+                                    <option value="17.5">17.5</option>
+                                    <option value="18">18</option>
+                                    <option value="18.5">18.5</option>
+                                    <option value="19">19</option>
+                                    <option value="19.5">19.5</option>
+                                    <option value="20">20</option>
+                                    <option value="20.5">20.5</option>
+                                    <option value="21">21</option>
+                                    <option value="21.5">21.5</option>
+                                    <option value="22">22</option>
+                                    <option value="22.5">22.5</option>
+                                    <option value="23">23</option>
+                                    <option value="23.5">23.5</option>
+                                    <option value="24">24</option>
+                                    <option value="24.5">24.5</option>
+                                    <option value="25">25</option>
+                                    <option value="25.5">25.5</option>
+                                    <option value="26">26</option>
+                                    <option value="26.5">26.5</option>
+                                    <option value="27">27</option>
+                                    <option value="27.5">27.5</option>
+                                    <option value="28">28</option>
+                                    <option value="28.5">28.5</option>
+                                    <option value="29">29</option>
+                                    <option value="29.5">29.5</option>
+                                    <option value="30">30</option>
+                                    <option value="30.5">30.5</option>
+                                    <option value="31">31</option>
+                                    <option value="31.5">31.5</option>
+                                    <option value="32">32</option>
+                                    <option value="32.5">32.5</option>
+                                    <option value="33">33</option>
+                                    <option value="33.5">33.5</option>
+                                    <option value="34">34</option>
+                                    <option value="34.5">34.5</option>
+                                    <option value="35">35</option>
+                                    <option value="35.5">35.5</option>
+                                    <option value="36">36</option>
+                                    <option value="36.5">36.5</option>
+                                    <option value="37">37</option>
+                                    <option value="37.5">37.5</option>
+                                    <option value="38">38</option>
+                                    <option value="38.5">38.5</option>
+                                    <option value="39">39</option>
+                                    <option value="39.5">39.5</option>
+                                    <option value="40">40</option>
+                                    <option value="40.5">40.5</option>
+                                    <option value="41">41</option>
+                                    <option value="41.5">41.5</option>
+                                    <option value="42">42</option>
+                                    <option value="42.5">42.5</option>
+                                    <option value="43">43</option>
+                                    <option value="43.5">43.5</option>
+                                    <option value="44">44</option>
+                                    <option value="44.5">44.5</option>
+                                    <option value="45">45</option>
+                                    <option value="45.5">45.5</option>
+                                    <option value="46">46</option>
+                                    <option value="46.5">46.5</option>
+                                    <option value="47">47</option>
+                                    <option value="47.5">47.5</option>
+                                    <option value="48">48</option>
+                                    <option value="48.5">48.5</option>
+                                    <option value="49">49</option>
+                                    <option value="49.5">49.5</option>
+                                    <option value="50">50</option>
+
+
+
+                                </select>
+                            </div>
+
+                            @*<label class="control-label col-lg-1 col-lg-offset-1 text-bold">
+                                    Canvas Course
+
+                                </label>*@
+                            @*<div class="col-lg-4">
+                                    <select class="select-results-color" name="CourseId" id="CanvasCourseId">
+                                        <option value="">Select Canvas Course</option>
+                                        @if (ViewBag.canvascourses!=null)
+                                        {
+                                            foreach (Course cr in ViewBag.canvascourses)
+                                            {
+                                                <option value="@cr.id">@cr.name</option>
+                                            }
+                                        }
+
+
+                                    </select>
+                                </div>*@
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">Description<span class="text-danger"></span></label>
+                            <div class="col-lg-10">
+                                <textarea rows="5" cols="5" maxlength="249" name="Description" class="form-control" placeholder="Enter Notes"></textarea>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="isPrivate" value="0" />
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">File<span class="text-danger"> Can Select Multiple Files</span></label>
+                            <div class="col-lg-10">
+                                <input type="file" name="File" class="form-control" multiple="" />
+                            </div>
+                        </div>
+                        <input type="hidden" name="isDept" value="1" />
+
+                    </fieldset>
+
+                    <div class="text-right formCheck">
+                        <span style="color:red" id="spanmsg"></span>
+                        <button type="submit" id="adminAssignBtn" class="btn  btn-sm  bg-primary">
+                            Submit
+                            <i class="icon-arrow-right14 position-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    <!-- Basic initialization -->
+    <!-- /basic initialization -->
+</div>
+<script>
+    function VerifyTaskName() {
+        var newtasname = $("#taskname").val();
+        var dept = $("#DeptID").val();
+        if (newtasname != "" && newtasname != null) {
+            var isexist = true;
+            $.ajax({
+                type: 'POST',
+                url: "../task/VerifyTaskName",
+                data: {
+                    TaskName: newtasname,
+                    DepartmentID: dept,
+                },
+                dataType: "json",
+                success: function (data) {
+                    var w = "Hello";
+                    if (data == true) {
+                        $("#spanmsg").text("Task Name already exists.");
+                        $("#adminAssignBtn").attr("disabled", true);
+                        isexist = false;
+                    } else {
+                        $("#spanmsg").text("");
+                        $("#adminAssignBtn").attr("disabled", false);
+                        isexist = true;
+                    }
+                },
+                error: function () { alert('error'); }
+            });
+            // setTimeout(
+            //     function () {
+            //         //do something special
+            //// alert( isexist);
+
+            //     }, 2000);
+        }
+    }
+</script>

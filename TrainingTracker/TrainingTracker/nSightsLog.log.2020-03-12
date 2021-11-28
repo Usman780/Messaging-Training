@@ -1,0 +1,134 @@
+2020-03-12 10:06:01,603 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:06:02,630 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:08:12,631 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:08:14,449 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:09:29,245 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:09:30,202 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:10:11,450 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-03-12 10:10:25,397 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:10:26,372 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:14:29,285 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:14:30,226 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:14:48,340 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 10:14:50,241 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:14:51,223 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:16:22,740 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:16:23,683 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:16:32,217 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:16:33,202 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:16:47,195 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 10:20:09,853 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:20:10,904 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:20:42,461 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:20:43,420 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:32:02,763 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:32:03,787 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:37:35,507 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:37:37,066 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:38:17,031 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 10:39:11,819 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:39:12,832 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:39:39,328 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 10:39:59,892 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:40:01,074 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:40:45,097 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 10:41:08,911 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:41:09,912 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 10:42:18,926 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 10:43:00,275 INFO MonitoringLogger - BlobManager function started
+2020-03-12 10:43:05,097 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2020-03-12 10:43:15,783 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 10:43:16,803 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 11:02:44,684 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 11:02:45,735 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 11:04:03,450 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 11:05:54,609 INFO MonitoringLogger - BlobManager function started
+2020-03-12 11:05:56,220 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2020-03-12 11:05:57,628 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 11:05:58,652 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 11:06:30,948 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 11:06:49,556 INFO MonitoringLogger - BlobManager function started
+2020-03-12 11:06:49,879 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2020-03-12 11:06:51,211 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 11:06:52,207 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 11:07:13,955 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-03-12 11:07:39,995 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-03-12 11:45:38,649 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-03-12 12:23:56,178 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-03-12 12:25:24,735 INFO MonitoringLogger - Canvas Login Mail while adding an Employee :
+2020-03-12 12:27:21,414 INFO MonitoringLogger - Canvas Login Mail while adding an Employee :
+2020-03-12 12:50:19,849 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-03-12 12:55:36,750 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-03-12 12:59:44,912 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-03-12 13:02:46,840 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-03-12 13:08:46,177 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-03-12 13:20:06,469 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-03-12 14:58:43,055 INFO MonitoringLogger - BlobManager function started
+2020-03-12 16:23:34,996 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 16:23:36,013 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 16:24:11,765 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 16:25:44,013 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 16:25:44,995 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 16:27:56,955 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 16:31:39,934 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 16:31:40,973 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 16:32:13,463 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 16:33:31,693 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 16:33:32,776 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 16:33:59,038 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 16:34:08,894 INFO MonitoringLogger - BlobManager function started
+2020-03-12 16:34:10,776 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2020-03-12 16:34:12,464 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 16:34:13,586 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 16:35:24,119 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 16:35:29,021 INFO MonitoringLogger - BlobManager function started
+2020-03-12 16:35:29,668 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2020-03-12 16:35:32,155 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 16:35:33,580 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 16:35:40,237 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-03-12 16:35:54,142 INFO MonitoringLogger - BlobManager function started
+2020-03-12 16:35:54,527 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2020-03-12 16:35:55,826 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 16:35:56,835 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 16:36:30,877 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-03-12 16:36:44,195 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-12 16:37:23,783 INFO MonitoringLogger - Update Manger Page
+2020-03-12 16:37:25,779 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: bilalahmed151214@gmail.com
+2020-03-12 16:37:27,116 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-03-12 16:38:20,541 INFO MonitoringLogger - UpdateManagerAction Function Starting...
+2020-03-12 16:38:33,201 INFO MonitoringLogger - Canvas Login Mail Recieved from Update Manager Page:bilalahmed151214@gmail.com
+2020-03-12 16:38:35,077 INFO MonitoringLogger - Set Canvas Login Mail to Manager Info Object.
+2020-03-12 16:38:35,453 INFO MonitoringLogger - BlobManager function started
+2020-03-12 16:38:36,992 INFO MonitoringLogger - Canvas Login Mail updating Manager's info to Database: bilalahmed151214@gmail.com
+2020-03-12 16:38:38,944 INFO MonitoringLogger - Update Manger Page
+2020-03-12 16:38:39,338 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: bilalahmed151214@gmail.com
+2020-03-12 16:38:40,872 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-03-12 16:38:56,047 INFO MonitoringLogger - UpdateManagerAction Function Starting...
+2020-03-12 16:39:05,430 INFO MonitoringLogger - Canvas Login Mail Recieved from Update Manager Page:bilalahmed151214@gmail.com
+2020-03-12 16:39:05,437 INFO MonitoringLogger - Set Canvas Login Mail to Manager Info Object.
+2020-03-12 16:39:05,841 INFO MonitoringLogger - BlobManager function started
+2020-03-12 16:39:06,169 INFO MonitoringLogger - Canvas Login Mail updating Manager's info to Database: bilalahmed151214@gmail.com
+2020-03-12 16:39:08,090 INFO MonitoringLogger - Update Manger Page
+2020-03-12 16:39:08,470 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: bilalahmed151214@gmail.com
+2020-03-12 16:39:09,969 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-03-12 16:39:27,978 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-03-12 16:39:37,985 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-03-12 16:40:06,912 INFO MonitoringLogger - Update Employee Page...
+2020-03-12 16:40:08,185 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-03-12 16:40:42,036 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:test@nodlays.com
+2020-03-12 16:40:42,375 INFO MonitoringLogger - BlobManager function started
+2020-03-12 16:40:42,732 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :test@nodlays.com
+2020-03-12 16:40:44,358 INFO MonitoringLogger - Update Employee Page...
+2020-03-12 16:40:45,646 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-03-12 16:42:21,383 INFO MonitoringLogger - Update Employee Page...
+2020-03-12 16:42:22,831 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-03-12 18:30:31,973 INFO MonitoringLogger - BlobManager function started
+2020-03-12 18:32:06,525 INFO MonitoringLogger - BlobManager function started
+2020-03-12 18:32:52,474 INFO MonitoringLogger - BlobManager function started
+2020-03-12 18:33:02,869 INFO MonitoringLogger - BlobManager function started
+2020-03-12 18:33:28,267 INFO MonitoringLogger - BlobManager function started
+2020-03-12 18:33:34,667 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-03-12 18:34:59,291 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-03-12 18:37:32,271 INFO MonitoringLogger - Update Admin Page...
+2020-03-12 18:37:33,307 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-03-12 18:38:05,475 INFO MonitoringLogger - BlobManager function started

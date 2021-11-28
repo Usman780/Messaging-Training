@@ -1,0 +1,40 @@
+2020-02-28 10:17:08,659 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-28 10:36:37,924 INFO MonitoringLogger - Task Details Page
+2020-02-28 10:36:38,284 INFO MonitoringLogger - BlobManager function started
+2020-02-28 10:37:02,319 INFO MonitoringLogger - Task Details Page
+2020-02-28 10:38:17,384 INFO MonitoringLogger - Task Details Page
+2020-02-28 11:55:49,645 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-28 11:55:49,673 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-28 11:55:49,677 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-28 11:55:49,682 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2020-28-2--11-55-49.pdf
+2020-02-28 14:13:42,597 INFO MonitoringLogger - Update Admin Page...
+2020-02-28 14:13:45,503 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-28 14:14:04,581 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:test1@nodlays.com
+2020-02-28 14:14:08,227 INFO MonitoringLogger - BlobManager function started
+2020-02-28 14:14:09,820 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: test1@nodlays.com
+2020-02-28 14:14:11,243 INFO MonitoringLogger - Update Admin Page...
+2020-02-28 14:14:12,365 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-28 14:18:46,283 INFO MonitoringLogger - Update Admin Page...
+2020-02-28 14:18:47,942 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-28 15:35:15,901 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-28 15:35:30,538 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-28 18:19:20,563 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-28 18:22:53,880 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-28 18:27:48,064 INFO MonitoringLogger - BlobManager function started
+2020-02-28 18:31:48,417 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-28 18:32:37,807 INFO MonitoringLogger - Task Details Page
+2020-02-28 18:32:38,189 INFO MonitoringLogger - BlobManager function started
+2020-02-28 18:34:29,728 INFO MonitoringLogger - BlobManager function started
+2020-02-28 18:37:13,722 INFO MonitoringLogger - Task Details Page
+2020-02-28 18:37:14,065 INFO MonitoringLogger - BlobManager function started
+2020-02-28 18:37:16,639 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-28 18:41:07,785 INFO MonitoringLogger - Task Details Page
+2020-02-28 18:41:08,174 INFO MonitoringLogger - BlobManager function started
+2020-02-28 18:41:11,075 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-28 19:15:08,052 INFO MonitoringLogger - Task Details Page
+2020-02-28 19:15:08,516 INFO MonitoringLogger - BlobManager function started
+2020-02-28 19:15:11,033 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-28 19:15:13,015 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-28 19:15:14,456 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-28 19:15:40,205 INFO MonitoringLogger - BlobManager function started
+2020-02-28 20:27:42,540 INFO MonitoringLogger - Task Details Page

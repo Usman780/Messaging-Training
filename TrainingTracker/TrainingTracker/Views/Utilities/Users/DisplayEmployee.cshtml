@@ -1,0 +1,1959 @@
+﻿
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL
+
+
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    List<Course> courses = new CourseBL().getCourseList();
+    Company Company = new CompanyBL().getCompanyById(Convert.ToInt32(logedinuser.Company));
+
+
+}
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active">Employees</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+
+            
+            <center><h3 class="panel-title"><b>List of Employees</b></h3></center>
+            <div class="heading-elements">
+
+                @if (logedinuser.Role != 3)
+                {
+                    <ul class="icons-list" >
+                        <li class="dropdown">
+                            <a href="#" class="btn btn-sm  dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown" id="actionbtn">Actions <i class="icon-menu7"></i> </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                @if (ViewBag.departname == "-1")
+                                {
+                                    <li>
+                                        <a class="disabled" title="Please Search Some Department" style="color: currentColor;cursor: not-allowed;opacity: 0.5;text-decoration: none;">Export Excel</a>
+                                    </li>
+                                }
+
+                                @if (ViewBag.departname != "-1")
+                                {
+
+
+                                    <li>
+                                        <a href="@Url.Action("ExportEmployees", "ExportReport", new { fname = ViewBag.fname, lname = ViewBag.lname, departname = ViewBag.departname, divisionName = ViewBag.divisionName })" data-toggle="modal">Export Excel</a>
+                                    </li>
+
+                                    if (logedinuser.Role == 2 || logedinuser.Role == 4)
+                                    {
+                                        <li>
+                                            <a onclick="groupTaskValues()"> Assign Group Task </a>
+                                        </li>
+                                    }
+
+
+
+                                    if (logedinuser.Role == 2 || logedinuser.Role == 4)
+                                    {
+                                        <li>
+                                            <a onclick="curveChart()"> Assign Task  </a>
+                                        </li>
+                                    }
+
+                                }
+
+                                @if (true == true)//chaaipi
+                                {
+                                    if (logedinuser.Role == 2 || logedinuser.Role == 4 || logedinuser.Role == 1)
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("AddEmployee", "Utilities", new { way = "Manager" })"> Add Employee </a>
+                                        </li>
+                                    }
+                                   
+                                }
+                                else
+                                {
+                                    if (logedinuser.Role == 2 || logedinuser.Role == 4 || logedinuser.Role == 1)
+                                    {
+                                        <li>
+                                            <button class="btn btn-sm  bg-primary-400" style="color:white;margin-top:-22%;" disabled> Add Employee </button>
+                                        </li>
+                                    }
+                                    
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                }
+            </div>
+
+        </div>
+        <div class="" style="margin-left:20px;">
+            <h3>Search: </h3>
+            <form method="post" action="@Url.Action("DisplayEmployee","Utilities")">
+
+                @if (logedinuser.Role == 2 || logedinuser.Role == 4)
+                {
+                    <div class="form-group col-md-3">
+                        <label class="control-label">
+                            First Name
+                        </label>
+                        <input type="text" name="fname" class="form-control" maxlength="150" value="@ViewBag.fname" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label">
+                            Last Name
+                        </label>
+                        <input type="text" name="lname" class="form-control" maxlength="150" value="@ViewBag.lname" />
+                    </div>
+                }
+                <div class="form-group col-md-3">
+                    <label class="control-label">
+                        Department
+                    </label>
+                    @*<input type="text" name="departname" class="form-control" value="@ViewBag.departname" />*@
+                <select class="select-results-color" name="departname" id="departname" required>
+                    <option selected value="">Select Department </option>
+                    @if (ViewBag.departmentlist != null)
+                    {
+                        if (logedinuser.Role == 1)
+                        {
+                            if (ViewBag.departname == "AllEmpkck")
+                            {
+                                <option selected value="AllEmpkck">All</option>
+                            }
+                            else
+                            {
+                                <option value="AllEmpkck">All</option>
+                            }
+                        }
+                       
+                        foreach (Department item in ViewBag.departmentlist)
+                        {
+
+                            if (item.Name == ViewBag.departname)
+                            {
+                                <option selected value="@item.Name">@item.Name</option>
+
+                            }
+                            else
+                            {
+                                <option value="@item.Name">@item.Name</option>
+
+                            }
+                        }
+
+                    }
+
+                </select>
+                </div>
+                @*<div class="form-group col-md-3">
+                        <label class="control-label">
+                            Divisions
+                        </label>
+                        <input type="text" name="divisionName" class="form-control" value="@ViewBag.divisionName" />
+                    </div>*@
+                <div class="form-group col-md-3">
+                    <input style="margin-top:27px" type="submit" value="Search" class="btn bg-primary-400" />
+                </div>
+            </form>
+        </div>
+        <div class="">
+
+            <table class="table datatable-button-html5-basic">
+
+                <thead>
+                    <tr>
+                        @if (logedinuser.Role == 2)
+                        {
+                            <th></th>
+                        }
+                        <th onclick="curveChart()">Name</th>
+                        <th>Department</th>
+
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+
+                        int j = 0;
+
+                        foreach (User item in ViewBag.Employees)
+                        {
+
+                            <tr>
+                                @if (item.IsActive == 1)
+                                {
+                                    if (logedinuser.Role == 2)
+                                    {
+                                        <td><input type="checkbox" class="messageCheckbox" id="check @item.Id" value="@item.Id" name="@item.FirstName" /></td>
+
+                                    }
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                                <td>
+
+                                    @item.FirstName <span> @item.LastName </span>
+
+                                </td>
+                                <td>
+                                    @if (item.Department != null)
+                                    {
+                                        @item.Department.Name
+                                    }
+                                </td>
+
+
+
+
+                                <td>
+                                    @if (item.IsActive == 1)
+                                    {
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+
+                                                    <li>
+                                                        <a href="@Url.Action("displayEmpAnalaysis", "Analysis", new { sid =  General_Purpose.EncryptId(item.Id ), way="Manager"})">
+                                                            <i class="icon-graph"></i>  View Analytics
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("UpdateEmployee", "Utilities", new { sid = General_Purpose.EncryptId(item.Id ), way="Manager" })">
+                                                            <i class="icon-database-edit2"></i>  Update
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a onclick="openTurnOverModal(@item.Id)">
+                                                            <i class="glyphicon glyphicon-refresh"></i>   Transfer Task
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a onclick="ChangeUserType(@item.Id,@item.Department.DivisionID)">
+                                                            <i class="icon-reset"></i>   Change Type
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("deleteUser", "Utilities", new { id = item.Id, accesslevel = 3 })">
+                                                            <i class="icon-trash"></i> Delete
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+
+
+                                            </li>
+                                        </ul>
+
+
+                                    }
+                                    else
+                                    {
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="@Url.Action("sendMailInviteEmployee", "Utilities", new {id=item.Id,em=item.Email,fn=item.FirstName,isUtilityPage=true, sid = General_Purpose.EncryptId(item.Id )})">
+                                                            <i class="icon-reset"></i>   Send Invite Again
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("deleteUser", "Utilities", new { id = item.Id, accesslevel = 3 })">
+                                                            <i class="icon-trash"></i> Delete
+                                                        </a>
+                                                    </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                                    
+                                                    
+                                                    }
+
+                                    </td>
+
+                            </tr>
+                            j++;
+                        }
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="UserTurnOverModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Transfer User Tasks</h4>
+
+            </div>
+            <form action="@Url.Action("PostTurnOverTask","Task")" method="post">
+                <div class="modal-body">
+
+                    <input type="hidden" name="FromId" id="fromId" />
+                    <input type="hidden" name="Way" value="employee" />
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Select User</label> <i id="turnOverUserSpiner" class="icon-spinner spinner" style="display:none"></i>
+                        <select class="select" onchange="getUserList(this.value)" required>
+                            <option selected value="">Please select User Type</option>
+                            @if (logedinuser.Role == 1)
+                            {
+                                <option value="1">Admins</option>
+                                <option value="2">Managers</option>
+                            }
+                            <option value="3">Employees</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group col-md-12" id="turnOverUserDiv" hidden>
+                        <label class="control-label" id="turnOverUserLabel">Select User</label>
+                        <select class="select" name="ToId" id="turnOverUserOption" required>
+                            <option selected disabled value="">Please select User</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <span id="btnInfoTurnOver" style="color:red"></span>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-sm  bg-primary-400">Change</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="ChangeEmpType" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Change User Type</h4>
+                <input type="hidden" id="usertype" />
+                <input type="hidden" id="userid" />
+                <input type="hidden" id="DivId" />
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-md-12">
+                    <label class="control-label">Select Type</label>
+                    <select class="select" id="UType" required>
+                        <option selected disabled value="">Please select Type</option>
+
+                        @if (logedinuser.Role == 1)
+                        {
+                            <option value="1">Admin</option>
+                        }
+
+                        <option value="2">Manager</option>
+                        @*<option value="3">Employee</option>*@
+
+
+                    </select>
+                    <br />
+                    <br />
+
+                    <div id="DivisioinField" style="display:none;">
+                        <label class="control-label">Select Division</label>
+
+                        <select class="select" onchange="getDepartment(this.value)" name="TypeDivisionID" id="TypeDivisionID">
+                        </select>
+                    </div>
+
+                    <div id="DepartmentField" style="display: none">
+                        <label class="control-label">Select Department</label>
+
+                        <select class="select" name="TypeDepartmentID" id="TypeDepartmentID" required>
+                        </select>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                <button onclick="ChangeEmp()" id="changetypebtn" class="btn btn-sm  bg-primary-400">Change</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign tasks to Multiple Employees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="150" name="" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select task</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign Tasks to Multiple Trainees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="150" name="" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select Tag</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="AssignTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" id="assignTask" onsubmit="return frequencyCheck()" action="@Url.Action("addTraineeTask","Task")" method="post">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign task to Employee</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Task <span style="color: red;">*</span></label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required="required" onchange="setValues()" name="TaskId" id="selectTask">
+                                <option disabled selected value="">Select task</option>
+                                @*<option value="">abc</option>*@
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Cost ($) @*<span style="color: red;">*</span>*@</label>
+                        <div class="col-lg-9">
+                            @*<input type="text" class="form-control" name="Cost" maxlength="150" id="cost" required>*@
+                            <input type="text" class="form-control" name="Cost" maxlength="150" id="cost" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">CEU's</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="CEU" maxlength="150" id="ceu">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"> Hours @*<span style="color: red;">*</span>*@</label>
+                        <div class="col-lg-9">
+                            @*<input type="text" class="form-control" name="hours" id="hours" required>*@
+                            <select class="select-results-color" name="hours" id="hours">
+                                <option value="">Select Hours</option>
+                                <option value="0.5">0.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="14">14</option>
+                                <option value="14.5">14.5</option>
+                                <option value="15">15</option>
+                                <option value="15.5">15.5</option>
+                                <option value="16">16</option>
+                                <option value="16.5">16.5</option>
+                                <option value="17">17</option>
+                                <option value="17.5">17.5</option>
+                                <option value="18">18</option>
+                                <option value="18.5">18.5</option>
+                                <option value="19">19</option>
+                                <option value="19.5">19.5</option>
+                                <option value="20">20</option>
+                                <option value="20.5">20.5</option>
+                                <option value="21">21</option>
+                                <option value="21.5">21.5</option>
+                                <option value="22">22</option>
+                                <option value="22.5">22.5</option>
+                                <option value="23">23</option>
+                                <option value="23.5">23.5</option>
+                                <option value="24">24</option>
+                                <option value="24.5">24.5</option>
+                                <option value="25">25</option>
+                                <option value="25.5">25.5</option>
+                                <option value="26">26</option>
+                                <option value="26.5">26.5</option>
+                                <option value="27">27</option>
+                                <option value="27.5">27.5</option>
+                                <option value="28">28</option>
+                                <option value="28.5">28.5</option>
+                                <option value="29">29</option>
+                                <option value="29.5">29.5</option>
+                                <option value="30">30</option>
+                                <option value="30.5">30.5</option>
+                                <option value="31">31</option>
+                                <option value="31.5">31.5</option>
+                                <option value="32">32</option>
+                                <option value="32.5">32.5</option>
+                                <option value="33">33</option>
+                                <option value="33.5">33.5</option>
+                                <option value="34">34</option>
+                                <option value="34.5">34.5</option>
+                                <option value="35">35</option>
+                                <option value="35.5">35.5</option>
+                                <option value="36">36</option>
+                                <option value="36.5">36.5</option>
+                                <option value="37">37</option>
+                                <option value="37.5">37.5</option>
+                                <option value="38">38</option>
+                                <option value="38.5">38.5</option>
+                                <option value="39">39</option>
+                                <option value="39.5">39.5</option>
+                                <option value="40">40</option>
+                                <option value="40.5">40.5</option>
+                                <option value="41">41</option>
+                                <option value="41.5">41.5</option>
+                                <option value="42">42</option>
+                                <option value="42.5">42.5</option>
+                                <option value="43">43</option>
+                                <option value="43.5">43.5</option>
+                                <option value="44">44</option>
+                                <option value="44.5">44.5</option>
+                                <option value="45">45</option>
+                                <option value="45.5">45.5</option>
+                                <option value="46">46</option>
+                                <option value="46.5">46.5</option>
+                                <option value="47">47</option>
+                                <option value="47.5">47.5</option>
+                                <option value="48">48</option>
+                                <option value="48.5">48.5</option>
+                                <option value="49">49</option>
+                                <option value="49.5">49.5</option>
+                                <option value="50">50</option>
+
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div id="EmployeeTaskGradeDiv" class="form-group">
+                        <label class="col-lg-3 control-label">Grade (%)</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" min="0" max="100" name="Grad" id="employeeGrade">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" name="Notes" id="notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Priority</label>
+                        <div class="col-lg-9">
+                            <select class="form-control" name="Priority">
+
+                                <option value="0" selected>Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    @*<div id="EmployeeCourse" class="form-group">
+            <label class="col-lg-3 control-label"><span class="text-danger"></span>Canvas Course</label>
+            <div class="col-lg-9">
+                <select class="select-results-color" name="CanvasCourseId" id="EmployeeCanvasCourseId">
+                    <option value="">Select Canvas Course</option>
+                    @if (ViewBag.canvascourses != null)
+                    {
+                        foreach (Course cr in ViewBag.canvascourses)
+                        {
+                            <option value="@cr.id">@cr.name</option>
+                        }
+                    }
+
+
+                </select>
+            </div>
+        </div>*@
+                    @if (Company.IsLMS == 1)
+                    {
+                        <div id="" class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger"></span>Course</label>
+                            <div class="col-lg-9">
+                                <select class="select-results-color" onchange="CheckEmployeeTaskSCORMCourse()" name="CanvasCourseId" id="employeeCourseId">
+                                    <option value="">Select Course</option>
+
+                                    @foreach (Course cr in courses)
+                                    {
+                                        if (cr.IsScorm == 1)
+                                        {
+                                            <option id="@cr.Id" value="@cr.Id">@cr.Name</option>
+
+                                        }
+                                        else
+                                        {
+
+                                            <option value="@cr.Id">@cr.Name</option>
+                                        }
+                                    }
+
+
+
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    @*<div class="form-group">
+            <label class="col-lg-3 control-label">Is Private</label>
+            <div class="col-lg-9">
+                <input type="checkbox"  name="" checked> Yes
+            </div>
+        </div>*@
+
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label class="col-lg-3 control-label">Start Date <span style="color: red;">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="date" class="form-control" name="StartDate" id="StartDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">End Date</label>
+                        <div class="col-lg-4 ">
+                            <input type="date" class="form-control" onchange="checkDates()" name="EndDate" id="EndDate">
+                        </div>
+                        <label class="col-lg-2 control-label">End Time</label>
+                        <div class="col-lg-3">
+                            <input id="timepicker1" type="text" name="time" class="form-control input-small">
+                        </div>
+                    </div>
+                    <p class="text-center">OR</p>
+                    <fieldset>
+                        <legend>Frequency</legend>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="radio" id="radiotype1" name="days" value="1" onclick="setEmployeeReminderOption(this.value)"/> Every Day<br />
+                                <input type="radio" id="radiotype2" name="days" value="2" onclick="setEmployeeReminderOption(this.value)"/> Every Week<br />
+                                <input type="radio" id="radiotype3" name="days" value="3" onclick="setEmployeeReminderOption(this.value)"/> Every Month<br />
+                                <input type="radio" id="radiotype4" name="days" value="4" onclick="setEmployeeReminderOption(this.value)"/> Every Year<br />
+                                <input type="radio" id="radiotype5" name="days" value="5" onclick="setEmployeeReminderOption(this.value)"/> Every 2 Years<br />
+
+                                <input type="radio" id="radiotype6" name="days" value="6" onclick="setEmployeeReminderOption(this.value)"/> Custom<br />
+                                <input type="radio" id="radiotype-1" checked name="days" value="-1" onclick="setEmployeeReminderOption(this.value)"/> None <br />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Custom Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" name="freqDays" id="freqDays" maxlength="150" onkeyup="setCustomEmployeeReminderOption(this.value)" placeholder="Days">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency Ending Date:</label>
+                            <div class="col-lg-9">
+
+
+                                <input type="date" id="FeqEndingDate" name="FeqEndingDate" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Set Reminder</legend>
+                        <div class="form-group col-md-12" id="DReminder">
+                            <label class="col-lg-3 control-label">Reminder: </label>
+                            <div class="col-lg-9">
+                                <select class="select" name="DReminder" id="employeeDailyReminder">
+                                    @*<option selected value="@ViewBag.currentStatus">@General_Purpose.getStatusValue((int)ViewBag.currentStatus)</option>*@
+                                    <option value="">Select Type</option>
+                                    <option value="1">Daily</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+                    <div id="data"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <label id="errorDisplay" class="control-label text-danger" hidden> No Employee Selected !  </label>
+                    <span style="color:red" id="spanmsg"></span>
+
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="checkValues()" id="sbButton" class="btn btn-sm  btn-primary bg-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="AssignGroupTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" onsubmit="return frequencyCheckgrp()" action="@Url.Action("addTraineeGroupTask","Task")" method="post">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign Group Task to multiple Employees</h4>
+                </div>
+                <div class="modal-body">
+                    @{ 
+                        User us = new User();
+                        if (logedinuser.Role == 2)
+                        {
+                            us = new UserBL().getUsersById(logedinuser.Id);
+
+
+                        }
+                    }
+                    <input type="hidden" id="DivID" name="DivId" value="@us.DivisionId" />
+                    @if (logedinuser.Role == 1)
+                    {
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Division<span style="color: red;">*</span></label>
+                            <div class="col-lg-9">
+                                <select class="select-results-color" required="required" onchange="grouptasknames()" name="DivisionID" id="DivisionID">
+                                    <option selected value="">Select task</option>
+                                    @if (ViewBag.Divisionlist != null)
+                                    {
+                                        foreach (Division item in ViewBag.Divisionlist)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Group Task <span style="color: red;">*</span></label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required="required" onchange="SetGroupTaskValue()" name="GroupTaskId" id="selectGroupTask">
+                                <option disabled selected value="">Select task</option>
+                                @*// <option value="">abc</option>*@
+                            </select>
+                        </div>
+                    </div>
+                    <div id="NewGroupTaskField" style="display:none" class="form-group">
+                        <label class="col-lg-3 control-label">Group Task Name  <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" placeholder="Enter new Group Task Name" maxlength="100" id="NewGroupTaskValue" name="NewGroupTask">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Primary<span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required name="PrimaryLead" onchange="dropdwonprimary()" id="primary">
+                                <option value="" selected disabled>Please Select Primary Lead</option>
+                                @foreach (User item in ViewBag.managers)
+                                {
+                                    if (item.Role != 1)
+                                    {
+                                        <option value="@item.Id">@item.FirstName @item.LastName</option>
+
+                                    }
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Secondary</label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" name="SecondaryLead" onchange="dropdwonsecondary()" id="secondary">
+                                <option value="" selected disabled>Please Select Secondary Lead</option>
+                                @foreach (User item in ViewBag.managers)
+                                {
+                                    <option value="@item.Id">@item.FirstName @item.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Slack Channel Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="49" name="SlackChannel" id="slackChannel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Priority</label>
+                        <div class="col-lg-9">
+                            <select class="form-control" name="Priority">
+
+                                <option value="0" selected>Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Cost ($)</label>
+                        <div class="col-lg-9">
+                            <input type="number" maxlength="9" class="form-control" name="Cost" id="cost">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">CEU's</label>
+                        <div class="col-lg-9">
+                            <input type="number" maxlength="9" class="form-control" name="CEU" id="ceu">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"> Hours</label>
+                        <div class="col-lg-9">
+                            @*<input type="number" maxlength="9" class="form-control" name="hours" id="hours">*@
+                            <select class="select-results-color" name="hours" id="hours">
+                                <option value="">Select Hours</option>
+                                <option value=".5">.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="14">14</option>
+                                <option value="14.5">14.5</option>
+                                <option value="15">15</option>
+                                <option value="15.5">15.5</option>
+                                <option value="16">16</option>
+                                <option value="16.5">16.5</option>
+                                <option value="17">17</option>
+                                <option value="17.5">17.5</option>
+                                <option value="18">18</option>
+                                <option value="18.5">18.5</option>
+                                <option value="19">19</option>
+                                <option value="19.5">19.5</option>
+                                <option value="20">20</option>
+                                <option value="20.5">20.5</option>
+                                <option value="21">21</option>
+                                <option value="21.5">21.5</option>
+                                <option value="22">22</option>
+                                <option value="22.5">22.5</option>
+                                <option value="23">23</option>
+                                <option value="23.5">23.5</option>
+                                <option value="24">24</option>
+                                <option value="24.5">24.5</option>
+                                <option value="25">25</option>
+                                <option value="25.5">25.5</option>
+                                <option value="26">26</option>
+                                <option value="26.5">26.5</option>
+                                <option value="27">27</option>
+                                <option value="27.5">27.5</option>
+                                <option value="28">28</option>
+                                <option value="28.5">28.5</option>
+                                <option value="29">29</option>
+                                <option value="29.5">29.5</option>
+                                <option value="30">30</option>
+                                <option value="30.5">30.5</option>
+                                <option value="31">31</option>
+                                <option value="31.5">31.5</option>
+                                <option value="32">32</option>
+                                <option value="32.5">32.5</option>
+                                <option value="33">33</option>
+                                <option value="33.5">33.5</option>
+                                <option value="34">34</option>
+                                <option value="34.5">34.5</option>
+                                <option value="35">35</option>
+                                <option value="35.5">35.5</option>
+                                <option value="36">36</option>
+                                <option value="36.5">36.5</option>
+                                <option value="37">37</option>
+                                <option value="37.5">37.5</option>
+                                <option value="38">38</option>
+                                <option value="38.5">38.5</option>
+                                <option value="39">39</option>
+                                <option value="39.5">39.5</option>
+                                <option value="40">40</option>
+                                <option value="40.5">40.5</option>
+                                <option value="41">41</option>
+                                <option value="41.5">41.5</option>
+                                <option value="42">42</option>
+                                <option value="42.5">42.5</option>
+                                <option value="43">43</option>
+                                <option value="43.5">43.5</option>
+                                <option value="44">44</option>
+                                <option value="44.5">44.5</option>
+                                <option value="45">45</option>
+                                <option value="45.5">45.5</option>
+                                <option value="46">46</option>
+                                <option value="46.5">46.5</option>
+                                <option value="47">47</option>
+                                <option value="47.5">47.5</option>
+                                <option value="48">48</option>
+                                <option value="48.5">48.5</option>
+                                <option value="49">49</option>
+                                <option value="49.5">49.5</option>
+                                <option value="50">50</option>
+
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Grade (%)</label>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" min="0" max="100" name="Grad" id="Grade">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" maxlength="49" name="Notes" id="notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label class="col-lg-3 control-label">Start Date <span style="color: red;">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="date" class="form-control" name="StartDate" id="StartGroupDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">End Date <span style="color: red;"></span></label>
+                        <div class="col-lg-4">
+                            <input type="date" class="form-control" onchange="groupDatesValues()" name="EndDate" id="EndGroupDate">
+                        </div>
+                        <label class="col-lg-2 control-label">End Time</label>
+                        <div class="col-lg-3">
+                            <input id="timepicker1" type="time" name="time" class="form-control input-small" value="00:00">
+                        </div>
+                    </div>
+
+                    <p class="text-center">OR</p>
+                    <fieldset>
+                        <legend>Frequency</legend>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="radio" id="grpradiotype1" onclick="frequencyCheckgrp()" name="days" value="1" /> Every Day<br />
+                                <input type="radio" id="grpradiotype2" onclick="frequencyCheckgrp()" name="days" value="2" /> Every Week<br />
+                                <input type="radio" id="grpradiotype3" onclick="frequencyCheckgrp()" name="days" value="3" /> Every Month<br />
+                                <input type="radio" id="grpradiotype4" onclick="frequencyCheckgrp()" name="days" value="4" /> Every Year<br />
+                                <input type="radio" id="grpradiotype5" onclick="frequencyCheckgrp()" name="days" value="5" /> Every 2 Years<br />
+
+                                <input type="radio" id="grpradiotype6" onclick="frequencyCheckgrp()" name="days" value="6" /> Custom<br />
+                                <input type="radio" id="grpradiotype-1" onclick="frequencyCheckgrp()" checked name="days" value="-1" /> None <br />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Custom Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" name="freqDays" id="grpfreqDays" maxlength="150" placeholder="Days">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency Ending Date:</label>
+                            <div class="col-lg-9">
+
+
+                                <input type="date" id="grpFeqEndingDate" name="FeqEndingDate" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <div class="form-group">
+                        <label class="col-lg-12 control-label text-danger">Note : If values of Hours,CEU,Cost are not entered, it will be calculated from the Tasks in Group Task </label>
+                    </div>
+                    <div id="Groupdata"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <label id="errorGroupDisplay" class="control-label text-danger" hidden> No Employee Selected !  </label>
+                    <span style="color:red" id="grpspanmsg"></span>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sbGroupButton" class="btn  btn-sm btn-primary bg-primary-400">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("uploadBulkEmployee","Trainee")" method="post" enctype="multipart/form-data">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Upload Bulk</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Department</label>
+                        <div class="col-lg-9">
+                            <select class="form-control" name="department" id="department">
+                                <option value="" selected disabled>Please Select Department</option>
+                                @foreach (Department item in ViewBag.departmentList)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                            <input type="hidden" name="isDepartpage" value="0" />
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-lg-3 control-label">Upload:</label>
+                        @*<input type="file" name="file">*@
+                        <div class="file btn bg-primary-400">
+                            Browse
+                            <input type="file" name="file" accept=".xls,.xlsx" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message-text" class="col-lg-3 control-label">Sample File:</label>
+                        <p><a href="@Url.Action("downloadSampleFile","Trainee")">Download</a></p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-sm btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-sm bg-primary-400">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function SetGroupTaskValue() {
+        var val = $("#selectGroupTask").val();
+        if (val == "0") {
+            $("#NewGroupTaskField").show();
+        } else {
+            $("#NewGroupTaskField").hide();
+
+        }
+    }
+</script>
+<script type="text/javascript">
+    $('#DivisionField').hide();
+    $('#DepartmentField').hide();
+
+    function ChangeEmp() {
+        $("#changetypebtn").attr("disabled", true);
+        var id = $("#userid").val();
+        var div = $("#DivId").val();
+        var type = $("#UType").val();
+        $.ajax({
+            type: 'POST',
+            url: "../task/ChangeUserType",
+            data: { UserId: id, UserType: type, DivisionId: div },
+            dataType: "json",
+            success: function (data) {
+                // get role of the user then if you are an admin then assign tasks to manager and employee
+                // if you are manager then assign to employee
+                // if you can self assign
+                $("#changetypebtn").attr("disabled", false);
+
+                location.reload();
+
+
+
+
+            },
+            error: function () {
+                alert('Something went wrong. Try Again!');
+                $("#changetypebtn").attr("disabled", false);
+            }
+        });
+
+    }
+
+    function ChangeUserType(id, val) {
+        $("#ChangeEmpType").modal("show");
+        $("#userid").val(id);
+        $("#DivId").val(val);
+    }
+    function selectUserType(val) {
+        if (val == 2) {
+
+        }
+        if (val == 1) {
+
+        }
+    }
+    function getDepartment() {
+
+        $.ajax({
+            type: 'POST',
+            url: "../task/getDepartmentDTOs",
+            data: { divisionId: divisionId },
+            dataType: "json",
+            success: function (data) {
+                // get role of the user then if you are an admin then assign tasks to manager and employee
+                // if you are manager then assign to employee
+                // if you can self assign
+
+
+                $("#TypeDepartmentID").html("");
+                var count = 0;
+                $('#TypeDepartmentID').empty();
+                $('#TypeDepartmentID').append('<option value="" selected disabled> Please Choose a Department</option>');
+                $('#TypeDepartmentID').append('<option value="-196"> Assign To All Departments Department</option>');
+                for (var i = 0; i < data.length; i++) {
+                    var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                    $('#TypeDepartmentID').append(division);
+                }
+                $('#DepartmentField').show();
+
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+
+    function frequencyCheck() {
+        var x1 = $("#radiotype1");
+        var x2 = $("#radiotype2");
+        var x3 = $("#radiotype3");
+        var x4 = $("#radiotype4");
+        var x5 = $("#radiotype5");
+        var x6 = $("#radiotype6");
+        var x11 = $("#radiotype-1");
+        if ($("#radiotype1").prop("checked") == true || x2.prop("checked") == true || x3.prop("checked") == true || x4.prop("checked") == true || x5.prop("checked") == true || x6.prop("checked") == true) {
+
+            if (x6.prop("checked") == true) {
+                var fdays = $('#freqDays').val();
+                if (fdays == "") {
+                    $("#spanmsg").text("Please Set Frequency");
+
+                    return false;
+                }
+
+            }
+
+            var c = $("#FeqEndingDate").val();
+            if (c == "") {
+                $("#EndDate").attr("required", false);
+                $("#FeqEndingDate").attr("required", true);
+                $("#spanmsg").text("Frequency ending date is required");
+                return false
+            } else {
+                $("#EndDate").attr("required", false);
+
+                $("#FeqEndingDate").attr("required", false);
+                $("#spanmsg").text("");
+                return true
+            }
+
+
+
+
+        } else {
+            if ($("#EndDate").val() == "") {
+                $("#EndDate").attr("required", true);
+                $("#spanmsg").text("Task Endate is Required")
+                return false;
+            }
+            $("#FeqEndingDate").attr("required", false);
+            $("#spanmsg").text("");
+            //      $(".radiotype").val(null);
+
+            return true
+        }
+
+    }
+
+    function frequencyCheckgrp() {
+        var val = $("#selectGroupTask").val();
+        if (val == "0") {
+            var val2 = $("#NewGroupTaskValue").val();
+            if (val2 == "") {
+                $("#grpspanmsg").text("Group Task name must have value");
+
+                return false;
+            }
+        }
+        var x1 = $("#grpradiotype1");
+        var x2 = $("#grpradiotype2");
+        var x3 = $("#grpradiotype3");
+        var x4 = $("#grpradiotype4");
+        var x5 = $("#grpradiotype5");
+        var x6 = $("#grpradiotype6");
+        var x11 = $("#grpradiotype-1");
+        if ($("#grpradiotype1").prop("checked") == true || x2.prop("checked") == true || x3.prop("checked") == true || x4.prop("checked") == true || x5.prop("checked") == true || x6.prop("checked") == true) {
+            var c = $("#grpFeqEndingDate").val();
+            if (c == "") {
+                $("#EndGroupDate").attr("required", false);
+                $("#grpFeqEndingDate").attr("required", true);
+                $("#grpspanmsg").text("Frequency ending date is required");
+                return false
+            } else {
+
+                $("#EndGroupDate").attr("required", false);
+                $("#grpFeqEndingDate").attr("required", false);
+                $("#grpspanmsg").text("");
+                return true
+            }
+
+
+
+
+        } else {
+            if ($("#EndGroupDate").val() == "") {
+                $("#EndGroupDate").attr("required", true);
+                $("#grpspanmsg").text("Task Endate is Required")
+                return false;
+            }
+            $("#grpFeqEndingDate").attr("required", false);
+            $("#grpspanmsg").text("");
+            //      $(".radiotype").val(null);
+
+            return true
+        }
+
+    }
+
+
+    $('#timepicker1').timepicker();
+
+
+</script>
+
+
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({ format: 'yyyy-mm-dd hh:ii' });
+    var scope = 0;
+    var scope2 = 4;
+    var scope1= 0;
+    var scope3= 4;
+    function deleteArea(title, id, names, ids) {
+        swal({
+            title: "Edit",
+            text: '<form role="form" id="DeleteMeModal" action="/Area/Delete/' + areaId + '" id="contact-form" method="get"><div class="control-group"><label for="categoryName">You Are Going To Delete Area Permanently!</label></div></div></form>',
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#FF7043",
+            confirmButtonText: "Yes, delete it!"
+        }, function () {
+            $("#DeleteMeModal").submit();
+        });
+    }
+
+   
+
+    function setValues() {
+        var v = $('#selectTask').val();
+
+
+        $.ajax({
+
+               type: 'GET',
+               url: '@Url.Action("getDetails","Task")',
+               timeout: 100000000,
+               data: {_id:v },
+               dataType: "json",
+               success: function (data) {
+
+
+                   $('#cost').empty();
+                   $('#cost').val(data.Cost_);
+                   $('#ceu').empty();
+                   $('#ceu').val(data.CEU);
+                   //$('#hours').empty();
+                   $('#hours').val(data.Hours).change();
+                   $('#notes').empty();
+                   $('#notes').val(data.Description);
+                        if (data.CourseId) {
+
+                  //  $("#EmployeeCourse").show();
+                    //$("#EmployeeCanvasCourseId").val(data.CourseId).change();
+
+                } else {
+                    //$("#EmployeeCanvasCourseIds").val("").change();
+                    //$("#EmployeeCourse").hide();
+                }
+
+                   var count = 0;
+
+
+                   var inputElements = document.getElementsByClassName('messageCheckbox');
+                   for (var i = 0; inputElements[i]; i++) {
+                       if (inputElements[i].checked) {
+                           data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+
+                           count = count + 1;
+
+                       }
+                   }
+
+
+
+                   if (count == 0) {
+
+                       scope = -1;
+
+                     //  $('#errorDisplay').text("No Employee Selected")
+                       //$('#errorDisplay').show();
+                      // $('#sbButton').attr('disabled', true);
+                      // $('#StartDate').attr('disabled', true);
+                      // $('#EndDate').attr('disabled', true);
+                      // document.getElementById("EndDate").value = "";
+                   }
+                   else {
+                       $('#data').empty();
+                       $('#data').append(data);
+                       $('#sbButton').attr('disabled', false);
+                       $('#StartDate').attr('disabled', false);
+                       $('#EndDate').attr('disabled', false);
+                       scope = 1;
+                       if (scope2 == 0) {
+
+                           $('#errorDisplay').text("End date should be greater than Start date")
+                           $('#errorDisplay').show();
+                           $('#sbButton').attr('disabled', true);
+                           document.getElementById("EndDate").value = "";
+
+                       }
+                       else {
+                           $('#errorDisplay').hide();
+                           $('#sbButton').attr('disabled', false);
+                       }
+
+
+
+
+
+                   }
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+    }
+
+
+    function validation() {
+        setValues();
+        var second = checkDates();
+        if (scope == -1) {
+
+
+        }
+        else if (second == 0) {
+
+        }
+        else {
+
+        }
+
+    }
+
+     function curveChart() {
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("getTasks","Task")',
+               timeout: 100000000,
+               data: { },
+               dataType: "json",
+               success: function (data) {
+                   var i = 0;
+                   $('#selectTask').empty();
+                   $('#selectTask').append(  '<option value="" selected disabled> Please Choose a Task</option>');
+                   for (; i < data.length; i++) {
+                       var taskItem = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                       $('#selectTask').append(taskItem);
+
+                   }
+
+
+
+                   var count = 0;
+
+                   var inputElements = document.getElementsByClassName('messageCheckbox');
+                   for (var i = 0; inputElements[i]; i++) {
+                       if (inputElements[i].checked) {
+                           data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+
+                           count = count + 1;
+
+                       }
+                   }
+
+                   if (count == 0)
+                   {
+                       alert("Please Select Atleast One Employee");
+                   }
+                   else
+                   {
+                    $('#AssignTask').modal("show");
+                   }
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+     function checkDates() {
+         var startDate = document.getElementById("StartDate").value;
+         var endDate = document.getElementById("EndDate").value;
+
+         if ((Date.parse(startDate) > Date.parse(endDate))) {
+
+             scope2 = 0;
+
+
+                 $('#errorDisplay').text("End date should be greater than Start date")
+                 $('#errorDisplay').show();
+                 $('#sbButton').attr('disabled', true);
+                 document.getElementById("EndDate").value = "";
+         }
+         else {
+             scope1 = 1;
+             if (scope3 == -1) {
+                 $('#errorDisplay').text("No Employee Assigned !")
+                 $('#errorDisplay').show();
+                 $('#sbButton').attr('disabled', true);
+             }
+             else {
+                 $('#errorDisplay').hide();
+                 $('#sbButton').attr('disabled', false);
+             }
+        }
+    }
+
+    function DivsionsValues() {
+
+
+
+        $('#AssignGroupTask').modal("show");
+
+    }
+    function grouptasknames() {
+         var DivisionId= $('#DivisionID').val();
+         $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("getGroupTasksDetails", "Task")',
+               timeout: 100000000,
+             data: { DivisionId:DivisionId },
+               dataType: "json",
+               success: function (data) {
+                   var i = 0;
+
+                   var count = 0;
+                   $('#selectGroupTask').empty();
+                   $('#selectGroupTask').append('<option value="" selected disabled> Please Choose a Group Task</option>');
+                   $('#selectGroupTask').append('<option value="0"> Create New Group Task</option>');
+                   $('#selectGroupTask').append('<option value="" disabled> Existing Group Task</option>');
+                   for (; i < data.length; i++) {
+                       var taskItem = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                       $('#selectGroupTask').append(taskItem);
+
+                   }
+
+                   var inputElements = document.getElementsByClassName('messageCheckbox');
+                   $('#Groupdata').empty();
+                   var selectDatat = '';
+                   for (var i = 0; inputElements[i]; i++) {
+                       if (inputElements[i].checked) {
+                           $('#Groupdata').append('<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">');
+
+                           count = count + 1;
+
+                       }
+                   }
+
+
+                   if (count == 0) {
+
+                       scope1 = -1;
+
+                       //$('#errorGroupDisplay').text("No Employee Selected")
+                       //$('#errorGroupDisplay').show();
+                       //$('#sbButtonGroup').attr('disabled', true);
+                       //document.getElementById("EndGroupDate").value = "";
+                   }
+                   else {
+                       scope1 = 1;
+                       if (scope3 == 0) {
+
+                           $('#errorGroupDisplay').text("End date should be greater than Start date")
+                           $('#errorGroupDisplay').show();
+                           $('#sbGroupButton').attr('disabled', true);
+                           document.getElementById("EndGroupDate").value = "";
+
+                       }
+                       else {
+                           $('#errorGroupDisplay').hide();
+                           $('#sbGroupButton').attr('disabled', false);
+                       }
+
+                   }
+
+                   $('#AssignGroupTask').modal("show");
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+    }
+    function groupTaskValues() {
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("getGroupTasksDetails", "Task")',
+               timeout: 100000000,
+               data: { },
+               dataType: "json",
+               success: function (data) {
+                   var i = 0;
+
+                   var count = 0;
+                   $('#selectGroupTask').empty();
+                   $('#selectGroupTask').append('<option value="" selected disabled> Please Choose a Group Task</option>');
+                   $('#selectGroupTask').append('<option value="0"> Create New Group Task</option>');
+                   $('#selectGroupTask').append('<option value="" disabled> Existing Group Task</option>');
+                   for (; i < data.length; i++) {
+                       var taskItem = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                       $('#selectGroupTask').append(taskItem);
+
+                   }
+
+                   var inputElements = document.getElementsByClassName('messageCheckbox');
+                   $('#Groupdata').empty();
+                   var selectDatat = '';
+                   for (var i = 0; inputElements[i]; i++) {
+                       if (inputElements[i].checked) {
+                           $('#Groupdata').append('<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">');
+
+                           count = count + 1;
+
+                       }
+                   }
+
+
+                   if (count == 0) {
+
+                       scope1 = -1;
+
+                       //$('#errorGroupDisplay').text("No Employee Selected")
+                       //$('#errorGroupDisplay').show();
+                       //$('#sbButtonGroup').attr('disabled', true);
+                       //document.getElementById("EndGroupDate").value = "";
+                   }
+                   else {
+                       scope1 = 1;
+                       if (scope3 == 0) {
+
+                           $('#errorGroupDisplay').text("End date should be greater than Start date")
+                           $('#errorGroupDisplay').show();
+                           $('#sbGroupButton').attr('disabled', true);
+                           document.getElementById("EndGroupDate").value = "";
+
+                       }
+                       else {
+                           $('#errorGroupDisplay').hide();
+                           $('#sbGroupButton').attr('disabled', false);
+                       }
+
+                   }
+
+                   $('#AssignGroupTask').modal("show");
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+
+    function groupDatesValues() {
+        frequencyCheckgrp();
+        var startDate = document.getElementById("StartGroupDate").value;
+        var endDate = document.getElementById("EndGroupDate").value;
+
+        if ((Date.parse(startDate) > Date.parse(endDate))) {
+
+            scope2 = 0;
+
+
+            $('#errorGroupDisplay').text("End date should be greater than Start date")
+            $('#errorGroupDisplay').show();
+            $('#sbGroupButton').attr('disabled', true);
+            document.getElementById("EndGroupDate").value = "";
+
+
+
+        }
+        else {
+            scope2 = 1;
+            if (scope1 == -1) {
+                //$('#errorGroupDisplay').text("No Employee Assigned !")
+                //$('#errorGroupDisplay').show();
+                //$('#sbGroupButton').attr('disabled', true);
+            }
+            else {
+                $('#errorGroupDisplay').hide();
+                $('#sbGroupButton').attr('disabled', false);
+            }
+
+
+
+        }
+    }
+    function CheckEmployeeTaskSCORMCourse() {
+        var val = $("#employeeCourseId").val();
+
+
+        var val2 = $("#" + val + "").val();
+        if (val == val2) {
+            $("#employeeGrade").val("");
+            $("#employeeGrade").attr("required", false);
+            // $("#GradeSpan").text("");
+            $("#EmployeeTaskGradeDiv").hide();
+
+        } else {
+            $("#EmployeeTaskGradeDiv").show();
+            //$("#grpGrade").attr("required", true);
+            //   $("#GradeSpan").text("*");
+
+        }
+    }
+    function checkValues()
+    {
+
+        frequencyCheck();
+
+        var employeeCId = $('#employeeCourseId').val();
+        var employeeGrade = $('#employeeGrade').val();
+        if (employeeCId != "" && employeeGrade == "" && $('#EmployeeTaskGradeDiv').css('display') != 'none') {
+            $("#errorDisplay").text("Grade is required. ");
+            $('#errorDisplay').show();
+
+            $("employeeCourseId").prop('required', true);
+
+            return false;
+        }
+        else {
+            $("employeeCourseId").prop('required', false);
+
+        }
+
+        $("endDate").prop('required', true);
+        var isRepeat=false;
+        $("#assignTask input[type=radio]:checked").each(function () {
+            if ( this.checked == true) {
+                isRepeat = true;
+                $("endDate").prop('required', true);
+                return false;
+            }
+        });
+
+        if (isRepeat == false) {
+            if (!Date.parse($('#EndDate').val())) {
+                $('#errorDisplay').text("Select End Date or Repeat Frequency !")
+                $('#errorDisplay').show();
+                $('#sbButton').prop("type", "button");
+            }
+            else {
+
+                $('#sbButton').prop("type", "submit");
+                $("#tarsbButtonget").click();
+            }
+        }
+
+        else {
+            $('#sbButton').prop("type", "submit");
+            $("#tarsbButtonget").click();
+        }
+
+    }
+    function onPrimaryLead() {
+        var prim=$('#primary').val();
+        $("#secondary option").each(function (i) {
+
+            $("#secondary option[value=" + this.prim + "]").attr('disabled', true);
+
+        });
+    }
+    function dropdwonprimary() {
+        var x = $('#primary').val();
+        //$('select[name*="SecondaryLead"] option[value=' + x + ']').attr('disabled', true);
+        $('select[name *= "SecondaryLead"] option[value = ' + x + ']').attr('disabled', 'disabled')
+            .siblings().removeAttr('disabled');
+    }
+    function dropdwonsecondary() {
+        var x = $('#secondary').val();
+        $('select[name *= "PrimaryLead"] option[value = ' + x + ']').attr('disabled', 'disabled')
+            .siblings().removeAttr('disabled');
+    }
+</script>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#Employees").css('background-color', '#0150A1');
+        $("#Employees").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+
+    });
+</script>
+
+
+<script>
+
+    //work done by Waqas, for Turn Over User Tasks
+    function openTurnOverModal(fromId)
+    {
+        $('#fromId').val(fromId);
+        $('#turnOverUserDiv').hide();
+
+
+        $('#UserTurnOverModal').modal('show');
+    }
+
+    function getUserList(type)
+    {
+        $('#turnOverUserDiv').hide();
+
+        var id = $('#fromId').val();
+        if (type != "")
+        {
+            $('#turnOverUserSpiner').show();
+
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: '@Url.Action("GetUserListToChangeOver", "Utilities")',
+                data: { Id: id, UserType: type, Way: 3 },
+                success: function (response) {
+                    if (type == 1) {
+                        $('#turnOverUserLabel').text("Select Admin");
+
+                        $('#turnOverUserOption').find('option').remove().end();
+
+                        $("#turnOverUserOption").append('<option value="" disabled selected>Please Select Admin To Transfer Tasks</option>');
+                    }
+                    else if (type == 2) {
+                        $('#turnOverUserLabel').text("Select Manager");
+
+                        $('#turnOverUserOption').find('option').remove().end();
+
+                        $("#turnOverUserOption").append('<option value="" disabled selected>Please Select Manager To Transfer Tasks</option>');
+                    }
+                    else {
+                        $('#turnOverUserLabel').text("Select Employee");
+
+                        $('#turnOverUserOption').find('option').remove().end();
+
+                        $("#turnOverUserOption").append('<option value="" disabled selected>Please Select Employee To Transfer Tasks</option>');
+                    }
+
+
+
+                    var i = 0;
+                    $.each(response, function () {
+                        $("#turnOverUserOption").append('<option value=' + response[i].Id + '>' + response[i].Name + '</option>');
+
+                        i++;
+                    });
+
+                    $('#turnOverUserSpiner').hide();
+
+                    $('#turnOverUserDiv').show();
+                    
+                },
+                error: function (response) {
+                    alert('Ajax Fail');
+                }
+
+            });
+
+        }
+    }
+</script>
+
+
+<script>
+    //Work Done by Waqas, to handle reminders dynamically on the basis of frequency selection
+    function setEmployeeReminderOption(freq) {
+        if (freq == 1 || freq == -1 || freq == 6) {
+            $('#employeeDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>')
+        }
+
+        if (freq == 2) {
+            $('#employeeDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option>')
+        }
+
+        if (freq == 3 || freq == 4 || freq == 5) {
+            $('#employeeDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option> <option value="3">Monthly</option>')
+        }
+    }
+
+    function setCustomEmployeeReminderOption(day) {
+        if (day > 0 && day < 7) {
+            $('#employeeDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>');
+        }
+        else if (day > 6 && day < 31) {
+            $('#employeeDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option>');
+        }
+        else if (day > 30) {
+            $('#employeeDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option> <option value="3">Monthly</option>');
+        }
+    }
+
+</script>

@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "CompletedCourses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model TrainingTracker.Models.User
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+@using TrainingTracker.BL
+
+@{
+
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    Company company1 = new CompanyBL().getCompanyById(Convert.ToInt32(logedinuser.Company));
+
+}
+
+<div class="content">
+    @if (company1.IsLMS == 1)
+    {
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <center><h3 class="panel-title">LMS Completed Courses</h3></center>
+
+                <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+                <div class="heading-elements">
+                    <ul class="icons-list">
+
+                        <li>  @*<button type="button" class="btn  btn-sm bg-primary btn-block" data-toggle="modal" data-target="#modal-login"><i class=" icon-add"></i>  Add Document</button>*@</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel-body">
+               
+
+
+                <div class="">
+                    <table id="example" class="table datatable-button-html5-basic table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sr #</th>
+                                <th>Course Name</th>
+                                <th>Task Name</th>
+                                <th>Assigned To</th>
+                                <th>Assigned By</th>
+                                <th>Result Status</th>
+                                <th>Completed At</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script>
+     $(document).ready(function () {
+
+
+            $("#wait").css("display", "block");
+
+            $('#example').DataTable(
+                {
+
+                    "ajax": {
+                        "url": '@Url.Action("GetCompletedCoursesList", "Course")',
+
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+
+                    "columns": [
+                        { "data": "SerialNumber", "name": "SerialNumber" },
+                        { "data": "CourseName", "name": "CourseName" },
+                        { "data": "TaskName", "name": "TaskName" },
+
+                        { "data": "AssignedTo", "name": "AssignedTo" },
+                        { "data": "AssignedBy", "name": "AssignedBy" },
+                        { "data": "ResultStatus", "name": "ResultStatus" },
+                        { "data": "CompletedAt", "name": "CompletedAt" },
+
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+
+                            render: function (data, type, full, meta) {
+
+                                return '<a href="../ExportReport/CourseCompletionCertificatePdf?CutId=' + full.EncryptedId + '" class="btn bg-primary btn-sm">Certificate&nbsp;<i title="Download Certificate" class="icon icon-download"></i></a>';
+
+
+                            },
+                            targets: 7
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+
+                })
+
+        //}
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#CompletedCourses").css('background-color', '#0150A1');
+        $("#CompletedCourses").css('color', '#ffffff');
+        $("#Reports").css('display', 'block', 'important');
+    });
+</script>

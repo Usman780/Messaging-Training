@@ -1,0 +1,978 @@
+﻿
+@{
+    ViewBag.Title = "Templates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    string setupVar = "Set-Up";
+    string tempVar = "Templates";
+    if (logedinuser.Role == 3)
+    {
+        setupVar = "Task Set-Up";
+        tempVar = "Task Templates";
+    }
+    
+}
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+
+    #glyphicon {
+        font-weight: bolder;
+        font-size: 1.8em;
+    }
+</style>
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">@setupVar</li>
+            <li class="active">@tempVar</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+<span id="moveTop"></span>
+<div class="content">
+    <br />
+    <br />
+    <div id="AssignPanel" class="panel panel-flat ">
+        <div class="panel-heading page-header page-header-default has-cover">
+
+
+
+
+            <center><h3 class="panel-title"><b>Assign Task Through Template</b></h3></center>
+
+            <div class="heading-elements page-header page-header-default has-cover">
+                @*<ul class="icons-list">
+
+
+            <li><a data-action="collapse"></a></li>
+        </ul>*@
+                <ul class="icons-list">
+                    <li>
+                        <a data-toggle="collapse" data-target="#collapseExample" id="collapsecaret">
+                            <i class="glyphicon glyphicon-menu-up" id="glyphicon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body panel1 collapse" id="collapseExample">
+            <div class="" style="margin-left:5px;">
+                <form id="assignTask1" onsubmit="return frequencyCheck()" action="@Url.Action("AssignTaskThroughTemplate", "Task")" method="post">
+                    <div id="ID1" class="row">
+                        <div class="form-group col-md-3">
+                            <input type="hidden" name="UTask" id="hvalue" />
+                            <label class="control-label">User Type<span style="color:red">*</span></label>
+                            <select class="select" onchange="funUserType()" id="UserTypeID" name="UserTypeID">
+                                <option value="">Select User Type</option>
+                                @if (logedinuser.Role == 1)
+                                {
+                                    <option value="Manager">Manager</option>
+                                }
+
+                                <option value="Employee">Employee</option>
+
+                                @*@if (logedinuser.Role == 1 && logedinuser.IsMasterAdmin == 1)
+                                                           {
+                                        <option value="Admin">Admin</option>
+                                    }*@
+
+
+
+
+                            </select>
+                        </div>
+
+                        <div id="DivisionDiv" class="form-group col-md-3">
+                            <label class="control-label">Division<span style="color:red">*</span></label>
+                            <select class="select-results-color" onchange="GetDepartments()" id="DivisionID" name="DivisionID">
+                                <option value="">Select Division</option>
+                                @foreach (Division item in ViewBag.DivList)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+
+                            </select>
+                        </div>
+
+                        <div id="DepartmentDiv" class="form-group col-md-3">
+                            <label class="control-label">Department<span style="color:red">*</span></label>
+                            <select class="select-results-color" onchange="GetUsers()" id="DepartmentID" name="DepartmentID">
+                                <option value="" selected>Select Department</option>
+
+                            </select>
+                        </div>
+
+                        <div id="UserNameDiv" class="form-group col-md-3">
+                            <label class="control-label">User Name<span style="color:red">*</span></label>
+                            <select class="select-results-color" id="UserName" name="UserName">
+
+                                <option value="">Select User Name</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+                    <input type="hidden" name="AssignToself" id="AssignToself" />
+                    <input type="hidden" name="UserID" id="UserID" />
+                    <div id="ID2" class="row">
+                        <div id="" class="form-group col-md-3">
+                            <label class="control-label">Start Date</label>
+                            <input type="date" class="form-control" name="StartDate" id="StartDateTask1" />
+                        </div>
+                        <div id="" class="form-group col-md-3">
+                            <label class="control-label">End Date</label>
+                            <input type="date" class="form-control" name="EndDate" id="EndDateTask1" />
+                        </div>
+                        <div id="" class="form-group col-md-3">
+                            <label class="control-label">Status</label>
+                            <select class="select" name="Status">
+                                <option value="">Select Status</option>
+                                <option value="0">Started</option>
+                                <option value="1">25%</option>
+                                <option value="2">50%</option>
+                                <option value="3">75%</option>
+                                <option value="4">100%</option>
+
+
+                            </select>
+
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="row">
+                        <p class="text-center">OR</p>
+                        <fieldset>
+                            <legend><b>Frequency</b></legend>
+
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">Frequency:</label>
+                                <div class="col-lg-9">
+                                    <input type="radio" id="radiotype1" name="days" value="1" onclick="setAdminReminderOption(this.value)"/> Every Day<br />
+                                    <input type="radio" id="radiotype2" name="days" value="2" onclick="setAdminReminderOption(this.value)"/> Every Week<br />
+                                    <input type="radio" id="radiotype3" name="days" value="3" onclick="setAdminReminderOption(this.value)"/> Every Month<br />
+                                    <input type="radio" id="radiotype4" name="days" value="4" onclick="setAdminReminderOption(this.value)"/> Every Year<br />
+                                    <input type="radio" id="radiotype5" name="days" value="5" onclick="setAdminReminderOption(this.value)"/> Every 2 Years<br />
+                                    <input type="radio" id="radiotype6" name="days" value="6" onclick="setAdminReminderOption(this.value)"/> Custom<br />
+                                    <input type="radio" id="radiotype-1" checked name="days" value="-1" onclick="setAdminReminderOption(this.value)"/> None <br />
+
+                                </div>
+                            </div>
+                            <br />
+                            <div style="margin-top:20px" class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">Custom Frequency:</label>
+                                    <div class="col-lg-3">
+                                        <input type="number" class="form-control" maxlength="150" name="freqDays" onkeyup="setCustomAdminReminderOption(this.value)" id="freqDays1" placeholder="Days">
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div style="margin-top:20px" class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">Frequency Ending Date:</label>
+                                    <div class="col-lg-3">
+
+
+                                        <input type="date" id="FeqEndingDate" name="FeqEndingDate" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Set Reminder</legend>
+                            <div class="form-group col-md-12" id="DReminder">
+                                <label class="col-lg-2 control-label">Reminder: </label>
+                                <div class="col-lg-3">
+                                    <select class="select" name="DReminder" id="adminDailyReminder">
+                                        <option value="">Select Type</option>
+                                        <option value="1">Daily</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label id="errorDisplayTask1" class="control-label text-danger" hidden> No Employee Selected !  </label>
+                        <span style="color:red" id="spanmsg"></span>
+                        <button style="margin-top:7%" id="sbButtonTask1" onclick="checkValues1()" class="btn btn-primary" type="submit">Assign</button>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                    </div>
+
+                    @*<div class="form-group col-md-3">
+                                                       <p style="color:blue">*Start Date ,End Date & Status are optional</p>
+                        </div>*@
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+
+
+            <center><h3 class="panel-title"><b>List of Templates</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            @*<div class="heading-elements">
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+
+                                <li>
+
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("ExportEmployeesTask","ExportReport",new {startDate=ViewBag.startDate,endDate=ViewBag.endDate,tag=ViewBag.tag,department=ViewBag.department,division=ViewBag.division,taskName=ViewBag.taskNamee,taskType=ViewBag.taskType,status=ViewBag.status,fname=ViewBag.fname,lname=ViewBag.lname,priority=ViewBag.priority,completionStatus=ViewBag.completionStatus,sd=ViewBag.sd,ed=ViewBag.ed,cd=ViewBag.cd,DivDepID=ViewBag.DivDepID})"> Export Excel </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("ExportEmployeesPdf","ExportReport",new { DivDepID=ViewBag.DivDepID})">Export to pdf</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>*@
+
+        </div>
+
+
+
+        <div class="panel-body">
+
+            <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+
+                <thead>
+                    <tr>
+
+
+                        <th>Template Name</th>
+                        <th>Task Name</th>
+                        <th>Template Duration</th>
+                        @*<th>End Date</th>*@
+
+                        @*<th>Work Status</th>*@
+
+                        <th>Priority</th>
+
+                        <th class="text-center">Actions</th>
+
+                    </tr>
+                </thead>
+                @*<tbody>
+                        @foreach (TrainingTracker.Models.User_Task item in ViewBag.tasks)
+                        {
+                            string temp = "t" + item.Id;
+                            <tr>
+
+                                <td>@item.User1.FirstName  @item.User1.LastName </td>
+                                <td>@item.Task.Name </td>
+                                <td>@item.StartDate.Value.ToString("dd/MM/yyyy")</td>
+                                <td>@item.EndDate.Value.ToString("dd/MM/yyyy")</td>
+
+
+                                @if (item.Status.HasValue)
+                                {
+                                    <td>@General_Purpose.getStatusValue(item.Status.Value)</td>
+                                }
+                                else
+
+                                {
+                                    <td></td>
+                                }
+                                @if(!item.Priority.HasValue)
+                                {
+                                  <td> </td>
+
+                                }
+                                else if (General_Purpose.getPriorityValue(item.Priority.Value) == "Medium")
+                                {
+                                    <td><span class="label label-warning">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                                }
+                                else if (General_Purpose.getPriorityValue(item.Priority.Value) == "Low")
+                                {
+                                    <td><span class="label label-success">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="label label-danger">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                                }
+
+
+                                <td>
+                                    <a class="btn btn-sm  bg-secondary" href="@Url.Action("taskDetails","Task", new  { v=HttpUtility.UrlEncode(General_Purpose.Encrypt(item.Id))})"> View </a>
+                                    <button class="btn btn-sm  btn-danger" onclick="deleteTask(@item.Id)"> Delete </button>
+                                </td>
+
+                            </tr>
+                        }
+
+
+
+
+
+
+                    </tbody>*@
+            </table>
+
+            <input type="hidden" id="DivDepID" value="@ViewBag.DivDepID" />
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
+
+<div id="updateTemplate" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("PostUpdateTemplate","Task")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    
+                    <h4 class="modal-title">Update Template</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Name</label>
+                        <div class="col-lg-9">
+                            <input type="hidden" required name="Id" id="I_d" readonly>
+                            <input type="text" class="form-control" required name="Name" id="updatename">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  btn-primary bg-grey-400">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="modal-delete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <form class="modal-body " action="@Url.Action("deleteAssignment","Task")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group" id="delText">Are You Sure ? <small class="display-block"></small></h5>
+                </div>
+                <div id="datadelete"></div>
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">Close</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Submit</button>
+
+
+                </center>
+
+            </form>
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+<div id="deleteGroupTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("deleteTemplateTask", "Task")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you want to delete the Template? <small class="display-block"></small></h5>
+                </div>
+                <input type="hidden" id="sid" name="sid" value="0" />
+                @*<input type="hidden" id="ticketId2" name="startDates" value="@ViewBag.startDate" />
+                    <input type="hidden" id="ticketId3" name="endDates" value="@ViewBag.endDate" />
+                    <input type="hidden" id="ticketIdr" name="tags" value="@ViewBag.tag" />
+                    <input type="hidden" id="ticketIdt" name="departments" value="@ViewBag.department" />
+                    <input type="hidden" id="ticketIdy" name="divisions" value="@ViewBag.division" />
+                    <input type="hidden" id="ticketIdh" name="taskNames" value="@ViewBag.taskName" />
+                    <input type="hidden" id="ticketIdb" name="taskTypes" value="@ViewBag.taskType" />
+                    <input type="hidden" id="ticketIdm" name="statuss" value="@ViewBag.status" />
+                    <input type="hidden" id="ticketIdk" name="fnames" value="@ViewBag.fname" />
+                    <input type="hidden" id="ticketIdk" name="lnames" value="@ViewBag.lname" />
+                    <input type="hidden" id="ticketIdl" name="completionStatuss" value="@ViewBag.completionId" />
+                    <input type="hidden" id="ticketIdg" name="prioritys" value="@ViewBag.priority" />*@
+
+
+
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function frequencyCheck() {
+        var x1 = $("#radiotype1");
+        var x2 = $("#radiotype2");
+        var x3 = $("#radiotype3");
+        var x4 = $("#radiotype4");
+        var x5 = $("#radiotype5");
+        var x6 = $("#radiotype6");
+        var x11 = $("#radiotype-1");
+        if ($("#radiotype1").prop("checked") == true || x2.prop("checked") == true || x3.prop("checked") == true || x4.prop("checked") == true || x5.prop("checked") == true || x6.prop("checked") == true) {
+            var c = $("#FeqEndingDate").val();
+            if (c == "") {
+                $("#EndDateTask1").attr("required", false);
+                $("#FeqEndingDate").attr("required", true);
+                $("#spanmsg").text("Frequency ending date is required");
+                return false
+            } else {
+                $("#EndDateTask1").attr("required", false);
+                $("#FeqEndingDate").attr("required", false);
+                $("#spanmsg").text("");
+                return true
+            }
+
+
+
+
+        } else {
+            if ($("#EndDateTask1").val() == "") {
+                $("#EndDateTask1").attr("required", true);
+                $("#spanmsg").text("Task Endate is Required")
+                return false;
+            }
+            $("#FeqEndingDate").attr("required", false);
+            $("#spanmsg").text("");
+            //      $(".radiotype").val(null);
+
+            return true
+        }
+
+    }
+
+    function checkValues1() {
+        frequencyCheck();
+
+        $("endDate1").prop('required', true);
+        var isRepeat = false;
+        $("#assignTask1 input[type=radio]:checked").each(function () {
+            if (this.checked == true) {
+                isRepeat = true;
+                $("endDate1").prop('required', true);
+                return false;
+            }
+        });
+
+        if (isRepeat == false) {
+            if (!Date.parse($('#EndDateTask1').val())) {
+                $('#errorDisplayTask1').text("Select End Date or Repeat Frequency !")
+                $('#errorDisplayTask1').show();
+                $('#sbButtonTask1').prop("type", "button");
+            }
+            else {
+
+                $('#sbButtonTask1').prop("type", "submit");
+                $("#AssignTask").submit();
+            }
+        }
+
+        else {
+            $('#sbButtonTask1').prop("type", "submit");
+            $("#AssignTask").submit();
+        }
+
+    }
+
+
+    function AssignTemplate(UtaskId)
+    {
+        $("#hvalue").val(UtaskId);
+        $("#AssignPanel").hide();
+
+        //this will scroll up when ever click on assign task (By Waqas)
+        $('html, body').animate({
+            scrollTop: $("#moveTop").offset().top
+        }, 1000);
+
+        setTimeout(function ()
+        {
+            $("#ID1").show();
+            $("#AssignPanel").show();
+
+            $('#collapseExample').collapse('show');
+
+        }, 100);
+
+        $("#UserID").val("");
+
+
+    }
+    function AssignToYourselfTemplate(userId, UtaskId) {
+        $("#hvalue").val(UtaskId);
+        $("#UserID").val(userId);
+
+        
+        //this will scroll up when ever click on assign task (By Waqas)
+        $('html, body').animate({
+            scrollTop: $("#moveTop").offset().top
+        }, 1000);
+
+        $("#AssignToself").val("yes");
+        $("#AssignPanel").hide();
+        setTimeout(function () {
+
+            $("#ID1").hide();
+            $("#AssignPanel").show();
+            //window.location = "#AssignPanel";
+            
+            $('#collapseExample').collapse('show');
+
+        }, 100);
+
+
+    }
+</script>
+<script>
+
+    $("#AssignPanel").hide();
+
+
+    $("#DepartmentDiv").hide();
+    $("#DivisionDiv").hide();
+    $("#UserNameDiv").hide();
+    // $("#DepartmentID").val("").change();
+    function funUserType() {
+
+        var Utype = $("#UserTypeID").val();
+        if (Utype == "Manager") {
+
+
+            $("#DepartmentDiv").hide();
+            $("#DivisionID").val("").change();
+            $("#DivisionDiv").show();
+            $("#DepartmentID").val("").change();
+            $("#UserName").val("").change();
+            $("#UserNameDiv").hide();
+
+        } else if (Utype == "Employee") {
+
+            $("#DivisionID").val("").change();
+            $("#DivisionDiv").show();
+
+            $("#DepartmentID").html("");
+            var count = 0;
+            $('#DepartmentID').empty();
+            $("#DepartmentID").val("").change();
+
+            $("#DepartmentDiv").show();
+            $("#UserName").val("").change();
+            $("#UserNameDiv").hide();
+
+        } else {
+
+            $("#DivisionID").val("").change();
+            $("#DivisionDiv").hide();
+            $("#DepartmentID").val("").change();
+            $("#DepartmentDiv").hide();
+            $("#UserNameDiv").hide();
+            $("#UserName").val("").change();
+
+        }
+    }
+
+    function GetDepartments() {
+        var divId = $("#DivisionID").val();
+        $("#UserName").val("").change();
+        var Utype = $("#UserTypeID").val();
+        if (Utype == "Employee") {
+            if (divId != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: "../task/getDepartmentDTOs",
+                    data: { divisionId: divId },
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+                        var role = data[0].SessionRole;
+
+
+                        $("#DepartmentID").html("");
+                        var count = 0;
+                        $('#DepartmentID').empty();
+                        $('#DepartmentID').append('<option value="" selected > Please Choose a Department</option>');
+                        for (var i = 0; i < data.length; i++) {
+                            var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                            $('#DepartmentID').append(division);
+                        }
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+            } else {
+                $("#DepartmentDiv").hide();
+                $("#DepartmentID").val("").change();
+            }
+        } else {
+            if ($("#DivisionID").val() != "") {
+                GetUsers();
+            } else {
+                $("#UserName").val("").change();
+                $("#UserNameDiv").hide();
+            }
+
+        }
+
+    }
+
+    function GetUsers() {
+        var divisionId = $("#DivisionID").val();
+        var departmentId = $("#DepartmentID").val();
+        var Utype = $("#UserTypeID").val();
+        if (Utype == "Manager") {
+            if (divisionId != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: "../Report/getusers",
+                    data: {
+                        divisionId: divisionId,
+                        departmentId: departmentId,
+
+                    },
+                    dataType: "json",
+                    success: function (data) {
+
+
+
+                        $("#UserName").html("");
+                        var count = 0;
+                        $('#UserName').empty();
+                        $('#UserName').append('<option value="" selected> Please Select a User Name</option>');
+                        for (var i = 0; i < data.length; i++) {
+                            var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                            $('#UserName').append(division);
+                        }
+
+
+                        $("#UserNameDiv").show();
+
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+            } else {
+                $("#UserNameDiv").hide();
+                $("#UserName").val("").change();
+            }
+
+
+        } else if (Utype == "Employee") {
+            if (divisionId != "" && departmentId != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: "../Report/getusers",
+                    data: {
+                        divisionId: divisionId,
+                        departmentId: departmentId,
+
+                    },
+                    dataType: "json",
+                    success: function (data) {
+
+
+
+                        $("#UserName").html("");
+                        var count = 0;
+                        $('#UserName').empty();
+                        $('#UserName').append('<option value="" selected> Please Select a User Name</option>');
+                        for (var i = 0; i < data.length; i++) {
+                            var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                            $('#UserName').append(division);
+                        }
+
+
+                        $("#UserNameDiv").show();
+
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+            } else {
+                $("#UserNameDiv").hide();
+                $("#UserName").val("").change();
+            }
+
+
+        } else {
+            $("#DepartmentDiv").hide();
+            $("#DivisionDiv").hide();
+            $("#UserNameDiv").hide();
+        }
+    }
+</script>
+<script>
+
+      function deleteTask(id) {
+            $('#sid').val(id);
+            $('#deleteGroupTask').modal("show");
+    }
+
+
+
+        $(document).ready(function () {
+
+
+            $("#wait").css("display", "block");
+            var x = "s4kt7";
+            $('#example').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetTemplates","Task")',
+                        "data": {DivDepID:x},
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+
+                    "columns": [
+                        { "data": "Name", "name": "Name" },
+                        { "data": "Task", "name": "Task" },
+                        { "data": "StartDate", "name": "StartDate" },
+                        //{ "data": "EndtDate", "name": "EndtDate" },
+                      //  { "data": "WorkStatus", "name": "WorkStatus" },
+
+                        { "data": "Priority", "name": "Priority" },
+                        ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                        //{ "data": "Email", "name": "Email", "visible": false },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+                            //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                            render: function (data, type, full, meta) {
+                                //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                                if (full.Role == 1)
+                                {
+                                    //return '<a class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + full.EncryptedId + '&template=' + x + '"> View </a>' +
+                                    //    ' <button class="btn btn-sm  btn-danger" onclick="deleteTask(' + full.Id + ')"> Delete </button>' +
+                                    //    '<a style="margin-left:3px" class="btn btn-sm  bg-secondary" onclick="AssignTemplate(' + full.Id + ')" > Assign  </a>' +
+                                    //    '<a style="margin-left:3px" class="btn btn-sm  bg-secondary" onclick="AssignToYourselfTemplate(' + full.LogedInId + ',' + full.Id + ')" >Assign Yourself</a>';
+
+
+                                    return '<ul class="icons-list text-center">' +
+                                        '<li class="dropdown">' +
+                                        '	<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                        '		<i class="icon-menu9"></i>' +
+                                        '	</a>' +
+                                        '	<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '		<li><a href="../Task/TemplatesView?v=' + full.EncryptedId + '&template=' + x + '"><i class="icon-eye"></i> View/Update </a></li>' +
+                                        '		<li><a onclick="AssignTemplate(' + full.Id + ')"><i class="icon-share"></i> Assign </a></li>' +
+                                        '		<li><a onclick="AssignToYourselfTemplate(' + full.LogedInId + ',' + full.Id + ')"><i class="icon-checkmark-circle"></i> Assign Yourself </a></li>' +
+                                        '		<li><a onclick="updateTemplate(' + full.Id +')"><i class="icon-square-up-right"></i> Update Name</a></li>' +
+                                        '		<li><a class="text-danger" onclick="deleteTask(' + full.Id + ')"><i class="glyphicon glyphicon-trash"></i> Delete </a></li>' +
+                                        '	</ul>' +
+                                        '</li>' +
+                                        '</ul>';
+                                }
+                                else if (full.Role == 2 || full.role == 4)
+                                {
+                                    //return '<a class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + full.EncryptedId + '&template=' + x + '"> View </a>' +
+
+                                    //    '<a style="margin-left:3px" class="btn btn-sm  bg-secondary" onclick="AssignTemplate(' + full.Id + ')" > Assign  </a>' +
+                                    //    '<a style="margin-left:3px" class="btn btn-sm  bg-secondary" onclick="AssignToYourselfTemplate(' + full.LogedInId + ',' + full.Id + ')" >Assign Yourself</a>';
+
+
+                                    return '<ul class="icons-list text-center">' +
+                                        '<li class="dropdown">' +
+                                        '	<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                        '		<i class="icon-menu9"></i>' +
+                                        '	</a>' +
+                                        '	<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '		<li><a href="../Task/TemplatesView?v=' + full.EncryptedId + '&template=' + x + '"><i class="icon-eye"></i> View/Update </a></li>' +
+                                        '		<li><a onclick="AssignTemplate(' + full.Id + ')"><i class="icon-share"></i> Assign </a></li>' +
+                                        '		<li><a onclick="AssignToYourselfTemplate(' + full.LogedInId + ',' + full.Id + ')"><i class="icon-checkmark-circle"></i> Assign Yourself </a></li>' +
+                                        '		<li><a onclick="updateTemplate(' + full.Id + ')"><i class="icon-square-up-right"></i> Update Name</a></li>' +
+                                        '		<li><a class="text-danger" onclick="deleteTask(' + full.Id + ')"><i class="glyphicon glyphicon-trash"></i> Delete </a></li>' +
+                                        '	</ul>' +
+                                        '</li>' +
+                                        '</ul>';
+                                }
+                                else
+                                {
+                                    // return '<a class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + full.EncryptedId + '&template='+x+'"> View </a>' +
+
+                                    //'<a style="margin-left:3px" class="btn btn-sm  bg-secondary" onclick="AssignToYourselfTemplate(' + full.LogedInId + ',' + full.Id + ')" >Assign Yourself</a>';
+
+                                    return '<ul class="icons-list text-center">' +
+                                        '<li class="dropdown">' +
+                                        '	<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                        '		<i class="icon-menu9"></i>' +
+                                        '	</a>' +
+                                        '	<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '		<li><a href="../Task/TemplatesView?v=' + full.EncryptedId + '&template=' + x + '"><i class="icon-eye"></i> View/Update </a></li>' +
+                                        '		<li><a onclick="AssignToYourselfTemplate(' + full.LogedInId + ',' + full.Id + ')"><i class="icon-checkmark-circle"></i> Assign Yourself </a></li>' +
+                                        '		<li><a onclick="updateTemplate(' + full.Id + ')"><i class="icon-square-up-right"></i> Update Name</a></li>' +
+                                        '		<li><a class="text-danger" onclick="deleteTask(' + full.Id + ')"><i class="glyphicon glyphicon-trash"></i> Delete </a></li>' +
+                                        '	</ul>' +
+                                        '</li>' +
+                                        '</ul>';
+                                }
+
+
+
+                            },
+                            targets: 4
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+
+                })
+
+        //}
+    });
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#Templates").css('background-color', '#0150A1');
+        $("#Templates").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+    });
+</script>
+
+<script>
+
+    function updateTemplate(id)
+    {
+
+        $.ajax({
+
+            type: 'Post',
+            url: '@Url.Action("GetTemplateUpdate", "Task")',
+            timeout: 100000000,
+            data: { _id:id },
+            dataType: "json",
+            success: function (response)
+            {
+                $('#updatename').val(response.TemplateName);
+                $('#I_d').val(response.Id);
+
+                $('#updateTemplate').modal('show')
+
+            },
+            error: function (response)
+            {
+                alert("Ajax Error");
+            }
+           });
+   }
+</script>
+
+<script>
+    //Work Done by Waqas, to handle reminders dynamically on the basis of frequency selection
+    function setAdminReminderOption(freq) {
+        if (freq == 1 || freq == -1 || freq == 6) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>')
+        }
+
+        if (freq == 2) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option>')
+        }
+
+        if (freq == 3 || freq == 4 || freq == 5) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option> <option value="3">Monthly</option>')
+        }
+    }
+
+    function setCustomAdminReminderOption(day)
+    {
+        if (day != "") {
+            if (day > 0 && day < 7) {
+                $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>');
+            }
+            else if (day > 6 && day < 31) {
+                $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option>');
+            }
+            else if (day > 30) {
+                $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option> <option value="3">Monthly</option>');
+            }
+        }
+        else {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>');
+        }
+    }
+</script>
+
+
+<script>
+    //function used to manually handling the caret Down and up icon for search bar collapsing
+    $(document).on('click', '#collapsecaret', function (e) {
+        var $this = $(this);
+        var icon = $this.find('i');
+        if (icon.hasClass('glyphicon-menu-down')) {
+            $this.find('i').removeClass('glyphicon-menu-down').addClass('glyphicon-menu-up');
+        } else {
+            $this.find('i').removeClass('glyphicon-menu-up').addClass('glyphicon-menu-down');
+        }
+    });
+</script>
+

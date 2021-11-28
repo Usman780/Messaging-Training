@@ -1,0 +1,400 @@
+﻿@using TrainingTracker.Models;
+@using TrainingTracker.Helper_Classes;
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    User user = new UserBL().getUsersById(logedinuser.Id);
+    //List<Course> canvascourse = General_Purpose.GetCanvasUserCourses();
+    Company comp = new CompanyBL().getCompanyById(Convert.ToInt32(logedinuser.Company));
+    List<FavoriteReport> frlist = new FavoriteReportBL().getFavoriteReportList().Where(x => x.User_Id == logedinuser.Id).ToList();
+
+}
+
+<!-- Main sidebar -->
+<div class="sidebar sidebar-main sidebar-default">
+    <div class="sidebar-content">
+
+        <!-- User menu -->
+        <div class="sidebar-user-material">
+            <div class="category-content">
+                <div class="sidebar-user-material-content">
+                    <a href="#">
+                        @{
+                            User u = new UserBL().getUsersById(logedinuser.Id);
+                        }
+                        @if (u.Image == "" || u.Image == null)
+                        {
+                            <input type="hidden" name="myprofilepicture" id="myprofilepicture" value="~/Content/default/ig.png" />
+                            <img src="~/Content/default/ig.png" onclick="openMyProfile()" class="img-circle img-responsive" alt="">
+
+                        }
+                        else
+                        {
+                            string URL = General_Purpose.RefreshImageSignature((int)u.Id);
+                            <input type="hidden" name="myprofilepicture" id="myprofilepicture" value="@URL" />
+                            <img src='@URL' onclick="openMyProfile()" class="img-circle img-responsive" alt="">
+                        }
+                    </a>                                <h6 style="color:black">@user.FirstName @user.LastName</h6>
+                    <span class="text-size-small"></span>
+                </div>
+
+                <div style="background-color:#0150A1" class="sidebar-user-material-menu">
+                    <a href="#user-nav" data-toggle="collapse"><span>My Account</span> <i class="caret"></i></a>
+                </div>
+            </div>
+
+            <div class="navigation-wrapper collapse" id="user-nav">
+                <ul class="navigation">
+                    <li><a href="@Url.Action("updateProfile","Trainee",new {way="0" })"><i class="icon-cog5"></i> <span>Update Profile</span></a></li>
+                    <li><a target="_blank" href="@Url.Action("Contact","Home")"><i class="icon-help"></i> <span>Help</span></a></li>
+                    <li><a href="@Url.Action("Logout","Auth")"><i class="icon-switch2"></i> <span>Logout</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- /user menu -->
+        <!-- Main navigation -->
+        <div class="sidebar-category sidebar-category-visible">
+            <div class="category-content no-padding">
+                <ul class="navigation navigation-main navigation-accordion">
+
+                    <!-- Main -->
+                    <li>
+                        <a id="Dashboard" href="@Url.Action("Index", "Auth")"><i class="icon-home"></i> Dashboard</a>
+                    </li>
+
+                    @*<li ><a id="Dashboard" href="@Url.Action("Index","Auth")"><i class="icon-home"></i> Dashboard</a></li>*@
+
+
+
+
+                    <li>
+                        <a href="#"><i class="icon-task"></i> <span>Assignments</span> </a>
+                        <ul id="Assignments">
+                            @if (logedinuser.Role == 2 || logedinuser.Role == 4)
+                            {
+                                <li>
+                                    <a id="EmployeesAssignment" href="@Url.Action("assignments", "Task")"> <span>Employee Tasks</span></a>
+
+                                </li>
+                                <li><a id="ManagerTasks" href="@Url.Action("displayManagerTask", "Manager")"> <span>My Tasks</span></a></li>
+
+                            }
+                            else if (logedinuser.Role == 1)
+                            {
+                                <li>
+                                    <a id="EmployeesAssignment" href="@Url.Action("assignments", "Task")"> <span>Employee Tasks</span></a>
+
+                                </li>
+
+                                <li><a id="ManagerTasks" href="@Url.Action("displayManagerTask", "Manager")"> <span>Manager Tasks</span></a></li>
+
+                                <li><a id="AdminOtherTasks" href="@Url.Action("displayAdminTask", "Admin",new {v="9kvet4" })"> <span>Administrator Tasks</span></a></li>
+
+
+                                <li><a id="AdminMyTasks" href="@Url.Action("displayAdminTask", "Admin")"> <span>My Tasks</span></a></li>
+
+                            }
+                            else if (logedinuser.Role == 3)
+                            {
+                                <li>
+                                    <a id="EmpAssignedTasks" href="@Url.Action("displayEmployeeTask", "Trainee")"> <span>My Tasks</span></a>
+
+                                </li>
+
+                            }
+
+                            <li><a id="TAGroupTasks" href="@Url.Action("groupAssignments", "Task")"> <span>Group Tasks</span></a></li>
+                            <li><a id="TAGroupStudy" href="@Url.Action("groupStudyAssignments", "Task")"> <span>Group Study</span></a></li>
+                            <li>
+                                <a id="ActiveTickets" href="@Url.Action("ActiveTickets", "Task")">My Active To Do</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li id="CompletedAssignments">
+                        <a href="#"><i class="glyphicon glyphicon-saved"></i> <span>Completed Assignments</span> </a>
+                        <ul id="dropdownComp">
+                            @if (logedinuser.Role == 2 || logedinuser.Role == 4)
+                            {
+                                <li>
+                                    <a id="CompEmployeesAssignment" href="@Url.Action("Completedassignments", "Task")"> <span>Employee Tasks</span></a>
+                                </li>
+                                <li>
+                                    <a id="CompManagerTasks" href="@Url.Action("DisplayCompletedManagerTask", "Manager")"> <span>My Tasks</span></a>
+                                </li>
+
+                            }
+                            else if (logedinuser.Role == 1)
+                            {
+                                <li>
+                                    <a id="CompEmployeesAssignment" href="@Url.Action("Completedassignments", "Task")"> <span>Employee Tasks</span></a>
+                                </li>
+
+                                <li>
+                                    <a id="CompManagerTasks" href="@Url.Action("DisplayCompletedManagerTask", "Manager")"> <span>Manager Tasks</span></a>
+                                </li>
+
+                                <li>
+                                    <a id="CompAdminOtherTasks" href="@Url.Action("DisplayCompletedAdminTask", "Admin",new {v="compAdminTask" })"> <span>Administrator Tasks</span></a>
+                                </li>
+
+                                <li>
+                                    <a id="CompAdminMyTasks" href="@Url.Action("DisplayCompletedAdminTask", "Admin")"> <span>My Tasks</span></a>
+                                </li>
+
+                            }
+                            else if (logedinuser.Role == 3)
+                            {
+                                <li>
+                                    <a id="CompEmpAssignedTasks" href="@Url.Action("DisplayCompletedEmployeeTask", "Trainee")"> <span>My Tasks</span></a>
+                                </li>
+
+                            }
+
+                            <li>
+                                <a id="CompTAGroupTasks" href="@Url.Action("CompletedgroupAssignments", "Task")"> <span>Group Tasks</span></a>
+                            </li>
+                            <li>
+                                <a id="CompTAGroupStudy" href="@Url.Action("CompletedgroupStudyAssignments", "Task")"> <span>Group Study</span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+                    @if (logedinuser.Role != 3)
+                    {
+                        <li>
+                            <a href="#"><i class="icon-list-unordered"></i> <span>Reports </span></a>
+                            <ul id="Reports">
+                                @if (comp.IsLMS == 1)
+                                {
+                                    <li><a id="CompletedCourses" href="@Url.Action("CompletedCourses", "Course")">My Completed Course</a></li>
+                                }
+                                @if (logedinuser.Role == 1)
+                                {
+                                    <li><a href="@Url.Action("StatusReportDivision", "Report")" id="DivisionReport"> Status Report Division </a></li>
+
+                                }
+                                <li><a href="@Url.Action("StatusReportDepartment", "Report")" id="DepartmentReport"> Status Report Department </a></li>
+                                <li><a id="EmployeeReport" href="@Url.Action("StatusReportEmployee", "Report")"> Status Report Employee </a></li>
+                                <li><a href="@Url.Action("UserTaskReport", "Report")" id="UserTaskReport"> User Task Report </a></li>
+                                <li><a href="@Url.Action("LateReport", "Report")" id="LateReport"> Late Report </a></li>
+                                @if (comp.IsFavReport == 1)
+                                {
+                                    <li><a id="SharedReport" href="@Url.Action("SharedReport", "Report")"> Shared Reports </a></li>
+
+
+                                    <li>
+                                        <a href="#"><span><b>Favorite Reports</b></span></a>
+                                        @if (frlist != null)
+                                        {
+                                            <ul style="height:200px ; overflow:auto">
+                                                @foreach (FavoriteReport fr in frlist)
+                                                {
+                                                    if (fr.ReportType == 1)
+                                                    {
+                                                        <li><a href="@Url.Action("StatusReportDivision", "Report", new { frId = StringCipher.Base64Encode(fr.Id.ToString()) })" id="layout1">@fr.Name</a></li>
+                                                    }
+
+                                                    if (fr.ReportType == 2)
+                                                    {
+                                                        <li><a href="@Url.Action("StatusReportDepartment", "Report", new { frId = StringCipher.Base64Encode(fr.Id.ToString()) })" id="layout1">@fr.Name</a></li>
+                                                    }
+
+                                                    if (fr.ReportType == 3)
+                                                    {
+                                                        <li><a href="@Url.Action("StatusReportEmployee", "Report", new { frId = StringCipher.Base64Encode(fr.Id.ToString()) })" id="layout1">@fr.Name</a></li>
+                                                    }
+
+                                                    if (fr.ReportType == 4)
+                                                    {
+                                                        <li><a href="@Url.Action("UserTaskReport", "Report", new { frId = StringCipher.Base64Encode(fr.Id.ToString()) })" id="layout1">@fr.Name</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+
+                                }
+
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        if (comp.IsFavReport == 1)
+                        {
+                            <li>
+                                <a href="#"><i class="icon-list-unordered"></i> <span>Reports </span></a>
+                                <ul id="Reports">
+
+                                    @if (comp.IsLMS == 1)
+                                    {
+                                        <li><a id="CompletedCourses" href="@Url.Action("CompletedCourses", "Course")">My Completed Course</a></li>
+                                    }
+                                    <li><a id="SharedReport" href="@Url.Action("SharedReport", "Report")"> Shared Reports </a></li>
+
+
+                                </ul>
+                            </li>
+
+                        }
+                    }
+
+
+
+
+                    @if (logedinuser.Role != 1)
+                    {
+                        <li>
+                            @if (logedinuser.Role == 2 || logedinuser.Role == 4)
+                            {
+                                <a href="#"><i class="icon-copy"></i> <span>Set-Up</span></a>
+                            }
+                            else
+                            {
+                                <a href="#"><i class="icon-copy"></i> <span>Task Set-Up</span></a>
+                            }
+
+                            <ul id="dropdown4">
+
+
+
+                                @if (logedinuser.Role == 2 || logedinuser.Role == 4)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("displayDepartment", "Utilities")" id="Department"> Department </a>
+                                    </li>
+                                    <li>
+                                        <a id="Employees" href="@Url.Action("DisplayEmployee", "Utilities")"><span>Employees</span></a>
+
+                                    </li>
+                                }
+                                <li><a id="Tasks" href="@Url.Action("displayAddTask", "Task")"> <span>Task </span></a></li>
+                                <li><a id="Templates" href="@Url.Action("Templates", "Task")">  Task Templates</a></li>
+                                @if (logedinuser.Role == 2 || logedinuser.Role == 4)
+                                {
+                                    <li><a id="DGGroupTasks" href="@Url.Action("DisplayGroupTask", "Task")"> <span>Group Task</span></a></li>
+                                    <li>
+                                        <a id="ArchivedUsers" href="@Url.Action("ArchivedUsers", "Task")"> Archived Users</a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    @if (logedinuser.Role == 1)
+                    {
+                        <li id="Utilities">
+                            <a href="#"><i class="icon-list-unordered"></i> <span>Set-Up </span></a>
+                            <ul id="dropdown4">
+                                <li><a id="Division" href="@Url.Action("displayDivision", "Utilities")" id="layout1">  Division</a></li>
+                                <li><a id="Department" href="@Url.Action("displayDepartment", "Utilities")" id="layout2"> Department </a></li>
+
+
+                                <li><a id="Admins" href="@Url.Action("DisplayAdmin", "Utilities")" id="layout3"> Administrator</a></li>
+                                <li><a id="WorkType" href="@Url.Action("displayWorkType", "Utilities")"> Worker Type</a></li>
+
+                                <li><a id="Managers" href="@Url.Action("DisplayManager", "Utilities")" id="layout3"> Managers</a></li>
+                                <li>
+                                    <a id="Employees" href="@Url.Action("DisplayEmployee", "Utilities")"><span>Employees</span></a>
+                                </li>
+                                <li><a id="TaskType" href="@Url.Action("displayTaskType", "Utilities")" id="layout1"> Task Type</a></li>
+
+                                <li><a id="Tasks" href="@Url.Action("displayAddTask", "Task")"> <span>Tasks</span></a></li>
+
+                                <li><a id="DGGroupTasks" href="@Url.Action("DisplayGroupTask", "Task")"> <span>Group Tasks</span></a></li>
+                                <li><a id="Templates" href="@Url.Action("Templates", "Task")" id="layout1">  Task Templates</a></li>
+
+                                @*<li id="Tag"><a href="@Url.Action("displayTag", "Utilities")" id="layout3"> Tag</a></li>*@
+                                <li>
+                                    <a id="ArchivedUsers" href="@Url.Action("ArchivedUsers", "Task")"> Archived Users</a>
+                                </li>
+                                <li><a id="Backup" href="@Url.Action("Backup", "Utilities")" id="layout3">  Backup</a></li>
+                                <li>
+                                    <a id="OrgStructure" href="@Url.Action("ViewStructure", "OrgStructure")">Organizational Structure</a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+                    }
+                    @{
+                        User LoginUser = new UserBL().getUsersById(logedinuser.Id);
+
+                    }
+                    @*@if (comp.IsLMS == 1)
+                    {
+                        <li>
+                            <a href="#"><i class="icon-laptop"></i> <span>Learning Management System </span></a>
+                            <ul id="LMS">
+                                <li><a id="Division" href="@Url.Action("CompletedCourses", "Course")">My Completed Course</a></li>
+                                
+                            </ul>
+
+                        </li>
+                    }*@
+                    @if (comp.IsDocManager == 1 || comp.IsLMS == 1)
+                    {
+                        <li id="Add-ons">
+                            <a href="#"><i class="icon-diff-added"></i> <span>Add-ons</span> </a>
+                            <ul id="dropdown3">
+                                @if (comp.IsLMS == 1)
+                                {
+                                    <li><a target="_blank" href="@ProjectVaraiables.LMS_URL/Home/Index"><i class="icon-laptop"></i> <span>Learning Management System</span></a></li>
+                                }
+                                @if (comp.IsDocManager == 1)
+                                {
+                                    <li><a target="_blank" href="@ProjectVaraiables.DocM_URL/Home/Index"><i class="icon-laptop"></i> <span>Document Manager</span></a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @*@if (LoginUser.CanvasLoginId != "" && LoginUser.CanvasLoginId != null)
+        {
+            <li>
+                <a href="#"><i class="icon-book"></i> <span>Canvas Courses </span></a>
+                <ul class="dropdown">
+                    @{ if (canvascourse != null)
+                        {
+                            foreach (Course crs in canvascourse)
+                            {
+                                <li><a href="@Url.Action("CanvasCourseDetails", "Task", new { v = HttpUtility.UrlEncode(General_Purpose.Encrypt(crs.id)), way = "index" })">@crs.name</a></li>
+                            }
+                        }
+                    }
+                </ul>
+
+            </li>
+        }*@
+                    <!-- /main -->
+                    <!-- Appearance -->
+
+                    <li>
+
+                        @*@if (logedinuser.Role == 2)
+                {
+                <li>
+                    <a id="ArchivedUsers" href="@Url.Action("ArchivedUsers", "Task")"><i class="icon-user"></i> Archived Users</a>
+                </li>
+            }*@
+
+
+                    @*@if(logedinuser.Role == 1)
+                    {
+                        <li>
+                            <a id="Dashboard" href="@Url.Action("ViewStructure", "OrgStructure")"><i class="icon-git-branch"></i> Structure</a>
+                        </li>
+                    }*@
+                </ul>
+            </div>
+        </div>
+        <!-- /main navigation -->
+
+    </div>
+</div>
+<!-- /main sidebar -->

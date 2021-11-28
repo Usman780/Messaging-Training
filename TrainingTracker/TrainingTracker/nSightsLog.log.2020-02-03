@@ -1,0 +1,131 @@
+2020-02-03 10:43:03,289 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-03 10:44:38,225 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-03 10:44:44,965 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-03 10:47:48,483 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-03 10:53:22,373 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-03 10:53:49,567 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-03 10:58:42,561 INFO MonitoringLogger - BlobManager function started
+2020-02-03 10:59:14,343 INFO MonitoringLogger - BlobManager function started
+2020-02-03 11:00:32,939 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-03 11:00:53,695 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-03 11:02:14,672 INFO MonitoringLogger - BlobManager function started
+2020-02-03 11:04:06,163 INFO MonitoringLogger - BlobManager function started
+2020-02-03 11:53:09,198 INFO MonitoringLogger - Task Details Page
+2020-02-03 11:53:09,596 INFO MonitoringLogger - BlobManager function started
+2020-02-03 11:53:12,023 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-03 11:53:13,931 INFO MonitoringLogger - Comment's ParentID : 497
+2020-02-03 11:53:13,936 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-03 12:03:18,067 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-03 12:04:11,581 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-03 12:21:51,580 INFO MonitoringLogger - Pdf generation method called
+2020-02-03 12:22:02,550 INFO MonitoringLogger - Pdf generation method search completed
+2020-02-03 12:22:02,559 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 12:22:02,564 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-02-03 12:22:02,567 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-02-03 12:22:02,572 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-02-03 12:26:17,728 INFO MonitoringLogger - Pdf generation method called
+2020-02-03 12:26:22,285 INFO MonitoringLogger - Pdf generation method search completed
+2020-02-03 12:26:22,289 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 12:26:22,291 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-02-03 12:26:22,293 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-02-03 12:26:22,296 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-02-03 12:31:10,572 INFO MonitoringLogger - Pdf generation method called
+2020-02-03 12:31:15,320 INFO MonitoringLogger - Pdf generation method search completed
+2020-02-03 12:31:15,324 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 12:31:15,326 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-02-03 12:31:15,330 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-02-03 12:31:15,332 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-02-03 12:35:22,367 INFO MonitoringLogger - Pdf generation method called
+2020-02-03 12:35:26,110 INFO MonitoringLogger - Pdf generation method search completed
+2020-02-03 12:35:26,115 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 12:35:26,119 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-02-03 12:35:26,122 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-02-03 12:35:26,125 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-02-03 12:40:09,835 INFO MonitoringLogger - Pdf generation method called
+2020-02-03 12:40:15,407 INFO MonitoringLogger - Pdf generation method search completed
+2020-02-03 12:40:15,416 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 12:40:15,419 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-02-03 12:40:15,422 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-02-03 12:40:15,424 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-02-03 12:42:22,880 INFO MonitoringLogger - Task Details Page
+2020-02-03 12:42:32,846 INFO MonitoringLogger - BlobManager function started
+2020-02-03 12:43:04,035 INFO MonitoringLogger - Pdf generation method called
+2020-02-03 12:43:38,551 INFO MonitoringLogger - Pdf generation method search completed
+2020-02-03 12:43:38,555 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 12:43:38,558 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-02-03 12:43:38,561 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-02-03 12:43:38,564 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-02-03 14:53:33,824 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 14:53:33,846 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-03 14:53:33,852 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-03 14:53:36,579 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-03-2--14-53-33.pdf
+2020-02-03 14:54:15,139 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 14:54:15,142 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-03 14:54:15,146 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-03 14:54:17,390 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-03-2--14-54-15.pdf
+2020-02-03 15:02:36,394 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 15:02:36,400 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-03 15:02:36,402 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-03 15:02:36,405 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-03-2--15-02-36.pdf
+2020-02-03 15:03:46,293 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-03 15:03:46,297 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-03 15:03:46,300 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-03 15:03:46,302 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-03-2--15-03-46.pdf
+2020-02-03 15:38:43,756 INFO MonitoringLogger - BlobManager function started
+2020-02-03 15:39:42,533 INFO MonitoringLogger - BlobManager function started
+2020-02-03 15:41:06,930 INFO MonitoringLogger - Add Group Task Comment Function
+2020-02-03 15:41:06,934 INFO MonitoringLogger - Child Comment ID : 345
+2020-02-03 15:41:06,937 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  345
+2020-02-03 15:41:06,941 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 345
+2020-02-03 15:41:12,519 INFO MonitoringLogger - BlobManager function started
+2020-02-03 17:45:10,895 INFO MonitoringLogger - Update Admin Page...
+2020-02-03 17:45:11,599 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-03 17:45:58,937 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 17:46:00,255 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-03 18:06:57,006 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:11:46,865 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:14:11,076 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:17:19,538 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:25:23,253 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:29:45,202 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:36:33,427 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:37:39,066 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:39:26,975 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:43:32,118 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:43:34,878 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:54:02,875 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 18:54:51,978 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:01:50,717 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:02:42,703 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:03:39,865 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:00,449 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:01,075 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:01,676 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:02,614 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:03,083 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:08,768 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:09,094 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:10,532 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:12,178 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:04:15,941 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:05:23,006 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-03 19:05:35,846 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-03 19:07:10,366 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:11,661 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:12,173 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:12,885 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:13,483 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:14,461 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:18,474 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:20,213 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:20,621 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:07:21,171 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:08:02,352 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-03 19:08:09,695 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-03 19:08:44,261 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-03 19:08:53,730 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-03 19:09:41,570 INFO MonitoringLogger - Update Employee Page...
+2020-02-03 19:10:55,958 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-03 19:11:19,686 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-02-03 19:12:28,536 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-02-03 19:12:35,044 INFO MonitoringLogger - Nodlays Loged Into Zuptu

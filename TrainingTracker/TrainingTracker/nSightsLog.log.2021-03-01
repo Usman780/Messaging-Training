@@ -1,0 +1,49 @@
+2021-02-26 12:36:52,551 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-02-26 12:39:05,037 INFO MonitoringLogger - Update Admin Page...
+2021-02-26 12:39:07,473 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2021-02-26 16:51:58,254 INFO MonitoringLogger - UBS Logedout from Zuptu
+2021-02-26 17:01:48,561 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-02-26 17:01:48,627 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-02-26 17:01:48,634 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-02-26 17:01:48,640 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-26-2--17-01-48.pdf
+2021-02-26 17:01:58,097 INFO MonitoringLogger - BlobManager function started
+2021-02-26 17:02:25,116 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-02-26 17:02:25,119 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-02-26 17:02:25,122 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-02-26 17:02:25,125 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-26-2--17-02-25.pdf
+2021-02-26 17:02:25,659 INFO MonitoringLogger - BlobManager function started
+2021-02-26 17:04:09,790 INFO MonitoringLogger - BlobManager function started
+2021-02-26 17:04:39,247 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-02-26 17:04:39,251 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-02-26 17:04:39,255 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-02-26 17:04:39,258 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-26-2--17-04-39.pdf
+2021-02-26 17:04:39,810 INFO MonitoringLogger - BlobManager function started
+2021-02-26 17:04:43,472 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-02-26 17:04:43,475 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-02-26 17:04:43,478 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-02-26 17:04:43,481 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-26-2--17-04-43.pdf
+2021-02-26 17:04:44,010 INFO MonitoringLogger - BlobManager function started
+2021-03-01 14:30:58,363 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-03-01 14:30:58,882 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-03-01 14:30:58,885 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-03-01 14:30:58,889 INFO MonitoringLogger - E:\Wajeeh@Nodlays\MVC.Net Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-01-3--14-30-58.pdf
+2021-03-01 14:31:06,372 INFO MonitoringLogger - BlobManager function started
+2021-03-01 14:31:48,779 INFO MonitoringLogger - BlobManager function started
+2021-03-01 14:36:23,605 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-03-01 14:36:23,609 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-03-01 14:36:23,612 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-03-01 14:36:23,614 INFO MonitoringLogger - E:\Wajeeh@Nodlays\MVC.Net Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-01-3--14-36-23.pdf
+2021-03-01 14:36:24,095 INFO MonitoringLogger - BlobManager function started
+2021-03-01 15:00:59,626 INFO MonitoringLogger - BlobManager function started
+2021-03-01 15:15:33,731 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-01 15:58:11,182 INFO MonitoringLogger - Manger's Canvas Login Mail while adding Manager to DataBase: 
+2021-03-01 15:58:11,210 INFO MonitoringLogger - Manager's Canvas Login Mail before adding into Database: 
+2021-03-01 16:26:01,591 INFO MonitoringLogger - Manger's Canvas Login Mail while adding Manager to DataBase: 
+2021-03-01 16:26:01,850 INFO MonitoringLogger - Manager's Canvas Login Mail before adding into Database: 
+2021-03-01 16:31:49,177 INFO MonitoringLogger - Canvas Login Mail while adding an Employee :
+2021-03-01 18:15:08,920 INFO MonitoringLogger - Update Admin Page...
+2021-03-01 18:44:05,339 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-01 18:45:40,227 INFO MonitoringLogger - Dummy Logedout from Zuptu
+2021-03-01 18:49:00,209 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-01 18:49:52,665 INFO MonitoringLogger - Dummy Logedout from Zuptu
+2021-03-01 19:09:11,698 INFO MonitoringLogger - Sue Logedout from Zuptu

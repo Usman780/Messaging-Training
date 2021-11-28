@@ -1,0 +1,38 @@
+2021-04-07 00:01:54,182 INFO MonitoringLogger - Task Details Page
+2021-04-07 00:01:54,481 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:01:56,993 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 00:01:58,191 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 00:02:48,196 INFO MonitoringLogger - Task Details Page
+2021-04-07 00:02:48,493 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:02:49,372 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 00:02:50,588 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 00:03:11,161 INFO MonitoringLogger - Task Details Page
+2021-04-07 00:03:11,452 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:03:12,326 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 00:03:13,581 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 00:36:15,713 INFO MonitoringLogger - Update Admin Page...
+2021-04-07 00:36:16,671 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2021-04-07 00:36:41,140 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2021-04-07 00:36:43,321 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:36:45,540 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2021-04-07 00:37:06,937 INFO MonitoringLogger - Update Admin Page...
+2021-04-07 00:37:07,888 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2021-04-07 00:38:10,958 INFO MonitoringLogger - Task Details Page
+2021-04-07 00:38:11,280 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:45:39,465 INFO MonitoringLogger - Task Details Page
+2021-04-07 00:45:39,753 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:45:42,655 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 00:47:14,912 INFO MonitoringLogger - Task Details Page
+2021-04-07 00:47:15,205 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:47:16,096 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 00:48:44,573 INFO MonitoringLogger - Task Details Page
+2021-04-07 00:48:44,852 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:49:17,424 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:49:18,818 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:49:27,812 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:52:02,056 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:55:41,861 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-04-07 00:57:21,325 INFO MonitoringLogger - Task Details Page
+2021-04-07 00:57:21,618 INFO MonitoringLogger - BlobManager function started
+2021-04-07 00:57:23,326 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-07 02:21:30,357 INFO MonitoringLogger - BlobManager function started

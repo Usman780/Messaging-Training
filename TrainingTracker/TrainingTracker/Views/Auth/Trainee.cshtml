@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "Trainee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title">Create Manager</h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>
+                        <a data-action="collapse"></a>
+                    </li>
+                    <li>
+                        <a data-action="reload"></a>
+                    </li>
+                    <li>
+                        <a data-action="close"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-horizontal form-validate-jquery" action="#">
+                <fieldset class="content-group">
+                    <legend class="text-bold">
+                        <span class="text-danger">*</span> Fields are Mandatory to Fill
+                    </legend>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 text-bold">
+                            Division
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-10">
+                            <select class="form-control">
+                                <option selected disabled value="">Select division</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 text-bold">
+                            First Name
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter First Name">
+                        </div>
+                        <label class="control-label col-lg-2 text-bold">
+                            Last Name
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 text-bold">
+                            Phone Number
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="(###) ### ####">
+                        </div>
+                        <label class="control-label col-lg-2 text-bold">
+                            Badge Id
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter badge id">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 text-bold">
+                            Employee #
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter employee number">
+                        </div>
+                        <label class="control-label col-lg-2 text-bold">
+                            Department
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter department name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 text-bold">
+                            Job Title
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-10">
+                            <input type="text" name="date" class="form-control" required>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+
+
+                <div class="text-right">
+
+                    <button type="submit" class="btn btn-sm  bg-primary">
+                        Submit
+                        <i class="icon-arrow-right14 position-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Task Assignment</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>
+                        <a data-action="collapse"></a>
+                    </li>
+                    <li>
+                        <a data-action="reload"></a>
+                    </li>
+                    <li>
+                        <a data-action="close"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body pull-right">
+            <a class="btn btn-sm btn-success" data-target="#AssignTask" data-toggle="modal">Assign Task</a>
+            <a class="btn btn-sm btn-success">Assign Group of Tasks</a>
+            <a class="btn btn-sm btn-danger">Delete Seleted Task</a>
+            <a class="btn btn-sm btn-success">Print Barcode</a>
+
+        </div>
+
+        <table class="table datatable-button-html5-basic">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Badge Id</th>
+                    <th>Employee #</th>
+                    <th>Department</th>
+                    <th>Category</th>
+                    <th>Job title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="" />
+                    </td>
+                    <td>Marth</td>
+                    <td>
+                        <a href="#">Enright</a>
+                    </td>
+                    <td>Traffic Court Referee</td>
+                    <td>22 Jun 1972</td>
+                    <td>
+                        <span class="label label-success">Active</span>
+                    </td>
+                    <td>$85,600</td>
+                    <td>$85,600</td>
+                    <td>
+                        <a class="btn  btn-sm  btn-success">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        <a class="btn  btn-sm  btn-danger">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /basic initialization -->
+</div>
+

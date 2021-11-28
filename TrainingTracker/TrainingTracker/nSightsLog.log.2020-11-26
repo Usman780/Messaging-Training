@@ -1,0 +1,35 @@
+2020-11-26 11:00:11,886 INFO MonitoringLogger - Task Details Page
+2020-11-26 11:00:12,273 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:00:14,685 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-26 11:00:16,008 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-26 11:05:11,794 INFO MonitoringLogger - Task Details Page
+2020-11-26 11:05:12,085 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:05:13,929 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-26 11:05:15,048 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-26 11:06:36,239 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:06:51,923 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:07:28,815 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:09:45,189 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:11:26,804 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:15:45,739 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:17:38,985 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:18:31,078 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:21:40,512 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:23:01,341 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:25:21,187 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:27:38,260 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:30:41,373 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:33:34,146 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:53:03,406 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:53:10,583 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:54:28,761 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:56:31,870 INFO MonitoringLogger - BlobManager function started
+2020-11-26 11:59:07,919 INFO MonitoringLogger - BlobManager function started
+2020-11-26 12:02:09,173 INFO MonitoringLogger - BlobManager function started
+2020-11-26 17:20:15,607 INFO MonitoringLogger - Hussnain's Logedout from Zuptu
+2020-11-26 17:22:13,801 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-11-26 17:22:51,235 INFO MonitoringLogger - Hussnain Logedout from Zuptu
+2020-11-26 18:05:46,515 INFO MonitoringLogger - Update Employee Page...
+2020-11-26 18:05:49,167 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-26 18:18:49,663 INFO MonitoringLogger - Update Employee Page...
+2020-11-26 18:18:50,967 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 

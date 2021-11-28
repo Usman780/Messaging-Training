@@ -1,0 +1,33 @@
+2021-04-19 11:19:07,923 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-04-19 11:52:55,275 INFO MonitoringLogger - Bob Logedout from Zuptu
+2021-04-19 11:54:03,289 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-04-19 16:44:10,107 INFO MonitoringLogger - Joe Logedout from Zuptu
+2021-04-19 16:53:34,871 INFO MonitoringLogger - Joe Logedout from Zuptu
+2021-04-19 17:37:44,822 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-04-19 17:42:29,606 INFO MonitoringLogger - Bob Logedout from Zuptu
+2021-04-20 01:21:44,720 INFO MonitoringLogger - Update Admin Page...
+2021-04-20 01:21:45,725 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2021-04-20 01:23:48,820 INFO MonitoringLogger - Update Manger Page
+2021-04-20 01:23:49,150 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2021-04-20 01:23:50,401 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2021-04-20 01:24:06,009 INFO MonitoringLogger - Update Employee Page...
+2021-04-20 01:24:07,304 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-04-20 01:27:08,533 INFO MonitoringLogger - Update Manger Page
+2021-04-20 01:27:08,882 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2021-04-20 01:27:10,080 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2021-04-20 01:28:55,647 INFO MonitoringLogger - Update Manger Page
+2021-04-20 01:29:01,027 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2021-04-20 01:29:09,994 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2021-04-20 01:33:29,975 INFO MonitoringLogger - Update Manger Page
+2021-04-20 01:33:30,318 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2021-04-20 01:33:31,540 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2021-04-20 01:35:06,493 INFO MonitoringLogger - Update Admin Page...
+2021-04-20 01:35:07,462 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2021-04-20 01:35:29,116 INFO MonitoringLogger - Update Employee Page...
+2021-04-20 01:35:30,353 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-04-20 01:39:02,886 INFO MonitoringLogger - Update Employee Page...
+2021-04-20 01:39:04,526 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-04-20 01:40:44,685 INFO MonitoringLogger - Update Employee Page...
+2021-04-20 01:40:45,929 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-04-20 01:47:32,265 INFO MonitoringLogger - Update Employee Page...
+2021-04-20 01:47:33,516 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 

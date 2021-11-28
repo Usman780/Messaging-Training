@@ -1,0 +1,590 @@
+﻿
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+@using TrainingTracker.Helper_Classes
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+   // List<Course> courses = new CourseBL().getCourseList();
+}
+<style>
+    .sidebar-default {
+        background-color: #fff;
+        color: #333333;
+        height: 700px;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active">Group Tasks</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+
+
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>List of Group Tasks</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    @if (ViewBag.role != 3)
+                    {
+                        <li>
+                            <a data-toggle="modal" data-target="#addGroupTask" class="btn  btn-sm bg-primary " style="color:white;">Add Group Task <i class="icon-plus-circle2 small"></i></a>
+                        </li>
+                    }
+
+                    @*<li>
+                            <a id="delete" class="btn  btn-sm bg-warning" style="color:white;">Delete Group Task <i class="icon-minus-circle2 small"></i></a>
+                        </li>*@
+                </ul>
+            </div>
+        </div>
+
+        <table id="example" class="table datatable-button-html5-basic table-bordered table-hover table-striped table-condensed">
+
+            <thead>
+                <tr>
+
+                    @*<th>Select</th>*@
+                    @*<th onclick="curveChart()">Name</th>*@
+                    <th>Name</th>
+                    <th>Division Name</th>
+
+
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!-- /basic initialization -->
+
+</div>
+
+
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign tasks to multiple trainees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="" maxlength="150" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select task</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="addGroupTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("addGroupTask","Task")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Group Task</h4>
+                </div>
+                <div class="modal-body">
+                    @if (logedinuser.Role == 1)
+                    { 
+                        <input type="hidden" name="way" value="Admin" /> 
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Division:</label>
+                            <div class="col-lg-9">
+                                <select class="select-results-color" required="required" name="divisionId">
+                                    <option value="" selected>Select Division</option>
+                                    @{
+                                        List<Division> divlist = new DivisionBL().getDivisionsList().Where(x => x.IsActive == 1).ToList();
+                                    }
+                                    @foreach (Division item in divlist)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="49" name="Name" required>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" id="addgrouptaskbutton" class="btn btn-primary bg-primary-400 btn-sm">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="updateGroupTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("updategroupTaskObject","Task")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    @if (logedinuser.Role == 1)
+                    {
+                        <input type="hidden" value="Admin" name="way" />
+                    }
+                    <h4 class="modal-title">Update Group Task</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" required maxlength="49" name="Name" id="updatename">
+
+                        </div>
+                    </div>
+                    <input type="text" name="Id" id="I_d" hidden>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  btn-primary bg-primary-400">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="deleteGroupTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("deleteGroupTask","Task")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Delete Group Task</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="150" name="Name" id="name">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="delbutton1" class="btn btn-sm  btn-primary bg-grey-400">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="AssignTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("addTraineeTask","Task")" method="post">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign tasks to multiple trainees</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Task</label>
+                        <div class="col-lg-9">
+                            <select class="form-control" onchange="setValues(this.value)" name="TaskId" id="selectTask">
+                                <option disabled selected value="">Select task</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label class="col-lg-3 control-label">Start Date</label>
+                        <div class="col-lg-9">
+                            <input type="date" class="form-control" name="StartDate" id="startDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">End Date</label>
+                        <div class="col-lg-9">
+                            <input type="date" class="form-control" name="EndDate" id="endDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Cost</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="Cost" maxlength="150" id="cost">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">CEU's</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="CEU" maxlength="150" id="ceu">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"> Hours</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="hours" maxlength="150" id="hours">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Grade</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="Grad" maxlength="150" id="Grade">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" name="Notes" maxlength="500" id="notes"></textarea>
+                        </div>
+                    </div>
+                    <div id="data"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-delete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <form class="modal-body" action="@Url.Action("deleteMultipleGroupTask","Task")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are You Sure ? <small class="display-block"></small></h5>
+                </div>
+                <div id="datadelete"></div>
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-grey">Close</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Submit</button>
+
+
+                </center>
+
+            </form>
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#wait").css("display", "block");
+        $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetDisplayGroupTask","Task")',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+
+                "columns": [
+                 //{ "data": "FirstName", "name": "FirstName" },
+                    { "data": "Name", "name": "Name" },
+                    { "data": "DivisionName", "name": "DivisionName" },
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+                        //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                        render: function (data, type, full, meta) {
+                            //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                            //if (full.IsActive == 11) {
+
+
+                                return '<a class="btn btn-sm  btn-success" id=' + full.Id + ' onclick="vlidate(' + full.Id + ')">' +
+                                    ' <i class="icon-pencil"></i>' +
+                                    '</a>';
+                            //} else {
+                            //    return '';
+                            //}
+
+                        },
+                        targets: 2
+                    }
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+            })
+    });
+
+
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#delete').attr("disabled", "disabled");
+        $('#delete').off('click');
+    });
+
+    $("input.deleteCheck:checkbox ").change(function () {
+        if ($('input.deleteCheck:checkbox:checked').length==0) {
+            $('#delete').attr("disabled", "disabled");
+            $('#delete').off('click');
+        }
+        else {
+            $('#delete').removeAttr("disabled");
+            $('#delete').on('click', function () {
+                deleteRecord();
+            });
+        }
+    });
+
+    function deleteRecord() {
+        $('#data').empty();
+        event.preventDefault();
+        var data = '';
+        var count = 0;
+        var checkedValue = null;
+        var inputElements = document.getElementsByClassName('deleteCheck');
+        for (var i = 0; inputElements[i]; ++i) {
+            if (inputElements[i].checked) {
+                data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+
+
+                count = count + 1;
+
+            }
+        }
+        if (count == 0) {
+            $('#delbutton1').attr('disabled', true);
+        }
+        else {
+            $('#delbutton1').attr('disabled', false);
+        }
+        $('#datadelete').append(data);
+
+        //var x = document.getElementById("checkingValue");
+        //alert(x.value)
+
+        //for (i = 0; i < x; i++) {
+        //    alert(document.getElementById("check " + i).value)
+        //}
+        //alert(document.getElementById("checkingValue").innerText)
+        //        alert("Hello Mister");
+
+
+
+
+        //var aValue= $('#aValue').val(); //grab the value
+        // $('#HIDDEN_INPUT').val(aValue); //set this is has hidden value in the form
+        $('#modal-delete').modal("show"); // open the modal
+    }
+
+    function deleteArea(title, id, names, ids) {
+        swal({
+            title: "Edit",
+            text: '<form role="form" id="DeleteMeModal" action="/Area/Delete/' + areaId + '" id="contact-form" method="get"><div class="control-group"><label for="categoryName">You Are Going To Delete Area Permanently!</label></div></div></form>',
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#FF7043",
+            confirmButtonText: "Yes, delete it!"
+        }, function () {
+            $("#DeleteMeModal").submit();
+        });
+    }
+
+    function setValues(id) {
+        $.ajax({
+
+               type: 'GET',
+               url: '@Url.Action("getDetails","Task")',
+               timeout: 100000000,
+               data: {_id:id },
+               dataType: "json",
+               success: function (data) {
+
+
+                   $('#cost').empty();
+                   $('#cost').val(data.Cost_);
+                   $('#ceu').empty();
+                   $('#ceu').val(data.CEU);
+                   $('#hours').empty();
+                   $('#hours').val(data.Hours);
+                   $('#notes').empty();
+                   $('#notes').val(data.Description);
+
+
+                   var inputElements = document.getElementsByClassName('messageCheckbox');
+                   for (var i = 0; inputElements[i]; ++i) {
+                       if (inputElements[i].checked) {
+                           data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+
+
+
+                           count = count + 1;
+                           break;
+                       }
+                   }
+                   if (count == 0) {
+                       $('#sbbutton1').attr('disabled', true);
+                   }
+                   else {
+                       $('#sbbutton1').attr('disabled', false);
+
+
+
+
+                   }
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+    }
+
+    function vlidate(id) {
+
+        var sele = $("#divisionID").val();
+        var name = $('#inputName').val();
+
+        $.ajax({
+
+               type: 'Post',
+               url: '@Url.Action("getGroupTask", "Task")',
+               timeout: 100000000,
+               data: { _id:id },
+               dataType: "json",
+               success: function (json) {
+                   $('#updatename').val(json.Name);
+                   $('#I_d').val(json.Id);
+                   $('#updateGroupTask').modal('show')
+
+
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+
+
+     function curveChart() {
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("getTasks","Task")',
+               timeout: 100000000,
+               data: { },
+               dataType: "json",
+               success: function (data) {
+                   var i = 0;
+                   for (; i < data.length; i++) {
+                       var taskItem = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                       $('#selectTask').append(taskItem);
+
+                   }
+
+
+
+                   $('#AssignTask').modal("show");
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#DGGroupTasks").css('background-color', '#0150A1');
+        $("#DGGroupTasks ").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+    });
+</script>

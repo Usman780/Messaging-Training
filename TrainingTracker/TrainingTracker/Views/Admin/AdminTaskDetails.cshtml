@@ -1,0 +1,1032 @@
+﻿
+@{
+    ViewBag.Title = "addComment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model TrainingTracker.Models.User_Task
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+
+@{ 
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+}
+<style>
+    #info th {
+        width: 40% !important;
+    }
+
+    #info td {
+        width: 60% !important;
+    }
+
+    #backbtn {
+        margin-left: 20px;
+    }
+</style>
+
+<br />
+@{
+    if (ViewBag.modal == "0")
+    {
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayAdminTask", "Admin")">Back</a>
+        <br />
+    }
+}
+
+
+<div id="editComment" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("updateComment", "Admin")" enctype="multipart/form-data">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Edit Comment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Comment</label>
+                        <textarea class="form-control" id="editText" name="comment"></textarea>
+                    </div>
+                    <input type="hidden" name="taskId" value="@Model.Id" />
+                    <input type="hidden" name="commentId" id="commentId" value="-1" />
+
+                    <input type="hidden" name="removeFile" id="removeFile" value="-1" />
+                    <div class="form-group col-md-12">
+                        <label class="control-label" id="upLoad">Upload new File</label>
+                        <input type="file" name="File" class="form-control" />
+                    </div>
+                    <button class="btn btn-sm bg-danger" id="removeExistingFile" onclick="changeFileStatus()">Remove Existing File</button>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn  btn-sm bg-primary-400">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="deleteComment" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("deleteComment", "Admin")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you would like to delete the comment?<small class="display-block"></small></h5>
+                </div>
+                <input type="hidden" name="taskId" value="@Model.Id" />
+                <input type="hidden" name="commentId" id="commentId1" value="-1" />
+                <input type="hidden" name="isManag" id="isManag1" value="-1" />   <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="todoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("addTasktoDO", "Admin", new { IsModal=ViewBag.modal})">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add to do</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Name</label>
+                        <input type="text" name="Name" class="form-control" maxlength="150" required />
+
+                        <input type="hidden" value="@Model.Id" name="UserTask_Id" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm  bg-primary-400">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="edittodomodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("editTaskTicket", "Admin")">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update ToDo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Name</label>
+                        <input type="text" name="name" id="todoName" class="form-control" maxlength="150" required />
+
+                        <input type="hidden" id="ticket_Id" name="ticketId" x value="0" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm  bg-primary-400">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="deletetodomodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("deleteTaskTicket", "Admin")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you want to delete this Todo? <small class="display-block"></small></h5>
+                </div>
+                <input type="hidden" id="ticketid" name="ticketId" x value="0" />
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="completetciketmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("completeTaskTicket", "Admin")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you would like to mark this Todo as complete? <small class="display-block"></small></h5>
+                </div>
+                <input type="hidden" id="ticketId" name="ticketId" value="0" />
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="content">
+    <!-- Detailed task -->
+    <div class="row">
+        <div class="col-lg-9">
+
+            @if (ViewBag.request != null)
+            {
+                <div class="alert alert-success" data-auto-dismiss role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @ViewBag.request
+                    @{
+                        ViewBag.request = null;
+                    }
+                </div>
+            }
+
+            <!-- Task overview -->
+            <div class="panel panel-flat">
+                <div class="panel-heading mt-5">
+                    <label class="control-label"><b>Task Name </b> </label><h5 class="panel-title">@Model.Task.Name</h5>
+                    @if (logedinuser.Role == 1)
+                    {
+
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li class="dropdown">
+                                    <a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="@Url.Action("generateAdminTaskReport","ExportReport" , new { sId =General_Purpose.EncryptId( Model.Id)})" target="_blank">Export PDF </a>
+                                        </li>
+                                        @if (Model.CompletionDate == null)
+                                        {
+                                            <li>
+                                                <a style="color: black !important;" data-target="#statusModal" data-toggle="modal">Update Status </a>
+                                            </li>
+                                            <li>
+                                                <a style="color: black !important;" data-target="#requestModal" data-toggle="modal">Update Deadline</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    }
+                </div>
+                <div class="panel-body">
+                    <h6 class="text-semibold">Task Details</h6>
+                    <p class="content-group">@Model.Notes</p>
+                    <div class="row container-fluid">
+                    </div>
+                </div>
+
+            </div>
+            <!-- /task overview -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <center><h3 class="panel-title">To do</h3></center>
+                            <div class="heading-elements">
+                                @*@if (((int)Session["Role"] == 1 || (int)Session["Role"] == 2 || (int)Session["Role"] == 4) && ((Model.CreatedBy.HasValue && (int)Session["Id"] == Model.CreatedBy.Value) || Model.GroupTask_User.Where(x => x.IsActive == 1 && x.UserId == (int)Session["Id"]).Count() > 0))*@
+                                @if ((logedinuser.Role == 1 || logedinuser.Role == 2 || logedinuser.Role == 4))
+
+                                {<a href="#" data-target="#todoModal" data-toggle="modal" class="btn btn-sm bg-primary-400"> Add To Do   <b><i class="icon-add"></i></b></a>
+
+                                }
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs nav-tabs-highlight border-grey-400">
+                                    <li class="active"><a href="#badges-tab1" data-toggle="tab"><span class="badge badge-warning position-left">@Model.Task_Ticket.Where(x => x.CompletionDatetime == null && x.IsActive == 1).Count()</span> Active</a></li>
+                                    <li><a href="#badges-tab2" data-toggle="tab"><span class="badge badge-success position-left">@Model.Task_Ticket.Where(x => x.CompletionDatetime != null && x.IsActive == 1).Count()</span>Inactive </a></li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active table-responsive" id="badges-tab1">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Creation Time</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @{
+                                                    int i = 0;
+
+                                                    foreach (Task_Ticket item in Model.Task_Ticket.Where(x => x.CompletionDatetime == null && x.IsActive == 1))
+                                                    {
+                                                        i++;
+                                                        <tr>
+                                                            <td>@i</td>
+                                                            <td>@item.Name</td>
+                                                            <td>@item.CreationDatetime.Value.ToString()</td>
+
+                                                            <td>
+                                                                <button class="btn btn-sm bg-success-400" onclick="editToDo('@item.Id', '@item.Name')"> Edit</button>
+                                                                <button class="btn btn-sm bg-danger-400" onclick="deleteToDo('@item.Id')"> Delete</button>
+                                                                <button class="btn btn-sm bg-primary-400" onclick="updatToDo(@item.Id)"> Cancel</button>
+                                                            </td>
+
+                                                        </tr>
+                                                    }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane table-responsive" id="badges-tab2">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+
+                                                    <th>Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @{
+                                                    int j = 0;
+
+                                                    foreach (Task_Ticket item in Model.Task_Ticket.Where(x => x.CompletionDatetime != null && x.IsActive == 1))
+                                                    {
+                                                        j++;
+                                                        <tr>
+                                                            <td>@i</td>
+                                                            <td>@item.Name</td>
+
+
+                                                            <td>@item.CompletionDatetime.Value.ToString()</td>
+
+                                                        </tr>
+                                                    }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Comments -->
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title text-semiold"><i class="icon-bubbles4 position-left"></i> Comments </h5>
+                    @*<div class="heading-elements">
+                            <a href="#" class="btn bg-blue btn-xs btn-icon"><i class="icon-plus2"></i></a>
+                        </div>*@
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list content-group-lg stack-media-on-mobile">
+                        @foreach (TaskCommentDTO item in ViewBag.comments)
+                        {
+
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <a href="#" class="text-semibold">@item.Name</a>
+                                        <span class="media-annotation dotted">@item.CommentTime</span>
+                                    </div>
+                                    <p>@item.Comment</p>
+
+                                    <ul class="list-inline list-inline-separate text-size-small">
+
+                                        <li>
+                                            <ul class="icons-list">
+                                                <li class="dropdown text-muted">
+                                                    <a href="#" class="dropdown-toggle text-bold" data-toggle="dropdown" aria-expanded="false">Actions <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        @if (item.File != null)
+                                                        {
+                                                            <li><a href="@Url.Action("download","Trainee", new {filePath=item.FilePath,name=item.File })"> <i class="icon-download"></i>Download File</a></li>
+
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <li><a> <i class="icon-download"></i>No File</a></li>
+
+                                                        }
+                                                        @if ((logedinuser.Role == 1 || logedinuser.Role == 2 || logedinuser.Role == 4))
+                                                        {
+                                                            <li><a onclick="editComment('@item.Comment','@item.Id','@item.isManager','@item.File')"><i class="icon-sync"></i> Update Comment</a></li>
+                                                            <li class="divider"></li>
+                                                            <li><a onclick="deleteComment('@item.Id','@item.isManager')"><i class="icon-cross3"></i>Delete</a></li>
+                                                        }
+                                                        <li><a onclick="showreply(@item.Id)"><i class="icon-reply"></i>Reply</a></li>
+
+
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                        }
+
+                    </ul>
+
+                    @if (Model.CompletionDate == null && logedinuser.Role == 1)
+                    {
+                <form action="@Url.Action("addComment", "Manager")" method="post" enctype="multipart/form-data">
+                    <h6 class="text-semibold"><i class="icon-pencil7 position-left"></i> Your comment</h6>
+                    <input type="hidden" name="repcomntid" id="repcomntid" />
+
+                    <div class="content-group">
+                        <div class="col-md-12">
+                            <button type="button" id="cancelreplybtn" onclick="cancelreply()" class="close btn-sm" aria-hidden="true">&times;</button>
+                            <br />
+
+                            <textarea id="replycomment" style="opacity:0.5" rows="3" readonly class="form-control" maxlength="254" name="replycomment"></textarea><br />
+
+                            <textarea rows="8" class="form-control" name="comment" required></textarea><br />
+                        </div>
+                        <div class="col-md-12">
+                            <h5><b>Upload File</b></h5>
+                            <input type="file" name="file" class="form-control" />
+                        </div>
+                    </div>
+                    <input type="hidden" name="taskId" value="@General_Purpose.EncryptId(Model.Id)" />
+                    <div class="text-right">
+
+                        <button type="submit" class="btn  btn-sm bg-primary-400"><i class="glyphicon glyphicon-send"></i> Add comment</button>
+                    </div>
+                </form>
+                    }
+                </div>
+            </div>
+            <!-- /comments -->
+        </div>
+        <div class="col-lg-3">
+            <!-- Timer -->
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-watch position-left"></i> Task Timer</h6>
+                    <div class="heading-elements">
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @if (Model.CompletionDate == null)
+                    {
+                        if (Model.EndDate < DateTime.Now)
+                        {
+                            <ul class="timer mb-10">
+                                <li id="expire" class="text-danger">
+                                    <h4>LATE</h4>
+                                </li>
+                            </ul>
+
+                        }
+                        else
+                        {
+                            <ul class="timer-weekdays mb-10">
+                                @{
+                                    var day = Model.EndDate.Value.DayOfWeek.ToString();
+                                }
+                                @if (day == "Friday")
+                                {
+                                    <li class="active"><a href="#" class="label label-danger">@Model.EndDate.Value.DayOfWeek</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#" class="label label-default">Friday</a></li>
+
+                                }
+                                @if (day == "Saturday")
+                                {
+                                    <li class="active"><a href="#" class="label label-danger">@Model.EndDate.Value.DayOfWeek</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#" class="label label-default">Saturday</a></li>
+
+                                }
+                                @if (day == "Sunday")
+                                {
+                                    <li class="active"><a href="#" class="label label-danger">@Model.EndDate.Value.DayOfWeek</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#" class="label label-default">Sunday</a></li>
+
+                                }
+                                @if (day == "Monday")
+                                {
+                                    <li class="active"><a href="#" class="label label-danger">@Model.EndDate.Value.DayOfWeek</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#" class="label label-default">Monday</a></li>
+
+                                }
+                                @if (day == "Tuesday")
+                                {
+                                    <li class="active"><a href="#" class="label label-danger">@Model.EndDate.Value.DayOfWeek</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#" class="label label-default">Tuesday</a></li>
+
+                                }
+                                @if (day == "Wednesday")
+                                {
+                                    <li class="active"><a href="#" class="label label-danger">@Model.EndDate.Value.DayOfWeek</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#" class="label label-default">Wednesday</a></li>
+
+                                }
+                                @if (Model.EndDate.Value.DayOfWeek.ToString() == "Thursday")
+                                {
+                                    <li class="active"><a href="#" class="label label-danger">@Model.EndDate.Value.DayOfWeek</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#" class="label label-default">Thursday</a></li>
+
+                                }
+                            </ul>
+                            <ul class="timer mb-10">
+
+                                <li id="d">
+
+                                </li>
+                                <li id="h">
+
+                                </li>
+                                <li id="m">
+
+                                </li>
+                                <li id="s">
+
+                                </li>
+
+                            </ul>
+                        }
+                    }
+
+                    else
+                    {
+                        <ul class="timer mb-10">
+                            <li id="expire" class="text-success">
+                                <h2>#Completed</h2>
+                            </li>
+                        </ul>
+                        if ((logedinuser.Role == 2 || logedinuser.Role == 4 || logedinuser.Role == 1))
+                        {
+                            <center>
+
+
+                                <a href="#" data-target="#statusModal" data-toggle="modal" class="btn btn-sm bg-primary-400 text-bold">Re Open Task</a>
+                            </center>
+                        }
+                    }
+                    <div id="clock"></div>
+                </div>
+            </div>
+            <!-- /timer -->
+            <!-- Task details -->
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-files-empty position-left"></i> Task Details</h6>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <table class="table table-borderless table-xs content-group-sm">
+                    <tbody>
+
+                        <tr>
+                            <td><i class="icon-alarm-add position-left"></i> Start Date</td>
+                            <td class="text-right">@Model.StartDate.Value.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td><i class="icon-alarm-add position-left"></i> End Date & Time</td>
+                            <td class="text-right">@Model.EndDate.Value</td>
+                        </tr>
+                        @if (Model.CompletionDate != null)
+                        {
+                            <tr>
+                                <td><i class="icon-alarm-add position-left"></i> Completion Date & Time</td>
+                                <td class="text-right">@Model.CompletionDate.Value</td>
+                            </tr>
+
+                        }
+                        else
+                        {
+                            <tr>
+                                <td><i class="icon-alarm-add position-left"></i> Completion Date & Time</td>
+                                <td class="text-right">Not Completed Yet</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><i class="icon-alarm-check position-left"></i> Hours</td>
+                            <td class="text-right">@Model.Hours</td>
+                        </tr>
+                        <tr>
+                            <td><i class="icon-circles2 position-left"></i> Priority:</td>
+                            <td class="text-right">
+                                <div class="btn-group">
+                                    @if (!Model.Priority.HasValue)
+                                    {
+                                        <span></span>
+
+                                    }
+                                    else if (General_Purpose.getPriorityValue(Model.Priority.Value) == "Medium")
+                                    {
+                                        <span class="label label-warning">Medium priority</span>
+                                    }
+                                    else if (General_Purpose.getPriorityValue(Model.Priority.Value) == "Low")
+                                    {
+                                        <span class="label label-success">Low priority</span> }
+                                    else
+                                    {
+                                        <span class="label label-danger">High priority</span>}
+                                    @*<a href="#" class="label label-danger dropdown-toggle" data-toggle="dropdown">Highest <span class="caret"></span></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="#"><span class="status-mark position-left bg-danger"></span> Highest priority</a></li>
+                                            <li><a href="#"><span class="status-mark position-left bg-info"></span> High priority</a></li>
+                                            <li><a href="#"><span class="status-mark position-left bg-primary"></span> Normal priority</a></li>
+                                            <li><a href="#"><span class="status-mark position-left bg-success"></span> Low priority</a></li>
+                                        </ul>*@
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="icon-history position-left"></i> CEU:</td>
+                            <td class="text-right">@Model.CEU</td>
+                        </tr>
+
+                        <tr>
+                            <td><i class="icon-file-check position-left"></i> Status:</td>
+                            @if (!Model.Status.HasValue)
+                            {
+                                <td class="text-right">
+
+                                    @General_Purpose.getStatusValue(0)
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-right">
+
+                                    @General_Purpose.getStatusValue(Model.Status.Value)
+                                </td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- /task details -->
+            <!-- Attached files -->
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-link position-left"></i> Attached Files</h6>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list">
+                        @foreach (TaskCommentDTO item in ViewBag.comments)
+                        {
+                            if (item.File != null)
+                            {
+                                <a href="#" class="media-heading text-semibold">@item.File</a>
+                                <li class="media">
+                                    <div class="media-left media-middle">
+                                        <i class="icon-file-text3 icon-2x text-muted"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        @*<a href="#" class="media-heading text-semibold">@item.File</a>*@
+                                        <ul class="list-inline list-inline-separate list-inline-condensed text-size-mini text-muted">
+                                            <li>Size: @item.FileSize</li>
+                                            <li>Added by <a href="#">@item.Name</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="media-right media-middle">
+                                        <ul class="icons-list">
+                                            <li><a href="@Url.Action("download","Trainee", new {filePath=item.FilePath,name=item.File })"><i class="icon-download"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /attached files -->
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-users position-left"></i>  Employees</h6>
+                    <div class="heading-elements">
+                        <ul class="icons-list"></ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list">
+                        @if (Model.CreatedID != null)
+                        {
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img src="assets/images/placeholder.jpg" class="img-sm img-circle" alt="">
+                                        <span class="badge bg-secondary media-badge">A</span>
+                                    </a>
+                                </div>
+                                <div class="media-body media-middle text-semibold">
+                                    @Model.User.FirstName  @Model.User.LastName
+                                    <div class="media-annotation">Assigned the Task</div>
+                                </div>
+
+                            </li>
+                        }
+
+
+                        @if (Model.UserID != null)
+                        {
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img src="assets/images/placeholder.jpg" class="img-sm img-circle" alt="">
+                                        <span class="badge bg-secondary media-badge">P</span>
+                                    </a>
+                                </div>
+                                <div class="media-body media-middle text-semibold">
+                                    @Model.User1.FirstName  @Model.User1.LastName
+                                    @if (Model.CreatedID == null)
+                                    {<div class="media-annotation">Assigned and Created the Task </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="media-annotation">Assigned to Task </div>
+                                    }
+                                </div>
+
+                            </li>
+                        }
+
+
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+    <!-- /detailed task -->
+    <input type="hidden" name="name" value="@Model.EndDate.Value" id="datep" />
+
+
+</div>
+
+<div id="requestModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("requestUpdate", "Admin",new { IsModal=ViewBag.modal})">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Deadline</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Days</label>
+                        <input type="number" name="RequestedDays" class="form-control" maxlength="150" required />
+                        <input type="hidden" name="createdBy" class="form-control" value=@General_Purpose.EncryptId(Model.Id) />
+
+                    </div>
+
+
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Reason</label>
+                        <textarea class="form-control" name="Reason"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-sm  bg-primary-400">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="statusModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("updateStatus","Admin",new { IsModal=ViewBag.modal})">
+                <input type="hidden" name="cStatus" value="@ViewBag.currentStatus" />
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Change Status</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Status</label>
+                        <select class="select" name="status" required>
+                            @*<option selected value="@ViewBag.currentStatus">@General_Purpose.getStatusValue((int)ViewBag.currentStatus)</option>*@
+                            @foreach (var item in ViewBag.status)
+                            {
+                                if (ViewBag.currentStatus == item)
+                                {
+                                    <option selected value="@item">@General_Purpose.getStatusValue((int)item)</option>
+                                }
+                                else
+                                {
+                                    <option value="@item">@General_Purpose.getStatusValue((int)item)</option>
+                                }
+
+                                    @*<option value="@item">@General_Purpose.getStatusValue((int)item)</option>*@
+
+                            }
+                        </select>
+                    </div>
+                    <input type="hidden" value="@General_Purpose.EncryptId(Model.Id)" name="managerGroupTask" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm  bg-primary">Update Status</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("addComment","Admin")" enctype="multipart/form-data">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Comment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Comment</label>
+                        <textarea class="form-control" maxlength="254" name="comment"></textarea>
+                    </div>
+                    <input type="hidden" name="taskId" value="@General_Purpose.EncryptId(Model.Id)" />
+                    <div class="form-group col-md-12">
+                        <label class="control-label">File</label>
+                        <input type="file" name="File" class="form-control" />
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm  btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript">
+
+     //////////////////////////////////////////////////
+    $('#replycomment').hide();
+    $('#cancelreplybtn').hide();
+    $('.rreply').hide();
+    function commentreplies(id)
+    {
+        $("#"+id+"").toggle();
+    }
+    function showreply(cmntid)
+    {
+        $.ajax({
+            type: 'POST',
+            url: "../task/getReplyComment",
+            data: { cmntid: cmntid },
+            dataType: "json",
+            success: function (data) {
+                // get role of the user then if you are an admin then assign tasks to manager and employee
+                // if you are manager then assign to employee
+                // if you can self assign
+                $("#replycomment").val("");
+
+                $("#replycomment").val(data.Comment);
+                $("#repcomntid").val(data.Id);
+                
+
+
+                 $('#replycomment').show();
+               $('#cancelreplybtn').show();
+
+                
+            },
+            error: function () { alert('fail'); }
+        });
+       
+    }
+    function cancelreply()
+    {
+        $('#replycomment').hide();
+        $('#cancelreplybtn').hide();
+         $("#repcomntid").val("");
+    }
+
+    //////////////////////////////////////////////////
+
+    function changeFileStatus() {
+        $('#removeFile').val(1);
+        $('#removeExistingFile').attr('disabled', true);
+    }
+
+    function editComment(text, id, ism, isFile) {
+        $('#removeExistingFile').attr('disabled', false);
+        if (isFile == '') {
+            document.getElementById('removeExistingFile').style.visibility = 'hidden';
+            $('#upLoad').innerHtml = 'Upload File';
+        }
+        else {
+            document.getElementById('removeExistingFile').style.visibility = 'visible';
+            $('#upLoad').innerHtml = 'Upload New File';
+        }
+        $('#editText').val(text);
+
+        $('#commentId').val(id);
+        $('#isManag').val(ism);
+        $('#editComment').modal("show");
+    }
+
+    function deleteComment(id, ism) {
+        $('#commentId1').val(id);
+        $('#isManag1').val(ism);
+        $('#deleteComment').modal("show");
+    }
+
+    var dt = $("#datep").val();
+
+    // Set the date we're counting down to
+    var countDownDate = new Date(dt).getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+        if (distance > 0) {
+
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+
+            document.getElementById("d").innerHTML = days + "d ";
+            document.getElementById("h").innerHTML = hours + "h ";
+            document.getElementById("m").innerHTML = minutes + "m ";
+            document.getElementById("s").innerHTML = seconds + "s ";
+        }
+        // If the count down is over, write some text
+        //    if (distance < 0) {
+        //        clearInterval(x);
+        //        document.getElementById("expire").innerHTML = "LATE";
+        //    }
+    }, 1000);
+    (function ($) {
+
+        'use strict';
+
+        $('.alert[data-auto-dismiss]').each(function (index, element) {
+            var $element = $(element),
+                timeout = $element.data('auto-dismiss') || 2000;
+
+            setTimeout(function () {
+                $element.alert('close');
+            }, timeout);
+        });
+
+    })(jQuery);
+
+    function updatToDo(id) {
+        $('#ticketId').val(id);
+        $('#completetciketmodal').modal("show");
+    }
+
+    function editToDo(id, name) {
+        $('#ticket_Id').val(id);
+        $('#todoName').val(name);
+        $('#edittodomodal').modal("show");
+    }
+
+    function deleteToDo(id) {
+        $('#ticketid').val(id);
+        $('#deletetodomodal').modal("show");
+    }
+</script>

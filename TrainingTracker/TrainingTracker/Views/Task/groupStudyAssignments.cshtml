@@ -1,0 +1,1198 @@
+﻿
+@{
+    ViewBag.Title = "groupStudyAssignments";
+    Layout = "~/Views/Shared/_Layout_withpdf.cshtml";
+}
+
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+}
+<style>
+    .datatable-header {
+        display: contents !important;
+    }
+
+    .page-header-default {
+        background-color: #fff;
+        margin-bottom: 00px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Assignments</li>
+            <li class="active">Group Study</li>
+        </ul>
+    </div>
+</div>
+
+<br />
+
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading page-header page-header-default has-cover">
+
+
+            <center><h3 class="panel-title"><b>Search Group Study Assignment</b></h3></center>
+            <div class="heading-elements page-header page-header-default has-cover">
+                <ul class="icons-list">
+
+
+                    <li><a data-action="collapse"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body panel-body1">
+            <div class="" style="margin-left:20px;">
+                <h3>Search: </h3>
+                @*<form method="post" action="@Url.Action("GroupAssignments","task")" class="form-group">*@
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Prime Lead's First Name</label>
+                    @*<input type="text" name="fname" id="fname" class="form-control" value="@ViewBag.fname" placeholder="First Name" />*@
+                    <select class="select-results-color" onkeyup="teamleadfname()" id="fname" name="fname">
+                        <option value="" selected>Select First Name</option>
+                        @foreach (var item in ViewBag.LeadName)
+                        {
+                            <option value="@item.Name">@item.Name</option>
+                        }
+
+
+
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Prime Lead's  Last Name</label>
+                    @*<input type="text" id="lname" name="lname" class="form-control" value="@ViewBag.lname" placeholder="Last Name" />*@
+                    <select class="select-results-color" onkeyup="teamleadfname()" id="lname" name="lname">
+                        <option value="" selected>Select Last Name</option>
+                        @foreach (var item in ViewBag.LeadLName)
+                        {
+                            <option value="@item.Name">@item.Name</option>
+                        }
+
+                    </select>
+                </div>
+                @*<div class="form-group col-md-3">
+                        <label class="control-label">Department</label>
+                        <select class="select" id="department" name="department">
+
+
+
+                            <option value="-1" selected>Select Department</option>
+                            @foreach (var item in ViewBag.departments)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+
+
+                            }
+
+
+
+                        </select>
+                    </div>*@
+                <input type="hidden" value="1" id="displayType" />
+                @*@if (logedinuser.Role == (int)Enums.Role.Manager || logedinuser.Role == (int)Enums.Role.Cordinator)
+                    {
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Display Only</label>
+                            <select class="select" id="displayType" name="displayType">
+
+
+                                {
+                                <option value="1" selected>@General_Purpose.getTaskDisplay((int)1)</option>
+                                }
+
+                                @foreach (var item in ViewBag.displayTypes)
+                                {
+
+
+
+                                    <option value="@item"> @General_Purpose.getTaskDisplay((int)item)</option>
+
+
+                                }
+
+
+
+                            </select>
+                        </div>
+                    }
+                    else
+                    {
+                        <div hidden class="form-group col-md-3">
+                            <label class="control-label">Display Only</label>
+                            <select class="select" id="displayType" name="displayType">
+
+
+                                <option value="1" selected></option>
+
+
+
+
+                            </select>
+                        </div>
+                    }*@
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Task Name</label>
+                    @*<input type="text" id="taskName" name="taskName" class="form-control" value="@ViewBag.taskName" placeholder="Task Name" />*@
+                    <select class="select-results-color" id="taskName" name="taskName">
+                        <option value="" selected>Select Task Name</option>
+                        @foreach (var item in ViewBag.TaskName)
+                        {
+                            <option value="@item.Name">@item.Name</option>
+                        }
+
+                    </select>
+                </div>
+
+
+
+                @*<div class="form-group col-md-3">
+                        <label class="control-label">Task Type</label>
+                        <select class="select" id="taskType" name="taskType">
+                            <option value="" selected>Select Task Type</option>
+
+
+                            @foreach (var item in ViewBag.taskTypes)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+
+
+                            }
+
+
+
+                        </select>
+                    </div>*@
+                <div class="form-group col-md-3">
+                    <label class="control-label">Priority</label>
+                    <select class="select" id="priority" name="priority">
+                        <option value="" selected>Select Priority</option>
+
+                        @foreach (var item in ViewBag.priorities)
+                        {
+                            <option value="@item">@General_Purpose.getPriorityValue((item))</option>
+
+
+                        }
+
+
+
+                    </select>
+                </div>
+
+
+
+
+
+
+
+                <div style="display:none" class="form-group col-md-3">
+                    <label class="control-label">Tags</label>
+                    <select class="select" id="tag" name="tag">
+                        <option value="" selected>Select Tag</option>
+
+                        @foreach (var item in ViewBag.tags)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+
+
+                        }
+
+
+
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Task Completion Status</label>
+                    <select class="select" id="completionStatus" name="completionStatus">
+                        <option value="-1" selected>Select Completion Status</option>
+
+
+
+                        @for (int l = 0; l < ViewBag.completionList.Count; l++)
+                        {
+                            <option value="@ViewBag.completionListId[l]">@ViewBag.completionList[l]</option>
+
+
+                        }
+
+
+
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Status</label>
+                    <select class="select" id="status" name="status">
+
+
+                        <option value="-1" selected> Select Status </option>
+                        @foreach (var item in ViewBag.statuses)
+                        {
+                            <option value="@item"> @General_Purpose.getStatusValue(item) </option>
+
+
+                        }
+
+
+
+
+
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Starting Date:</label>
+                    <input type="date" id="startDate" name="startDate" class="form-control" value="@ViewBag.startDate" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Ending Date:</label> <input type="date" id="endDate" name="endDate" class="form-control" value="@ViewBag.endDate" />
+                </div>
+
+                <div class="form-group col-md-12">
+
+                    <div class="form-group col-md-3">
+
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">Start Date</p>
+                            <input type="checkbox" name="start" id="start" value="" class="fancytree-checkbox" />
+                            <span class="slider round"></span>
+                        </label>
+
+                    </div>
+                    <div class="form-group col-md-3">
+
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">End Date</p>
+                            <input type="checkbox" id="end" name="end" value="" class="fancytree-checkbox" />
+                            <span class="slider round"></span>
+                        </label>
+
+
+                    </div>
+                    <div class="form-group col-md-3">
+
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">Complete Date</p>
+                            <input type="checkbox" id="complete" name="complete" value="" class="fancytree-checkbox" />
+                            <span class="slider round"></span>
+                        </label>
+
+
+
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+
+                    <div class="form-group col-md-3">
+                        <input type="submit" onclick="usersSearch()" value="Search" class="btn btn-sm  bg-primary-400" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="submit" onclick="ClearAllSearches()" value="Clear Filters" class="btn btn-sm  bg-default-400" />
+                    </div>
+                </div>
+                @*</form>*@
+            </div>
+        </div>
+    </div>
+
+
+    <div id="panel1" class="panel panel-flat">
+        <div class="panel-heading">
+
+
+            <center><h3 class="panel-title"><b>List of Group Study Assignments</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li class="dropdown">
+                        <a href="#" class="btn btn-sm  dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+
+                            <li>
+                                @*<a href="@Url.Action("ExportGroupTask","ExportReport")"> Export Excel </a>*@
+                                <a onclick="AsynchGTExcelGeneration()"> Export Excel </a>
+                            </li>
+
+                            <li>
+                                @*<a href="@Url.Action("ExportGroupTaskPdf","ExportReport")"> Export Pdf </a>*@
+                                <a onclick="AsynchGTPDFGeneration()"> Export PDF </a>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+
+        <div class="panel-body">
+
+
+
+
+
+            <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover table-condensed">
+
+                <thead>
+                    <tr>
+
+
+                        <th>Group Task Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Lead Name</th>
+                        <th>Priority</th>
+
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+
+            </table>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+    <div id="panel2" class="panel panel-flat">
+        <div class="panel-heading">
+
+
+            <center><h3 class="panel-title"><b>List of Group Study Assignments</b></h3></center>
+
+            <div id="wait1" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li class="dropdown">
+                        <a href="#" class="btn btn-sm  dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+
+                            <li>
+                                <a onclick="generateExcel()"> Export Excel </a>
+                            </li>
+
+                            <li>
+                                <a onclick="generatePDF()"> Export PDF </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+
+        <div class="panel-body">
+
+
+
+
+
+            <table id="example2" class="table datatable-button-html5-basic table-striped table-bordered table-hover table-condensed">
+
+                <thead>
+                    <tr>
+
+
+                        <th>Group Task Task Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Lead Name</th>
+                        <th>Priority</th>
+
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+
+            </table>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <div id="modal-delete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content login-form">
+
+                <!-- Form -->
+                <form class="modal-body " action="@Url.Action("deleteAssignment","Task")" method="post">
+
+                    <div class="text-center">
+                        <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                        <h5 class="content-group" id="delText">Are You Sure ? <small class="display-block"></small></h5>
+                    </div>
+                    <div id="datadelete"></div>
+                    <center>
+                        <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">Close</button>
+                        <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Submit</button>
+
+
+                    </center>
+
+                </form>
+                <!-- /form -->
+
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content login-form">
+
+                <!-- Form -->
+                <form class="modal-body " action="@Url.Action("sendmail","Task")" method="post">
+
+                    <div class="text-center">
+                        <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                        <h5 class="content-group" id="delText">Do you want to send email to Employees and Managers? <small class="display-block"></small></h5>
+                    </div>
+                    <div id="datadelete"></div>
+                    <center>
+                        <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">Close</button>
+                        <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Submit</button>
+
+
+                    </center>
+
+                </form>
+                <!-- /form -->
+
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteGroupTask" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="modal-body " action="@Url.Action("deletegroupTaskFunction", "Task")" method="post">
+
+                    <div class="text-center">
+                        <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                        <h5 class="content-group">Are you sure you want to delete the selected Group Study? <small class="display-block"></small></h5>
+                    </div>
+                    <input type="hidden" id="sid" name="sid" value="0" />
+                    <input type="hidden" name="isGroupStudy" value="1" />
+
+
+
+
+                    <center>
+                        <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">No</button>
+                        <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                    </center>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="content" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: white;" hidden>
+
+
+
+    </div>
+
+
+    <div id="modal-delete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content login-form">
+
+                <!-- Form -->
+                <form class="modal-body " action="@Url.Action("deleteAssignment","Task")" method="post">
+
+                    <div class="text-center">
+                        <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                        <h5 class="content-group" id="delText">Are You Sure ? <small class="display-block"></small></h5>
+                    </div>
+                    <div id="datadelete"></div>
+                    <center>
+                        <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">Close</button>
+                        <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Submit</button>
+
+
+                    </center>
+
+                </form>
+                <!-- /form -->
+
+            </div>
+        </div>
+    </div>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>*@
+
+
+
+    <!-- /basic initialization -->
+    <!-- Footer -->
+    <div class="footer text-muted">
+        <a href="#">Powered By </a>
+        <a href="http://nodlays.com" target="_blank">Nodlays</a>
+    </div>
+    <!-- /footer -->
+</div>
+
+<!-- Update Status Modal -->
+<div id="updateDatesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @*<form class="form-horizontal" method="post" action="@Url.Action("UpdateTaskDates", "Task")">*@
+
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Edit Dates</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="TaskId" />
+
+                <div class="form-group" style="margin-bottom:10%;">
+                    <label class="col-lg-3 control-label">Start Date   <span class="text-danger">*</span></label>
+                    <div class="col-lg-9">
+                        <input type="date" class="form-control" name="StartDate" id="StartDate" required>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:20%;">
+                    <label class="col-lg-3 control-label">End Date   <span class="text-danger">*</span></label>
+                    <div class="col-lg-9">
+                        <input type="date" class="form-control" name="EndDate" id="EndDate" required>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:25%;">
+                    <label class="col-lg-3 control-label">Creation Date <span class="text-danger">*</span></label>
+                    <div class="col-lg-9">
+                        <input type="date" class="form-control" name="CreationDate" id="CreationDate" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <br />
+                <span style="display:none" id="spanMsg" class="text-danger">All fields must have value</span>
+                <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Cancel</button>
+                <button onclick="UpdateTaskDates()" type="submit" class="btn btn-sm  bg-primary">Update</button>
+            </div>
+            @*</form>*@
+        </div>
+    </div>
+</div>
+<!-- Update Status Modal -->
+<!-- Success Status Modal -->
+<div id="SuccessFullModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @*<form class="form-horizontal" method="post" action="@Url.Action("UpdateTaskDates", "Task")">*@
+
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Success</h4>
+            </div>
+            <center><h4>Dates has been Updated Successfully</h4></center>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">CLose</button>
+            </div>
+            @*</form>*@
+        </div>
+    </div>
+</div>
+<!-- Success Status Modal -->
+
+<script>
+    function editTask(val) {
+
+        $.ajax({
+            type: 'POST',
+            url: "../task/getGtTaskDates",
+            data: { TaskId: val, IsGrpTask: 1 },
+            dataType: "json",
+            success: function (data) {
+
+                $("#StartDate").val(data.StartDate);
+                $("#EndDate").val(data.EndDate);
+                $("#CreationDate").val(data.CreationDate);
+                //   $("#CompletionDate").val(data.CompletionDate);
+                $("#TaskId").val(val);
+                $("#updateDatesModal").modal("show");
+
+            },
+            error: function () { alert('fail'); }
+        });
+
+
+    }
+
+
+    function UpdateTaskDates() {
+        var flag = 1;
+        if ($("#StartDate").val() == "" || $("#EndDate").val() == "" || $("#CreationDate").val() == "") {
+            flag = 0;
+            $("#spanMsg").show();
+        } else {
+            flag = 1;
+            $("#spanMsg").hide();
+        }
+        if (flag == 1) {
+
+            $("#updateDatesModal").modal("hide");
+
+            var id = $("#TaskId").val();
+            var StartDate = $("#StartDate").val();
+            var EndDate = $("#EndDate").val();
+            var CreationDate = $("#CreationDate").val();
+            // var CompletionDate = $("#CompletionDate").val();
+            $.ajax({
+                type: 'POST',
+                url: "../task/UpdateTaskDateValues",
+                data: { Id: id, StartDate: StartDate, EndDate: EndDate, CreationDate: CreationDate, IsGrpTask: 1 },
+                dataType: "json",
+                success: function (data) {
+
+                    $("#SuccessFullModal").modal("show");
+                    usersSearch();
+                },
+                error: function () { alert('fail'); }
+            });
+        }
+
+    }
+</script>
+
+
+<script>
+
+    function AsynchGTExcelGeneration() {
+        $.ajax({
+            type: 'POST',
+            url: "../ExportReport/AsyncGroupStudyExcel",
+            //dataType: "json",
+            success: function (data) {
+                $("#modal-Report").modal("show");
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+    function AsynchGTPDFGeneration() {
+        $.ajax({
+            type: 'POST',
+            url: "../ExportReport/AsyncGroupStudyPDF",
+            //dataType: "json",
+            success: function (data) {
+                $("#modal-Report").modal("show");
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+</script>
+
+<script>
+    function ClearAllSearches() {
+
+             var fname=$("#fname").val();
+         var lname=   $("#lname").val();
+          var department=  $("#department").val();
+           var taskName= $("#taskName").val();
+           var taskType= $("#taskType").val();
+            var tag = $("#tag").val();
+            var completionStatus= $("#completionStatus").val();
+            var status=$("#status").val();
+            var priority=$("#priority").val();
+
+            var startDate= document.getElementById("startDate").value;
+            var endDate=document.getElementById("endDate").value;
+
+
+            if (fname == "" && lname == ""  && taskName == "" && taskType == "" && tag == "" && completionStatus == "-1"
+                && status == "-1" && priority == "" && startDate == "" && endDate == "" && $("#start").prop('checked') == false && $("#end").prop('checked') == false && $("#complete").prop('checked') == false) {
+
+
+
+            } else {
+
+                     $("#fname").val("").change();
+         $("#lname").val("").change();
+           //$("#department").val("-1").change();
+            $("#taskName").val("").change();
+            //$("#taskType").val("").change();
+             $("#tag").val("").change();
+             $("#completionStatus").val("-1").change();
+            $("#status").val("-1").change();
+            $("#priority").val("").change();
+
+            document.getElementById("startDate").value="";
+            document.getElementById("endDate").value = "";
+
+            $("#start").prop('checked', false);
+
+            $("#end").prop('checked',false) ;
+            $("#complete").prop('checked',false)  ;
+                 usersSearch();
+            }
+
+        $("#fname").val("").change();
+         $("#lname").val("").change();
+         //  $("#department").val("-1").change();
+            $("#taskName").val("").change();
+           // $("#taskType").val("").change();
+             $("#tag").val("").change();
+             $("#completionStatus").val("-1").change();
+            $("#status").val("-1").change();
+            $("#priority").val("").change();
+
+            document.getElementById("startDate").value="";
+            document.getElementById("endDate").value = "";
+
+            $("#start").prop('checked', false);
+
+            $("#end").prop('checked',false) ;
+            $("#complete").prop('checked',false)  ;
+
+
+
+
+        }
+
+         function generateExcel()
+         {
+                    if ($("#start").prop('checked') == true) {
+                var start = 1;
+            }
+            if ($("#end").prop('checked') == true) {
+                var end = 1;
+            }
+            if ($("#complete").prop('checked') == true) {
+                var complete = 1;
+            }
+            var startDate = document.getElementById("startDate").value;
+            var endDate = document.getElementById("endDate").value;
+            var tag = document.getElementById("tag").value;
+            var taskName = document.getElementById("taskName").value;
+             //  var taskType = document.getElementById("taskType").value;
+             taskType = 0;
+            var status = document.getElementById("status").value;
+
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var completionStatus = document.getElementById("completionStatus").value;
+            if (document.getElementById("displayType").value == null) {
+                var displayType =1 ;
+            }
+            var priority = document.getElementById("priority").value;
+
+               var origin = window.location.origin;
+                                var empurl;
+                                var manurl;
+
+             //empurl = "" + origin + "/ExportReport/ExportGroupTask?startDate="+startDate+"&endDate="+endDate+"&tag="+tag+"&taskName="+taskName+"&taskType="+taskType+
+             //"&status=" + status + "&fname=" + fname + "&lname=" + lname + "&priority=" + priority + "&completionStatus=" + completionStatus +
+             //"&displayType=" + displayType + "&sd=" + start + "&ed=" + end + "&cd=" + complete;
+ //                                   //  location.replace(empurl)
+ //                                   window.location.href = empurl;
+
+             $.ajax({
+                 type: 'POST',
+                 url: "../ExportReport/AsyncGroupStudyExcel",
+                 data: {
+                     startDate: startDate,
+                     endDate: endDate,
+                     tag: tag,
+                     taskName: taskName,
+                     taskType: taskType,
+                     status: status,
+                     fname: fname,
+                     lname: lname,
+                     priority: priority,
+                     completionStatus: completionStatus,
+                     displayType: displayType,
+                     sd: start,
+                     ed: end,
+                     cd: complete
+                 },
+                 //dataType: "json",
+                 success: function (data) {
+                     $("#modal-Report").modal("show");
+
+                 },
+                 error: function () { alert('fail'); }
+             });
+        }
+
+          function generatePDF()
+        {
+               if ($("#start").prop('checked') == true) {
+                var start = 1;
+            }
+            if ($("#end").prop('checked') == true) {
+                var end = 1;
+            }
+            if ($("#complete").prop('checked') == true) {
+                var complete = 1;
+            }
+            var startDate = document.getElementById("startDate").value;
+            var endDate = document.getElementById("endDate").value;
+            var tag = document.getElementById("tag").value;
+            var taskName = document.getElementById("taskName").value;
+            //var taskType = document.getElementById("taskType").value;
+               taskType = 0;
+            var status = document.getElementById("status").value;
+
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var completionStatus = document.getElementById("completionStatus").value;
+            if (document.getElementById("displayType").value == null) {
+                var displayType =1 ;
+            }
+            var priority = document.getElementById("priority").value;
+
+               var origin = window.location.origin;
+                                var empurl;
+                                var manurl;
+ //empurl = "" + origin + "/ExportReport/ExportGroupTaskPdf?startDate="+startDate+"&endDate="+endDate+"&tag="+tag+"&taskName="+taskName+"&taskType="+taskType+ "&status="+status+"&fname="+fname+ "&lname="+lname+"&priority="+priority+ "&completionStatus="+completionStatus+ "&displayType="+displayType+ "&sd=" +start+ "&ed="+end+ "&cd="+complete;
+
+ //                                   //  location.replace(empurl)
+ //                                   window.location.href = empurl;
+
+              $.ajax({
+                  type: 'POST',
+                  url: "../ExportReport/AsyncGroupStudyPDF",
+                  data: {
+                      startDate: startDate,
+                      endDate: endDate,
+                      tag: tag,
+                      taskName: taskName,
+                      taskType: taskType,
+                      status: status,
+                      fname: fname,
+                      lname: lname,
+                      priority: priority,
+                      completionStatus: completionStatus,
+                      displayType: displayType,
+                      sd: start,
+                      ed: end,
+                      cd: complete
+                  },
+                  //dataType: "json",
+                  success: function (data) {
+                      $("#modal-Report").modal("show");
+
+                  },
+                  error: function () { alert('fail'); }
+              });
+    }
+
+
+
+    $("#panel2").hide();
+     function usersSearch() {
+            if ($("#start").prop('checked') == true) {
+                var start1 = 1;
+            }
+            if ($("#end").prop('checked') == true) {
+                var end = 1;
+            }
+            if ($("#complete").prop('checked') == true) {
+                var complete = 1;
+            }
+            var startDate = document.getElementById("startDate").value;
+            var endDate = document.getElementById("endDate").value;
+            var tag = document.getElementById("tag").value;
+            var taskName = document.getElementById("taskName").value;
+            var taskType =0;
+            var status1 = document.getElementById("status").value;
+
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var completionStatus = document.getElementById("completionStatus").value;
+            if (document.getElementById("displayType").value == null) {
+                var displayType =1 ;
+            }
+
+            var priority1 = document.getElementById("priority").value;
+             $("#panel1").hide();
+            $("#panel2").show();
+
+            $('#example2').DataTable().clear();
+            $('#example2').DataTable().destroy();
+
+         $("#wait1").css("display", "block");
+            $('#example2').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetgroupStudyAssignments", "Task")',
+                        data: { startDate: startDate, endDate: endDate, tag: tag, taskName: taskName, taskType: taskType, status1: status1, fname: fname, lname: lname, completionStatus: completionStatus, displayType: displayType, priority1: priority1, start1: start1, end: end, complete: complete },
+
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+
+                    "columns": [
+                        { "data": "Name", "name": "Name" },
+                        { "data": "StartDate", "name": "StartDate" },
+                        { "data": "EndDate", "name": "EndDate" },
+                        { "data": "FirstName", "name": "FirstName" },
+                        { "data": "Priority", "name": "Priority" },
+                        { "data": "WorkStatus", "name": "WorkStatus" },
+                        ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                        //{ "data": "Email", "name": "Email", "visible": false },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+                            //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                            render: function (data, type, full, meta) {
+                                //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                                var s = "0";
+                                if (full.Temp == 1) {
+                                    return '<a style="margin-right:3px; margin-top:2px;" class="btn btn-sm  bg-secondary" href="../Task/grouptaskDetails?v=' + full.EncryptedId + '&isModal=' + s + '"> View  </a>' +
+                                        ' <button class="btn btn-sm  btn-primary" onclick="editTask(' + full.Id +')"> Edit Dates </button> <button  class="btn btn-sm btn-danger" onclick="deleteTask(' + full.Id + ')"> Delete </button> <span>&nbsp; &nbsp;</span>';
+                                } else if (full.Temp == 2) {
+                                    return '<a style="margin-top:2px; margin-right:3px" class="btn btn-sm  bg-secondary" href="../Task/grouptaskDetails?v=' + full.EncryptedId + '&isModal=' + s + '"> View  </a>' +
+                                        '&nbsp;<button class="btn btn-sm  btn-primary" onclick="editTask(' + full.Id +')"> Edit Dates </button> <button class="btn btn-sm btn-danger" onclick="deleteTask(' + full.Id + ')"> Delete </button>';
+
+                                } else if (full.Temp == 3) {
+                                    return '<a style="margin-right:3px; margin-top:2px;" class="btn btn-sm  bg-secondary" href="../Task/grouptaskDetails?v=' + full.EncryptedId + '&isModal=' + s + '"> View  </a>' +
+                                        ' <button class="btn btn-sm  btn-primary" onclick="editTask(' + full.Id +')"> Edit Dates </button> <button class="btn btn-sm btn-danger" onclick="deleteTask(' + full.Id + ')"> Delete </button>';
+                                } else if (full.Temp == 4) {
+                                    return '<a style="margin-right:3px" class="btn btn-sm  bg-secondary" href="../Task/grouptaskDetails?v=' + full.EncryptedId + '&isModal=' + s + '"> View  </a>';
+                                }
+
+
+
+                            },
+                            targets: 6
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait1").css("display", "none");
+             },
+                })
+
+
+        }
+</script>
+
+<script>
+
+
+    $(document).ready(function () {
+             $("#wait").css("display", "block");
+            $('#example').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetgroupStudyAssignments", "Task")',
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+
+                    "columns": [
+                        { "data": "Name", "name": "Name" },
+                        { "data": "StartDate", "name": "StartDate" },
+                        { "data": "EndDate", "name": "EndDate" },
+                        { "data": "FirstName", "name": "FirstName" },
+                        { "data": "Priority", "name": "Priority" },
+                        { "data": "WorkStatus", "name": "WorkStatus" },
+                        ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                        //{ "data": "Email", "name": "Email", "visible": false },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+                            //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                            render: function (data, type, full, meta) {
+                                //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                                var s = "0";
+                                if (full.Temp == 1) {
+                                    return '<a style="margin-right:3px; margin-top:2px;" class="btn btn-sm  bg-secondary" href="../Task/grouptaskDetails?v=' + full.EncryptedId + '&isModal=' + s + '"> View  </a>' +
+                                        ' <button class="btn btn-sm  btn-primary" onclick="editTask(' + full.Id +')"> Edit Dates </button> <button  class="btn btn-sm btn-danger" onclick="deleteTask(' + full.Id + ')"> Delete </button> <span>&nbsp; &nbsp;</span>';
+                                } else if (full.Temp == 2) {
+                                    return '<a style="margin-top:2px; margin-right:3px" class="btn btn-sm  bg-secondary" href="../Task/grouptaskDetails?v=' + full.EncryptedId + '&isModal=' + s + '"> View  </a>' +
+                                        '&nbsp;<button class="btn btn-sm  btn-primary" onclick="editTask(' + full.Id +')"> Edit Dates </button> <button class="btn btn-sm btn-danger" onclick="deleteTask(' + full.Id + ')"> Delete </button>';
+
+                                } else if (full.Temp == 3) {
+                                    return '<a style="margin-right:3px; margin-top:2px;" class="btn btn-sm  bg-secondary" href="../Task/grouptaskDetails?v=' + full.EncryptedId + '&isModal=' + s + '"> View  </a>' +
+                                        ' <button class="btn btn-sm  btn-primary" onclick="editTask(' + full.Id +')"> Edit Dates </button> <button class="btn btn-sm btn-danger" onclick="deleteTask(' + full.Id + ')"> Delete </button>';
+                                } else if (full.Temp == 4) {
+                                    return '<a style="margin-right:3px" class="btn btn-sm  bg-secondary" href="../Task/grouptaskDetails?v=' + full.EncryptedId + '&isModal=' + s + '"> View  </a>';
+                                }
+
+
+
+                            },
+                            targets: 6
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+                })
+
+        //}
+    });
+
+
+</script>
+
+
+<script type="text/javascript">
+    function deleteTask(id) {
+        $('#sid').val(id);
+        $('#deleteGroupTask').modal("show");
+    }
+</script>
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#content').hide();
+            $('#cmd').click(function () {
+                $('#content').show();
+                var pdf = new jsPDF('p', 'pt', 'letter')
+                    , source = $('#content')[0]
+                    , specialElementHandlers = {
+                        '#bypassme': function (element, renderer) {
+                            return true
+                        }
+                    }
+                margins = {
+                    top: 60,
+                    bottom: 60,
+                    left: 40,
+                    width: 522
+                };
+                pdf.fromHTML(
+                    source
+                    , margins.left
+                    , margins.top
+                    , {
+                        'width': margins.width
+                        , 'elementHandlers': specialElementHandlers
+                    },
+                    function (dispose) {
+                        pdf.save('download_pdf.pdf');
+                    },
+                    margins
+                )
+                $('#content').hide();
+            });
+        });
+        $('#delete').on('click', function (e) {
+            $('#datadelete').empty();
+            e.preventDefault();
+            var data = '';
+            var count = 0;
+            var checkedValue = null;
+            var inputElements = document.getElementsByClassName('messageCheckbox');
+            for (var i = 0; inputElements[i]; i++) {
+                if (inputElements[i].checked) {
+                    data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+
+
+                    count = count + 1;
+
+                }
+            }
+
+            if (count == 0) {
+                $("#sbbutton1").hide();
+                $("#delText").text("No Task or Group Task has been Selected");
+            }
+            else {
+                $("#sbbutton1").show();
+                $("#delText").text("Are you sure you want to delete the Selected Tasks ");
+
+            }
+            $('#datadelete').append(data);
+
+
+            $('#modal-delete').modal("show"); // open the modal
+        });
+        </script>*@
+<script>
+    $(document).ready(function () {
+
+
+        $(".panel-body1").css('display', 'none');
+
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#TAGroupStudy").css('background-color', '#0150A1');
+        $("#TAGroupStudy").css('color', '#ffffff');
+        $("#Assignments").css('display', 'block', 'important');
+    });
+</script>
+
+

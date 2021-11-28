@@ -1,0 +1,1146 @@
+﻿
+@{
+    ViewBag.Title = "StatusReportDepartment";
+    Layout = "~/Views/Shared/_Layout_withpdf.cshtml";
+}
+@using TrainingTracker.Models;
+@using TrainingTracker.Helper_Classes;
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    //User user = new UserBL().getUsersById(logedinuser.Id);
+
+    //  List<Course> canvascourse = General_Purpose.GetCanvasUserCourses();
+    Company compny = new CompanyBL().getCompanyById(Convert.ToInt32(logedinuser.Company));
+}
+<link href="~/Content/assets/css/mycss.css" rel="stylesheet" />
+<style>
+    .page-header-default {
+        background-color: #fff;
+        margin-bottom: 00px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+</style>
+
+
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Reports</li>
+            @if (ViewBag.frId == "")
+            {
+                <li class="active">Department Report</li>
+            }
+            else
+            {
+                <li class="active">Favorite Reports</li>
+
+                <li class="active">@ViewBag.selectedreportname</li>
+
+            }
+        </ul>
+    </div>
+</div>
+
+
+<div class="modal fade" id="favoriteReport">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 class="modal-title">Save Favorite Report</h4></center>
+            </div>
+            <form action="@Url.Action("SaveStatusReport","FavoriteReport", new { ReportType = 2 })" method="post">
+
+                <input type="hidden" id="DepartmentID" name="DepartmentID" value="" />
+                <input type="hidden" id="WorkertTypeID" name="WorkerTypeID" value="" />
+                <input type="hidden" id="TaskNameID" name="TaskNameID" value="" />
+                <input type="hidden" id="TaskTypeID" name="TaskTypeID" value="" />
+                <input type="hidden" id="StatusID" name="StatusID" value="" />
+                <input type="hidden" id="PriorityID" name="PriorityID" value="" />
+                <input type="hidden" id="StartDateID" name="StartDateID" value="" />
+                <input type="hidden" id="EndDateID" name="EndDateID" value="" />
+                <input type="hidden" id="StartID" name="StartID" value="" />
+                <input type="hidden" id="EndID" name="EndID" value="" />
+                <input type="hidden" id="CompleteID" name="CompleteID" value="" />
+                <input type="hidden" id="Filterdate" name="FilterDate" value="" />
+
+
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Report Name</label>
+                        <input type="text" name="ReportName" class="form-control" required="required" maxlength="150" placeholder="Enter Favorite Report Name">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateReport">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 class="modal-title">Update Favorite Report</h4></center>
+            </div>
+            <form action="@Url.Action("UpdateStatusReport","FavoriteReport", new { ReportType = 2 })" method="post">
+                <input type="hidden" id="encodeID" name="encodeID" value="" />
+                <input type="hidden" id="updateDepartmentID" name="DepartmentID" value="" />
+                <input type="hidden" id="updateWorkTypeID" name="WorkerTypeID" value="" />
+                <input type="hidden" id="updateTaskNameID" name="TaskNameID" value="" />
+                <input type="hidden" id="updateTaskTypeID" name="TaskTypeID" value="" />
+                <input type="hidden" id="updateStatusID" name="StatusID" value="" />
+                <input type="hidden" id="updatePriorityID" name="PriorityID" value="" />
+                <input type="hidden" id="updateStartDateID" name="StartDateID" value="" />
+                <input type="hidden" id="updateEndDateID" name="EndDateID" value="" />
+                <input type="hidden" id="updateStartID" name="StartID" value="" />
+                <input type="hidden" id="updateEndID" name="EndID" value="" />
+                <input type="hidden" id="updateCompleteID" name="CompleteID" value="" />
+                <input type="hidden" id="updateFilterdate" name="FilterDate" value="" />
+
+
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Report Name</label>
+                        <input type="text" name="ReportName" id="Reportname" class="form-control" required="required" maxlength="150" placeholder="Enter Favorite Report Name">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="shareReportModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 class="modal-title">Share Favorite Report</h4></center>
+            </div>
+            <form action="@Url.Action("ShareStatusReport","FavoriteReport", new { ReportType=2 })" method="post">
+                <input type="hidden" id="shareencodeID" name="encodeID" value="" />
+                @*<input type="hidden" id="shareDivisionID" name="DivisionID" value="" />
+                    <input type="hidden" id="shareDepartmentID" name="DepartmentID" value="" />
+                    <input type="hidden" id="shareWorkertTypeID" name="WorkerTypeID" value="" />
+                    <input type="hidden" id="shareTaskNameID" name="TaskNameID" value="" />
+                    <input type="hidden" id="shareTaskTypeID" name="TaskTypeID" value="" />
+                    <input type="hidden" id="shareStatusID" name="StatusID" value="" />
+                    <input type="hidden" id="sharePriorityID" name="PriorityID" value="" />
+                    <input type="hidden" id="shareStartDateID" name="StartDateID" value="" />
+                    <input type="hidden" id="shareEndDateID" name="EndDateID" value="" />
+                    <input type="hidden" id="shareStartID" name="StartID" value="" />
+                    <input type="hidden" id="shareEndID" name="EndID" value="" />
+                    <input type="hidden" id="shareCompleteID" name="CompleteID" value="" />
+                    <input type="hidden" id="shareFilterdate" name="FilterDate" value="" />
+                    <input type="hidden" id="shareReportname" name="ReportName" value="" />*@
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Select User's Type:</label>
+                        <div class="col-lg-9">
+                            <select name="UserType" id="UserType" class="select" onchange="GetUsers()">
+                                <option value="">Select User Type</option>
+                                @if (logedinuser.Role == 1)
+                                {
+                                    <option value="1">Administrators</option>
+
+                                }
+                                @if (logedinuser.Role != 3)
+                                {
+                                    <option value="2">Managers</option>
+
+                                }
+
+                                <option value="3">Employees</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-group mt-10">
+                        <label class="control-label col-lg-3 text-bold"><span class="danger">*</span>Select Users:</label>
+                        <div class="col-lg-9" style="border:1px solid; border-radius:35px">
+                            <select required multiple="multiple" data-placeholder="Select Users" id="selectedUsers" name="selectedUsers" class="select-size-lg">
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-group mt-10">
+                        <label class="control-label col-lg-3 text-bold">Description:</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="ReportDescription" class="form-control" required="required" maxlength="150" placeholder="Enter description">
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-primary">Share</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteReport">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 class="modal-title">Delete Favorite Report</h4></center>
+            </div>
+            <form action="@Url.Action("DeleteReport","FavoriteReport")" method="post">
+
+                <input type="hidden" id="EncodedID" name="EncodedID" value="" />
+
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <h5>Are you sure you want to delete this report?</h5>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-primary">Yes</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">No</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <input type="hidden" value="@ViewBag.selectedreportname" id="reportname" />
+    <br />
+    <br />
+    <!-- Basic initialization -->
+    <div class="panel panel-flat ">
+        <div class="panel-heading page-header page-header-default has-cover">
+
+            @if (ViewBag.frId == "")
+            {
+                <center><h3 class="panel-title"><b>Status Report By Department</b></h3></center>
+            }
+            else
+            {
+                <center><h3 class="panel-title"><b>@ViewBag.selectedreportname</b></h3></center>
+            }
+
+            <div class="heading-elements page-header page-header-default has-cover">
+                <ul class="icons-list">
+
+
+                    @*<li><a data-action="collapse"></a></li>*@
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body panel1">
+            <div class="" style="margin-left:5px;">
+                @*<form action="@Url.Action("SearchStatusReportByDepartment", "Report")" method="post">*@
+
+                <div class="form-group col-md-3">
+                    <label class="control-label"><span style="color: red;">*</span>Department</label>
+                    <select class="select" onchange="Setdepartment()" id="department" name="department" required>
+
+                        @if (ViewBag.selecteddepartment != null)
+                        {
+                            <option value="@ViewBag.selecteddepartment.Id" selected>@ViewBag.selecteddepartment.Name</option>
+
+                            <option value="-1">Select Department</option>
+                            foreach (var item in ViewBag.departments)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                        else
+                        {
+                            if (ViewBag.department != null)
+                            {
+                                <option value="@ViewBag.department.Id" selected>@ViewBag.department.Name</option>
+                                <option value="-1">Select Department</option>
+
+                                foreach (var item in ViewBag.departments)
+                                {
+                                    if (item.Id != ViewBag.department.Id)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <option value="-1" selected>Select Department</option>
+                                foreach (var item in ViewBag.departments)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Task Name</label>
+                    <select class="select-results-color" name="taskId" id="selectAdminTask">
+                        @if (ViewBag.selectedtask != null)
+                        {
+                            <option value="@ViewBag.selectedtask.Id" selected>@ViewBag.selectedtask.Name</option>
+                        }
+                        else
+                        {
+                            <option value="" selected> Please Choose a Task</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Worker Type</label>
+                    <select class="select-results-color" name="workertype" id="selectWorkerType">
+                        @if (ViewBag.selectedworkertype != null)
+                        {
+                            <option value="@ViewBag.selectedworkertype.Id" selected>@ViewBag.selectedworkertype.Name</option>
+                        }
+                        else
+                        {
+                            <option value="-1" selected> Please Choose a Worker Type</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Task Type</label>
+                    <select class="select" id="taskType" name="taskType">
+                        <option value="" selected>Select Task Type</option>
+                        @if (ViewBag.selectedtasktype != null)
+                        {
+                            <option value="@ViewBag.selectedtasktype.Id" selected>@ViewBag.selectedtasktype.Name</option>
+                            foreach (var item in ViewBag.taskTypes)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                        else
+                        {
+                            if (ViewBag.taskType != null)
+                            {
+                                <option value="@ViewBag.taskType.Id" selected>@ViewBag.taskType.Name</option>
+                                foreach (var item in ViewBag.taskTypes)
+                                {
+                                    if (ViewBag.taskType.Id != item.Id)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach (var item in ViewBag.taskTypes)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Status</label>
+                    <select class="select" id="status" name="status">
+                        @if (ViewBag.selectedstatus != null)
+                        {
+                            <option value="@ViewBag.selectedstatus"> @General_Purpose.getStatusValue(Convert.ToInt32(ViewBag.selectedstatus))</option>
+                            <option value="-1"> Select Status </option>
+                            foreach (var item in ViewBag.statuses)
+                            {
+                                <option value="@item"> @General_Purpose.getStatusValue(item) </option>
+                            }
+                        }
+                        else
+                        {
+                            if (ViewBag.status != -1)
+                            {
+                                <option value="@ViewBag.status" selected>@General_Purpose.getStatusValue(ViewBag.status)</option>
+                                <option value="-1">Select Status</option>
+                                foreach (var item in ViewBag.statuses)
+                                {
+                                    if (ViewBag.status != item)
+                                    {
+                                        <option value="@item">@General_Purpose.getStatusValue(item)</option>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <option value="-1" selected> Select Status </option>
+                                foreach (var item in ViewBag.statuses)
+                                {
+                                    <option value="@item"> @General_Purpose.getStatusValue(item) </option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="col-lg-3 control-label">Priority</label>
+                    <select class="select" id="priority" name="priority">
+                        @if (ViewBag.selectedpriority != null)
+                        {
+                            <option value="">Select priority</option>
+                            if (ViewBag.selectedpriority == "0")
+                            {
+                                <option value="0" selected>Low</option>
+                            }
+                            else
+                            {
+                                <option value="0">Low</option>
+                            }
+
+                            if (ViewBag.selectedpriority == "1")
+                            {
+                                <option value="1" selected>Medium</option>
+                            }
+                            else
+                            {
+                                <option value="1">Medium</option>
+                            }
+
+                            if (ViewBag.selectedpriority == "2")
+                            {
+                                <option value="2" selected>High</option>
+                            }
+                            else
+                            {
+                                <option value="2">High</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="" selected>Select priority</option>
+                            <option value="0">Low</option>
+                            <option value="1">Medium</option>
+                            <option value="2">High</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Starting Date:</label>
+                    @if (ViewBag.selectedstartdate != null)
+                    {
+                        <input type="date" id="startDate" name="startDate" class="form-control" value="@ViewBag.selectedstartdate.ToString("yyyy-MM-dd")" />
+                    }
+                    else
+                    {
+                        <input type="date" id="startDate" name="startDate" class="form-control" value="@ViewBag.startDate" />
+                    }
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">
+                        Ending Date:
+                    </label>
+                    @if (ViewBag.selectedendDate != null)
+                    {
+                        <input type="date" id="endDate" name="endDate" class="form-control" value="@ViewBag.selectedendDate.ToString("yyyy-MM-dd")" />
+                    }
+                    else
+                    {
+                        <input type="date" id="endDate" name="endDate" class="form-control" value="@ViewBag.endDate" />
+                    }
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Filter Date</label>
+                    <select class="select-results-color" id="filterdate" name="FilterDate">
+                        @if (ViewBag.filterdate == "" || ViewBag.filterdate == null)
+                        {
+                            <option value="" selected>Please Choose a Date</option>
+                        }
+                        else
+                        {
+                            <option value="">Please Choose a Date</option>
+                        }
+
+                        @if (ViewBag.filterdate == "Tomorrow")
+                        {
+                            <option value="Tomorrow" selected>Tomorrow</option>
+                        }
+                        else
+                        {
+                            <option value="Tomorrow">Tomorrow</option>
+                        }
+
+                        @if (ViewBag.filterdate == "Today")
+                        {
+                            <option value="Today" selected>Today</option>
+                        }
+                        else
+                        {
+                            <option value="Today">Today</option>
+                        }
+
+                        @if (ViewBag.filterdate == "Yesterday")
+                        {
+                            <option value="Yesterday" selected>Yesterday</option>
+                        }
+                        else
+                        {
+                            <option value="Yesterday">Yesterday</option>
+                        }
+
+
+                        @if (ViewBag.filterdate == "NextWeek")
+                        {
+                            <option value="NextWeek" selected>Next Week</option>
+                        }
+                        else
+                        {
+                            <option value="NextWeek">Next Week</option>
+                        }
+
+                        @if (ViewBag.filterdate == "ThisWeek")
+                        {
+                            <option value="ThisWeek" selected>This Week</option>
+                        }
+                        else
+                        {
+                            <option value="ThisWeek">This Week</option>
+                        }
+
+                        @if (ViewBag.filterdate == "LastWeek")
+                        {
+                            <option value="LastWeek" selected>Last Week</option>
+                        }
+                        else
+                        {
+                            <option value="LastWeek">Last Week</option>
+                        }
+
+
+                        @if (ViewBag.filterdate == "NextMonth")
+                        {
+                            <option value="NextMonth" selected>Next Month</option>
+                        }
+                        else
+                        {
+                            <option value="NextMonth">Next Month</option>
+                        }
+
+                        @if (ViewBag.filterdate == "ThisMonth")
+                        {
+                            <option value="ThisMonth" selected>This Month</option>
+                        }
+                        else
+                        {
+                            <option value="ThisMonth">This Month</option>
+                        }
+
+                        @if (ViewBag.filterdate == "LastMonth")
+                        {
+                            <option value="LastMonth" selected>Last Month</option>
+                        }
+                        else
+                        {
+                            <option value="LastMonth">Last Month</option>
+                        }
+
+
+                        @if (ViewBag.filterdate == "NextQuarter")
+                        {
+                            <option value="NextQuarter" selected>Next Quarter</option>
+                        }
+                        else
+                        {
+                            <option value="NextQuarter">Next Quarter</option>
+                        }
+
+                        @if (ViewBag.filterdate == "ThisQuarter")
+                        {
+                            <option value="ThisQuarter" selected>This Quarter</option>
+                        }
+                        else
+                        {
+                            <option value="ThisQuarter">This Quarter</option>
+                        }
+
+                        @if (ViewBag.filterdate == "LastQuarter")
+                        {
+                            <option value="LastQuarter" selected>Last Quarter</option>
+                        }
+                        else
+                        {
+                            <option value="LastQuarter">Last Quarter</option>
+                        }
+
+
+                        @if (ViewBag.filterdate == "NextYear")
+                        {
+                            <option value="NextYear" selected>Next Year</option>
+                        }
+                        else
+                        {
+                            <option value="NextYear">Next Year</option>
+                        }
+
+                        @if (ViewBag.filterdate == "ThisYear")
+                        {
+                            <option value="ThisYear" selected>This Year</option>
+                        }
+                        else
+                        {
+                            <option value="ThisYear">This Year</option>
+                        }
+
+                        @if (ViewBag.filterdate == "LastYear")
+                        {
+                            <option value="LastYear" selected>Last Year</option>
+                        }
+                        else
+                        {
+                            <option value="LastYear">Last Year</option>
+                        }
+
+                    </select>
+                </div>
+
+                <div class="form-group col-md-12">
+                </div>
+                <div class="form-group col-md-3">
+                    <button class="btn btn-primary" onclick="generatePDF()" type="submit">Generate PDF</button>
+                </div>
+                <div class="form-group col-md-3">
+                    @*<input type="submit" class="btn btn-primary" value="Generate Excel" formaction="@Url.Action("SearchStatusReportByDepartmentExcel", "Report")">*@
+                    <input type="submit" class="btn btn-primary" value="Generate Excel" onclick="generateExcel()">
+                </div>
+                @if (ViewBag.frId == "")
+                {
+                    <div class="form-group col-md-3">
+                        <input type="button" onclick="ClearAllSearches()" value="Clear Filters" class="btn btn-sm btn-success" />
+                    </div>
+                }
+                @*</form>*@
+                @if (compny.IsFavReport == 1)
+                {
+                    if (ViewBag.frId == "")
+                    {
+                        <div class="form-group col-md-3">
+                            <button class="btn btn-info" onclick="favoriteModal()">Save As Favorite</button>
+                        </div>
+                    }
+                    else
+                    {
+                        @*<div class="form-group col-md-3">
+                            <button class="btn btn-sm btn-success" onclick="updateReportModal('@ViewBag.frId')">Update Report</button>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <button class="btn btn-sm btn-danger" onclick="deleteReportModal('@ViewBag.frId')">Delete Report</button>
+                        </div>*@
+                        <div class="form-group col-md-6">
+
+                            <div class="form-group col-md-3">
+                                <button class="btn btn-sm btn-success" onclick="updateReportModal('@ViewBag.frId')">Update Report</button>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button class="btn btn-sm btn-danger" onclick="deleteReportModal('@ViewBag.frId')">Delete Report</button>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button class="btn btn-sm bg-primary" onclick="shareReportModal('@ViewBag.frId')">Share Report</button>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /basic initialization -->
+<!-- Footer -->
+<div class="footer text-muted">
+    &nbsp; <b>
+        Powered By
+        <a href="https://nodlays.com/" target="_blank">Nodlays</a>
+    </b>
+</div>
+<!-- /footer -->
+<script>
+    function GetUsers() {
+        var UserType = $("#UserType").val();
+
+        $.ajax({
+            type: 'POST',
+            url: "../Report/getUsersByType",
+            data: {
+                UserType: UserType,
+            },
+            dataType: "json",
+            success: function (data) {
+
+
+
+                $("#selectedUsers").html("");
+                var count = 0;
+                $('#selectedUsers').empty();
+                $('#selectedUsers').append('<option value="">Select Users</option>');
+                for (var i = 0; i < data.length; i++) {
+                    var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                    $('#selectedUsers').append(division);
+                }
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+</script>
+<script>
+    function ClearAllSearches() {
+
+        // var fname=$("#fname").val();
+        // var lname=   $("#lname").val();
+        // var division=  $("#division").val();
+        var department = $("#department").val();
+        var taskName = $("#selectAdminTask").val();
+        var taskType = $("#taskType").val();
+        //    var tag = $("#tag").val();
+        //  var completionStatus= $("#completionStatus").val();
+        var status = $("#status").val();
+        var priority = $("#priority").val();
+
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
+
+
+        if (department == "-1" && taskName == "" && taskType == "" && status == "-1" && priority == "" && startDate == "" && endDate == "" && $("#start").prop('checked') == false && $("#end").prop('checked') == false && $("#complete").prop('checked') == false) {
+
+
+
+        } else {
+
+            // $("#fname").val("").change();
+            //   $("#division").val("-1").change();
+            $("#department").val("-1").change();
+            $("#selectAdminTask").html("");
+            var count = 0;
+            $('#selectAdminTask').empty();
+            $('#selectAdminTask').append('<option value="" selected > Select Task Name</option>');
+            $("#selectAdminTask").val("").change();
+            $("#taskType").val("").change();
+            // $("#tag").val("").change();
+            // $("#completionStatus").val("-1").change();
+            $("#status").val("-1").change();
+            $("#priority").val("").change();
+
+            document.getElementById("startDate").value = "";
+            document.getElementById("endDate").value = "";
+
+            $("#start").prop('checked', false);
+
+            $("#end").prop('checked', false);
+            $("#complete").prop('checked', false);
+            //  usersSearch();
+        }
+
+        // $("#division").val("-1").change();
+        ////  $("#lname").val("").change();
+        //    $("#department").val("").change();
+        //     $("#selectAdminTask").val("").change();
+        //     $("#taskType").val("").change();
+        //    //  $("#tag").val("").change();
+        //    //  $("#completionStatus").val("-1").change();
+        //     $("#status").val("-1").change();
+        //     $("#priority").val("").change();
+
+        //     document.getElementById("startDate").value="";
+        //     document.getElementById("endDate").value = "";
+
+        //     //$("#start").prop('checked', false);
+
+        //     //$("#end").prop('checked',false) ;
+        //     //$("#complete").prop('checked',false)  ;
+
+
+
+
+    }
+
+    function Setdepartment() {
+        var departmentId = $("#department").val();
+        $.ajax({
+            type: 'POST',
+            url: "../task/getTaskDTOs",
+            data: { departmentId: departmentId },
+            dataType: "json",
+            success: function (data) {
+                // get role of the user then if you are an admin then assign tasks to manager and employee
+                // if you are manager then assign to employee
+                // if you can self assign
+
+                $("#selectAdminTask").html("");
+                var count = 0;
+                $('#selectAdminTask').empty();
+                $('#selectAdminTask').append('<option value="" selected > Select Task Name</option>');
+
+                for (var i = 0; i < data.length; i++) {
+                    var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                    $('#selectAdminTask').append(division);
+                }
+
+
+
+
+
+            },
+            error: function () { alert('fail'); }
+        });
+
+
+        $.ajax({
+            type: 'POST',
+            url: "../task/getWorktypeDTOs",
+            data: { DepartmentID: departmentId },
+            dataType: "json",
+            success: function (data) {
+
+
+                $("#selectWorkerType").html("");
+                var count = 0;
+                $('#selectWorkerType').empty();
+                $('#selectWorkerType').append('<option value="" selected > Please Choose a Worker Type</option>');
+                for (var i = 0; i < data.length; i++) {
+                    var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                    $('#selectWorkerType').append(division);
+                }
+
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        $("#report2").css('background-color', '#0150A1');
+        $("#report2").css('color', '#ffffff');
+        $("#dropdown_report").css('display', 'block', 'important');
+
+    });
+
+    function favoriteModal() {
+        //$('#favoriteReport').modal("show");
+        var department = $('#department').val();
+        var workertype = $('#selectWorkerType').val();
+        var taskname = $('#selectAdminTask').val();
+        var taskType = $('#taskType').val();
+        var status = $('#status').val();
+        var priority = $('#priority').val();
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+        var filterdate = $('#filterdate').val();
+
+        //wajeeh
+        if (department == -1) {
+            alert("Please Select Department");
+        }
+        else {
+            $('#DepartmentID').val(department);
+            $('#WorkertTypeID').val(workertype);
+            $('#TaskNameID').val(taskname);
+            $('#TaskTypeID').val(taskType);
+            $('#StatusID').val(status);
+            $('#PriorityID').val(priority);
+            $('#StartDateID').val(startDate);
+            $('#EndDateID').val(endDate);
+            $('#Filterdate').val(filterdate);
+            //$('#StartID').val(start);
+            //$('#EndID').val(end);
+            //$('#CompleteID').val(complete);
+
+            $('#favoriteReport').modal("show");
+        }
+        
+
+        //var a = $('#start').prop('checked');
+        //var b = $('#end').prop('checked');
+        //var c = $('#complete').prop('checked');
+
+
+        //if (a == true)
+        //{
+        //    $('#StartID').val("true");
+        //}
+        //else
+        //{
+        //    $('#StartID').val("false");
+        //}
+        //if (b == true)
+        //{
+        //    $('#EndID').val("true");
+        //}
+        //else
+        //{
+        //    $('#EndID').val("false");
+        //}
+        //if (c == true)
+        //{
+        //    $('#CompleteID').val("true");
+        //}
+        //else
+        //{
+        //    $('#CompleteID').val("false");
+        //}
+
+    }
+
+    function shareReportModal(encodedId) {
+
+        //  var division = $('#division').val();
+        //  var department = $('#selectAdminDepartment').val();
+        //  var workertype = $('#selectWorkerType').val();
+        //  var taskname = $('#selectAdminTask').val();
+        //  var taskType = $('#taskType').val();
+        //  var status = $('#status').val();
+        //  var priority = $('#priority').val();
+        //  var startDate = $('#startDate').val();
+        //  var endDate = $('#endDate').val();
+        //  var reportname = $('#reportname').val();
+        // // var reportname = $('#reportname').val();
+        //  var filterdate = $('#filterdate').val();
+        ////  var reportType = $('#ReportType').val(); 
+
+        //  $('#shareDivisionID').val(division);
+        //  $('#shareDepartmentID').val(department);
+        //  $('#shareWorkertTypeID').val(workertype);
+        //  $('#shareTaskNameID').val(taskname);
+        //  $('#shareTaskTypeID').val(taskType);
+        //  $('#shareStatusID').val(status);
+        //  $('#sharePriorityID').val(priority);
+        //  $('#shareStartDateID').val(startDate);
+        //  $('#shareEndDateID').val(endDate);
+        //  $('#shareReportname').val(reportname);
+        //  $('#shareFilterdate').val(filterdate);
+        // // $('#shareReportType').val(reportType);
+
+        var EncodedId = encodedId;
+
+        $('#shareencodeID').val(EncodedId);
+
+        var department = $('#department').val();
+
+        if (department == -1) {
+            alert("Please Select Department");
+        }
+        else {
+             $('#shareReportModal').modal("show");
+        }
+       
+    }
+
+    function updateReportModal(encodedId) {
+
+        var department = $('#department').val();
+        var workertype = $('#selectWorkerType').val();
+        var taskname = $('#selectAdminTask').val();
+        var taskType = $('#taskType').val();
+        var status = $('#status').val();
+        var priority = $('#priority').val();
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+        var filterdate = $('#filterdate').val();
+
+        //var a = $('#start').prop('checked');
+        //var b = $('#end').prop('checked');
+        //var c = $('#complete').prop('checked');
+
+
+        //if (a == true)
+        //{
+        //    $('#updateStartID').val("true");
+        //}
+        //else
+        //{
+        //    $('#updateStartID').val("false");
+        //}
+        //if (b == true)
+        //{
+        //    $('#updateEndID').val("true");
+        //}
+        //else
+        //{
+        //    $('#updateEndID').val("false");
+        //}
+        //if (c == true)
+        //{
+        //    $('#updateCompleteID').val("true");
+        //}
+        //else
+        //{
+        //    $('#updateCompleteID').val("false");
+        //}
+
+        $('#updateDepartmentID').val(department);
+        $('#updateWorkTypeID').val(workertype);
+        $('#updateTaskNameID').val(taskname);
+        $('#updateTaskTypeID').val(taskType);
+        $('#updateStatusID').val(status);
+        $('#updatePriorityID').val(priority);
+        $('#updateStartDateID').val(startDate);
+        $('#updateEndDateID').val(endDate);
+        $('#updateFilterdate').val(filterdate);
+        //$('#updateStartID').val(start);
+        //$('#updateEndID').val(end);
+        //$('#updateCompleteID').val(complete);
+
+
+        var reportname = $('#reportname').val();
+        $('#Reportname').val(reportname);
+
+
+        var EncodedId = encodedId;
+        $('#encodeID').val(EncodedId);
+
+        $('#updateReport').modal("show");
+    }
+
+    function deleteReportModal(encodedId) {
+
+        var EncodedId = encodedId;
+
+
+        $('#EncodedID').val(EncodedId);
+
+        $('#deleteReport').modal("show");
+    }
+</script>
+
+<script>
+
+    function generateExcel()
+    {
+        
+        var department = $('#department').val();
+        var taskId = $('#selectAdminTask').val();
+        var workertype = $('#selectWorkerType').val();
+        var taskType = $('#taskType').val();
+        var status = $('#status').val();
+        var priority = $('#priority').val();
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+        var filterdate = $('#filterdate').val();
+
+        if (department == -1)
+        {
+            alert("Please Select Department");
+        }
+        else
+        {
+
+            $.ajax({
+                type: 'POST',
+                url: "../Report/AsyncDepartmentReportExcel",
+                data: {
+                    FilterDate: filterdate,
+                    startDate: startDate,
+                    endDate: endDate,
+                    department: department,
+                    taskId: taskId,
+                    taskType: taskType,
+                    status: status,
+                    priority: priority,
+                    workertype: workertype
+                },
+                success: function (data)
+                {
+                    $("#modal-Report").modal("show");
+
+                },
+                error: function ()
+                {
+                    alert('fail');
+                }
+            });
+        }
+    }
+
+
+
+    function generatePDF()
+    {
+        var department = $('#department').val();
+        var taskId = $('#selectAdminTask').val();
+        var workertype = $('#selectWorkerType').val();
+        var taskType = $('#taskType').val();
+        var status = $('#status').val();
+        var priority = $('#priority').val();
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+        var filterdate = $('#filterdate').val();
+
+        if (department == -1)
+        {
+            alert("Please Select Department");
+        }
+        else
+        {
+            
+            $.ajax({
+                type: 'POST',
+                url: "../Report/AsyncDepartmentReportPdf",
+                data: {
+                    FilterDate: filterdate,
+                    startDate: startDate,
+                    endDate: endDate,
+                    department: department,
+                    taskId: taskId,
+                    taskType: taskType,
+                    status: status,
+                    priority: priority,
+                    workertype: workertype
+                },
+                //dataType: "json",
+                success: function (data)
+                {
+                    $("#modal-Report").modal("show");
+
+                },
+                error: function ()
+                {
+                    alert('fail');
+                }
+            });
+        }
+    }
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#DepartmentReport").css('background-color', '#0150A1');
+        $("#DepartmentReport").css('color', '#ffffff');
+        $("#Reports").css('display', 'block', 'important');
+    });
+</script>

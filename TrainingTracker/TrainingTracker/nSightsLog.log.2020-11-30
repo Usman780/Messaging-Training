@@ -1,0 +1,194 @@
+2020-11-30 10:31:39,090 INFO MonitoringLogger - BlobManager function started
+2020-11-30 10:42:27,180 INFO MonitoringLogger - BlobManager function started
+2020-11-30 10:46:14,623 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 10:46:16,468 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 10:46:32,214 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 10:46:33,320 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 10:47:10,181 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2020-11-30 10:47:10,455 INFO MonitoringLogger - BlobManager function started
+2020-11-30 10:47:19,272 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :
+2020-11-30 10:47:34,129 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 10:47:35,236 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 10:47:45,013 INFO MonitoringLogger - Task Details Page
+2020-11-30 10:47:45,308 INFO MonitoringLogger - BlobManager function started
+2020-11-30 10:48:40,899 INFO MonitoringLogger - Task Details Page
+2020-11-30 10:48:41,176 INFO MonitoringLogger - BlobManager function started
+2020-11-30 10:48:41,590 INFO MonitoringLogger - Task Details Page
+2020-11-30 10:48:41,867 INFO MonitoringLogger - BlobManager function started
+2020-11-30 10:49:21,795 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 10:49:22,915 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 10:49:40,410 INFO MonitoringLogger - BlobManager function started
+2020-11-30 10:49:42,204 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 10:49:43,302 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 10:54:25,303 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 10:54:26,391 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 10:54:34,759 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 10:54:35,855 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 10:55:01,259 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 10:55:02,353 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:01:03,440 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:01:04,742 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:01:30,282 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:01:44,912 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:01:45,998 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:02:03,340 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:02:04,426 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:02:23,193 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:02:24,578 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:02:25,668 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:12:10,623 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:12:11,973 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:13:36,648 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:13:39,508 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:13:40,597 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:13:58,099 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:13:59,192 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:14:15,217 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:14:15,594 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:15:22,524 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:15:22,796 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:17:16,468 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:17:16,741 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:18:29,723 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:18:29,993 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:19:01,446 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:19:02,530 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:19:27,534 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:19:28,617 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:19:35,836 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:19:36,107 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:20:03,993 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:20:04,264 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:20:05,153 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-30 11:20:34,593 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:20:34,866 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:20:35,686 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-30 11:21:15,503 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:21:15,778 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:21:16,598 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-30 11:21:37,350 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:21:38,435 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:22:31,979 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:22:33,729 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:23:01,297 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:23:05,235 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:23:06,987 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:23:19,425 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:23:21,184 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:23:34,048 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:23:34,489 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:23:35,815 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-30 11:24:28,118 INFO MonitoringLogger - Update Admin Page...
+2020-11-30 11:24:29,461 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-11-30 11:26:40,042 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:27:50,195 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:31:43,058 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:38:28,599 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-11-30 11:42:31,842 INFO MonitoringLogger - Update Manger Page
+2020-11-30 11:42:32,118 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2020-11-30 11:42:33,225 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-11-30 11:42:42,383 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:42:47,708 INFO MonitoringLogger - Update Manger Page
+2020-11-30 11:42:47,992 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2020-11-30 11:42:49,110 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-11-30 11:43:53,162 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:44:29,607 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:44:30,698 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:44:45,303 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 11:44:47,638 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 11:44:59,754 INFO MonitoringLogger - Task Details Page
+2020-11-30 11:45:00,198 INFO MonitoringLogger - BlobManager function started
+2020-11-30 11:45:01,380 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-30 12:17:48,119 INFO MonitoringLogger - Hussnain's Logedout from Zuptu
+2020-11-30 12:18:27,771 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 12:18:29,038 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 12:18:46,342 INFO MonitoringLogger - Task Details Page
+2020-11-30 12:18:46,793 INFO MonitoringLogger - BlobManager function started
+2020-11-30 12:18:48,615 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-30 12:18:50,695 INFO MonitoringLogger - Comment's ParentID : 47984
+2020-11-30 12:19:08,042 INFO MonitoringLogger - BlobManager function started
+2020-11-30 12:19:09,391 INFO MonitoringLogger - Update Employee Page...
+2020-11-30 12:19:10,490 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-11-30 12:19:31,546 INFO MonitoringLogger - Hussnain Logedout from Zuptu
+2020-11-30 12:41:20,663 INFO MonitoringLogger - BlobManager function started
+2020-11-30 14:59:48,785 INFO MonitoringLogger - Task Details Page
+2020-11-30 14:59:50,046 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:00:30,592 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:00:30,871 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:03:17,857 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:03:18,136 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:05:22,847 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:05:23,121 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:07:23,466 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:07:24,047 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:20:41,569 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:20:44,230 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:25:40,219 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:25:40,495 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:26:35,302 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:26:35,573 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:34:23,681 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:34:25,861 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:39:18,978 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:39:19,281 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:40:27,481 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:40:27,753 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:42:32,226 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:42:32,499 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:42:56,854 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:42:57,191 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:45:01,542 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:45:01,815 INFO MonitoringLogger - BlobManager function started
+2020-11-30 15:49:38,885 INFO MonitoringLogger - Task Details Page
+2020-11-30 15:49:40,776 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:43:52,416 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:43:52,792 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:47:12,447 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:47:12,964 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:47:44,469 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:47:44,744 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:48:21,379 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:48:21,653 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:48:42,549 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:48:42,878 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:49:41,038 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:49:41,382 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:50:16,434 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:50:16,707 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:52:52,913 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:52:53,187 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:54:06,784 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:54:07,061 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:55:36,300 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:55:36,587 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:56:46,361 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:56:46,639 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:57:22,431 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:57:22,709 INFO MonitoringLogger - BlobManager function started
+2020-11-30 17:59:15,970 INFO MonitoringLogger - Task Details Page
+2020-11-30 17:59:16,245 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:01:27,848 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:01:28,126 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:01:57,953 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:01:58,225 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:03:41,413 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:03:41,698 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:11:54,696 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:11:54,985 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:13:47,021 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:13:47,300 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:21:00,394 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:21:06,390 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:22:01,035 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:22:01,311 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:54:02,480 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:54:03,608 INFO MonitoringLogger - BlobManager function started
+2020-11-30 18:56:57,120 INFO MonitoringLogger - Task Details Page
+2020-11-30 18:56:57,422 INFO MonitoringLogger - BlobManager function started
+2020-11-30 19:00:13,402 INFO MonitoringLogger - Task Details Page
+2020-11-30 19:00:13,699 INFO MonitoringLogger - BlobManager function started
+2020-11-30 19:06:35,954 INFO MonitoringLogger - Task Details Page
+2020-11-30 19:07:59,695 INFO MonitoringLogger - Task Details Page
+2020-11-30 19:07:59,992 INFO MonitoringLogger - BlobManager function started
+2020-11-30 19:10:23,946 INFO MonitoringLogger - Task Details Page
+2020-11-30 19:10:24,221 INFO MonitoringLogger - BlobManager function started

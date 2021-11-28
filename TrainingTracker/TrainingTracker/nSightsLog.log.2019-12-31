@@ -1,0 +1,32 @@
+2019-12-31 14:45:48,680 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2019-12-31 15:22:15,096 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2019-12-31 15:22:26,933 INFO MonitoringLogger - Waseem Loged Into Zuptu
+2019-12-31 15:23:35,647 INFO MonitoringLogger - Task Details Page
+2019-12-31 15:23:35,975 INFO MonitoringLogger - BlobManager function started
+2019-12-31 15:24:27,113 INFO MonitoringLogger - Task Details Page
+2019-12-31 15:24:27,451 INFO MonitoringLogger - BlobManager function started
+2019-12-31 15:24:52,016 INFO MonitoringLogger - Task Details Page
+2019-12-31 15:24:52,334 INFO MonitoringLogger - BlobManager function started
+2019-12-31 15:30:52,896 INFO MonitoringLogger - Task Details Page
+2019-12-31 15:30:55,383 INFO MonitoringLogger - BlobManager function started
+2019-12-31 15:42:19,785 INFO MonitoringLogger - BlobManager function started
+2019-12-31 15:52:47,259 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-31 15:52:47,259 INFO MonitoringLogger - Child Comment ID : 400
+2019-12-31 15:52:47,259 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  400
+2019-12-31 15:52:47,259 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 400
+2019-12-31 15:52:54,438 INFO MonitoringLogger - BlobManager function started
+2019-12-31 15:53:28,130 INFO MonitoringLogger - Update Employee Page...
+2019-12-31 15:53:29,172 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: haider@nodlays.com
+2019-12-31 16:02:33,592 INFO MonitoringLogger - Update Employee Page...
+2019-12-31 16:02:36,208 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: haider@nodlays.com
+2019-12-31 16:07:25,552 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:h@gmail.com
+2019-12-31 16:20:13,388 INFO MonitoringLogger - Update Employee Page...
+2019-12-31 16:20:14,403 INFO MonitoringLogger - Emplo]yees's Canvas Login Mail Retreived from Database: haider@nodlays.com
+2019-12-31 16:21:53,302 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2019-12-31 16:22:07,026 INFO MonitoringLogger - BlobManager function started
+2019-12-31 16:22:11,471 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :haider@nodlays.com
+2019-12-31 16:22:12,973 INFO MonitoringLogger - Update Employee Page...
+2019-12-31 16:22:13,984 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: haider@nodlays.com
+2019-12-31 16:28:57,298 INFO MonitoringLogger - Update Employee Page...
+2019-12-31 16:28:58,325 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2019-12-31 16:29:45,951 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:test@nodlays.com

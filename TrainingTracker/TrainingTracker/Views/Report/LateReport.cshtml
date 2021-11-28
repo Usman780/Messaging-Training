@@ -1,0 +1,492 @@
+﻿@{
+    ViewBag.Title = "StatusReportDivision";
+    Layout = "~/Views/Shared/_Layout_withpdf.cshtml";
+}
+@using TrainingTracker.HelpingClasses
+
+<link href="~/Content/assets/css/mycss.css" rel="stylesheet" />
+<style>
+    .page-header-default {
+        background-color: #fff;
+        margin-bottom: 00px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+</style>
+
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Reports</li>
+            <li class="active">Late Report</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal fade" id="LateteReportNotification">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 class="modal-title">Late Report Notification</h4></center>
+            </div>
+            <form action="@Url.Action("LateReportNotification","Report")" method="post">
+                <input type="hidden" id="usertaskId" name="usertaskId" />
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">User Name</label>
+                        <input type="text" id="username" name="username" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Task Name</label>
+                        <input type="text" id="taskname" name="taskname" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">User Email</label>
+                        <input type="text" id="useremail" name="useremail" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">User Phone Number</label>
+                        <input type="text" id="userPhoneNumber" name="userPhoneNumber" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Notification's Subject</label>
+                        <input type="text" name="subject" class="form-control" required="required" />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Notification's Content</label>
+                        <textarea rows="4" name="emailcontent" class="form-control" required="required"></textarea>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class="col-md-4">
+                            <label class="control-label">Email Notification</label>
+                            <input type="radio" name="Notification1" class="form-control" value="1" onclick="radio1()" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label">SMS Notification</label>
+                            <input type="radio" name="Notification2" class="form-control" value="2" onclick="radio2()" />
+                        </div>
+                    </div>
+                    <br /><p style="color:red;">Note: If you do not check any option then by default an email will be sent to the user.</p>
+                </div>
+                <br />
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-primary">Send</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">No</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="NotifyAllModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 class="modal-title">Late Report Notifications To All</h4></center>
+            </div>
+            <form action="@Url.Action("AllLateReportNotifications","Report")" method="post">
+
+                <input type="hidden" id="senddivision" name="senddivision" />
+                <input type="hidden" id="senddepartment" name="senddepartment" />
+                <input type="hidden" id="sendtaskType" name="sendtaskType" />
+                <input type="hidden" id="senddays" name="senddays" />
+
+                <div class="modal-body">
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Notifications Subject</label>
+                        <input type="text" name="sendsubject" class="form-control" required="required" />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Notifications Content</label>
+                        <textarea rows="4" name="sendcontent" class="form-control" required="required"></textarea>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class="col-md-4">
+                            <label class="control-label">Email Notifications</label>
+                            <input type="radio" name="Notification1" class="form-control" value="1" onclick="radio1()" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label">SMS Notifications</label>
+                            <input type="radio" name="Notification2" class="form-control" value="2" onclick="radio2()" />
+                        </div>
+                    </div>
+                    <br /><p style="color:red;">Note: If you do not check any option then by default an email will be sent to all the users.</p>
+                </div>
+                <br />
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-primary">Send</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">No</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <br />
+    <br />
+    <!-- Basic initialization -->
+    <div class="panel panel-flat ">
+        <div class="panel-heading page-header page-header-default has-cover">
+            <center><h3 class="panel-title"><b>Late Reports</b></h3></center>
+        </div>
+        <div class="panel-body panel1">
+            <div class="" style="margin-left:5px;">
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label class="control-label"><span style="color: red;">*</span>Division</label>
+                        <select class="select" onchange="setdivsionvalues()" id="division" name="division" required>
+                            @if (ViewBag.divisions != null)
+                            {
+                                <option value="-1">Please Choose a Division</option>
+
+                                foreach (var item in ViewBag.divisions)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Department</label>
+                        <select class="select-results-color" onchange="Setdepartment()" name="department" id="selectAdminDepartment">
+                            <option value="" selected>Please Choose a Department</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Task Name</label>
+                        <select class="select-results-color" name="taskId" id="selectAdminTask">
+                            @if (ViewBag.selectedtask != null)
+                            {
+                                <option value="@ViewBag.selectedtask.Id" selected>@ViewBag.selectedtask.Name</option>
+                            }
+                            else
+                            {
+                                <option value="" selected>Please Choose a Task</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Task Type</label>
+                        <select class="select" id="taskType" name="taskType">
+                            <option value="">Please Choose a Task Type</option>
+
+                            @if (ViewBag.taskType != null)
+                            {
+                                <option value="@ViewBag.taskType.Id" selected>@ViewBag.taskType.Name</option>
+                                foreach (var item in ViewBag.taskTypes)
+                                {
+                                    if (ViewBag.taskType.Id != item.Id)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach (var item in ViewBag.taskTypes)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label"><span style="color: red;">*</span>Number of Days</label>
+                        <select class="select" id="days" name="days" required>
+                            <option value="" selected>Please Choose an Option</option>
+                            <option value="30">1 - 30 days</option>
+                            <option value="60">31 - 60 days</option>
+                            <option value="90">61 - 90 days</option>
+                            <option value="91">Above 90 days</option>
+                            <option value="92">Less than 90 days</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <button onclick="CallDataTable()" class="btn btn-sm btn-primary">Search</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <br />
+        <div class="col-md-2 pull-right"><a onclick="NotifyToAll()" class="btn btn-sm btn-info">Notifications To All</a></div>
+        <br /><br />
+        <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>User Name</th>
+                    <th>Division</th>
+                    <th>Department</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Late Days</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<!-- /basic initialization -->
+<!-- Footer -->
+<div class="footer text-muted">
+    &nbsp; <b>
+        Powered By
+        <a href="https://nodlays.com/" target="_blank">Nodlays</a>
+    </b>
+</div>
+<!-- /footer -->
+<script>
+    function ClearAllSearches() {
+        var division = $("#division").val();
+        var department = $("#selectAdminDepartment").val();
+        var taskName = $("#selectAdminTask").val();
+        var taskType = $("#taskType").val();
+        var status = $("#status").val();
+        var priority = $("#priority").val();
+
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
+
+
+        if (division == "-1" && department == "" && taskName == "" && taskType == "" && status == "-1" && priority == "" && startDate == "" && endDate == "" && $("#start").prop('checked') == false && $("#end").prop('checked') == false && $("#complete").prop('checked') == false) {
+
+
+
+        } else {
+            $("#division").val("-1").change();
+            $("#department").val("").change();
+            $("#selectAdminTask").html("");
+            var count = 0;
+            $('#selectAdminTask').empty();
+            $('#selectAdminTask').append('<option value="" selected > Select Task Name</option>');
+            $("#selectAdminTask").val("").change();
+            $("#taskType").val("").change();
+            $("#status").val("-1").change();
+            $("#priority").val("").change();
+
+            document.getElementById("startDate").value = "";
+            document.getElementById("endDate").value = "";
+
+            $("#start").prop('checked', false);
+
+            $("#end").prop('checked', false);
+            $("#complete").prop('checked', false);
+        }
+    }
+
+
+    function setdivsionvalues() {
+        var divisionId = $("#division").val();
+        $.ajax({
+            type: 'POST',
+            url: "../task/getDepartmentDTOs",
+            data: { divisionId: divisionId },
+            dataType: "json",
+            success: function (data) {
+
+
+                $("#selectAdminDepartment").html("");
+                var count = 0;
+                $('#selectAdminDepartment').empty();
+                $('#selectAdminDepartment').append('<option value="" selected >Select Department</option>');
+                for (var i = 0; i < data.length; i++) {
+                    var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                    $('#selectAdminDepartment').append(division);
+                }
+
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+
+
+    function Setdepartment() {
+        var departmentId = $("#selectAdminDepartment").val();
+        $.ajax({
+            type: 'POST',
+            url: "../task/getTaskDTOs",
+            data: { departmentId: departmentId },
+            dataType: "json",
+            success: function (data) {
+
+                $("#selectAdminTask").html("");
+                $('#selectAdminTask').empty();
+                $('#selectAdminTask').append('<option value="" selected>Please Choose a Task Name</option>');
+
+                for (var i = 0; i < data.length; i++) {
+                    var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                    $('#selectAdminTask').append(division);
+                }
+
+
+
+
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+</script>
+
+<script>
+
+    function CallDataTable()
+    {
+        $('#example').DataTable().clear();
+        $('#example').DataTable().destroy();
+
+        var division = $('#division').val();
+        var department = $('#selectAdminDepartment').val();
+        var taskType = $('#taskType').val();
+        var days = $('#days').val();
+        var selectAdminTask = $('#selectAdminTask').val();
+
+        if (division == "" || days == "") {
+            alert("Please select mandatory fields *");
+        }
+        else {
+            $('#example').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetDisplayTask","Report")',
+                        "type": "GET",
+                        "data": { division: division, department: department, taskType: taskType, days: days, taskId: selectAdminTask },
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "TaskName", "name": "Task Name" },
+                        { "data": "UserName", "name": "User Name" },
+                        { "data": "Division", "name": "Division" },
+                        { "data": "Department", "name": "Department" },
+                        { "data": "StartDate", "name": "Start Date" },
+                        { "data": "EndDate", "name": "End Date" },
+                        { "data": "LateDays", "name": "Late Days" },
+                    ],
+
+                    'columnDefs': [
+                        {
+
+                            render: function (data, type, full, meta) {
+                                return ' <button onclick="TaskNotification(' + full.Id + ')" class="btn btn-sm bg-secondary">Send Notification</a>';
+                            },
+                            targets: 7
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                    initComplete: function () {
+                    },
+                })
+        }
+    }
+
+
+    function TaskNotification(Id) {
+
+        $.ajax({
+            type: 'POST',
+            url: "../Report/getLateEmployeeDTO",
+            data: { Id: Id },
+            dataType: "json",
+            success: function (data) {
+                $("#username").val(data.UserName);
+                $("#taskname").val(data.TaskName);
+                $("#useremail").val(data.UserEmail);
+                $("#userPhoneNumber").val(data.PhoneNumber);
+                $("#usertaskId").val(data.Id);
+            },
+            error: function () { alert('fail'); }
+        });
+
+        $('#LateteReportNotification').modal("show");
+        }
+
+
+
+    function NotifyToAll() {
+
+        $('#NotifyAllModal').modal("show");
+
+        var division = $('#division').val();
+        var department = $('#selectAdminDepartment').val();
+        var tasktype = $('#taskType').val();
+        var days = $('#days').val();
+
+        $('#senddivision').val(division);
+        $('#senddepartment').val(department);
+        $('#sendtaskType').val(tasktype);
+        $('#senddays').val(days);
+    }
+
+
+
+    function radio1()
+    {
+        $(document).on("click", "input[name='Notification1']", function(){
+    thisRadio = $(this);
+    if (thisRadio.hasClass("imChecked")) {
+        thisRadio.removeClass("imChecked");
+        thisRadio.prop('checked', false);
+    } else {
+        thisRadio.prop('checked', true);
+        thisRadio.addClass("imChecked");
+    };
+})
+    }
+
+    function radio2()
+    {
+        $(document).on("click", "input[name='Notification2']", function(){
+    thisRadio = $(this);
+    if (thisRadio.hasClass("imChecked")) {
+        thisRadio.removeClass("imChecked");
+        thisRadio.prop('checked', false);
+    } else {
+        thisRadio.prop('checked', true);
+        thisRadio.addClass("imChecked");
+    };
+})
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#LateReport").css('background-color', '#0150A1');
+        $("#LateReport").css('color', '#ffffff');
+        $("#Reports").css('display', 'block', 'important');
+    });
+</script>

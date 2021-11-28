@@ -1,0 +1,327 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zuptu Task Management App</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/colors.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="~/Content/Images/ig.png" type="image/x-icon" sizes="16x16">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/bootstrap.min.js"></script>
+
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/validation/validate.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/styling/uniform.min.js"></script>
+
+
+
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/ripple.min.js"></script>
+    <!-- /theme JS files -->
+    <style>
+        .clr {
+            color: #0150A1;
+        }
+    </style>
+</head>
+
+<body class="login-container">
+    <!-- Main navbar -->
+    <div class="navbar navbar-inverse bg-primary">
+
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <!-- Content area -->
+                <div class="content">
+                    <center><h6 style="color: red;">@ViewBag.msg</h6></center>
+                    <div class="row">
+                        <div class="col-md-offset-4 col-md-4">
+                            <!-- Simple login form -->
+                            <form action="@Url.Action("addAdmin","Utilities")" method="post" id="signForm">
+                                <div class="panel panel-body">
+
+
+
+                                    <div class="text-center">
+                                        <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+                                        <h5 class="content-group">Create new account <small class="display-block">It's quick and easy.</small></h5>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group has-feedback has-feedback-left">
+                                                <input type="text" class="form-control" maxlength="49" onkeyup="validatecompany(this)" placeholder="Compnay Name" id="CompanyName" name="CompanyName" required>
+                                                <div class="form-control-feedback">
+                                                    <i class="icon-home9 text-muted"></i>
+                                                </div>
+                                                <label id="CompanyerrorDisplay" class="control-label text-danger" hidden> Company Name already exist in the System.  </label>
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group has-feedback has-feedback-left">
+                                                    <input type="text" class="form-control" maxlength="49" pattern="[A-Za-z]+" title="Alphabets Only" placeholder="First Name" name="FirstName" required>
+                                                    <div class="form-control-feedback">
+                                                        <i class="icon-user text-muted"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group has-feedback has-feedback-left">
+                                                    <input type="text" class="form-control" maxlength="49" pattern="[A-Za-z]+" title="Alphabets Only" placeholder="Last Name" name="LastName" required>
+                                                    <div class="form-control-feedback">
+                                                        <i class="icon-user text-muted"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group has-feedback has-feedback-left">
+                                            @*<input type="email" onkeyup="vlidate(this)" class="form-control" maxlength="49" placeholder="Email" name="email" required>*@
+                                            <input type="email" onkeyup="vlidate(this)" class="form-control" maxlength="49" placeholder="Email" id="email" name="email" required>
+                                            <div class="form-control-feedback">
+                                                <i class="icon-envelop text-muted"></i>
+                                            </div>
+                                            <label id="errorDisplay" class="control-label text-danger" hidden> Email already exist in the System. Please ask respective Admin to remove it.  </label>
+
+                                        </div>
+                                        <div class="form-group has-feedback has-feedback-left">
+                                            <input type="text" class="form-control" placeholder="Phone Number" maxlength="20"  name="phonenumber" required>
+                                            <div class="form-control-feedback">
+                                                <i class="icon-user text-muted"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback has-feedback-left">
+                                            <input type="text" class="form-control" placeholder="Home Number" maxlength="19" name="homenumber">
+                                            <div class="form-control-feedback">
+                                                <i class="icon-phone text-muted"></i>
+                                            </div>
+                                        </div>
+                                        @*<div class="form-group has-feedback has-feedback-left">
+                                            <input type="password" class="form-control" name="password" id="password1" required  maxlength="19" placeholder="Password" >
+                                            <div class="form-control-feedback">
+                                                <i class="icon-lock2 text-muted"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback has-feedback-left">
+                                            <input type="password" class="form-control" id="password2" name="password2" required maxlength="19" onkeyup="validate()" placeholder="Confirm Password" >
+                                            <div class="form-control-feedback">
+                                                <i class="icon-lock2 text-muted"></i>
+                                            </div>
+                                            <p class="text-danger" id="validate-status"></p>
+                                            <p class="text-success" id="validate-status1"></p>
+                                        </div>*@
+                                        <div class="form-group login-options">
+                                            <div class="row">
+
+                                                <div class="col-sm-12 text-left">
+                                                    <a class="text-danger">@ViewBag.errorMsg</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group login-options">
+                                            <div class="row">
+
+                                                <div class="col-sm-12 text-right">
+                                                    <a class="clr" href="@Url.Action("Login","Auth")"><b>Already a User? Click to Login</b></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" id="submit" class="btn btn-sm  bg-primary btn-block">SignUp <i class="icon-arrow-right14 position-right"></i></button>
+                                        </div>
+                                        <span><b> Powered By </b><a class="clr" href="http://nodlays.com/"><b>Nodlays</b></a></span>
+                                    </div>
+
+
+</form>
+                        </div>
+                    </div>
+                    <!-- /simple login form -->
+                    <!-- Footer -->
+                    <div class="footer text-muted text-center">
+
+                    </div>
+                    <!-- /footer -->
+                </div>
+                <!-- /content area -->
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#password2").keyup(validate);
+        });
+
+        var x=false;
+        function validate() {
+            var password1 = $("#password1").val();
+            var password2 = $("#password2").val();
+
+       
+
+            if (password1 == password2) {
+              //var $c = document.getElementById("submit").getAttribute('disabled');
+                //var $c=(document.body.getAttribute('something'));
+                
+                    //var attr = $('#submit').attr('disabled');
+
+                    // For some browsers, `attr` is undefined; for others,
+                    // `attr` is false.  Check for both.
+                    
+
+                if (x == true) {
+                    $("#validate-status1").text("Password is valid.");
+                    $("#validate-status").text("");
+                    $('#submit').attr('disabled', true)
+                     $('#email').attr('disabled', true)
+                     $('#CompanyName').attr('disabled', true)
+                } else {
+                    $("#validate-status1").text("Password is valid.");
+                    $("#validate-status").text("");
+                    $('#submit').attr('disabled', false)
+                     $('#email').attr('disabled', false)
+                     $('#CompanyName').attr('disabled', false)
+                    
+                }
+               
+            }
+            else {
+                $("#validate-status1").text("");
+                $("#validate-status").text("Password and Confirm Password doesn't match.");
+                $('#submit').attr('disabled', true)
+                $('#email').attr('disabled', true)
+                     $('#CompanyName').attr('disabled', true)
+
+            }
+
+        }
+     
+
+        function vlidate(title) {
+
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("SignUpemailValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data:title.value },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json == 0) {
+                       $('#errorDisplay').hide();
+                       $('#submit').attr('disabled', false)
+                       $('#CompanyName').attr('disabled', false)
+                       $('#password1').attr('disabled', false)
+                       $('#password2').attr('disabled', false)
+                       
+                       x = false;
+                       }
+               else
+                   {
+                       $('#errorDisplay').show();
+                       $('#submit').attr('disabled', true)
+                       $('#submit').attr('disabled', true)
+                       $('#CompanyName').attr('disabled', true)
+                       $('#password1').attr('disabled', true)
+                       $('#password2').attr('disabled', true)
+                       x = true;
+               }
+
+               },
+               error: function (data) {
+                   alert(data)
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+
+
+
+
+
+        var y=false;
+
+           function validatecompany(title) {
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("SignUpCompanyValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data:title.value },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json == 0) {
+                       $('#CompanyerrorDisplay').hide();
+                       $('#submit').attr('disabled', false)
+                       $('#password1').attr('disabled', false)
+                       $('#password2').attr('disabled', false)
+                       $('#email').attr('disabled', false)
+                       
+                       y = false;
+                       }
+               else
+                   {
+                       $('#CompanyerrorDisplay').show();
+                       $('#submit').attr('disabled', true)
+                        $('#password1').attr('disabled', true)
+                        $('#password2').attr('disabled', true)
+                       $('#email').attr('disabled', true)
+
+                       y = true;
+               }
+
+               },
+               error: function (data) {
+                   alert(data)
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+        });
+
+        }
+
+    </script>
+    <!-- /page container -->
+</body>
+</html>
+
+
+
+

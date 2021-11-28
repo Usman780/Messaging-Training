@@ -1,0 +1,513 @@
+﻿
+@{
+    ViewBag.Title = "displayEmpAnalaysis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+<style>
+    #backbtn {
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+</style>
+@{
+    string empname = ViewBag.user.FirstName + " " + ViewBag.user.LastName;
+
+    if (ViewBag.way == "Manager")
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li class="active"><a href="@Url.Action("DisplayEmployee","Utilities" )">Employees</a></li>
+                    <li class="active">@ViewBag.user.FirstName @ViewBag.user.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("DisplayEmployee","Utilities" )">Back</a>
+        <br />
+    }
+    else if (ViewBag.way == "setupDep")
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li class="active"><a href="@Url.Action("displayDepartment","Utilities" )">Departments</a></li>
+                    <li><a href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(ViewBag.depId), way = ViewBag.way  })">@ViewBag.user.Department.Name</a></li>
+                    <li class="active">@ViewBag.user.FirstName @ViewBag.user.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(ViewBag.depId), way = ViewBag.way  })">Back</a>
+        <br />
+    }
+    else
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li><a href="@Url.Action("displayDivision","Utilities")">Division</a></li>
+                    <li><a href="@Url.Action("displayDivisionDetails","Utilities" , new { sid =  General_Purpose.EncryptId(ViewBag.user.Department.Division.Id), page1="Division"})">@ViewBag.user.Department.Division.Name</a></li>
+                    <li><a href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(ViewBag.depId)  })">@ViewBag.user.Department.Name</a></li>
+                    <li class="active">@ViewBag.user.FirstName @ViewBag.user.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(ViewBag.depId)  })">Back</a>
+        <br />
+    }
+
+
+}
+
+<div id="loadingModal" class="modal" style="margin-left:20%;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <center class="modal-header text-size-large"><b>Please Wait</b></center>
+            <div class="modal-body">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <center>
+                    <img src="~/Content/Images/PrintLoader.gif" width="150" height="150" />
+                </center>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" id="empname" value="@empname" />
+
+<div id="empModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("EmployeeAnalysis","Analysis",new {sid=ViewBag.Id,way=ViewBag.way })">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Select Employee</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">
+                            Select Employee
+                        </label>
+                        <select class="select" name="id2" required>
+                            @foreach (var item in ViewBag.employeeName)
+                            {
+                                <option id="emp_2" value="@General_Purpose.EncryptId(item.Id)">@item.FirstName @item.LastName</option>
+
+                            }
+
+
+                        </select>
+                    </div>
+                    <input type="hidden" id="emp_1" name="id" value="@ViewBag.Id" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  bg-primary">Check</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+
+
+<input type="hidden" id="lol" name="ty" value="@ViewBag.Id" />
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <div>
+
+
+
+                    <div>
+                        <a href="#" data-target="#empModal" data-toggle="modal" class="btn bg-primary btn-sm btn-labeled btn-labeled-right heading-btn">Compare with Another Employee<b><i class="icon-alarm-check"></i></b></a>
+
+
+                        <button class="btn bg-primary pull-right" id="download"> download pdf</button>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div id="pdfholder">
+
+            <!--hidden div is helpful while generation PDF file to make sapce between charts-->
+            <div style="height:160px;" id="space0" hidden></div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <center><h4 class="panel-title text-semibold">Completed & Assigned Task</h4></center>
+                            <div class="heading-elements">
+                                <ul class="icons-list"></ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="chart-container text-center">
+                                <div class="display-inline-block" id="c3-donut-first"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <center><h4 class="panel-title text-semibold">Late and Ongoing Tasks</h4></center>
+                            <div class="heading-elements">
+                                <ul class="icons-list"></ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="chart-container text-center">
+                                <div class="display-inline-block" id="c3-donut-second"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <center><h4 class="panel-title text-semibold">Active Tasks by Priority</h4></center>
+                            <div class="heading-elements">
+                                <ul class="icons-list"></ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="chart-container text-center">
+                                <div class="display-inline-block" id="c3-donut-third"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--hidden div is helpful while generation PDF file to make sapce between charts-->
+            <div style="height:320px;" id="space1" hidden></div>
+
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <center><h4 class="panel-title text-semibold">Number of To Dos Completed Per Day</h4></center>
+                    <div class="heading-elements">
+                        <ul class="icons-list"></ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="chart-container">
+                        <div id="chart_div" style="width: 1140px; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+    window.onload = function () {
+
+
+       // getPieChart($("#first").val(), $("#second").val());
+       // getBarGraph($("#first").val(), $("#second").val());
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(getCompletionRate);
+
+
+
+    };
+
+
+
+
+        function getCompletionRate() {
+            var gid = $("#lol").val();
+        $.ajax({
+            type: 'Get',
+            url: '@Url.Action("employeesAnalysisAjax", "Analysis")',
+            timeout: 100000000,
+            data: { id: gid },
+            dataType: "json",
+            success: function (response) {
+                var first = [];
+                var second = [];
+                var third = [];
+                var fourth = [];
+                var fifth = [];
+                var sixth = [];
+                var barOne = [];
+                var smallBar = [];
+                var chart = [];
+                var k = 0;
+                var arr = [response[1].Value, response[0].Value];
+                first.push(arr);
+                arr = [];
+                arr = [response[3].Value, response[2].Value];
+                first.push(arr);
+                arr = [];
+                arr = [response[5].Value, response[4].Value];
+                second.push(arr);
+                arr = [];
+                arr = [response[7].Value, response[6].Value];
+                second.push(arr);
+                arr = [];
+                arr = ["High", response[8].Value];
+                third.push(arr);
+                arr = [];
+                arr = ["Medium", response[9].Value];
+                third.push(arr);
+                arr = [];
+                arr = ["Low", response[10].Value];
+                third.push(arr);
+
+                smallBar.push("Employees Tickets Completed Each day");
+                smallBar.push(response[13].Value);
+
+                chart.push(smallBar);
+
+
+
+
+
+                var fValue = 30;
+                var t = 16;
+                var gg = response[16];
+                for (var l = 0; l < fValue; l++) {
+                    smallBar = [];
+                    smallBar.push(response[11].Value[l]);
+                    smallBar.push((response[12].Value[l]));
+
+                    chart.push(smallBar);
+
+                }
+
+                var data = google.visualization.arrayToDataTable(chart);
+
+                var options = {
+                    chart: {
+                        title: '',
+                        subtitle: '',
+                    },
+                    width: 950,
+                    bars: 'vertical' // Required for Material Bar Charts.
+                };
+
+                var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                chart.draw(data, options);    // chart.draw(data, google.charts.Bar.convertOptions(options));
+
+                displayPieC(first, '#c3-donut-first');
+                displayPieC(second, '#c3-donut-second');
+                displayPieC(third, '#c3-donut-third');
+
+                 },
+            error: function (data) {
+
+                $('.loading3').hide();
+                $('#curvechart_error').show();
+                $('#curve_chart').hide();
+            }
+            });
+    }
+
+
+    function getBarGraph(id) {
+
+
+
+
+        $.ajax({ type: 'Get',
+               url: '@Url.Action("getTickets", "Analysis")',
+            timeout: 100000000,
+            data: { gid:id },
+            dataType: "json",
+            success: function (response) {
+                var counts = [];
+                var dates = [];
+                dates.push('Tickets Closed');
+                counts.push('x');
+                var k = 0;
+                for (var i = 0; i < response.length; i++) {
+
+                    var date = response[i][1].Value;
+                    var count = response[i][0].Value;
+                    counts.push(count);
+                    dates.push(date);
+
+                    //Object.assign(dat, [[name, v]]);
+                     k = k + 1;
+                }
+                var cols = [];
+                cols.push(counts);
+                cols.push(dates);
+
+                var axis_tick_rotation = c3.generate({
+                    bindto: '#c3-axis-tick-rotation',
+                    size: { height: 325 },
+                    data: {
+                        x: 'x',
+                        columns: cols,
+                        type: 'bar'
+                    },
+                    color: {
+                        pattern: ['#00BCD4']
+                    },
+                    axis: {
+                        x: {
+                            type: 'category',
+                            tick: {
+                                rotate: 0
+                            },
+                            height: 80
+                        }
+                    },
+                    grid: {
+                        x: {
+                            show: false
+                        }
+                    }
+                });
+                 },
+            error: function (data) {
+
+                $('.loading3').hide();
+                $('#curvechart_error').show();
+                $('#curve_chart').hide();
+            }
+            });
+        }
+
+        function displayPieC(arr, id)
+        {
+
+            var pie_chart = c3.generate({
+                bindto: id,
+                size: { width: 350 },
+                color: {
+                    pattern: ['#3F51B5', '#FF9800', '#4CAF50', '#00BCD4', '#F44336']
+                },
+                data: {
+                    columns: arr,
+                    type: 'donut'
+                }
+            });
+        }
+        function drawChart() {
+             }
+
+
+    </script>
+
+
+    <script>
+
+        var d = new Date();
+
+        var filename = document.getElementById("empname").value + " Analysis (" + (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + ").pdf";
+        document.getElementById("download")
+            .addEventListener("click", () => {
+
+                $('#loadingModal').show();
+
+                $('#space0').show();
+                $('#space1').show();
+
+                const analysis = this.document.getElementById("pdfholder");
+                console.log(analysis);
+                console.log(window);
+                var opt = {
+                    margin: 0,
+                    filename: String(filename),
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape', footer: d }
+                };
+                html2pdf().from(analysis).set(opt).save();
+
+                setTimeout(function () {
+                    $('#space0').hide();
+                    $('#space1').hide();
+                    $('#loadingModal').hide();
+                }, 5000);
+            })
+
+
+
+            //document.getElementById("download")
+            //    .addEventListener("click", () => {
+
+            //        var headstr = "<html><head><title></title></head><body>";
+            //        var footstr = "</body>";
+            //        var newstr = document.all.item("pdfholder").innerHTML;
+            //        var oldstr = document.body.innerHTML;
+            //        document.body.innerHTML =  newstr;
+            //        window.print();
+            //        document.body.innerHTML = oldstr;
+            //        return false;
+            //    })
+
+            //$('#print').click(function () {
+
+            //    var w = document.getElementById("content").offsetWidth;
+            //    var h = document.getElementById("content").offsetHeight;
+            //    html2canvas(document.getElementById("content"), {
+            //        dpi: 300, // Set to 300 DPI
+            //        scale: 3, // Adjusts your resolution
+            //        onrendered: function (canvas) {
+            //            var img = canvas.toDataURL("image/jpeg", 1);
+            //            var doc = new jsPDF('L', 'px', [w, h]);
+            //            doc.addImage(img, 'JPEG', 0, 0, w, h);
+            //            doc.save('sample-file.pdf');
+            //        }
+            //    });
+            //});
+
+    </script>
+

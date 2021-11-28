@@ -1,0 +1,454 @@
+﻿
+@{
+    ViewBag.Title = "CanvasCourseDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+}
+
+<style>
+    .dropdown-menu-right {
+        left: 0;
+        right: 0;
+    }
+
+    #info th {
+        width: 40% !important;
+    }
+
+    #info td {
+        width: 60% !important;
+    }
+
+    #backbtn {
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+
+    .select2-selection--single .select2-selection__arrow:after {
+        content: '\e9c5';
+        font-family: 'Icomoon';
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: -8px;
+        margin-right: 12px !important;
+        font-size: 16px;
+        line-height: 1;
+        color: inherit;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+</style>
+@{
+    if (ViewBag.way == "index")
+    {
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("Index", "Auth")">Back</a>
+
+    }
+    else if (ViewBag.IsManager == "1")
+    {
+
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("taskdetails", "Manager", new { v = ViewBag.v, way = ViewBag.way, isModal = ViewBag.isModal,loginId=ViewBag.loginId })">Back</a>
+
+
+    }
+    else
+    {
+
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("taskdetails", "Task", new { v = ViewBag.v, way = ViewBag.way, isModal = ViewBag.isModal,department=ViewBag.department,sid=ViewBag.sid })">Back</a>
+
+
+    }
+
+}
+
+
+
+<div id="modalresult" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+
+
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Course Result</h4>
+            </div>
+
+
+            <div style="max-height:100px;overflow:auto">
+                @if (ViewBag.result != null)
+                {
+                    <center><h3>Your Total Score: @ViewBag.result% </h3></center>
+                }
+                else
+                {
+                    <center> <h3>You are not enrolled as student in this course</h3></center>
+                }
+
+
+            </div>
+
+
+
+            <br />
+
+            <center>
+                <button type="button" data-dismiss="modal" class="btn  btn-sm bg-primary">Close</button>
+
+            </center>
+            <br />
+
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+    <!-- Detailed task -->
+    <div class="row">
+        <div class="col-lg-12">
+
+            <!-- Task overview -->
+            <div  style="height:100px" class="panel panel-flat">
+                <div class="panel-heading mt-5">
+                    <div class="col-lg-12">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4"> <center><h3 class="panel-title"><strong>@ViewBag.Course.name</strong></h3></center></div>
+                        <div class="col-lg-4">
+                            @if (ViewBag.ResultAnnouncement == 1 )
+                            {
+                                <a class="btn btn-sm bg-primary pull-right " onclick="DisplayResult()" style="margin-right:20px">View Result</a>
+                            }
+
+                        </div>
+                    </div>
+                   
+
+
+
+                   
+
+                </div>
+
+
+            </div>
+            @if (logedinuser.IsMasterAdmin == 1 && logedinuser.Role == 1)
+            {
+                <div class="panel panel-flat">
+                    <div style="height:250px" class="panel-heading mt-5">
+                        <h3>View Student Result</h3>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger"></span>Student Name:</label>
+                            <div class="col-lg-3">
+                                <select class="select" name="student" id="student">
+                                    <option value="">Select User</option>
+                                    @foreach (User user in ViewBag.UsersInCourse)
+                                    {
+                                        <option value="@user.Id">@user.FirstName @user.LastName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <a onclick="showresult()" class="btn btn-default pull-left">View Result</a>
+                                <input type="hidden" id="courseId" value="@ViewBag.Course.id" />
+                            </div>
+                            <div id="" class="col-lg-3">
+                                <div class="col-md-12">
+
+                                    @*<label class="control-label"> <input type="checkbox" name="manager" class="data" /> Managers</label>*@
+                                    @if (ViewBag.ResultAnnouncement == 1)
+                                    {
+                                        <label class="switch">
+                                            <span style="margin-left:60px;" class="col-lg-12"> Announce Result</span>
+                                            <input onchange="ResultAnnouncement()" type="checkbox" checked name="ResultAnnouncement" id="ResultAnnouncement" />
+                                            <span class="slider round"></span>
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label class="switch">
+                                            <span style="margin-left:60px;" class="col-lg-12"> Announce Result</span>
+                                            <input onchange="ResultAnnouncement()" type="checkbox" name="ResultAnnouncement" id="ResultAnnouncement" />
+                                            <span class="slider round"></span>
+                                        </label>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="resultdiv" class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-3">
+                                    <div class="col-lg-8">
+                                        <label class=" control-label"><span class="text-danger"></span>Total Score:</label>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <h5 id="result"></h5>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- /task overview -->
+
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Timer -->
+            <!-- /timer -->
+            <!-- Task details -->
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-book position-left"></i><strong>Course Quizes Details</strong></h6>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body" style="height:295px; overflow:auto">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <td><strong>Sr#</strong></td>
+                                <td><strong>Quiz Name</strong></td>
+                                <td><strong>Due Date</strong></td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{ int i = 1; }
+                            @foreach (Quiz quiz in ViewBag.CanvasQuizes)
+                            {
+
+                                <tr>
+                                    <td>@i</td>
+                                    <td class="text-left">@quiz.title</td>
+                                    <td class="text-left">@quiz.due_at</td>
+
+                                </tr>
+                                i++;
+
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /task details -->
+            <!-- Attached files -->
+            <!-- /attached files -->
+
+
+
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-link position-left"></i><strong> Course Assignments</strong></h6>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-body" style="height:295px; overflow:auto">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <td><strong>Sr#</strong></td>
+                                <td><strong>Assignment Name</strong></td>
+                                <td><strong>Due Date</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int j = 1; }
+                            @foreach (Assignment assign in ViewBag.CanvasAssignments)
+                            {
+
+                                <tr>
+                                    <td>@j</td>
+
+                                    <td class="text-left">@assign.name</td>
+                                    <td class="text-left">@assign.due_at</td>
+
+                                </tr>
+
+                                j++;
+                            }
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h6 class="panel-title"><i class="icon-link position-left"></i><strong> Tasks Attached To This Course</strong></h6>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-body" style="height:295px; overflow:auto">
+                    <table style="height:200px; overflow:auto" class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Task Name</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (DueDateReminderDTO item in ViewBag.lstusertask)
+                                {
+                                    <tr>
+                                        <td>
+                                            @if (item.Role == 3)
+                                            {
+                                                <a target="_blank" href="@Url.Action("taskdetails","Task",new { v=item.Id,isModal="01"})">@item.Task</a>
+                                            }
+                                            else
+                                            {
+                                                <a target="_blank" href="@Url.Action("taskdetails","Manager",new { v=item.Id,isModal="01"})">@item.Task</a>
+                                            }
+
+
+                                        </td>
+                                        @if (item.Late == 1)
+                                        {
+                                            <td>@item.DueDate <span style="color:red">  (LATE)</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.DueDate</td>
+                                        }
+
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+
+
+
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /detailed task -->
+</div>
+<script>
+    function DisplayResult() {
+         $('#modalresult').modal("show");
+    }
+    function ResultAnnouncement() {
+        var result = 0;
+        var courseId = $("#courseId").val();
+        if ($("#ResultAnnouncement").prop('checked') == true) {
+            result = 1;
+        } else {
+            result = 0;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "../task/CanvasCourseResultAnnouncement",
+            data: {
+                result: result,
+                courseId: courseId,
+
+            },
+            dataType: "json",
+            success: function (data) {
+
+
+
+            },
+            error: function () { alert('error'); }
+        });
+    }
+
+
+
+    $("#resultdiv").hide();
+    function showresult() {
+        var x = $("#student").val();
+        var courseid = $("#courseId").val();
+        $.ajax({
+            type: 'POST',
+            url: "../task/ShowResult",
+            data: {
+                userId: x,
+                courseid: courseid,
+
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data == null) {
+                    $("#resultdiv").hide();
+                } else {
+                    if (data.computed_current_score == null) {
+                        $("#result").text("0.0 %");
+                    } else {
+                        $("#result").text(data.computed_final_score + " %");
+                    }
+                    
+                    $("#resultdiv").show();
+                }
+
+
+            },
+            error: function () { alert('error'); }
+        });
+    }
+</script>
+
+
+

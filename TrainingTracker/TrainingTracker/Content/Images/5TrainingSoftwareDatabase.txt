@@ -1,0 +1,169 @@
+CREATE TABLE [dbo].[Admin]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [FirstName] VARCHAR(50) NOT NULL, 
+    [LastName] VARCHAR(50) NOT NULL, 
+    [Email] VARCHAR(50) NOT NULL, 
+    [PhomeNumber] VARCHAR(20) NOT NULL, 
+    [HomeNumber] VARCHAR(20) NOT NULL, 
+    [Notes] VARCHAR(250) NULL, 
+    [IsActive] INT NOT NULL DEFAULT 1, 
+    [AcessLevel] INT NOT NULL DEFAULT 1, 
+    [Image] VARCHAR(70) NOT NULL DEFAULT '\TrainingTracker\Content\Images\avt.png'
+)
+
+
+CREATE TABLE [dbo].[Division]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+    [Name] VARCHAR(50) NOT NULL, 
+	[AdminID] INT NOT NULL, 
+	[IsActive] INT NOT NULL DEFAULT 1,
+     CONSTRAINT [FK_Division_Admin] FOREIGN KEY (AdminID) REFERENCES [Admin](Id), 
+)
+
+
+CREATE TABLE [dbo].[Manager]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [FirstName] VARCHAR(50) NOT NULL, 
+    [LastName] VARCHAR(50) NOT NULL, 
+    [Email] VARCHAR(50) NOT NULL, 
+    [PhoneNumber] VARCHAR(20) NOT NULL, 
+    [HomeNumber] VARCHAR(20) NOT NULL, 
+    [AdminID] INT NOT NULL, 
+    [DivisionID] INT NOT NULL, 
+    [Notes] VARCHAR(250) NULL, 
+    [IsActive] INT NOT NULL DEFAULT 1, 
+    [AccessLevel] INT NOT NULL DEFAULT 1, 
+    [Image] VARCHAR(100) NOT NULL DEFAULT '\TrainingTracker\Content\Images\avt.png', 
+    CONSTRAINT [FK_Manager_Admin] FOREIGN KEY (AdminID) REFERENCES [Admin](Id), 
+    CONSTRAINT [FK_Manager_Division] FOREIGN KEY (DivisionId) REFERENCES [Division](Id)
+)
+
+
+CREATE TABLE [dbo].[Tag]
+(
+[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[IsActive] INT NOT NULL DEFAULT 1, 
+    [Name] VARCHAR(50) NOT NULL, 
+    [DivisionId] INT NOT NULL,
+	 CONSTRAINT [FK_Tag_Division] FOREIGN KEY (DivisionId) REFERENCES [Division](Id)
+
+)
+
+
+CREATE TABLE [dbo].[Department]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	 [DivisionID] INT NOT NULL, 
+	 [Name] VARCHAR(50) NOT NULL, 
+	 [IsActive] INT NOT NULL DEFAULT 1,
+    CONSTRAINT [FK_Department_Division] FOREIGN KEY (DivisionId) REFERENCES [Division](Id)
+)
+
+
+
+
+CREATE TABLE [dbo].[Trainee]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[FirstName] VARCHAR(50) NOT NULL, 
+    [LastName] VARCHAR(50) NOT NULL, 
+    [Email] VARCHAR(50) NOT NULL, 
+    [PhoneNumber] VARCHAR(20) NOT NULL, 
+    [HomeNumber] VARCHAR(20) NOT NULL, 
+    [ManagerID] INT NOT NULL, 
+    [DepartmentID] INT NOT NULL, 
+    [Notes] VARCHAR(250) NOT NULL, 
+    [IsActive] INT NOT NULL DEFAULT 1, 
+    [AccessLevel] INT NOT NULL DEFAULT 1, 
+    [Image] VARCHAR(100) NOT NULL DEFAULT '\TrainingTracker\Content\Images\avt.png', 
+    CONSTRAINT [FK_Trainee_Manager] FOREIGN KEY (ManagerID) REFERENCES [Manager](Id), 
+    CONSTRAINT [FK_Trainee_Department] FOREIGN KEY ([DepartmentID]) REFERENCES [Department](Id)
+)
+
+CREATE TABLE [dbo].[Certificates]
+(
+		[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+		[IsActive] INT NOT NULL DEFAULT 1,
+    [Name] VARCHAR(50) NOT NULL, 
+    [Path] VARCHAR(50) NOT NULL, 
+    [TraineeID] INT NOT NULL, 
+	
+    CONSTRAINT [FK_Certificates_Trainee] FOREIGN KEY (TraineeID) REFERENCES [Trainee]([Id]), 
+
+
+
+
+
+)
+
+
+
+
+CREATE TABLE [dbo].[Task]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[IsActive] INT NOT NULL DEFAULT 1, 
+    [Name] VARCHAR(50) NOT NULL, 
+    [TaskType] NCHAR(10) NOT NULL,
+	[DivisionId] INT NOT NULL,
+	[Description] VARCHAR(250) NOT NULL, 
+    [Cost`] FLOAT NOT NULL, 
+    [Hours] FLOAT NOT NULL, 
+    [CEU] FLOAT NOT NULL, 
+    CONSTRAINT [FK_Task_Division] FOREIGN KEY (DivisionId) REFERENCES [Division](Id)
+
+)
+
+CREATE TABLE [dbo].[GroupTask]
+(
+     [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] VARCHAR(50) NOT NULL, 
+   [IsActive] INT NOT NULL DEFAULT 1,
+
+)
+CREATE TABLE [dbo].[GroupTask_Task]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [TaskId] INT NOT NULL, 
+    [GroupTaskId] INT NOT NULL,
+	[IsActive] INT NOT NULL DEFAULT 1,
+    CONSTRAINT [FK_GroupTask_Task_Task] FOREIGN KEY (TaskId) REFERENCES [Task](Id), 
+    CONSTRAINT [FK_GroupTask_Task_GrouptTask] FOREIGN KEY ([GroupTaskId]) REFERENCES [GroupTask](Id), 
+	   
+
+
+)
+
+CREATE TABLE [dbo].[GroupTask_Trainee]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[IsActive] INT NOT NULL DEFAULT 1, 
+    [GroupTaskID] INT NOT NULL, 
+    [TraineeID] INT NOT NULL, 
+    [Status] INT NOT NULL,
+	CONSTRAINT [FK_Table_GroupTask_Trainee] FOREIGN KEY (TraineeID) REFERENCES [Trainee](Id), 
+    CONSTRAINT [FK_Table_GroupTask] FOREIGN KEY (GroupTaskID) REFERENCES [GroupTask](Id),
+		
+)
+CREATE TABLE [dbo].[Trainee_Task]
+(
+		[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+		[IsActive] INT NOT NULL DEFAULT 1, 
+    [StartDate] VARCHAR(20) NOT NULL, 
+    [EndDate] VARCHAR(20) NOT NULL, 
+    [Notes] VARCHAR(250) NOT NULL, 
+    [Cost] FLOAT NOT NULL, 
+    [CEU] FLOAT NOT NULL, 
+    [Grad] INT NOT NULL, 
+    [ManagerID] INT NOT NULL, 
+    [TaskID] INT NOT NULL, 
+    [TraineeID] INT NOT NULL, 
+    [Status] INT NOT NULL, 
+    CONSTRAINT [FK_Table_Manager] FOREIGN KEY (ManagerID) REFERENCES [Manager](Id), 
+    CONSTRAINT [FK_Table_TaskID] FOREIGN KEY (TaskId) REFERENCES [Task](Id), 
+    CONSTRAINT [FK_Table_Trainee] FOREIGN KEY (TraineeID) REFERENCES [Trainee](Id),
+		
+)

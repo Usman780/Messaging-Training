@@ -1,0 +1,12 @@
+2021-03-10 00:46:13,950 INFO MonitoringLogger - Update Admin Page...
+2021-03-10 00:46:15,036 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2021-03-10 00:54:31,186 INFO MonitoringLogger - Update Admin Page...
+2021-03-10 00:54:32,220 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2021-03-10 00:54:57,255 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2021-03-10 00:54:59,393 INFO MonitoringLogger - BlobManager function started
+2021-03-10 00:55:00,915 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2021-03-10 00:55:10,907 INFO MonitoringLogger - Update Admin Page...
+2021-03-10 00:55:11,877 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2021-03-10 16:25:52,371 INFO MonitoringLogger -  Logedout from Zuptu
+2021-03-10 18:14:07,875 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-10 18:24:59,152 INFO MonitoringLogger - Sue Logedout from Zuptu

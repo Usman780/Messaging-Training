@@ -1,0 +1,51 @@
+2020-06-24 01:18:49,941 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-06-24 14:10:44,042 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-06-24 18:46:22,453 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-06-24 18:49:11,932 INFO MonitoringLogger - BlobManager function started
+2020-06-24 18:50:52,784 INFO MonitoringLogger - BlobManager function started
+2020-06-24 18:51:39,310 INFO MonitoringLogger - BlobManager function started
+2020-06-24 18:52:12,760 INFO MonitoringLogger - BlobManager function started
+2020-06-24 18:54:19,039 INFO MonitoringLogger - BlobManager function started
+2020-06-24 18:56:03,887 INFO MonitoringLogger - BlobManager function started
+2020-06-24 18:58:01,613 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:03:17,752 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:04:51,032 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:05:18,570 INFO MonitoringLogger - Add Group Task Comment Function
+2020-06-24 19:05:18,573 INFO MonitoringLogger - Child Comment ID : -1
+2020-06-24 19:05:18,576 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-06-24 19:05:47,794 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:08:09,550 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:09:45,112 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:10:06,165 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:12:00,597 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:15:25,510 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:18:35,943 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:20:02,148 INFO MonitoringLogger - BlobManager function started
+2020-06-24 19:24:38,187 INFO MonitoringLogger - BlobManager function started
+2020-06-25 17:55:48,052 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-06-25 17:56:58,806 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 17:56:59,726 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-06-25 17:57:43,078 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-06-25 17:57:44,916 INFO MonitoringLogger - BlobManager function started
+2020-06-25 17:57:46,328 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2020-06-25 17:57:47,540 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 17:57:48,453 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-06-25 20:10:32,974 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-06-25 20:12:16,318 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 20:12:17,271 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-06-25 20:16:31,079 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 20:16:32,093 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-06-25 20:17:24,340 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-06-25 20:17:26,707 INFO MonitoringLogger - BlobManager function started
+2020-06-25 20:17:28,430 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 20:17:29,350 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-06-25 20:18:05,313 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-06-25 20:18:07,207 INFO MonitoringLogger - BlobManager function started
+2020-06-25 20:18:32,040 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 20:18:33,038 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-06-25 20:28:05,727 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 20:28:06,773 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-06-25 20:29:27,988 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 20:29:28,931 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-06-25 20:30:33,761 INFO MonitoringLogger - Update Admin Page...
+2020-06-25 20:30:34,663 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 

@@ -1,0 +1,53 @@
+2020-01-21 10:16:34,169 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:24:34,607 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:26:07,253 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:26:34,178 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:28:03,531 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:33:45,233 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:37:05,464 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:38:23,785 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:39:38,886 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:40:27,044 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:41:23,445 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:42:09,659 INFO MonitoringLogger - BlobManager function started
+2020-01-21 10:42:33,033 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 10:43:51,730 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 12:22:29,958 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-21 12:22:41,688 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-01-21 12:27:37,327 INFO MonitoringLogger - Update Employee Page...
+2020-01-21 12:27:40,307 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-01-21 12:28:16,858 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-01-21 12:28:23,662 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 12:39:04,425 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 12:42:22,306 INFO MonitoringLogger - Update Admin Page...
+2020-01-21 12:42:24,563 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-01-21 12:44:56,536 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-21 12:45:20,525 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-01-21 12:47:23,376 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-01-21 12:48:29,870 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 12:48:35,507 INFO MonitoringLogger - Update Employee Page...
+2020-01-21 12:48:36,456 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-01-21 12:49:37,084 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2020-01-21 12:49:37,926 INFO MonitoringLogger - BlobManager function started
+2020-01-21 12:49:40,114 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :test@nodlays.com
+2020-01-21 12:50:21,110 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-21 12:50:26,824 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-01-21 12:51:03,658 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-01-21 12:51:32,353 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-21 14:30:18,581 INFO MonitoringLogger - BlobManager function started
+2020-01-21 14:31:11,570 INFO MonitoringLogger - BlobManager function started
+2020-01-21 14:32:47,940 INFO MonitoringLogger - BlobManager function started
+2020-01-21 14:33:56,562 INFO MonitoringLogger - BlobManager function started
+2020-01-21 14:35:06,655 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-21 14:35:15,578 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-01-21 14:36:08,245 INFO MonitoringLogger - Update Employee Page...
+2020-01-21 14:36:09,195 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-01-21 14:36:22,459 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2020-01-21 14:36:23,716 INFO MonitoringLogger - BlobManager function started
+2020-01-21 14:36:25,667 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :test@nodlays.com
+2020-01-21 14:36:33,503 INFO MonitoringLogger - Update Employee Page...
+2020-01-21 14:36:35,249 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-01-21 14:37:37,079 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-01-21 14:37:46,930 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-01-21 14:49:31,272 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-01-21 14:49:42,115 INFO MonitoringLogger - Nodlays Loged Into Zuptu

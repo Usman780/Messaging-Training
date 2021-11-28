@@ -1,0 +1,6 @@
+[core]
+	autocrlf = true
+	excludesfile = C:\\Users\\Uzair\\Documents\\gitignore_global.txt
+[user]
+	name = DESKTOP-9K1KUQF\\Uzair
+	email = uzair.aslam02@gmail.com

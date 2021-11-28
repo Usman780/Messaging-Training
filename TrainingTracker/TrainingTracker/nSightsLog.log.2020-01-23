@@ -1,0 +1,37 @@
+2020-01-23 10:50:02,772 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-23 14:32:01,168 INFO MonitoringLogger - Update Employee Page...
+2020-01-23 14:32:02,161 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-01-23 14:54:29,488 INFO MonitoringLogger - Update Employee Page...
+2020-01-23 14:54:35,146 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-01-23 14:55:09,171 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2020-01-23 14:55:09,493 INFO MonitoringLogger - BlobManager function started
+2020-01-23 14:55:11,338 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :test@nodlays.com
+2020-01-23 15:07:32,600 INFO MonitoringLogger - Update Employee Page...
+2020-01-23 15:07:33,873 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-01-23 15:07:49,160 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2020-01-23 15:07:49,470 INFO MonitoringLogger - BlobManager function started
+2020-01-23 15:07:51,888 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :
+2020-01-23 15:23:37,257 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-23 15:25:28,403 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-23 17:28:23,867 INFO MonitoringLogger - Update Manger Page
+2020-01-23 17:28:25,183 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2020-01-23 17:28:26,462 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-01-23 17:29:35,648 INFO MonitoringLogger - Update Manger Page
+2020-01-23 17:29:36,007 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2020-01-23 17:29:37,930 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-01-23 17:30:29,408 INFO MonitoringLogger - UpdateManagerAction Function Starting...
+2020-01-23 17:30:29,413 INFO MonitoringLogger - Canvas Login Mail Recieved from Update Manager Page:
+2020-01-23 17:30:29,417 INFO MonitoringLogger - Set Canvas Login Mail to Manager Info Object.
+2020-01-23 17:30:33,319 INFO MonitoringLogger - BlobManager function started
+2020-01-23 17:30:35,885 INFO MonitoringLogger - Canvas Login Mail updating Manager's info to Database: 
+2020-01-23 17:36:57,351 INFO MonitoringLogger - BlobManager function started
+2020-01-23 17:37:21,393 INFO MonitoringLogger - BlobManager function started
+2020-01-23 17:38:32,910 INFO MonitoringLogger - BlobManager function started
+2020-01-23 17:39:10,416 INFO MonitoringLogger - Update Manger Page
+2020-01-23 17:39:10,734 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: faisalraj596@gmail.com
+2020-01-23 17:39:12,004 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-01-23 17:39:33,752 INFO MonitoringLogger - UpdateManagerAction Function Starting...
+2020-01-23 17:39:33,756 INFO MonitoringLogger - Canvas Login Mail Recieved from Update Manager Page:
+2020-01-23 17:39:33,759 INFO MonitoringLogger - Set Canvas Login Mail to Manager Info Object.
+2020-01-23 17:39:34,086 INFO MonitoringLogger - BlobManager function started
+2020-01-23 17:39:34,406 INFO MonitoringLogger - Canvas Login Mail updating Manager's info to Database: faisalraj596@gmail.com

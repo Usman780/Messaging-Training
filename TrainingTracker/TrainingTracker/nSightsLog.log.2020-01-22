@@ -1,0 +1,70 @@
+2020-01-22 15:00:37,776 INFO MonitoringLogger - Pdf generation method called
+2020-01-22 15:00:41,018 INFO MonitoringLogger - Pdf generation method search completed
+2020-01-22 15:00:41,033 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 15:00:41,038 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-01-22 15:00:41,041 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-01-22 15:00:41,043 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-01-22 15:02:42,164 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 15:02:42,169 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 15:02:42,174 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 15:02:48,241 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-22-1--15-02-42.pdf
+2020-01-22 15:10:23,147 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 15:10:23,219 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 15:10:23,224 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 15:10:25,718 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-22-1--15-10-23.pdf
+2020-01-22 15:42:03,458 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 15:42:03,486 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 15:42:03,489 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 15:42:08,363 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Ali ShahidManager2020-22-1--15-42-03.pdf
+2020-01-22 15:42:42,475 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 15:42:42,480 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 15:42:42,483 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 15:42:46,507 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Waseem AkramEmployee2020-22-1--15-42-42.pdf
+2020-01-22 15:49:03,198 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 15:49:03,242 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-01-22 15:49:03,244 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-01-22 15:49:03,248 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-01-22 15:51:32,555 INFO MonitoringLogger - Update Admin Page...
+2020-01-22 15:51:33,280 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-01-22 16:44:23,308 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-22 16:47:54,880 INFO MonitoringLogger - Task Details Page
+2020-01-22 16:47:55,203 INFO MonitoringLogger - BlobManager function started
+2020-01-22 17:19:00,435 INFO MonitoringLogger - Pdf generation method called
+2020-01-22 17:19:06,648 INFO MonitoringLogger - Pdf generation method search completed
+2020-01-22 17:19:06,655 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 17:19:06,659 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-01-22 17:19:06,662 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-01-22 17:19:06,665 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-01-22 17:21:50,023 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 17:21:50,030 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 17:21:50,035 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 17:21:53,514 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-22-1--17-21-50.pdf
+2020-01-22 17:24:18,467 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 17:24:18,473 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 17:24:18,475 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 17:24:24,361 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-22-1--17-24-18.pdf
+2020-01-22 17:25:48,905 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 17:25:48,944 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 17:25:48,946 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 17:25:49,111 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2020-22-1--17-25-48.pdf
+2020-01-22 17:26:40,148 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 17:26:40,178 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 17:26:40,182 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 17:26:45,973 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-22-1--17-26-40.pdf
+2020-01-22 17:27:44,324 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 17:27:44,379 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 17:27:44,391 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 17:27:44,397 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2020-22-1--17-27-44.pdf
+2020-01-22 17:28:51,276 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 17:28:51,322 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-22 17:28:51,327 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-22 17:28:56,362 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Ali Shahid Manager2020-22-1--17-28-51.pdf
+2020-01-22 17:29:51,754 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-22 17:29:51,758 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-01-22 17:29:51,760 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-01-22 17:29:51,763 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-01-22 17:31:03,280 INFO MonitoringLogger - Task Details Page
+2020-01-22 17:31:03,668 INFO MonitoringLogger - BlobManager function started
+2020-01-22 17:31:25,241 INFO MonitoringLogger - Task Details Page
+2020-01-22 17:31:25,554 INFO MonitoringLogger - BlobManager function started
+2020-01-22 17:31:26,511 INFO MonitoringLogger - Comment's ParentID : 

@@ -1,0 +1,321 @@
+﻿
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<style>
+    #backbtn {
+        margin-left: 20px;
+    }
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+<br />
+@{
+    if (ViewBag.way == "Division")
+    {
+        
+        <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayDivisionDetails","Utilities" , new { sid =ViewBag.sid,page1="Division"})">Back</a>
+        <br />
+        <br />
+    }
+}
+
+
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Tags</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+
+                <ul class="icons-list">
+                    <li>
+                        <a href="" data-target="#myModal" data-toggle="modal" class="btn  btn-sm bg-primary-400 text-white"> Add  <i style="margin-top:-5%;" class="icon-plus-circle2"></i></a>
+
+                    </li>
+                    <li>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+
+            <thead>
+                <tr>
+                    <th style="width:20px !important">Sr#</th>
+                    <th>Name</th>
+                    <th>Division Name</th>
+
+                    <th>Action</th>
+                </tr>
+            </thead>
+            @*<tbody>
+
+                    @{
+
+                            int i = 1;
+                            foreach (Tag item in ViewBag.Tags)
+                            {
+
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.Name</td>
+                            <td>
+                                @item.Division.Name
+                            </td>
+
+
+                            <td>
+                                <a class="btn btn-sm  btn-success" onclick="setSelectedIndex(@item.DivisionId ,'@item.Name',@item.Id)" >
+                                    <i class="icon-pencil"></i>
+                                </a>
+                                <a class="btn btn-sm  btn-danger" href="@Url.Action("deleteTag","Utilities",new { id = item.Id })">
+                                    <i class="icon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    i++;
+                }
+                    }
+
+                </tbody>*@
+        </table>
+    </div>
+</div>
+<div id="editTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("UpdateTagAction","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Tag</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" maxlength="150" class="form-control" onkeyup="vlidate(document.getElementById('updateTag').id,document.getElementById('updatedivisionID').id, document.getElementById('updateerrorDisplay').id, document.getElementById('updateSb').id)" name="Name" id="updateTag" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Divisions</label>
+                        <div class="col-lg-9">
+                            <select required class="select" onchange="vlidate()" id="updatedivisionID" name="DivisionID">
+                                <option disabled value="">Select division</option>
+                                @foreach (var item in ViewBag.divisions)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="Id" id="tagId" value="" />
+
+                <div class="modal-footer">
+                    <label id="updateerrorDisplay" class="control-label text-danger" hidden> Name not Available in the System !</label>
+
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="updateSb" class="btn btn-sm  bg-primary-400">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("AddTags", "Utilities", new { page="home",way=ViewBag.way,sid=ViewBag.sid })">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Add Tag</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Add Tag</label>
+                        <div class="col-lg-9">
+                            <input required type="text" maxlength="150" name="Name" onkeyup="vlidate(document.getElementById('inputName').id,document.getElementById('divisionID').id, document.getElementById('errorDisplay').id, document.getElementById('sb').id)" id="inputName" class="form-control" />
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select required class="select" id="divisionID" name="DivisionID">
+                                <option disabled value+="">Select division</option>
+                                @foreach (var item in ViewBag.divisions)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <label id="errorDisplay" class="control-label text-danger" hidden> Name not Available in the System !</label>
+
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sb" class="btn btn-sm  bg-primary-400">Add Tag</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#wait").css("display", "block");
+        $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetdisplayTag","Utilities")',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+
+                "columns": [
+                 { "data": "SerialNo", "name": "SerialNo" },
+                    { "data": "Name", "name": "Name" },
+                    { "data": "DivisionName", "name": "DivisionName" },
+
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+                        //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                        render: function (data, type, full, meta) {
+                            //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+
+                            return '<a class="btn btn-success btn-sm" onclick="setSelectedIndex(' + full.DivisionId + ',\'' + full.Name + '\',' + full.Id + ')">' +
+                                   ' <i class="icon-pencil"></i>'+
+                                    ' </a>'+
+                             '   <a class="btn btn-sm  btn-danger" href="../Utilities/deleteTag?id=' + full.Id + '">'+
+                              '      <i class="icon-trash"></i>'+
+                               ' </a>';
+
+
+                        },
+                        targets: 3
+                    }@*@Url.Action("sendMailInviteManager", "Utilities", new { id = i.Id, em = item.Email, fn = item.FirstName, isUtilityPage = true })*@
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+            })
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    function deleteArea(title, id, names, ids) {
+        swal({
+            title: "Edit",
+            text: '<form role="form" id="DeleteMeModal" action="/Area/Delete/' + areaId + '" id="contact-form" method="get"><div class="control-group"><label for="categoryName">You Are Going To Delete Area Permanently!</label></div></div></form>',
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#FF7043",
+            confirmButtonText: "Yes, delete it!"
+        }, function () {
+            $("#DeleteMeModal").submit();
+        });
+    }
+
+
+
+
+  function vlidate(name,divId,error,button) {
+
+        var sele = $('#' + divId).val();
+        var name = $('#' + name).val();
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("tagNameValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data: name, divId:sele },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json != 1) {
+                       $('#' + error).hide();
+                       $('#' + button).attr('disabled', false)
+                       }
+               else
+                   {
+                       $('#' + error).show();
+                       $('#' + button).attr('disabled', true)
+
+               }
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+    function setSelectedIndex(valsearch, name, vaid) {
+        $("select#updatedivisionID option")
+            .each(function () {
+                //this.selected = (this.value == valsearch);
+                $("#updatedivisionID option[value=" + valsearch + "]").attr("selected", true).change();
+            });
+
+        $("#updateTag").val(name);
+        $("#tagId").val(vaid);
+        $('#editTag').modal("show");
+
+
+
+    }
+
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#Tag").css('background-color', '#0150A1');
+        $("#Tag").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+    });
+</script>

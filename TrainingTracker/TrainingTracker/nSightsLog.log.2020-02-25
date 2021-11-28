@@ -1,0 +1,41 @@
+2020-02-25 12:04:37,049 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-25 12:56:59,570 INFO MonitoringLogger - Pdf generation method called
+2020-02-25 12:57:25,479 INFO MonitoringLogger - Pdf generation method search completed
+2020-02-25 12:57:25,513 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-25 12:57:25,517 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-02-25 12:57:25,519 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-02-25 12:57:25,522 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-02-25 12:58:38,961 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-25 12:58:53,724 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-25 13:00:05,290 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-25 13:00:05,296 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-25 13:00:05,300 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-25 13:00:06,582 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-25-2--13-00-05.pdf
+2020-02-25 13:02:25,915 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-25 13:03:44,753 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-25 13:05:47,712 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-25 13:05:47,945 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-25 13:05:48,056 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-25 13:05:48,065 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-25-2--13-05-47.pdf
+2020-02-25 13:06:35,341 INFO MonitoringLogger - Pdf generation method called
+2020-02-25 13:06:42,393 INFO MonitoringLogger - Pdf generation method search completed
+2020-02-25 13:06:42,398 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-25 13:06:42,401 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-02-25 13:06:42,404 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-02-25 13:06:42,407 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-02-25 13:09:08,961 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-25 13:09:21,545 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-25 13:10:58,742 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-25 13:13:05,832 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-25 13:36:04,064 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-25 13:36:14,232 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-25 14:39:15,999 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-25 14:39:27,726 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-25 14:45:48,238 INFO MonitoringLogger - BlobManager function started
+2020-02-25 14:50:24,647 INFO MonitoringLogger - BlobManager function started
+2020-02-25 14:52:22,640 INFO MonitoringLogger - Task Details Page
+2020-02-25 14:52:22,972 INFO MonitoringLogger - BlobManager function started
+2020-02-25 16:02:09,595 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-25 16:04:51,493 INFO MonitoringLogger - BlobManager function started
+2020-02-25 16:07:38,657 INFO MonitoringLogger - BlobManager function started
+2020-02-25 16:26:38,597 INFO MonitoringLogger - BlobManager function started

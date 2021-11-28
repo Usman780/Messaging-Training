@@ -1,0 +1,266 @@
+﻿
+@{
+    ViewBag.Title = "addComment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model TrainingTracker.Models.Task
+@using TrainingTracker.Models
+@using TrainingTracker.HelpingClasses
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+
+    string setupVar = "Set-Up";
+    if (logedinuser.Role == 3)
+    {
+        setupVar = "Task Set-Up";
+    }
+}
+<style>
+    #info th {
+        width: 40% !important;
+    }
+
+    #info td {
+        width: 60% !important;
+    }
+
+    #backbtn {
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+</style>
+
+@if (ViewBag.way == "0")
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">@setupVar</li>
+                <li class="active"><a href="@Url.Action("displayAddTask", "Task")">Tasks</a></li>
+                <li class="active">@Model.Name</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayAddTask", "Task", new { sid = ViewBag.Id })">Back</a>
+
+}
+else if (ViewBag.way == "3")
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("displayDepartment", "Utilities")">Departments</a></li>
+                <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = General_Purpose.EncryptId(Model.Department.Id), way="setupDep" })">@Model.Department.Name</a></li>
+                <li class="active"><a href="@Url.Action("displayAddTask", "Task", new { sid = General_Purpose.EncryptId(Model.Department.Id), way ="setupDep" })">Tasks</a></li>
+                <li class="active">@Model.Name</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayAddTask", "Task", new { sid = General_Purpose.EncryptId(Model.Department.Id), way ="setupDep" })">Back</a>
+    <br />
+
+}
+else
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("displayDivision", "Utilities")">Division</a></li>
+                <li><a href="@Url.Action("displayDivisionDetails", "Utilities", new { sid = General_Purpose.EncryptId(Model.Department.Division.Id), page1 = "Division" })">@Model.Department.Division.Name</a></li>
+                <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = General_Purpose.EncryptId(Model.Department.Id) })">@Model.Department.Name</a></li>
+                <li class="active"><a href="@Url.Action("displayAddTask", "Task", new { sid = General_Purpose.EncryptId(Model.Department.Id) })">Tasks</a></li>
+                <li class="active">@Model.Name</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayAddTask", "Task", new { sid = General_Purpose.EncryptId(Model.Department.Id) })">Back</a>
+    <br />
+}
+
+<br />
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+
+        @if (ViewBag.msg != "")
+        {
+            <br />
+            <center><h5 style="color: red !important;">@ViewBag.msg</h5></center>
+        }
+
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Task details</b></h3></center>
+
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <table id="info" class="table table-borderless">
+                        <tr>
+                            <th>Title</th>
+                            <td>@Model.Name</td>
+                        </tr>
+                        <tr>
+                            <th>Task Type</th>
+                            @if (Model.TaskType != null)
+                            {
+                                <td>
+                                    @Model.TaskType.Name
+                                </td>
+                            }
+
+                        </tr>
+                        <tr>
+                            <th>Hours</th>
+                            @if (Model.Hours != null)
+                            {
+                                <td>
+                                    @Model.Hours
+                                </td>
+                            }
+                        </tr>
+
+                        <tr>
+                            <th>CEU</th>
+                            @if (Model.CEU != null)
+                            {
+                                <td>
+                                    @Model.CEU
+                                </td>
+                            }
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            @if (Model.Description != null)
+                            {
+                                <td>
+                                    @Model.Description
+                                </td>
+                            }
+                        </tr>
+                        <tr>
+                            @if (Model.Department != null)
+                            {
+                                <th>Department</th>
+                                <td>@Model.Department.Name</td>
+                            }
+                        </tr>
+
+                        @foreach (var item in Model.TaskFiles)
+                        {
+                            <tr>
+                                <th>File</th>
+
+                                <td><a href="@Url.Action("download", "Trainee", new { filePath = item.Path, name = item.Name })"> @item.Path</a></td>
+                            </tr>
+                        }
+                        @*@if (Model.File != null)
+                            {
+                                <tr>
+                                    <th>File</th>
+                                    <td><a href="@Url.Action("downloadTaskFile","Task",new { v=Model.File})">@Model.File</a></td>
+                                </tr>
+                            }*@
+
+
+                    </table>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <!-- /basic initialization -->
+</div>
+
+<div id="tagModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("addTaskTag","Task")">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Tags</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Assign Tag</label>
+                        <select class="form-control" name="TagId" required>
+                            <option>Please Select Tag</option>
+                            @foreach (var item in ViewBag.tags)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+
+                            }
+                        </select>
+                    </div>
+                    <input type="hidden" value="@Model.Id" name="TaskId" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-sm bg-primary-400">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="tagdeleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("deleteTaskTag","Task")">
+                <input type="hidden" id="TagId" name="id" />
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><b>Warning</b></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <p>Are you sure you want to remove this tag?</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-sm  btn-danger">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function deleteTag(Id) {
+
+        $("#TagId").val(Id);
+    }
+
+
+
+</script>

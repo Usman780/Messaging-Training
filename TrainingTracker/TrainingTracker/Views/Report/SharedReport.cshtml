@@ -1,0 +1,396 @@
+﻿
+@{
+    ViewBag.Title = "SharedReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Reports</li>
+            <li class="active">Shared Reports</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+
+    #glyphicon {
+        font-weight: bolder;
+        font-size: 1.8em;
+    }
+</style>
+<div class="content">
+    <br />
+    <br />
+    
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+
+
+            <center><h3 class="panel-title"><b>List of Shared Reports</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            @*<div class="heading-elements">
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+
+                                <li>
+
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("ExportEmployeesTask","ExportReport",new {startDate=ViewBag.startDate,endDate=ViewBag.endDate,tag=ViewBag.tag,department=ViewBag.department,division=ViewBag.division,taskName=ViewBag.taskNamee,taskType=ViewBag.taskType,status=ViewBag.status,fname=ViewBag.fname,lname=ViewBag.lname,priority=ViewBag.priority,completionStatus=ViewBag.completionStatus,sd=ViewBag.sd,ed=ViewBag.ed,cd=ViewBag.cd,DivDepID=ViewBag.DivDepID})"> Export Excel </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("ExportEmployeesPdf","ExportReport",new { DivDepID=ViewBag.DivDepID})">Export to pdf</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>*@
+
+        </div>
+
+
+
+        <div class="panel-body">
+
+            <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+
+                <thead>
+                    <tr>
+
+
+                        <th>Report Name</th>
+                        <th>Description</th>
+                        <th>Shared By</th>
+                        <th class="text-center">Actions</th>
+
+                    </tr>
+                </thead>
+               
+            </table>
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<script>
+      $(document).ready(function () {
+
+
+            $("#wait").css("display", "block");
+            var x = "s4kt7";
+            $('#example').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetSharedReports", "Report")',
+                        "data": {},
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+
+                    "columns": [
+                        { "data": "Name", "name": "Name" },
+                        { "data": "SharedDescription", "name": "SharedDescription" },
+                        { "data": "Department", "name": "Department" },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+                            //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                            render: function (data, type, full, meta) {
+                               
+                                    return '<ul class="icons-list text-center">' +
+                                        '<li class="dropdown">' +
+                                        '	<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                        '		<i class="icon-menu9"></i>' +
+                                        '	</a>' +
+                                        '	<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '		<li><a onclick="generateExcel(' + full.Id + ')"><i class="icon-square-up-right"></i> Generate Excel</a></li>' +
+                                        '		<li><a class="text-danger" onclick="generatePdf(' + full.Id + ')"><i class="icon-square-up-right"></i> Generate PDF </a></li>' +
+                                        '	</ul>' +
+                                        '</li>' +
+                                        '</ul>';
+                               
+
+                            },
+                            targets: 3
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+
+                })
+
+        //}
+    });
+</script>
+<script>
+    function generateExcel(id)
+    {
+        $.ajax({
+            type: 'POST',
+            url: "../Report/FavoriteReportInfo",
+            data: { FID: id },
+            dataType: "json",
+            success: function (data) {
+                if (data.ReportType == 1)
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: "../Report/AsyncDivisionReportExcel",
+                        data: {
+                            division: data.Division,
+                            FilterDate: data.FilterDate,
+                            startDate: data.StartingDate,
+                            endDate: data.EndingDate,
+                            department: data.Department,
+                            taskId: data.TaskName,
+                            taskType: data.TaskType,
+                            status: data.Status,
+                            priority: data.Priority,
+                            workertype: data.WorkerType
+                        },
+                        success: function (data) {
+                            $("#modal-Report").modal("show");
+
+                        },
+                        error: function () {
+                            alert('fail');
+                        }
+                    });
+                }
+                if (data.ReportType == 2) {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "../Report/AsyncDepartmentReportExcel",
+                        data: {
+                            FilterDate: data.FilterDate,
+                            startDate: data.StartingDate,
+                            endDate: data.EndingDate,
+                            department: data.EndingDate,
+                            taskId: data.TaskName,
+                            taskType: data.TaskType,
+                            status: data.Status,
+                            priority: data.Priority,
+                            workertype: data.WorkerType
+                        },
+                        success: function (data) {
+                            $("#modal-Report").modal("show");
+
+                        },
+                        error: function () {
+                            alert('fail');
+                        }
+                    });
+
+                }
+                if (data.ReportType == 3) {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "../Report/AsyncEmployeeReportExcel",
+                        data: {
+                            FilterDate: data.FilterDate,
+                            startDate: data.StartingDate,
+                            endDate: data.EndingDate,
+                            taskId: data.TaskName,
+                            taskType: data.TaskType,
+                            status: data.Status,
+                            priority: data.Priority,
+                            empId: data.Employee
+                        },
+                        success: function (data) {
+                            $("#modal-Report").modal("show");
+
+                        },
+                        error: function () {
+                            alert('fail');
+                        }
+                    });
+
+                }
+                if (data.ReportType == 4)
+                {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "../Report/AsyncUserTaskReportExcel",
+                        data: {
+                            FilterDate: data.FilterDate,
+                            UserTypeID: data.UserType,
+                            DivisionID: data.Division,
+                            DepartmentID: data.Department,
+                            UserName: data.Employee,
+                            startDate: data.StartingDate,
+                            endDate: data.EndingDate
+                        },
+                        success: function (data) {
+                            $("#modal-Report").modal("show");
+
+                        },
+                        error: function () {
+                            alert('fail');
+                        }
+                    });
+
+                }
+              
+            },
+            error: function () { alert("Error!") }
+        });
+        
+    }
+    function generatePdf(id)
+    {
+        $.ajax({
+            type: 'POST',
+            url: "../Report/FavoriteReportInfo",
+            data: { FID: id },
+            dataType: "json",
+            success: function (data) {
+                if (data.ReportType == 1)
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: "../Report/AsyncDivisionReportPdf",
+                        data: {
+                            division: data.Division,
+                            FilterDate: data.FilterDate,
+                            startDate: data.StartingDate,
+                            endDate: data.EndingDate,
+                            department: data.Department,
+                            taskId: data.TaskName,
+                            taskType: data.TaskType,
+                            status: data.Status,
+                            priority: data.Priority,
+                            workertype: data.WorkerType
+                        },
+                        success: function (data) {
+                            $("#modal-Report").modal("show");
+
+                        },
+                        error: function () {
+                            alert('fail');
+                        }
+                    });
+                }
+                if (data.ReportType == 2) {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "../Report/AsyncDepartmentReportPdf",
+                        data: {
+                            FilterDate: data.FilterDate,
+                            startDate: data.StartingDate,
+                            endDate: data.EndingDate,
+                            department: data.EndingDate,
+                            taskId: data.TaskName,
+                            taskType: data.TaskType,
+                            status: data.Status,
+                            priority: data.Priority,
+                            workertype: data.WorkerType
+                        },
+                        success: function (data) {
+                            $("#modal-Report").modal("show");
+
+                        },
+                        error: function () {
+                            alert('fail');
+                        }
+                    });
+
+                }
+                if (data.ReportType == 3) {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "../Report/AsyncEmployeeReportPdf",
+                        data: {
+                            FilterDate: data.FilterDate,
+                            startDate: data.StartingDate,
+                            endDate: data.EndingDate,
+                            taskId: data.TaskName,
+                            taskType: data.TaskType,
+                            status: data.Status,
+                            priority: data.Priority,
+                            empId: data.Employee
+                        },
+                        success: function (data) {
+                            $("#modal-Report").modal("show");
+
+                        },
+                        error: function () {
+                            alert('fail');
+                        }
+                    });
+
+                }
+                if (data.ReportType == 4)
+                {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "../Report/AsyncUserTaskReportPdf",
+                        data: {
+                            FilterDate: data.FilterDate,
+                            UserTypeID: data.UserType,
+                            DivisionID: data.Division,
+                            DepartmentID: data.Department,
+                            UserName: data.Employee,
+                            startDate: data.StartingDate,
+                            endDate: data.EndingDate
+                        },
+                        success: function (data) {
+                            $("#modal-Report").modal("show");
+
+                        },
+                        error: function () {
+                            alert('fail');
+                        }
+                    });
+
+                }
+              
+            },
+            error: function () { alert("Error!") }
+        });
+        
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#SharedReport").css('background-color', '#0150A1');
+        $("#SharedReport").css('color', '#ffffff');
+        $("#Reports").css('display', 'block', 'important');
+    });
+</script>

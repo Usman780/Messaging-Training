@@ -1,0 +1,30 @@
+2020-01-04 17:15:49,696 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-04 17:25:41,422 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-04 17:26:16,680 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-04 17:35:58,965 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-04 17:38:06,906 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-04 17:38:42,345 INFO MonitoringLogger - Pdf generation method called
+2020-01-04 17:38:46,143 INFO MonitoringLogger - Pdf generation method search completed
+2020-01-04 17:38:46,147 INFO MonitoringLogger - Pdf generation inner method called
+2020-01-04 17:38:49,163 INFO MonitoringLogger - Pdf generation inner method completed
+2020-01-04 17:38:49,171 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Employee2020-04-1--17-38-46.xlsx
+2020-01-04 19:27:28,394 INFO MonitoringLogger - Pdf generation method called
+2020-01-04 19:27:31,312 INFO MonitoringLogger - Pdf generation method search completed
+2020-01-04 19:27:31,314 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-04 19:27:31,314 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-01-04 19:27:31,314 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-01-04 19:27:31,314 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-01-04 19:31:53,441 INFO MonitoringLogger - Pdf generation method called
+2020-01-04 19:31:56,287 INFO MonitoringLogger - Pdf generation method search completed
+2020-01-04 19:31:56,289 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-04 19:31:56,289 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-01-04 19:31:56,289 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-01-04 19:31:56,290 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-01-04 19:34:31,782 INFO MonitoringLogger - Pdf generation method called
+2020-01-04 19:34:38,518 INFO MonitoringLogger - Pdf generation method search completed
+2020-01-04 19:34:38,520 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-04 19:34:38,520 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-01-04 19:34:38,520 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-01-04 19:34:38,521 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-01-04 23:16:37,155 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-04 23:18:58,498 INFO MonitoringLogger - Uzair Loged Into Zuptu

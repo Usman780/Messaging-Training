@@ -1,0 +1,1055 @@
+2019-11-20 19:27:09,417 INFO MonitoringLogger - Logedout from Zuptu
+2019-11-20 19:34:52,531 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-20 19:38:47,707 INFO MonitoringLogger - BlobManager function started
+2019-11-20 19:40:53,424 INFO MonitoringLogger - Add Group Task Comment Function
+2019-11-20 19:40:54,083 INFO MonitoringLogger - Child Comment ID : 334
+2019-11-20 19:46:57,329 INFO MonitoringLogger - BlobManager function started
+2019-11-20 19:47:48,549 INFO MonitoringLogger - Add Group Task Comment Function
+2019-11-20 19:47:48,549 INFO MonitoringLogger - Child Comment ID : 333
+2019-11-20 19:47:48,549 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  333
+2019-11-20 19:47:48,549 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 333
+2019-11-20 19:47:54,344 INFO MonitoringLogger - BlobManager function started
+2019-11-20 19:48:37,859 INFO MonitoringLogger - Add Group Task Comment Function
+2019-11-20 19:48:37,859 INFO MonitoringLogger - Child Comment ID : 333
+2019-11-20 19:48:37,859 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  333
+2019-11-20 19:48:37,859 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 333
+2019-11-20 19:48:43,054 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:14:06,678 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:14:07,184 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:14:10,157 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:14:11,891 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:14:13,273 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:14:14,647 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:14:15,428 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:14:16,127 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:14:16,815 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:14:17,568 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:14:17,568 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:14:17,568 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:22:43,762 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:22:45,925 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:22:48,387 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:22:50,229 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:22:51,635 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:22:53,110 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:22:53,811 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:22:54,526 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:22:55,221 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:22:55,916 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:22:55,916 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:22:55,916 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:25:16,969 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:25:17,310 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:25:19,788 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:25:21,545 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:25:22,949 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:25:24,352 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:25:25,053 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:25:25,773 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:25:26,490 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:25:27,186 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:25:27,186 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:25:27,186 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:27:58,168 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:27:58,518 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:28:00,769 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:28:02,560 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:28:03,974 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:28:05,381 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:28:06,084 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:28:06,820 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:28:07,529 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:28:08,228 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:28:08,228 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:28:08,228 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:29:25,550 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:29:25,892 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:29:26,917 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:29:28,674 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:29:30,082 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:29:31,519 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:29:32,223 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:29:32,922 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:29:33,626 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:29:34,332 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:29:34,874 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:29:34,874 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:31:23,820 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:34:05,226 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:34:05,564 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:34:07,860 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:34:09,587 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:34:10,985 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:34:12,479 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:34:13,165 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:34:13,856 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:34:14,566 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:34:15,268 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:34:15,269 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:34:15,269 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:35:59,659 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:36:00,001 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:36:02,274 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:36:04,033 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:36:05,424 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:36:07,401 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:36:08,090 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:36:08,782 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:36:09,478 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:36:10,183 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:36:10,183 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:36:10,183 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:40:44,855 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:40:45,195 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:40:47,956 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:40:49,792 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:40:51,286 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:40:52,868 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:40:53,569 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:40:54,278 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:40:54,991 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:40:55,688 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:40:55,688 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:40:55,688 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:42:45,724 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:42:46,061 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:42:48,252 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:42:49,974 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:42:51,370 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:42:52,746 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:42:53,457 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:42:54,148 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:42:54,836 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:42:55,523 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:42:55,523 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:42:55,523 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:43:53,230 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:43:53,730 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:43:54,862 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:43:56,671 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:43:58,133 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:43:59,557 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:44:00,247 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:44:00,936 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:44:01,625 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:44:02,321 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:44:02,321 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:44:02,322 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:47:07,884 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:47:08,223 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:47:10,393 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:12,152 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:13,536 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:14,924 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:15,702 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:16,400 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:17,090 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:17,777 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:47:17,777 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:47:17,777 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:47:49,787 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:47:50,130 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:47:51,140 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:52,929 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:54,302 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:55,725 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:56,466 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:57,245 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:57,933 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:47:59,004 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:47:59,004 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:47:59,004 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:48:37,198 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:48:37,548 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:48:38,549 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:48:40,289 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:48:41,711 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:48:43,101 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:48:43,816 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:48:44,519 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:48:45,236 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:48:45,955 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:48:45,955 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:48:45,955 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:50:29,924 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:50:30,261 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:50:32,475 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:50:34,205 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:50:35,609 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:50:37,002 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:50:37,700 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:50:38,389 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:50:39,080 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:50:39,768 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:50:39,768 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:50:39,768 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:52:33,050 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:52:33,386 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:52:35,559 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:52:37,328 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:52:38,727 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:52:40,119 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:52:40,829 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:52:41,543 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:52:42,243 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:52:42,946 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:52:42,946 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:52:42,946 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:54:20,702 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:54:21,049 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:54:23,601 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:54:25,333 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:54:26,735 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:54:28,124 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:54:28,837 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:54:29,939 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:54:30,636 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:54:31,361 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:54:31,362 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:54:31,362 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 14:59:14,329 INFO MonitoringLogger - Task Details Page
+2019-11-21 14:59:14,674 INFO MonitoringLogger - BlobManager function started
+2019-11-21 14:59:17,000 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:59:18,759 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:59:20,155 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:59:21,599 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:59:22,290 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:59:23,001 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:59:23,713 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 14:59:24,410 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 14:59:24,410 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 14:59:24,410 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:10:33,322 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:10:36,502 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:10:38,855 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:10:40,629 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:10:42,052 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:10:43,498 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:10:44,223 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:10:44,930 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:10:45,648 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:10:46,352 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:10:46,352 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:10:46,352 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:21:10,633 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:21:12,770 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:21:14,990 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:21:16,772 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:21:18,272 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:21:19,685 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:21:20,391 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:21:21,098 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:21:21,811 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:21:22,560 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:21:22,560 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:21:22,560 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:23:15,915 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:23:16,258 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:23:18,459 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:23:20,251 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:23:21,671 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:23:23,079 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:23:23,799 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:23:24,526 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:23:25,247 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:23:25,991 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:23:25,991 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:23:25,991 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:25:23,489 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:25:23,834 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:25:26,046 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:25:27,832 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:25:29,252 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:25:30,654 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:25:31,359 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:25:32,082 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:25:32,792 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:25:33,506 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:25:33,506 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:25:33,506 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:27:01,728 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:27:02,071 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:27:03,082 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:27:04,832 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:27:06,255 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:27:07,662 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:27:08,375 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:27:09,075 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:27:09,774 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:27:10,477 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:27:10,477 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:27:10,477 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:28:27,890 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:28:28,235 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:28:29,263 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:28:31,044 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:28:32,467 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:28:33,886 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:28:34,598 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:28:35,297 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:28:36,018 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:28:36,729 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:28:36,729 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:28:36,729 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:29:36,355 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:29:36,723 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:29:37,759 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:29:39,527 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:29:40,959 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:29:42,372 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:29:43,078 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:29:43,808 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:29:44,509 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:29:45,213 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:29:45,213 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:29:45,213 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:30:12,925 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:30:13,275 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:30:14,294 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:16,110 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:17,547 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:18,962 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:19,663 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:20,375 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:21,078 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:21,776 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:30:21,776 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:30:21,776 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:30:35,976 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:30:36,320 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:30:37,326 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:39,083 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:40,489 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:41,894 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:42,601 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:43,312 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:44,026 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:30:44,736 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:30:44,736 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:30:44,736 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:32:40,898 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:32:45,722 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:32:49,170 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:32:51,087 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:32:52,510 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:32:53,939 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:32:54,660 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:32:55,378 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:32:56,100 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:32:56,830 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:32:56,830 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:32:56,849 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:34:34,511 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:34:34,859 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:34:37,092 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:34:39,335 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:34:40,858 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:34:42,293 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:34:43,003 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:34:43,722 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:34:44,449 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:34:45,166 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:34:45,166 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:34:45,166 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:35:36,006 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:35:36,575 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:35:37,641 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:35:40,467 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:35:42,084 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:35:43,593 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:35:44,345 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:35:45,120 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:35:45,873 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:35:46,696 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:35:46,696 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:35:46,696 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:37:59,393 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:37:59,740 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:38:01,846 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:38:03,632 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:38:05,066 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:38:06,537 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:38:07,251 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:38:07,956 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:38:08,672 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:38:09,391 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:38:09,391 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:38:09,391 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:41:38,420 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:41:38,763 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:41:40,999 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:41:42,749 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:41:44,154 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:41:45,556 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:41:46,254 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:41:46,955 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:41:47,659 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:41:48,362 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:41:48,362 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:41:48,362 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:43:41,031 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:43:41,373 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:43:43,532 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:43:45,293 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:43:46,692 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:43:48,206 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:43:48,915 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:43:49,618 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:43:50,337 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:43:51,037 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:43:51,037 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:43:51,037 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:44:44,628 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:44:44,968 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:44:45,972 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:47,755 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:49,151 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:50,548 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:50,600 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:44:51,255 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:51,957 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:52,654 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:52,727 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:44:53,364 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:44:53,364 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:44:53,364 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:44:53,736 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:55,480 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:56,876 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:58,276 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:58,965 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:44:59,661 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:00,356 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:01,052 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:45:01,052 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:45:01,052 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:45:29,708 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:45:30,052 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:45:31,075 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:32,845 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:34,240 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:35,648 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:36,346 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:37,053 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:37,748 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:45:38,449 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:45:38,449 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:45:38,449 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:47:10,591 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:47:10,939 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:47:13,194 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:47:14,994 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:47:16,408 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:47:17,827 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:47:18,532 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:47:19,232 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:47:19,934 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:47:20,633 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:47:20,633 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:47:20,633 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:49:12,146 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:49:12,492 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:49:14,901 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:49:16,653 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:49:18,074 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:49:19,532 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:49:20,242 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:49:20,947 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:49:21,718 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:49:22,418 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:49:22,425 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:49:22,425 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:50:53,347 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:50:53,688 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:50:54,714 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:50:56,464 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:50:58,055 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:50:59,882 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:00,910 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:01,951 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:02,649 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:03,358 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:51:03,358 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:51:03,358 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:51:27,888 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:51:28,230 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:51:29,242 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:31,028 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:32,427 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:33,823 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:34,530 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:35,228 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:35,927 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:51:36,651 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:51:36,651 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:51:36,651 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:52:59,991 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:53:00,338 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:53:01,343 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:53:03,130 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:53:04,538 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:53:05,938 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:53:06,651 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:53:07,353 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:53:08,056 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:53:08,764 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:53:08,764 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:53:08,764 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:54:17,965 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:54:18,313 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:54:19,332 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:54:21,096 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:54:22,533 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:54:23,970 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:54:24,676 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:54:25,382 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:54:26,080 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:54:26,776 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:54:26,776 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:54:26,776 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 15:57:49,747 INFO MonitoringLogger - Task Details Page
+2019-11-21 15:57:50,104 INFO MonitoringLogger - BlobManager function started
+2019-11-21 15:57:52,331 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:57:54,146 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:57:55,610 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:57:57,024 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:57:57,723 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:57:58,433 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:57:59,145 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 15:57:59,842 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 15:57:59,842 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 15:57:59,842 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:11:05,101 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:11:05,434 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:11:07,589 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:09,279 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:10,636 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:12,087 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:12,954 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:13,639 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:14,318 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:14,989 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:11:15,034 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:11:15,034 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:11:39,297 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:11:39,634 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:11:40,633 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:42,416 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:43,775 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:45,131 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:45,821 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:46,502 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:47,177 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:11:47,886 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:11:47,886 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:11:47,886 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:13:21,585 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:13:21,949 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:13:24,116 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:25,836 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:27,194 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:28,568 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:29,248 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:29,928 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:30,602 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:31,276 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:13:31,276 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:13:31,276 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:13:32,865 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:13:33,194 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:13:34,185 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:35,876 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:37,236 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:38,591 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:39,371 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:40,049 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:40,725 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:13:41,402 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:13:41,402 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:13:41,402 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:15:09,870 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:15:10,218 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:15:11,218 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:15:12,918 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:15:14,302 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:15:15,659 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:15:16,341 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:15:17,019 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:15:17,693 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:15:18,364 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:15:18,364 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:15:18,364 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:15:56,197 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:15:56,535 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:15:57,514 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:15:59,213 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:16:00,583 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:16:01,941 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:16:02,624 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:16:03,302 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:16:03,991 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:16:04,769 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:16:04,769 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:16:04,769 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:20:30,433 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:20:30,768 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:20:33,253 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:20:34,966 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:20:36,327 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:20:37,704 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:20:38,386 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:20:39,059 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:20:39,738 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:20:40,417 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:20:40,417 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:20:40,417 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:21:18,974 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:21:19,310 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:21:20,430 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:21:22,162 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:21:23,535 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:21:24,913 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:21:25,609 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:21:26,284 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:21:26,966 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:21:27,645 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:21:27,645 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:21:27,645 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:23:35,737 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:23:36,071 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:23:38,249 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:23:40,386 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:23:41,745 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:23:43,122 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:23:43,840 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:23:44,532 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:23:45,221 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:23:45,903 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:23:45,903 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:23:45,903 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:24:15,318 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:24:15,662 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:24:16,650 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:24:18,363 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:24:19,736 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:24:21,105 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:24:21,781 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:24:22,466 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:24:23,146 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:24:23,831 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:24:23,831 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:24:23,831 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:27:59,190 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:28:03,685 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:28:06,061 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:28:08,065 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:28:09,499 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:28:10,991 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:28:11,724 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:28:12,468 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:28:13,187 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:28:13,901 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:28:13,901 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:28:13,901 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:34:54,332 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:34:56,081 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:34:58,439 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:00,188 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:01,584 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:02,988 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:03,744 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:04,490 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:05,193 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:05,902 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:35:05,902 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:35:05,902 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:35:48,616 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:35:48,957 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:35:49,983 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:51,822 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:53,256 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:55,102 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:55,801 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:56,500 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:57,200 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:35:57,923 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:35:57,923 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:35:57,923 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:37:52,704 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:37:53,055 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:37:55,254 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:37:56,993 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:37:58,394 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:37:59,791 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:38:00,505 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:38:01,203 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:38:01,909 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:38:02,605 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:38:02,605 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:38:02,605 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:39:54,904 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:39:55,257 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:39:57,469 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:39:59,214 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:40:00,600 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:40:01,997 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:40:02,703 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:40:03,443 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:40:04,139 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:40:04,850 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:40:04,850 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:40:04,850 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:41:17,822 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:41:18,161 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:41:19,173 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:19,510 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:41:21,036 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:21,628 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:41:22,444 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:22,633 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:23,853 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:24,365 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:24,551 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:25,243 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:25,760 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:25,941 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:26,641 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:41:26,641 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:41:26,641 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:41:27,140 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:27,827 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:28,514 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:29,207 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:41:29,897 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:41:29,897 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:41:29,897 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:51:18,010 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:51:20,114 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:51:22,333 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:51:24,251 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:51:25,637 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:51:27,052 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:51:27,771 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:51:28,464 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:51:29,169 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:51:29,867 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:51:29,867 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:51:29,867 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 16:53:50,534 INFO MonitoringLogger - Task Details Page
+2019-11-21 16:53:50,883 INFO MonitoringLogger - BlobManager function started
+2019-11-21 16:53:53,312 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:53:55,071 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:53:56,492 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:53:57,893 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:53:58,615 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:53:59,352 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:54:00,058 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 16:54:00,763 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 16:54:00,763 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 16:54:00,763 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:06:27,457 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:06:29,631 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:06:33,212 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:06:35,401 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:06:36,806 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:06:38,210 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:06:38,910 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:06:39,612 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:06:40,310 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:06:41,026 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:06:41,026 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:06:41,026 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:07:01,637 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:07:01,981 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:07:03,008 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:07:04,778 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:07:06,201 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:07:07,611 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:07:08,320 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:07:09,067 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:07:09,771 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:07:10,471 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:07:10,471 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:07:10,471 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:09:35,239 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:09:35,587 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:09:37,758 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:09:39,517 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:09:40,926 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:09:42,329 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:09:43,027 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:09:43,743 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:09:44,458 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:09:45,242 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:09:45,243 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:09:45,243 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:16:48,464 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:16:50,503 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:16:52,644 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:16:54,393 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:16:55,769 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:16:57,143 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:16:57,820 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:16:58,502 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:16:59,179 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:16:59,853 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:16:59,853 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:16:59,853 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:18:13,666 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:18:14,000 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:18:14,980 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:18:16,707 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:18:18,093 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:18:19,465 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:18:20,137 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:18:20,814 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:18:21,500 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:18:22,187 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:18:22,187 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:18:22,187 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:18:55,806 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:18:56,149 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:18:57,127 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:18:58,856 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:19:00,220 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:19:01,582 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:19:02,257 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:19:02,944 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:19:03,619 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:19:04,303 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:19:04,303 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:19:04,303 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:20:20,823 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:20:21,159 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:20:22,147 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:20:24,205 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:20:25,568 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:20:26,932 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:20:27,610 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:20:28,305 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:20:28,991 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:20:29,667 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:20:29,668 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:20:29,668 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:20:29,668 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:25:29,807 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:25:31,897 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:25:35,837 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:25:38,019 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:25:39,437 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:25:40,857 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:25:41,549 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:25:42,289 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:25:42,990 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:25:43,834 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:25:43,834 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:25:43,834 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:25:43,834 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:27:57,064 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:27:57,411 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:27:59,678 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:28:01,813 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:28:03,406 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:28:04,822 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:28:05,528 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:28:06,233 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:28:06,934 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:28:07,647 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:28:07,647 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:28:07,647 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:28:07,647 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:29:44,543 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:29:44,898 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:29:47,031 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:29:49,161 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:29:50,619 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:29:52,101 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:29:52,810 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:29:53,541 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:29:54,249 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:29:54,959 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:29:54,959 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:29:54,959 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:29:54,959 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:44:58,056 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:48:42,864 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:53:31,123 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:53:35,304 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:53:38,084 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:53:40,289 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:53:41,833 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:53:43,255 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:53:43,952 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:53:44,641 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:53:45,363 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:53:46,068 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:53:46,069 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:53:46,069 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:53:46,069 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:56:26,695 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:56:27,539 INFO MonitoringLogger - BlobManager function started
+2019-11-21 17:56:32,181 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:56:36,168 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:56:38,130 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:56:40,392 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:56:41,338 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:56:43,009 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:56:44,186 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 17:56:45,462 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:56:45,462 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 17:56:45,462 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 17:56:45,462 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 17:58:41,993 INFO MonitoringLogger - Task Details Page
+2019-11-21 17:58:42,331 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:00:34,487 INFO MonitoringLogger - Task Details Page
+2019-11-21 18:00:34,827 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:00:36,731 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:00:38,861 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:00:40,271 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:00:41,666 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:00:42,356 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:00:43,057 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:00:43,785 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:00:45,543 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:00:45,543 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:00:45,543 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:00:45,543 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:00:45,543 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:00:45,543 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:01:42,709 INFO MonitoringLogger - Task Details Page
+2019-11-21 18:01:43,169 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:01:48,622 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:01:58,206 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:01:58,885 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:01:59,646 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:02,258 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:04,176 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:04,532 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:05,510 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:05,895 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:06,270 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:07,511 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:08,669 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:02:08,669 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:02:08,669 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:02:08,669 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:02:08,669 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:02:08,669 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:02:08,670 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:11,423 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:13,012 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:02:17,586 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:02:17,586 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:02:17,586 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:02:17,587 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:02:17,587 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:02:17,587 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:09:09,908 INFO MonitoringLogger - Task Details Page
+2019-11-21 18:09:12,069 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:09:14,192 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:09:16,352 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:09:17,877 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:09:19,296 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:09:19,994 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:09:20,689 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:09:21,397 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:09:23,132 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:09:23,132 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:09:23,132 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:09:23,132 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:09:23,133 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:09:23,133 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:10:18,954 INFO MonitoringLogger - Task Details Page
+2019-11-21 18:10:19,322 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:10:20,355 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:10:22,486 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:10:23,862 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:10:25,498 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:10:26,272 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:10:26,981 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:10:27,675 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:10:29,456 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:10:29,456 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:10:29,456 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:10:29,456 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:10:29,456 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:10:29,456 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:14:40,706 INFO MonitoringLogger - Task Details Page
+2019-11-21 18:14:41,046 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:14:43,263 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:14:45,400 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:14:46,819 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:14:48,227 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:14:48,966 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:14:49,722 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:14:50,442 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:14:52,227 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:14:52,227 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:14:52,227 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:14:52,227 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:14:52,227 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:14:52,227 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:16:38,488 INFO MonitoringLogger - Task Details Page
+2019-11-21 18:16:38,851 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:16:41,149 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:16:43,688 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:16:45,143 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:16:46,559 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:16:47,295 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:16:48,000 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:16:48,717 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:16:50,609 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:16:50,609 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:16:50,609 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:16:50,610 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:16:50,610 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:16:50,610 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:16:50,610 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:20:08,234 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:23:49,644 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:24:07,167 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:34:20,789 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:37:22,989 INFO MonitoringLogger - Add Group Task Comment Function
+2019-11-21 18:37:22,989 INFO MonitoringLogger - Child Comment ID : 334
+2019-11-21 18:37:22,989 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  334
+2019-11-21 18:37:22,989 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 334
+2019-11-21 18:37:34,999 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:38:57,305 INFO MonitoringLogger - Task Details Page
+2019-11-21 18:38:57,658 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:38:58,743 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:39:01,546 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:39:02,951 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:39:04,397 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:39:05,134 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:39:05,835 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:39:06,556 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:39:08,312 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:39:08,312 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:39:08,312 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:39:08,312 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:39:08,312 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:39:08,312 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:39:08,312 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:40:36,975 INFO MonitoringLogger - Task Details Page
+2019-11-21 18:40:37,343 INFO MonitoringLogger - BlobManager function started
+2019-11-21 18:40:38,347 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:40:40,892 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:40:42,339 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:40:43,806 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:40:44,523 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:40:45,265 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:40:46,035 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-21 18:40:47,849 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:40:47,849 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-21 18:40:47,849 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-21 18:40:47,849 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:40:47,849 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:40:47,849 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-21 18:40:47,849 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-21 18:41:59,866 INFO MonitoringLogger - BlobManager function started
+2019-11-21 19:05:46,626 INFO MonitoringLogger - BlobManager function started
+2019-11-21 19:22:55,453 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-21 19:23:16,999 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-21 19:23:49,808 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-21 19:24:23,005 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-21 19:24:54,693 INFO MonitoringLogger - Loged Into Zuptu

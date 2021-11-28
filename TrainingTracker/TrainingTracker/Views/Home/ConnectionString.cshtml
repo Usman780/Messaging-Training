@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "ConnectionString";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>ConnectionStrings:</h3>
+<h5>@ViewBag.worktype</h5>
+<ul>
+ @foreach (var setting in ViewBag.ConnectionStrings)
+ {
+   <li>@setting.Name: @setting.ConnectionString</li>
+ }
+</ul>
+<h3>AppSettings:</h3>
+<ul>
+ @foreach (var s in ViewBag.AppSettings)
+ {
+    <li>@System.Configuration.ConfigurationManager.AppSettings[s]</li>
+ }
+</ul>
+

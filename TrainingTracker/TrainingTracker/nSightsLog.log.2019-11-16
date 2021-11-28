@@ -1,0 +1,42 @@
+2019-11-16 11:37:28,882 INFO MonitoringLogger - Logedout from Zuptu
+2019-11-16 11:37:38,336 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-16 11:38:31,499 INFO MonitoringLogger - Task Details Page
+2019-11-16 11:38:34,482 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:38:36,162 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:38:37,505 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:38:38,838 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:38:39,532 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:38:40,196 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:38:40,874 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:38:41,539 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-16 11:38:41,540 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-16 11:38:41,540 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-16 11:39:11,681 INFO MonitoringLogger - Task Details Page
+2019-11-16 11:39:13,022 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:39:14,687 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:39:16,023 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:39:17,356 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:39:18,024 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:39:18,695 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:39:19,360 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:39:20,034 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-16 11:39:20,034 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-16 11:39:20,034 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-16 11:39:20,034 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-16 11:54:04,826 INFO MonitoringLogger - Logedout from Zuptu
+2019-11-16 11:54:13,083 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-16 11:57:06,362 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-16 12:00:45,984 INFO MonitoringLogger - Logedout from Zuptu
+2019-11-16 12:00:55,608 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-16 12:06:39,685 INFO MonitoringLogger - Logedout from Zuptu
+2019-11-16 12:06:50,121 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-16 12:12:39,699 INFO MonitoringLogger - Logedout from Zuptu
+2019-11-16 12:14:42,254 INFO MonitoringLogger - Loged Into Zuptu
+2019-11-16 12:16:17,256 INFO MonitoringLogger - Update Admin Page...
+2019-11-16 12:16:17,961 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2019-11-16 12:16:39,375 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2019-11-16 12:16:41,135 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2019-11-16 12:16:42,183 INFO MonitoringLogger - Update Admin Page...
+2019-11-16 12:16:42,870 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2019-11-16 12:17:31,788 INFO MonitoringLogger - Logedout from Zuptu
+2019-11-16 12:17:37,699 INFO MonitoringLogger - Loged Into Zuptu

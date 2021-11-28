@@ -1,0 +1,1469 @@
+﻿@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model TrainingTracker.Models.Department
+@using TrainingTracker.Models
+@using TrainingTracker.BL
+@using TrainingTracker.HelpingClasses
+
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    List<Course> courses = new CourseBL().getCourseList();
+    Company Company = new CompanyBL().getCompanyById(Convert.ToInt32(logedinuser.Company));
+}
+<style>
+    .dropdown-menu-right {
+        left: auto !important;
+        right: auto !important;
+    }
+
+    .dropdown-menu {
+        top: auto !important;
+    }
+
+    #backbtn {
+        margin-left: 20px;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li><a href="@Url.Action("displayDepartment", "Utilities")">Departments</a></li>
+            <li class="active">@Model.Name</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+<a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayDepartment", "Utilities")">Back</a>
+
+<a href="@Url.Action("AddEmployee", "Utilities" , new {departmentId= General_Purpose.EncryptId(Model.Id), way = "setupDep"})" class="btn  btn-sm bg-primary-400 pull-right" style="color:white; margin-right:20px;"> Add Employee </a>
+
+<br />
+<br />
+<div class="content">
+
+    <div class="panel panel-flat">
+        <br />
+        <center><h1><strong>@Model.Name</strong></h1></center><br />
+        <div class="tab-content-bordered content-group">
+            <ul class="nav nav-tabs nav-tabs-highlight nav-lg nav-justified">
+                <li class="active"><a href="#tab-emp" data-toggle="tab" class="legitRipple" aria-expanded="true">Employees</a></li>
+                <li class=""><a href="#tab-task" data-toggle="tab" class="legitRipple" aria-expanded="false">Tasks</a></li>
+
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane has-padding active" id="tab-emp">
+                    <div class="panel-heading">
+                        <center><h3 class="panel-title"><b>List of Employees</b></h3></center>
+                        
+                    </div>
+
+
+                    <input id="hd" hidden value="@ViewBag.Id" />
+
+                    <table id="example" class="table datatable-button-html5-basic">
+
+                        <thead>
+                            <tr>
+                                <th>Sr#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+
+                                int k = 1;
+
+                                foreach (User item in Model.Users.Where(x => x.IsActive == 1 || x.IsActive == 2).ToList())
+                                {
+
+                                    <tr>
+
+                                        <td>@k</td>
+
+                                        <td>
+                                            @item.FirstName  @item.LastName
+                                        </td>
+
+                                        <td>
+                                            @item.Email 
+                                        </td>
+                                        
+                                        <td>
+                                            @item.PhoneNumber
+                                        </td>
+
+                                    </tr>
+                                    k++;
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane has-padding" id="tab-task">
+                    <div class="panel-heading">
+                        <center><h3 class="panel-title"><b>List of Tasks</b></h3></center>
+                        @*<div class="heading-elements">
+                            <a href="@Url.Action("displayAddTask", "Task" , new { sid=ViewBag.Id } )" class="btn  btn-sm bg-primary" style="color:white;"> View All Tasks </a>
+
+                            <a href="@Url.Action("addTaskAdmin", "Task", new {did= General_Purpose.EncryptId(Model.Id)})" class="btn btn-sm  bg-primary" style="color:white;"> Add Task</a>
+
+                        </div>*@
+                    </div>
+                    <table id="EmpTaskList" class="table datatable-button-html5-basic">
+
+                        <thead>
+                            <tr>
+
+                                <th>Name</th>
+                                <th>Cost ($)</th>
+                                <th>CEU</th>
+                                <th>Hours</th>
+                                
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign tasks to multiple Employees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select task</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-sm btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-sm btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- /Employee Delete -->
+
+<div id="modalManagerDelete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <form class="modal-body " action="@Url.Action("deleteUser","Utilities")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are You Sure yo want to delete ? <small class="display-block"></small></h5>
+                </div>
+
+                <input type="hidden" name="id" value="-1" id="managerId" />
+                <input type="hidden" name="accessLevel" value="3" id="managerAccess" />
+
+                <input type="hidden" name="divisionId" value="@Model.DivisionID" id="divisionIddd" />
+                <input type="hidden" name="deptId" value="@Model.Id" id="dpidd" />
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn  btn-sm bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn  btn-sm btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+
+<!-- Task Delete -->
+<div id="taskdelModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <form class="modal-body " action="@Url.Action("deleteTaskAdmin","Task")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are You Sure you want to delete ? <small class="display-block"></small></h5>
+                </div>
+
+                <input type="hidden" name="taskId" value="-1" id="taskId" />
+
+
+
+                <input type="hidden" name="deptId" value="@Model.Id" id="dpidd" />
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn  btn-sm bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn  btn-sm btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+
+<div id="AssignTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" id="assignTask" onsubmit="return frequencyCheck()" action="@Url.Action("addTraineTask","Trainee")" method="post">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign task to Employee</h4>
+                </div>
+                <input type="hidden" name="traineeId" value="-1" id="traineeId" />
+                <input type="hidden" name="departmentId" value="@Model.Id" id="divaId" />
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Task<span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required="required" onchange="setValues()" name="TaskId" id="selectTask">
+
+                                <option value="" selected disabled>Select Task</option>
+                                @foreach (var item in Model.Tasks.OrderBy(c => c.Name).Where(x => x.IsPrivate == 0 && x.IsActive == 1).ToList())
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Cost ($) </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="150" name="Cost" id="cost">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">CEU's</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="150" name="CEU" id="ceu">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"> Hours <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            @*<input type="text" class="form-control" name="hours" id="hours" required>*@
+
+                            <select class="select-results-color" name="hours" id="hours" required>
+                                <option value="">Select Hours</option>
+                                <option value="0.5">0.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="14">14</option>
+                                <option value="14.5">14.5</option>
+                                <option value="15">15</option>
+                                <option value="15.5">15.5</option>
+                                <option value="16">16</option>
+                                <option value="16.5">16.5</option>
+                                <option value="17">17</option>
+                                <option value="17.5">17.5</option>
+                                <option value="18">18</option>
+                                <option value="18.5">18.5</option>
+                                <option value="19">19</option>
+                                <option value="19.5">19.5</option>
+                                <option value="20">20</option>
+                                <option value="20.5">20.5</option>
+                                <option value="21">21</option>
+                                <option value="21.5">21.5</option>
+                                <option value="22">22</option>
+                                <option value="22.5">22.5</option>
+                                <option value="23">23</option>
+                                <option value="23.5">23.5</option>
+                                <option value="24">24</option>
+                                <option value="24.5">24.5</option>
+                                <option value="25">25</option>
+                                <option value="25.5">25.5</option>
+                                <option value="26">26</option>
+                                <option value="26.5">26.5</option>
+                                <option value="27">27</option>
+                                <option value="27.5">27.5</option>
+                                <option value="28">28</option>
+                                <option value="28.5">28.5</option>
+                                <option value="29">29</option>
+                                <option value="29.5">29.5</option>
+                                <option value="30">30</option>
+                                <option value="30.5">30.5</option>
+                                <option value="31">31</option>
+                                <option value="31.5">31.5</option>
+                                <option value="32">32</option>
+                                <option value="32.5">32.5</option>
+                                <option value="33">33</option>
+                                <option value="33.5">33.5</option>
+                                <option value="34">34</option>
+                                <option value="34.5">34.5</option>
+                                <option value="35">35</option>
+                                <option value="35.5">35.5</option>
+                                <option value="36">36</option>
+                                <option value="36.5">36.5</option>
+                                <option value="37">37</option>
+                                <option value="37.5">37.5</option>
+                                <option value="38">38</option>
+                                <option value="38.5">38.5</option>
+                                <option value="39">39</option>
+                                <option value="39.5">39.5</option>
+                                <option value="40">40</option>
+                                <option value="40.5">40.5</option>
+                                <option value="41">41</option>
+                                <option value="41.5">41.5</option>
+                                <option value="42">42</option>
+                                <option value="42.5">42.5</option>
+                                <option value="43">43</option>
+                                <option value="43.5">43.5</option>
+                                <option value="44">44</option>
+                                <option value="44.5">44.5</option>
+                                <option value="45">45</option>
+                                <option value="45.5">45.5</option>
+                                <option value="46">46</option>
+                                <option value="46.5">46.5</option>
+                                <option value="47">47</option>
+                                <option value="47.5">47.5</option>
+                                <option value="48">48</option>
+                                <option value="48.5">48.5</option>
+                                <option value="49">49</option>
+                                <option value="49.5">49.5</option>
+                                <option value="50">50</option>
+
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Grade (%)</label>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" min="0" max="100" name="Grad" id="Grade">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" name="Notes" id="notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Priority</label>
+                        <div class="col-lg-9">
+                            <select class="select" name="Priority">
+
+                                <option value="0" selected>Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    @*<div id="EmployeeCourse" class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger"></span>Canvas Course</label>
+                            <div class="col-lg-9">
+                                <select class="select-results-color" name="CanvasCourseId" id="EmployeeCanvasCourseId">
+                                    <option value="">Select Canvas Course</option>
+                                    @if (ViewBag.canvascourses!=null)
+                                    {
+                                        foreach (Course cr in ViewBag.canvascourses)
+                                        {
+                                            <option value="@cr.id">@cr.name</option>
+                                        }
+
+                                    }
+
+                                </select>
+                            </div>
+                        </div>*@
+                    @if (Company.IsLMS == 1)
+                    {
+                        <div id="" class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger"></span>Course</label>
+                            <div class="col-lg-9">
+                                <select class="select-results-color" name="CanvasCourseId" id="">
+                                    <option value="">Select Course</option>
+
+                                    @foreach (Course cr in courses)
+                                    {
+                                        <option value="@cr.Id">@cr.Name</option>
+                                    }
+
+
+
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    @*<div class="form-group">
+                            <label class="col-lg-3 control-label">Is Private</label>
+                            <div class="col-lg-9">
+                                <input type="checkbox"  name="" checked> Yes
+                            </div>
+                        </div>*@
+
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label class="col-lg-3 control-label">Start Date<span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="date" class="form-control" name="StartDate" id="StartDateTask" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">End Date</label>
+                        <div class="col-lg-4">
+                            <input type="date" class="form-control" onchange="checkDates()" name="EndDate" id="EndDateTask">
+                        </div>
+                        <label class="col-lg-2 control-label">End Time</label>
+                        <div class="col-lg-3">
+                            <input id="timepicker1" type="text" name="time" value="11:59 PM" class="form-control input-small">
+                        </div>
+                    </div>
+                    <p class="text-center">OR</p>
+                    <fieldset>
+                        <legend>Frequency</legend>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="radio" id="radiotype1" name="days" value="1" /> Every Day<br />
+                                <input type="radio" id="radiotype2" name="days" value="2" /> Every Week<br />
+                                <input type="radio" id="radiotype3" name="days" value="3" /> Every Month<br />
+                                <input type="radio" id="radiotype4" name="days" value="4" /> Every Year<br />
+                                <input type="radio" id="radiotype5" name="days" value="5" /> Every 2 Years<br />
+
+                                <input type="radio" id="radiotype6" name="days" value="6" /> Custom<br />
+                                <input type="radio" id="radiotype-1" checked name="days" value="-1" /> None <br />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Custom Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" name="freqDays" id="freqDays" maxlength="150" placeholder="Days">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency Ending Date:</label>
+                            <div class="col-lg-9">
+
+
+                                <input type="date" id="FeqEndingDate" name="FeqEndingDate" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div id="data"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <label id="errorDisplayTask" class="control-label text-danger" hidden> No Employee Selected !  </label>
+                    <span style="color:red" id="spanmsg"></span>
+
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="sbButtonTask" onclick="checkValues()" class="btn btn-sm  btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="AssignGroupTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" onsubmit="return frequencyCheckgrp()" action="@Url.Action("addTraineeGroupTask","Task")" method="post">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign Group Task to multiple Employees</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Group Task   <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required="required" name="GroupTaskId" id="selectGroupTask">
+                                <option disabled selected value="">Select task</option>
+                                @*<option value="">abc</option>*@
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Primary   <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required="required" name="PrimaryLead" onchange="dropdwonprimary()" id="primary">
+                                <option value="" selected disabled>Please Select Primary Lead</option>
+                                @foreach (User item in ViewBag.managers)
+                                {
+                                    if (item.Role != 1)
+                                    {
+                                        <option value="@item.Id">@item.FirstName @item.LastName</option>
+
+                                    }
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Secondary</label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" name="SecondaryLead" onchange="dropdwonsecondary()" id="secondary">
+                                <option value="" selected disabled>Please Select Secondary Lead</option>
+                                @foreach (User item in ViewBag.managers)
+                                {
+                                    <option value="@item.Id">@item.FirstName @item.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Slack Channel Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="49" name="SlackChannel" id="slackChannel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Priority</label>
+                        <div class="col-lg-9">
+                            <select class="select" name="Priority">
+
+                                <option value="0" selected>Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Cost ($)</label>
+                        <div class="col-lg-9">
+                            <input type="number" maxlength="9" class="form-control" name="Cost" id="cost">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">CEU's</label>
+                        <div class="col-lg-9">
+                            <input type="number" maxlength="9" class="form-control" name="CEU" id="ceu">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Hours</label>
+                        <div class="col-lg-9">
+                            @*<input type="number" maxlength="9" class="form-control" name="hours" id="hours">*@
+                            <select class="select-results-color" name="hours" id="hours">
+                                <option value="">Select Hours</option>
+                                <option value="0.5">0.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="14">14</option>
+                                <option value="14.5">14.5</option>
+                                <option value="15">15</option>
+                                <option value="15.5">15.5</option>
+                                <option value="16">16</option>
+                                <option value="16.5">16.5</option>
+                                <option value="17">17</option>
+                                <option value="17.5">17.5</option>
+                                <option value="18">18</option>
+                                <option value="18.5">18.5</option>
+                                <option value="19">19</option>
+                                <option value="19.5">19.5</option>
+                                <option value="20">20</option>
+                                <option value="20.5">20.5</option>
+                                <option value="21">21</option>
+                                <option value="21.5">21.5</option>
+                                <option value="22">22</option>
+                                <option value="22.5">22.5</option>
+                                <option value="23">23</option>
+                                <option value="23.5">23.5</option>
+                                <option value="24">24</option>
+                                <option value="24.5">24.5</option>
+                                <option value="25">25</option>
+                                <option value="25.5">25.5</option>
+                                <option value="26">26</option>
+                                <option value="26.5">26.5</option>
+                                <option value="27">27</option>
+                                <option value="27.5">27.5</option>
+                                <option value="28">28</option>
+                                <option value="28.5">28.5</option>
+                                <option value="29">29</option>
+                                <option value="29.5">29.5</option>
+                                <option value="30">30</option>
+                                <option value="30.5">30.5</option>
+                                <option value="31">31</option>
+                                <option value="31.5">31.5</option>
+                                <option value="32">32</option>
+                                <option value="32.5">32.5</option>
+                                <option value="33">33</option>
+                                <option value="33.5">33.5</option>
+                                <option value="34">34</option>
+                                <option value="34.5">34.5</option>
+                                <option value="35">35</option>
+                                <option value="35.5">35.5</option>
+                                <option value="36">36</option>
+                                <option value="36.5">36.5</option>
+                                <option value="37">37</option>
+                                <option value="37.5">37.5</option>
+                                <option value="38">38</option>
+                                <option value="38.5">38.5</option>
+                                <option value="39">39</option>
+                                <option value="39.5">39.5</option>
+                                <option value="40">40</option>
+                                <option value="40.5">40.5</option>
+                                <option value="41">41</option>
+                                <option value="41.5">41.5</option>
+                                <option value="42">42</option>
+                                <option value="42.5">42.5</option>
+                                <option value="43">43</option>
+                                <option value="43.5">43.5</option>
+                                <option value="44">44</option>
+                                <option value="44.5">44.5</option>
+                                <option value="45">45</option>
+                                <option value="45.5">45.5</option>
+                                <option value="46">46</option>
+                                <option value="46.5">46.5</option>
+                                <option value="47">47</option>
+                                <option value="47.5">47.5</option>
+                                <option value="48">48</option>
+                                <option value="48.5">48.5</option>
+                                <option value="49">49</option>
+                                <option value="49.5">49.5</option>
+                                <option value="50">50</option>
+
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Grade (%)</label>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" min="0" max="100" name="Grade" id="Grade">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" maxlength="999" name="Notes" id="notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label class="col-lg-3 control-label">Start Date   <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="date" class="form-control" name="StartDate" id="StartGroupDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">End Date   <span class="text-danger"></span></label>
+                        <div class="col-lg-4 col-lg-offset-1">
+                            <input type="date" class="form-control" onchange="groupDatesValues()" name="EndDate" id="EndGroupDate">
+                        </div>
+                        <label class="col-lg-2 control-label">End Time</label>
+                        <div class="col-lg-3">
+                            <input id="timepicker1" type="time" name="time" class="form-control input-small" value="23:59">
+                        </div>
+                    </div>
+                    <p class="text-center">OR</p>
+                    <fieldset>
+                        <legend>Frequency</legend>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="radio" id="grpradiotype1" onclick="frequencyCheckgrp()" name="days" value="1" /> Every Day<br />
+                                <input type="radio" id="grpradiotype2" onclick="frequencyCheckgrp()" name="days" value="2" /> Every Week<br />
+                                <input type="radio" id="grpradiotype3" onclick="frequencyCheckgrp()" name="days" value="3" /> Every Month<br />
+                                <input type="radio" id="grpradiotype4" onclick="frequencyCheckgrp()" name="days" value="4" /> Every Year<br />
+                                <input type="radio" id="grpradiotype5" onclick="frequencyCheckgrp()" name="days" value="5" /> Every 2 Years<br />
+
+                                <input type="radio" id="grpradiotype6" onclick="frequencyCheckgrp()" name="days" value="6" /> Custom<br />
+                                <input type="radio" id="grpradiotype-1" onclick="frequencyCheckgrp()" checked name="days" value="-1" /> None <br />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Custom Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" name="freqDays" id="grpfreqDays" maxlength="150" placeholder="Days">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency Ending Date:</label>
+                            <div class="col-lg-9">
+
+
+                                <input type="date" id="grpFeqEndingDate" name="FeqEndingDate" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <label class="col-lg-12 control-label text-danger">Note : If values of Hours,CEU,Cost are not entered, it will be calculated from the Tasks in Group Task </label>
+                    </div>
+                    <div id="Groupdata"></div>
+
+                </div>
+                <input type="hidden" value="@Model.Id" name="deptId" />
+                <div class="modal-footer">
+                    <label id="errorGroupDisplay" class="control-label text-danger" hidden> No Employee Selected !  </label>
+                    <span style="color:red" id="grpspanmsg"></span>
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sbGroupButton" class="btn btn-sm  btn-primary bg-primary-400">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("uploadBulkEmployee","Trainee")" method="post" enctype="multipart/form-data">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Upload Bulk</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="department" value="@Model.Id" />
+                    <input type="hidden" name="isDepartpage" value="1" />
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-lg-3 control-label">Upload:</label>
+                        @*<input type="file" name="file">*@
+                        <div class="file btn bg-primary-400">
+                            Browse
+                            <input type="file" name="file" accept=".xls,.xlsx" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message-text" class="col-lg-3 control-label">Sample File:</label>
+                        <p><a href="@Url.Action("downloadSampleFile","Trainee")">Download</a></p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-sm btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-sm bg-primary-400">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+@*<script>
+        $(document).ready(function () {
+
+            var h = $("#hd").val();
+            $('#example').DataTable(
+                {
+
+                    "ajax": {
+                        "url": '../Utilities/GetEmpInDepatment?sid=' + h + '',
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                     { "data": "Name", "name": "Name" },
+                        { "data": "FirstName", "name": "FirstName" },
+                        //{ "data": "DivisionName", "name": "DivisionName" },
+                        //{ "data": "Role", "name": "Role" },
+                        //{ "data": "IsActive", "name": "IsActive" },
+                        //{ "data": "EncryptedId", "name": "EncryptedId", "visible": false },
+                        ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                        //{ "data": "Email", "name": "Email", "visible": false },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+
+                            render: function (data, type, full, meta) {
+                                //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                                if (full.IsActive == 2) {
+                                    return '<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteEmployee?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage=' + 'false' + '&sid=' + full.deptId + '">Send Invite Again </a>' +
+                                        '<a class="btn  btn-sm btn-danger"  onclick="deleteManager(' + full.Id + ' , ' + full.Role2 + ')"><i class="icon-trash"></i></a>';
+                                } else {
+                                    return '<button type="button" class="btn btn-sm  btn-success dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>' +
+                                      '  <ul class="dropdown-menu dropdown-menu-right">'+
+
+                                                      '  <li>'+
+                                                          '  <a href="../Analysis/displayEmpAnalaysis?sid='+ full.EncryptedEmpId +'">'+
+                                                                'View Analytics' +full.EncryptedEmpId+
+                                                           ' </a>'+
+                                                       ' </li>'+
+                                                        '<li>'+
+                                                           ' <a onclick="displayAssignEmpTask('+full.Id+')">'+
+                                                               ' Assign Task'+
+                                                            '</a >'+
+
+                                        ' </li>' +
+                                                            '<li>' +
+                                                            ' <a href="../Utilities/UpdateEmployee?sid='+ full.EncryptedEmpId +'&department= ' + full.deptId +'">' +
+                                        'Update' +
+                                        '  </a>' +
+                                        '</li>' +
+                                                            ' <li>' +
+                                                            ' <a class="" onclick="deleteManager(' + full.Id + ',' + full.Role2 + ')">' +
+                                        ' Delete' +
+                                        ' </a>' +
+                                        ' </li>' +
+
+                                        '</ul>';
+
+
+                                }
+                            },
+                            targets: 2
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    }
+                })
+        });
+
+
+    </script>*@
+
+
+<script>
+    function frequencyCheck() {
+        var x1 = $("#radiotype1");
+        var x2 = $("#radiotype2");
+        var x3 = $("#radiotype3");
+        var x4 = $("#radiotype4");
+        var x5 = $("#radiotype5");
+        var x6 = $("#radiotype6");
+        var x11 = $("#radiotype-1");
+        if ($("#radiotype1").prop("checked") == true || x2.prop("checked") == true || x3.prop("checked") == true || x4.prop("checked") == true || x5.prop("checked") == true || x6.prop("checked") == true) {
+            var c = $("#FeqEndingDate").val();
+            if (c == "") {
+                $("#EndDateTask").attr("required", false);
+                $("#FeqEndingDate").attr("required", true);
+                $("#spanmsg").text("Frequency ending date is required");
+                return false
+            } else {
+                $("#EndDateTask").attr("required", false);
+                $("#FeqEndingDate").attr("required", false);
+                $("#spanmsg").text("");
+                return true
+            }
+
+
+
+
+        } else {
+            if ($("#EndDateTask").val() == "") {
+                $("#EndDateTask").attr("required", true);
+                $("#sspanmsg").text("Task Endate is Required")
+                return false;
+            }
+            $("#FeqEndingDate").attr("required", false);
+            $("#spanmsg").text("");
+            //      $(".radiotype").val(null);
+
+            return true
+        }
+
+    }
+
+    function frequencyCheckgrp() {
+        var x1 = $("#grpradiotype1");
+        var x2 = $("#grpradiotype2");
+        var x3 = $("#grpradiotype3");
+        var x4 = $("#grpradiotype4");
+        var x5 = $("#grpradiotype5");
+        var x6 = $("#grpradiotype6");
+        var x11 = $("#grpradiotype-1");
+        if ($("#grpradiotype1").prop("checked") == true || x2.prop("checked") == true || x3.prop("checked") == true || x4.prop("checked") == true || x5.prop("checked") == true || x6.prop("checked") == true) {
+            var c = $("#grpFeqEndingDate").val();
+            if (c == "") {
+                $("#EndGroupDate").attr("required", false);
+                $("#grpFeqEndingDate").attr("required", true);
+                $("#grpspanmsg").text("Frequency ending date is required");
+                return false
+            } else {
+
+                $("#EndGroupDate").attr("required", false);
+                $("#grpFeqEndingDate").attr("required", false);
+                $("#grpspanmsg").text("");
+                return true
+            }
+
+
+
+
+        } else {
+            if ($("#EndGroupDate").val() == "") {
+                $("#EndGroupDate").attr("required", true);
+                $("#grpspanmsg").text("Task Endate is Required")
+                return false;
+            }
+            $("#grpFeqEndingDate").attr("required", false);
+            $("#grpspanmsg").text("");
+            //      $(".radiotype").val(null);
+
+            return true
+        }
+
+    }
+    $("#EmployeeCourse").hide();
+
+    //$(document).ready(function () {
+    //    $('#example').DataTable();
+    //}
+
+
+    $(document).ready(function ()
+    {
+        
+
+        var h = $("#hd").val();
+        $('#EmpTaskList').DataTable(
+            {
+
+                "ajax": {
+                    "url": '../Utilities/GetEmpTaskInDepatment?sid=' + h + '',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Name", "name": "Name" },
+                    { "data": "Cost", "name": "Cost" },
+                    { "data": "CEU", "name": "CEU" },
+                    { "data": "Hours", "name": "Hours" },
+                    //{ "data": "DivisionName", "name": "DivisionName" },
+                    //{ "data": "Role", "name": "Role" },
+                    //{ "data": "IsActive", "name": "IsActive" },
+                    //{ "data": "EncryptedId", "name": "EncryptedId", "visible": false },
+                    ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                    //{ "data": "Email", "name": "Email", "visible": false },
+                    //{ "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    //{
+
+                    //    render: function (data, type, full, meta) {
+                    //        //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+
+                    //        return '<button type="button" class="btn btn-sm  btn-success dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>' +
+
+                    //            '<ul class="dropdown-menu dropdown-menu-right">' +
+
+                    //            '   <li>' +
+                    //            ' <a href="../Task/displayUpdateAction?sid=' + full.EncryptedEmpId + '&deptId=' + full.EncryptedDeptId + '">' +
+                    //            ' Update' +
+                    //            '</a>' +
+                    //            '</li>' +
+                    //            '<li>' +
+                    //            ' <a onclick="deleteTask(' + full.Id + ')">' +
+                    //            'Delete' +
+                    //            '</a>' +
+                    //            '</li>' +
+                    //            '</ul>';
+
+
+                    //    },
+                    //    targets: 4
+                    //}
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                }
+            })
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    //$('#timepicker1').timepicker();
+</script>
+<script type="text/javascript">
+    var scope = 0;
+    var scope2 = 4;
+    var scope1 = 0;
+    var scope3 = 4;
+    function deleteTask(taskId) {
+        $('#taskiid').val(taskId);
+        $('#modalTaskDelete').modal("show");
+    }
+    function deleteTag(tagId) {
+        $('#tagIdd').val(tagId);
+        $('#modalTagDelete').modal("show");
+    }
+    function deleteDept(deptId) {
+        $('#deptIdd').val(deptId);
+        $('#modalDeptDelete').modal("show");
+    }
+  function vlidateDepartment(name,divId,error,button) {
+
+        var sele = $('#' + divId).val();
+        var name = $('#' + name).val();
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("departmentNameValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data: name, divId:sele },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json != 1) {
+                       $('#' + error).hide();
+                       $('#' + button).attr('disabled', false)
+                       }
+               else
+                   {
+                       $('#' + error).show();
+                       $('#' + button).attr('disabled', true)
+
+               }
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+ function setSelectedIndexDiv(valsearch,name,vaid) {
+        //var s = $('#updateDivisionID');
+        $("select#updateDivisionID option")
+            .each(function () {
+                //this.selected = (this.value == valsearch);
+                $("#updateDivisionID option[value=" + valsearch + "]").attr("selected", true).change();
+            });
+        //$("#updateDivisionID").
+        $("#updateDepartment").val(name);
+        $("#depId").val(vaid);
+        $('#editDepart').modal("show");
+
+
+
+    }
+ function vlidateTag(name,divId,error,button) {
+
+        var sele = $('#' + divId).val();
+        var name = $('#' + name).val();
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("tagNameValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data: name, divId:sele },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json != 1) {
+                       $('#' + error).hide();
+                       $('#' + button).attr('disabled', false)
+                       }
+               else
+                   {
+                       $('#' + error).show();
+                       $('#' + button).attr('disabled', true)
+
+               }
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+    function setSelectedIndexTag(valsearch, name, vaid) {
+
+
+        $("#updateTag").val(name);
+        $("#tagId").val(vaid);
+        $('#updateTagModal').modal("show");
+    }
+
+    function displayAssignEmpTask(managerId) {
+        $('#traineeId').val(managerId);
+        $('#AssignTask').modal("show");
+    }
+  function setValues() {
+        var v = $('#selectTask').val();
+
+
+        $.ajax({
+
+               type: 'GET',
+               url: '@Url.Action("getDetails","Task")',
+               timeout: 100000000,
+               data: {_id:v },
+               dataType: "json",
+               success: function (data) {
+
+
+                   $('#cost').empty();
+                   $('#cost').val(data.Cost_);
+                   $('#ceu').empty();
+                   $('#ceu').val(data.CEU);
+                   //$('#hours').empty();
+                   $('#hours').val(data.Hours).change();
+
+                   $('#notes').empty();
+                   $('#notes').val(data.Description);
+                     if (data.CourseId) {
+
+                   // $("#EmployeeCourse").show();
+                    //$("#EmployeeCanvasCourseId").val(data.CourseId).change();
+
+                } else {
+                    //$("#EmployeeCanvasCourseIds").val("").change();
+                    //$("#EmployeeCourse").hide();
+                }
+                   var count = 1;
+
+
+
+
+
+
+                   if (count == 0) {
+
+                       scope = -1;
+
+                       $('#errorDisplay').text("No Employee Selected")
+                       $('#errorDisplay').show();
+                       $('#sbButton').attr('disabled', true);
+                       document.getElementById("EndDate").value = "";
+                   }
+                   else {
+                       $('#data').empty();
+                       $('#data').append(data);
+                       scope = 1;
+                       if (scope2 == 0) {
+
+                           $('#errorDisplay').text("End date should be greater than Start date")
+                           $('#errorDisplay').show();
+                           $('#sbButton').attr('disabled', true);
+                           document.getElementById("EndDate").value = "";
+
+                       }
+                       else {
+                           $('#errorDisplay').hide();
+                           $('#sbButton').attr('disabled', false);
+                       }
+
+                   }
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+    }
+    function deleteManager(id, accessLevel) {
+        $('#managerId').val(id);
+        $('#managerAccess').val(3);
+        $('#modalManagerDelete').modal("show");
+    }
+
+    function deleteTask(id) {
+        $('#taskId').val(id);
+
+        $('#taskdelModal').modal("show");
+    }
+
+
+    function checkDates() {
+        var startDate = document.getElementById("StartDateTask").value;
+        var endDate = document.getElementById("EndDateTask").value;
+
+        if ((Date.parse(startDate) > Date.parse(endDate))) {
+
+            scope2 = 0;
+
+
+            $('#errorDisplayTask').text("End date should be greater than Start date")
+            $('#errorDisplayTask').show();
+            $('#sbButtonTask').attr('disabled', true);
+            document.getElementById("EndDateTask").value = "";
+
+
+
+        }
+        else {
+
+            $('#errorDisplayTask').hide();
+            $('#sbButtonTask').attr('disabled', false);
+
+
+
+
+        }
+    }
+
+
+    function groupTaskValues(divid) {
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("getGroupDivisionTasksDetails", "Task")',
+               timeout: 100000000,
+            data: { divisionId:divid },
+               dataType: "json",
+               success: function (data) {
+                   var i = 0;
+
+                   var count = 0;
+                   $('#selectGroupTask').empty();
+                   $('#selectGroupTask').append(  '<option value="" selected disabled> Please Choose a Group Task</option>');
+                   for (; i < data.length; i++) {
+                       var taskItem = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                       $('#selectGroupTask').append(taskItem);
+
+                   }
+
+                   var inputElements = document.getElementsByClassName('messageCheckbox');
+                   $('#Groupdata').empty();
+                   var selectDatat = '';
+                   for (var i = 0; inputElements[i]; i++) {
+                       if (inputElements[i].checked) {
+                           $('#Groupdata').append('<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">');
+
+                           count = count + 1;
+
+                       }
+                   }
+
+
+                   if (count == -1) {
+
+                       scope1 = -1;
+
+                     //  $('#errorGroupDisplay').text("No Employee Selected")
+                       //$('#errorGroupDisplay').show();
+                      // $('#sbButtonGroup').attr('disabled', true);
+                      // document.getElementById("EndGroupDate").value = "";
+                   }
+                   else {
+                       scope1 = 1;
+                       if (scope3 == 0) {
+
+                           $('#errorGroupDisplay').text("End date should be greater than Start date")
+                           $('#errorGroupDisplay').show();
+                           $('#sbGroupButton').attr('disabled', true);
+                           document.getElementById("EndGroupDate").value = "";
+
+                       }
+                       else {
+                           $('#errorGroupDisplay').hide();
+                           $('#sbGroupButton').attr('disabled', false);
+                       }
+
+                   }
+
+                   $('#AssignGroupTask').modal("show");
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+
+    function groupDatesValues() {
+
+        frequencyCheckgrp();
+        var startDate = document.getElementById("StartGroupDate").value;
+        var endDate = document.getElementById("EndGroupDate").value;
+
+        if ((Date.parse(startDate) > Date.parse(endDate))) {
+
+            scope2 = 0;
+
+
+            $('#errorGroupDisplay').text("End date should be greater than Start date")
+            $('#errorGroupDisplay').show();
+            $('#sbGroupButton').attr('disabled', true);
+            document.getElementById("EndGroupDate").value = "";
+
+
+
+        }
+        else {
+            scope2 = 1;
+            if (scope1 == -1) {
+                //$('#errorGroupDisplay').text("No Employee Assigned !")
+                //$('#errorGroupDisplay').show();
+                //$('#sbGroupButton').attr('disabled', true);
+            }
+            else {
+                $('#errorGroupDisplay').hide();
+                $('#sbGroupButton').attr('disabled', false);
+            }
+
+
+
+        }
+    }
+    function dropdwonprimary() {
+        var x = $('#primary').val();
+        //$('select[name*="SecondaryLead"] option[value=' + x + ']').attr('disabled', true);
+        $('select[name *= "SecondaryLead"] option[value = ' + x + ']').attr('disabled', 'disabled')
+            .siblings().removeAttr('disabled');
+    }
+    function dropdwonsecondary() {
+        var x = $('#secondary').val();
+        $('select[name *= "PrimaryLead"] option[value = ' + x + ']').attr('disabled', 'disabled')
+            .siblings().removeAttr('disabled');
+    }
+    function checkValues() {
+
+        frequencyCheck();
+        $("endDate").prop('required', true);
+        var isRepeat = false;
+        $("#assignTask input[type=radio]:checked").each(function () {
+            if (this.checked == true) {
+                isRepeat = true;
+                $("endDate").prop('required', true);
+                return false;
+            }
+        });
+
+        if (isRepeat == false) {
+            if (!Date.parse($('#EndDateTask').val())) {
+                $('#errorDisplayTask').text("Select End Date or Repeat Frequency !")
+                $('#errorDisplayTask').show();
+                $('#sbButtonTask').prop("type", "button");
+            }
+            else {
+
+                $('#sbButtonTask').prop("type", "submit");
+                $("#AssignTask").submit();
+            }
+        }
+
+        else {
+            $('#sbButtonTask').prop("type", "submit");
+            $("#AssignTask").submit();
+        }
+
+    }
+
+</script>

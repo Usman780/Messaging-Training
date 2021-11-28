@@ -1,0 +1,84 @@
+2020-01-30 10:44:53,542 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-30 10:45:34,701 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-30 10:46:00,380 INFO MonitoringLogger - Update Admin Page...
+2020-01-30 10:46:01,238 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: uzair@nodlays.com
+2020-01-30 10:46:40,292 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:uzair@nodlays.com
+2020-01-30 10:47:27,477 INFO MonitoringLogger - BlobManager function started
+2020-01-30 10:48:05,823 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: uzair@nodlays.com
+2020-01-30 10:48:06,983 INFO MonitoringLogger - Update Admin Page...
+2020-01-30 10:48:07,803 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: uzair@nodlays.com
+2020-01-30 10:58:17,009 INFO MonitoringLogger - Update Admin Page...
+2020-01-30 10:58:17,806 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: uzair@nodlays.com
+2020-01-30 10:58:52,422 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:uzair@nodlays.com
+2020-01-30 10:59:06,926 INFO MonitoringLogger - BlobManager function started
+2020-01-30 10:59:26,646 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: uzair@nodlays.com
+2020-01-30 10:59:27,821 INFO MonitoringLogger - Update Admin Page...
+2020-01-30 10:59:28,570 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: uzair@nodlays.com
+2020-01-30 11:10:46,753 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-30 11:11:19,666 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-30 11:12:07,042 INFO MonitoringLogger - Update Admin Page...
+2020-01-30 11:12:07,803 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-01-30 11:12:34,959 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:test1@nodlays.com
+2020-01-30 11:12:38,694 INFO MonitoringLogger - BlobManager function started
+2020-01-30 11:12:43,039 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: test1@nodlays.com
+2020-01-30 11:12:44,190 INFO MonitoringLogger - Update Admin Page...
+2020-01-30 11:12:44,961 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-01-30 11:13:49,402 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-30 11:13:58,558 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-01-30 11:14:38,587 INFO MonitoringLogger - Update Employee Page...
+2020-01-30 11:14:40,139 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-01-30 11:15:00,058 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:test@nodlays.com
+2020-01-30 11:15:00,433 INFO MonitoringLogger - BlobManager function started
+2020-01-30 11:15:02,916 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :test@nodlays.com
+2020-01-30 11:15:07,305 INFO MonitoringLogger - Update Employee Page...
+2020-01-30 11:15:08,778 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-01-30 11:33:52,088 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-01-30 11:34:11,197 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-01-30 11:34:41,471 INFO MonitoringLogger - Update Manger Page
+2020-01-30 11:34:41,846 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: bilalahmed151214@gmail.com
+2020-01-30 11:34:43,356 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-01-30 11:35:24,457 INFO MonitoringLogger - UpdateManagerAction Function Starting...
+2020-01-30 11:35:24,460 INFO MonitoringLogger - Canvas Login Mail Recieved from Update Manager Page:bilalahmed151214@gmail.com
+2020-01-30 11:35:24,465 INFO MonitoringLogger - Set Canvas Login Mail to Manager Info Object.
+2020-01-30 11:35:24,860 INFO MonitoringLogger - BlobManager function started
+2020-01-30 11:35:28,060 INFO MonitoringLogger - Canvas Login Mail updating Manager's info to Database: bilalahmed151214@gmail.com
+2020-01-30 11:35:31,038 INFO MonitoringLogger - Update Manger Page
+2020-01-30 11:35:31,410 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: bilalahmed151214@gmail.com
+2020-01-30 11:35:32,897 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-01-30 12:19:51,580 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-01-30 12:20:03,414 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-30 12:21:22,610 INFO MonitoringLogger - Task Details Page
+2020-01-30 12:21:23,073 INFO MonitoringLogger - BlobManager function started
+2020-01-30 12:21:25,833 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-30 12:21:27,719 INFO MonitoringLogger - Comment's ParentID : 478
+2020-01-30 14:48:07,230 INFO MonitoringLogger - BlobManager function started
+2020-01-30 14:57:58,992 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-30 14:58:07,861 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-01-30 15:08:33,888 INFO MonitoringLogger - BlobManager function started
+2020-01-30 15:09:42,109 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-01-30 15:10:41,665 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-01-30 15:14:44,398 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-01-30 15:16:01,140 INFO MonitoringLogger - Task Details Page
+2020-01-30 15:16:01,521 INFO MonitoringLogger - BlobManager function started
+2020-01-30 15:16:03,822 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-30 15:16:05,779 INFO MonitoringLogger - Comment's ParentID : 497
+2020-01-30 15:16:05,785 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-30 15:19:28,841 INFO MonitoringLogger - Task Details Page
+2020-01-30 15:19:29,204 INFO MonitoringLogger - BlobManager function started
+2020-01-30 15:19:31,571 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-30 15:19:33,899 INFO MonitoringLogger - Comment's ParentID : 583
+2020-01-30 15:19:33,904 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-30 15:19:36,188 INFO MonitoringLogger - Comment's ParentID : 585
+2020-01-30 15:19:36,194 INFO MonitoringLogger - Comment's ParentID : 585
+2020-01-30 15:19:36,197 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-30 15:19:37,299 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-30 15:20:51,420 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-01-30 15:20:58,901 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-01-30 15:27:11,881 INFO MonitoringLogger - BlobManager function started
+2020-01-30 15:49:50,362 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-01-30 15:51:28,681 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-30 16:25:35,255 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-30 16:25:35,358 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-30 16:25:35,362 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-30 16:25:35,368 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2020-30-1--16-25-35.pdf
+2020-01-30 17:32:15,020 INFO MonitoringLogger - BlobManager function started

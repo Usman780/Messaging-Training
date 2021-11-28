@@ -1,0 +1,617 @@
+2021-01-07 02:50:44,692 INFO MonitoringLogger - BlobManager function started
+2021-01-07 14:41:17,182 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-01-07 15:34:46,114 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-01-07 15:35:53,475 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-01-07 15:37:16,790 INFO MonitoringLogger - BlobManager function started
+2021-01-07 15:37:25,421 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-07 15:37:25,429 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-07 15:37:25,433 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-07 15:37:25,436 INFO MonitoringLogger - C:\DotNet_Projects\Zuptu Projects\Zuptu Aug 2020\TrainingTracker\TrainingTracker\\Content\Backup\Joe Employee Employee2021-07-1--15-37-25.pdf
+2021-01-07 15:37:31,124 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:33:22,846 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:33:23,372 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:33:51,154 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:33:51,765 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:33:52,621 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:33:54,551 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:34:06,143 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:34:06,415 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:34:32,397 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:34:32,670 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:34:33,494 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:34:35,341 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:35:49,864 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:35:50,207 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:35:51,024 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:35:52,661 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:36:33,221 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:36:33,494 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:36:34,343 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:36:36,285 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:40:07,269 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:40:07,637 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:40:09,585 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:40:11,235 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:40:25,259 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:40:25,529 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:40:26,364 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:40:28,170 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:40:44,513 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:40:46,655 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:40:47,480 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:40:50,115 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:41:16,680 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:41:16,949 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:41:17,773 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:41:19,417 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:41:45,765 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:41:46,035 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:41:46,869 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:41:48,519 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:43:36,263 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:43:36,620 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:43:38,349 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:43:40,129 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:43:55,606 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:43:55,874 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:43:56,690 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:43:58,402 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:44:36,095 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:44:36,462 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:44:37,289 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:44:38,927 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:45:02,472 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:45:02,743 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:45:03,713 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:45:05,454 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:46:26,847 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:46:27,200 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:46:28,025 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:46:29,877 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:46:46,493 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:46:46,763 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:46:47,583 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:46:49,234 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:47:12,498 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:47:12,855 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:47:13,677 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:47:15,408 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:48:18,648 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:48:18,918 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:48:19,737 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:48:21,376 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:49:25,484 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:49:25,846 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:49:26,671 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:49:28,300 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:49:42,573 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:49:42,841 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:49:43,758 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:49:45,573 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:50:07,106 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:50:07,385 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:50:08,350 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:50:10,414 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:50:19,622 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:50:19,960 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:50:20,778 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:50:22,858 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:51:03,926 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:51:04,201 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:51:05,646 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 11:51:08,056 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 11:51:56,414 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:51:56,689 INFO MonitoringLogger - BlobManager function started
+2021-01-08 11:52:17,883 INFO MonitoringLogger - Task Details Page
+2021-01-08 11:52:18,156 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:04:34,359 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:04:34,665 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:04:35,448 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:04:35,769 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:04:58,121 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:04:58,398 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:05:25,215 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:05:25,495 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:46:10,470 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:46:10,951 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:46:12,983 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 12:46:14,756 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 12:49:57,572 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:49:58,133 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:50:00,014 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 12:50:01,985 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 12:52:11,917 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:52:12,190 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:52:14,002 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 12:52:16,153 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 12:56:10,381 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:56:10,756 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:56:45,881 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:56:46,159 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:57:25,396 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:57:25,672 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:58:03,724 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:58:03,995 INFO MonitoringLogger - BlobManager function started
+2021-01-08 12:59:34,899 INFO MonitoringLogger - Task Details Page
+2021-01-08 12:59:35,184 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:00:00,845 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:00:01,136 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:07:39,679 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:07:40,216 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:09:52,464 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:09:52,737 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:11:47,877 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:11:48,155 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:11:49,180 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:11:49,456 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:11:50,144 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:11:50,563 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:12:25,063 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:12:25,334 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:14:16,148 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:14:16,414 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:14:45,908 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:14:46,188 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:15:28,159 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:15:28,753 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:25:08,313 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:25:08,587 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:25:34,505 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:25:34,511 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:25:34,781 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:25:34,788 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:25:53,721 INFO MonitoringLogger - Task Details Page
+2021-01-08 13:25:53,992 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:30:14,307 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:30:14,313 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:30:14,322 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:30:14,579 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-30-14.pdf
+2021-01-08 13:30:42,715 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:30:42,719 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:30:42,723 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:30:42,794 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-30-42.pdf
+2021-01-08 13:30:43,206 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:30:44,292 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:32:05,123 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:32:07,426 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:32:23,278 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:32:25,417 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-32-05.pdf
+2021-01-08 13:36:34,080 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:36:41,450 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:36:41,453 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:36:41,456 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:36:41,554 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-36-41.pdf
+2021-01-08 13:36:43,070 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:50:51,685 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:50:51,778 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:50:51,783 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:50:51,869 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-50-51.pdf
+2021-01-08 13:50:53,614 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:51:29,819 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:51:29,822 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:51:29,824 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:51:29,886 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-51-29.pdf
+2021-01-08 13:51:30,914 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:53:13,092 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:53:13,096 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:53:13,099 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:53:13,169 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-53-13.pdf
+2021-01-08 13:53:14,204 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:54:25,792 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:54:25,795 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:54:25,798 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:54:25,877 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-54-25.pdf
+2021-01-08 13:54:26,878 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:56:44,213 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:56:44,216 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:56:44,219 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:56:44,306 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-56-44.pdf
+2021-01-08 13:56:45,259 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:57:25,867 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:57:25,870 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:57:25,873 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:57:25,953 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-57-25.pdf
+2021-01-08 13:57:27,144 INFO MonitoringLogger - BlobManager function started
+2021-01-08 13:58:55,224 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 13:58:55,227 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 13:58:55,237 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 13:58:55,333 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--13-58-55.pdf
+2021-01-08 13:58:56,446 INFO MonitoringLogger - BlobManager function started
+2021-01-08 14:00:14,491 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 14:00:14,494 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 14:00:14,499 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 14:00:14,595 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--14-00-14.pdf
+2021-01-08 14:00:15,555 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:23:48,639 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:23:49,655 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:23:50,921 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:24:08,089 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:24:08,100 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:24:12,401 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:24:15,108 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:26:51,075 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:26:51,386 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:27:15,489 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:27:15,514 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:27:15,788 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:27:15,803 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:27:34,794 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:27:35,161 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:27:36,009 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:27:36,017 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:27:36,295 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:27:37,895 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:27:57,567 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:27:57,573 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:27:57,598 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:27:57,859 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:27:57,884 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:27:58,754 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:27:59,807 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:28:00,631 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:28:00,960 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:28:02,415 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:35:06,479 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:35:06,765 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:36:09,432 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:36:09,703 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:36:36,376 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:36:36,837 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:36:37,663 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:36:39,491 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:37:12,597 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:37:12,642 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:37:13,166 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:37:13,167 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:37:13,993 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:37:14,902 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:37:16,152 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:37:16,661 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:37:55,858 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:37:56,134 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:39:02,850 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:39:02,918 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:39:03,167 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:39:03,213 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:40:43,497 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:40:43,787 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:40:44,792 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:40:45,147 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:40:45,706 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:40:45,987 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:40:47,687 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:40:47,951 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:41:26,871 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:41:26,876 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:41:26,969 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:41:26,976 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:41:27,249 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:41:27,256 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:41:27,286 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:41:28,129 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:41:28,812 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:41:29,035 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:41:30,150 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:41:31,349 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:42:01,524 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:42:01,531 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:42:01,539 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:42:01,810 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:42:01,812 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:42:01,812 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:42:36,410 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:42:36,699 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:43:11,348 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:43:11,726 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:43:12,572 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:43:14,403 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:45:23,003 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:45:23,009 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:45:23,280 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:45:23,375 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:45:25,119 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:45:25,144 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:45:27,547 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:45:27,679 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:47:06,026 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:47:06,334 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:47:30,879 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:47:31,150 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:48:10,345 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:48:10,354 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:48:10,626 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:48:10,644 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:48:26,657 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:48:26,932 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:48:27,589 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:48:28,056 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:48:28,864 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:48:28,902 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:48:29,151 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:48:30,723 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:48:31,134 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:48:32,877 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:18,895 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:49:18,895 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:49:18,896 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:49:18,900 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:49:18,910 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:49:19,174 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:19,178 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:19,301 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:19,304 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:20,819 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:21,196 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:49:24,354 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:49:52,290 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:49:52,294 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:49:52,399 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:49:52,683 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:52,717 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:52,718 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:49:54,089 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:49:54,243 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:49:56,386 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:49:56,969 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:50:06,732 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:50:07,019 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:50:22,771 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:50:23,196 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:50:24,033 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:50:25,711 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:50:39,875 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:50:40,236 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:50:41,080 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:50:42,886 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:51:28,898 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:51:28,898 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:51:29,250 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:51:29,250 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:51:30,099 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:51:30,143 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:51:32,092 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:51:32,419 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:53:06,485 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:53:08,019 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:53:10,350 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:53:12,053 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:53:24,114 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:53:24,412 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:53:24,941 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:53:27,347 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:53:46,623 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:53:46,657 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:53:46,689 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:53:46,795 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:53:46,955 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:53:46,964 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:53:47,066 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:53:47,080 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:53:47,777 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:53:49,060 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:53:49,910 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:53:52,292 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:54:13,962 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:54:14,249 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:54:32,782 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:54:33,129 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:54:33,984 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:54:46,379 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:54:46,823 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:54:47,650 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:54:49,338 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:56:16,048 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:56:16,177 INFO MonitoringLogger - Task Details Page
+2021-01-08 20:56:16,455 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:56:16,493 INFO MonitoringLogger - BlobManager function started
+2021-01-08 20:56:17,421 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:56:18,305 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 20:56:19,533 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 20:56:20,105 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:03:28,065 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:03:28,567 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:03:30,503 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:03:32,961 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:04:03,395 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:04:03,482 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:04:03,734 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:04:04,650 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:04:05,333 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:04:06,162 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:04:07,049 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:04:07,884 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:05:44,366 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:05:44,741 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:05:45,577 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:05:47,307 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:13:40,071 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:13:40,618 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:13:42,627 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:13:44,543 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:14:10,762 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:14:10,841 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:14:11,124 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:14:11,993 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:14:12,522 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:14:13,353 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:14:13,742 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:14:15,023 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:14:29,291 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:14:29,562 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:14:30,428 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:14:32,388 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:16:49,468 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:16:49,833 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:16:51,761 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:16:53,850 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:17:43,251 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:17:43,336 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:17:43,612 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:17:43,625 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:17:44,482 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:17:45,402 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:17:46,603 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:17:47,212 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:19:35,525 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:19:35,899 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:19:37,830 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:19:39,669 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:20:03,877 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:20:03,952 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:20:04,220 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:20:04,232 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:20:05,098 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:20:05,929 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:20:06,842 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:20:07,712 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:21:18,636 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:21:18,998 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:21:19,899 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:21:21,708 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:22:21,044 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:22:21,133 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:22:21,397 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:22:21,418 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:22:22,264 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:22:23,297 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:22:24,047 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:22:24,995 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:23:20,827 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:23:21,109 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:23:24,087 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:23:24,367 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:23:57,615 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:23:57,908 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:23:59,055 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:23:59,429 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:29:33,767 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:29:35,327 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:29:35,486 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:29:37,100 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:30:05,739 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:30:06,100 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:30:06,934 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:30:08,649 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:30:30,671 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:30:30,671 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:30:30,948 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:30:31,092 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:30:31,809 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:30:32,588 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:30:34,110 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:30:34,390 INFO MonitoringLogger - Comment's ParentID : 47984
+2021-01-08 21:31:22,325 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:31:22,640 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:31:24,257 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:31:24,549 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:32:04,064 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:32:04,344 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:32:36,367 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:32:36,641 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:33:29,088 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:33:30,889 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:33:31,148 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:33:31,168 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:35:27,347 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:35:27,625 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:35:29,491 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:36:14,481 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:36:14,487 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:36:14,770 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:36:14,794 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:36:15,641 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:36:16,559 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:37:20,926 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:37:21,215 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:37:22,110 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:37:58,573 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:37:58,580 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:37:58,860 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:37:58,870 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:37:59,704 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:38:00,720 INFO MonitoringLogger - Comment's ParentID : 
+2021-01-08 21:38:50,422 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:38:50,706 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:39:42,351 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:39:42,357 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:39:42,638 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:39:42,672 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:42:44,009 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:42:44,296 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:42:44,693 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:42:44,979 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:46:35,203 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:46:35,208 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:46:35,243 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:46:35,486 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:46:35,498 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:46:35,543 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:47:06,581 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:47:06,582 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:47:06,853 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:47:06,866 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:48:06,809 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:48:07,098 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:48:28,583 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:48:28,586 INFO MonitoringLogger - Task Details Page
+2021-01-08 21:48:28,858 INFO MonitoringLogger - BlobManager function started
+2021-01-08 21:48:28,890 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:11:42,198 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 22:11:42,236 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 22:11:42,242 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 22:11:42,404 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--22-11-42.pdf
+2021-01-08 22:11:52,785 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:19:47,825 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 22:19:47,828 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 22:19:47,831 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 22:19:47,923 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--22-19-47.pdf
+2021-01-08 22:19:49,561 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:20:12,210 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:20:16,602 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:21:48,343 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 22:21:48,346 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 22:21:48,348 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 22:21:48,422 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--22-21-48.pdf
+2021-01-08 22:21:49,603 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:39:17,757 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 22:39:17,760 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 22:39:17,763 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 22:39:17,834 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--22-39-17.pdf
+2021-01-08 22:39:18,841 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:39:34,359 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:41:31,834 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 22:41:31,837 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 22:41:31,840 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 22:41:31,914 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--22-41-31.pdf
+2021-01-08 22:41:32,877 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:41:50,794 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:48:52,940 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:48:54,804 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:49:33,538 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:49:33,567 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:49:33,821 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:49:35,313 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:50:04,247 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:50:04,550 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:50:35,233 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:50:35,234 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:50:35,507 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:50:35,514 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:51:02,879 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:51:03,153 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:51:25,352 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:51:25,356 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:51:25,624 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:51:25,631 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:51:48,730 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:51:49,003 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:52:11,353 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:52:11,354 INFO MonitoringLogger - Task Details Page
+2021-01-08 22:52:11,666 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:52:11,690 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:53:48,280 INFO MonitoringLogger - Pdf generation inner method 0 called
+2021-01-08 22:53:48,345 INFO MonitoringLogger - Pdf generation inner method 1 called
+2021-01-08 22:53:48,350 INFO MonitoringLogger - Pdf generation inner method 2 called
+2021-01-08 22:53:48,673 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2021-08-1--22-53-48.pdf
+2021-01-08 22:53:50,365 INFO MonitoringLogger - BlobManager function started
+2021-01-08 22:54:01,744 INFO MonitoringLogger - BlobManager function started

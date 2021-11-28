@@ -1,0 +1,67 @@
+2020-01-25 10:30:22,747 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-25 10:35:06,711 INFO MonitoringLogger - BlobManager function started
+2020-01-25 10:37:52,118 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-25 10:37:52,484 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-25 10:37:52,500 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-25 10:38:15,754 INFO MonitoringLogger - BlobManager function started
+2020-01-25 10:42:04,783 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-25 10:42:05,387 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-25 10:45:46,360 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-25 10:47:42,595 INFO MonitoringLogger - BlobManager function started
+2020-01-25 10:51:37,313 INFO MonitoringLogger - BlobManager function started
+2020-01-25 10:54:29,579 INFO MonitoringLogger - BlobManager function started
+2020-01-25 10:55:00,118 INFO MonitoringLogger - BlobManager function started
+2020-01-25 10:56:24,409 INFO MonitoringLogger - BlobManager function started
+2020-01-25 10:57:03,993 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:02:11,589 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:06:34,049 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:08:41,852 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:10:23,280 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:12:34,883 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-25 11:12:35,180 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-25 11:13:10,230 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-25 11:13:39,802 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:14:22,007 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-25 11:14:22,374 INFO MonitoringLogger - Child Comment ID : 441
+2020-01-25 11:14:39,645 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  441
+2020-01-25 11:14:54,017 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 441
+2020-01-25 11:15:33,702 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:18:15,019 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:26:51,531 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:30:03,534 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:32:26,314 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-25 11:32:40,252 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-01-25 11:34:06,018 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:34:49,137 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-25 11:34:49,143 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-25 11:34:49,146 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-25 11:34:53,506 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:35:47,834 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-25 11:35:47,838 INFO MonitoringLogger - Child Comment ID : 441
+2020-01-25 11:35:47,841 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  441
+2020-01-25 11:35:47,844 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 441
+2020-01-25 11:35:51,817 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:37:19,589 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:39:12,148 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-01-25 11:39:20,929 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-25 11:52:01,709 INFO MonitoringLogger - BlobManager function started
+2020-01-25 11:52:57,115 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-25 11:52:57,119 INFO MonitoringLogger - Child Comment ID : 450
+2020-01-25 11:52:57,122 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  450
+2020-01-25 11:52:57,126 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 450
+2020-01-25 11:53:01,128 INFO MonitoringLogger - BlobManager function started
+2020-01-25 12:12:02,463 INFO MonitoringLogger - BlobManager function started
+2020-01-25 12:21:24,146 INFO MonitoringLogger - BlobManager function started
+2020-01-25 12:22:07,501 INFO MonitoringLogger - BlobManager function started
+2020-01-25 13:58:53,756 INFO MonitoringLogger - BlobManager function started
+2020-01-25 13:59:26,664 INFO MonitoringLogger - BlobManager function started
+2020-01-25 14:05:36,566 INFO MonitoringLogger - BlobManager function started
+2020-01-25 15:44:48,653 INFO MonitoringLogger - BlobManager function started
+2020-01-25 15:56:32,330 INFO MonitoringLogger - BlobManager function started
+2020-01-25 16:01:10,118 INFO MonitoringLogger - BlobManager function started
+2020-01-25 16:04:15,448 INFO MonitoringLogger - BlobManager function started
+2020-01-25 16:05:39,888 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-25 16:05:53,941 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-01-25 16:10:48,549 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-01-25 16:10:55,283 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-01-25 16:13:05,314 INFO MonitoringLogger - BlobManager function started

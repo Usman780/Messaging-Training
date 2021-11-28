@@ -1,0 +1,131 @@
+2019-11-27 10:08:28,490 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:09:01,863 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:16:18,093 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:17:48,446 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:18:12,239 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:18:40,954 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:20:02,960 INFO MonitoringLogger - Task Details Page
+2019-11-27 10:20:03,304 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:20:11,272 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:20:16,811 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:20:18,192 INFO MonitoringLogger - Comment's ParentID : 330
+2019-11-27 10:21:19,919 INFO MonitoringLogger - Task Details Page
+2019-11-27 10:21:20,249 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:21:21,256 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:22:43,464 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:22:59,800 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:24:29,319 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:26:43,268 INFO MonitoringLogger - Add Group Task Comment Function
+2019-11-27 10:26:43,268 INFO MonitoringLogger - Child Comment ID : 347
+2019-11-27 10:26:43,268 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  347
+2019-11-27 10:26:43,268 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 347
+2019-11-27 10:26:49,026 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:27:51,002 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:37:44,847 INFO MonitoringLogger - Task Details Page
+2019-11-27 10:37:45,181 INFO MonitoringLogger - BlobManager function started
+2019-11-27 10:37:47,375 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:37:49,852 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:37:51,243 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:37:52,620 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:37:53,321 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:37:54,025 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:37:54,708 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 10:37:57,123 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-27 10:37:57,123 INFO MonitoringLogger - Comment's ParentID : 287
+2019-11-27 10:37:57,123 INFO MonitoringLogger - Comment's ParentID : 288
+2019-11-27 10:37:57,123 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-27 10:37:57,123 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-27 10:37:57,123 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-27 10:37:57,124 INFO MonitoringLogger - Comment's ParentID : 286
+2019-11-27 10:37:57,124 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-27 10:37:57,124 INFO MonitoringLogger - Comment's ParentID : 292
+2019-11-27 11:08:42,137 INFO MonitoringLogger - Task Details Page
+2019-11-27 11:08:42,492 INFO MonitoringLogger - BlobManager function started
+2019-11-27 11:08:44,778 INFO MonitoringLogger - Comment's ParentID : 
+2019-11-27 11:10:32,878 INFO MonitoringLogger - BlobManager function started
+2019-11-27 11:33:32,516 INFO MonitoringLogger - Task Details Page
+2019-11-27 11:33:33,013 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:06:54,393 INFO MonitoringLogger - Task Details Page
+2019-11-27 12:06:54,754 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:07:08,933 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:07:36,356 INFO MonitoringLogger - Task Details Page
+2019-11-27 12:07:36,696 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:07:59,377 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:10:19,702 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:10:58,313 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:29:07,382 INFO MonitoringLogger - Task Details Page
+2019-11-27 12:31:43,627 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:36:31,949 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:40:54,109 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:41:45,358 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:41:53,823 INFO MonitoringLogger - BlobManager function started
+2019-11-27 12:42:09,743 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:01:50,708 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:01:51,106 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:04:43,071 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:04:43,496 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:12:58,400 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:13:02,621 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:13:03,166 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:13:03,844 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:13:26,076 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:13:26,460 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:15:05,190 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:15:05,617 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:41:23,095 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:41:25,134 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:42:20,107 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:42:20,435 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:47:21,945 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:47:24,008 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:48:28,108 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:48:28,436 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:50:03,700 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:50:04,025 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:51:02,389 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:51:02,714 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:51:05,025 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:51:05,350 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:55:23,408 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:57:31,524 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:57:31,867 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:58:26,540 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:58:26,875 INFO MonitoringLogger - BlobManager function started
+2019-11-27 14:59:12,215 INFO MonitoringLogger - Task Details Page
+2019-11-27 14:59:12,549 INFO MonitoringLogger - BlobManager function started
+2019-11-27 15:02:41,081 INFO MonitoringLogger - Task Details Page
+2019-11-27 15:02:41,420 INFO MonitoringLogger - BlobManager function started
+2019-11-27 15:15:36,246 INFO MonitoringLogger - Task Details Page
+2019-11-27 15:15:36,619 INFO MonitoringLogger - BlobManager function started
+2019-11-27 15:15:59,033 INFO MonitoringLogger - Task Details Page
+2019-11-27 15:15:59,361 INFO MonitoringLogger - BlobManager function started
+2019-11-27 15:28:22,793 INFO MonitoringLogger - Task Details Page
+2019-11-27 15:28:23,186 INFO MonitoringLogger - BlobManager function started
+2019-11-27 15:28:42,451 INFO MonitoringLogger - Task Details Page
+2019-11-27 15:28:42,785 INFO MonitoringLogger - BlobManager function started
+2019-11-27 15:51:14,344 INFO MonitoringLogger - Task Details Page
+2019-11-27 15:51:14,863 INFO MonitoringLogger - BlobManager function started
+2019-11-27 16:05:04,111 INFO MonitoringLogger - Task Details Page
+2019-11-27 16:05:04,470 INFO MonitoringLogger - BlobManager function started
+2019-11-27 16:17:14,984 INFO MonitoringLogger - Task Details Page
+2019-11-27 16:17:15,347 INFO MonitoringLogger - BlobManager function started
+2019-11-27 16:18:26,705 INFO MonitoringLogger - Task Details Page
+2019-11-27 16:18:27,031 INFO MonitoringLogger - BlobManager function started
+2019-11-27 16:19:10,055 INFO MonitoringLogger - Task Details Page
+2019-11-27 16:19:10,378 INFO MonitoringLogger - BlobManager function started
+2019-11-27 16:36:43,534 INFO MonitoringLogger - BlobManager function started
+2019-11-27 16:37:27,612 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:09:54,207 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:09:57,927 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:10:18,386 INFO MonitoringLogger - Task Details Page
+2019-11-27 18:10:37,659 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:14:02,411 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:14:38,852 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:15:32,392 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:20:49,702 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:23:55,638 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:24:39,041 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:26:17,961 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:48:45,702 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:53:32,178 INFO MonitoringLogger - BlobManager function started
+2019-11-27 18:54:04,270 INFO MonitoringLogger - BlobManager function started

@@ -1,0 +1,37 @@
+2021-03-02 11:20:32,977 INFO MonitoringLogger -  Logedout from Zuptu
+2021-03-02 11:38:38,682 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-02 11:47:34,219 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-02 11:50:22,335 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-02 11:57:27,651 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-02 12:03:58,311 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-03 12:54:42,621 INFO MonitoringLogger - Manger's Canvas Login Mail while adding Manager to DataBase: 
+2021-03-03 12:54:42,748 INFO MonitoringLogger - Manager's Canvas Login Mail before adding into Database: 
+2021-03-03 13:38:19,441 INFO MonitoringLogger - BlobManager function started
+2021-03-03 16:41:03,426 INFO MonitoringLogger - BlobManager function started
+2021-03-03 16:42:00,563 INFO MonitoringLogger - BlobManager function started
+2021-03-03 16:43:26,255 INFO MonitoringLogger - BlobManager function started
+2021-03-03 16:46:42,912 INFO MonitoringLogger - BlobManager function started
+2021-03-03 16:48:00,801 INFO MonitoringLogger - BlobManager function started
+2021-03-03 16:50:54,818 INFO MonitoringLogger - BlobManager function started
+2021-03-03 16:50:55,562 INFO MonitoringLogger - BlobManager function started
+2021-03-03 16:50:56,074 INFO MonitoringLogger - BlobManager function started
+2021-03-03 17:00:57,249 INFO MonitoringLogger - BlobManager function started
+2021-03-03 17:00:57,872 INFO MonitoringLogger - BlobManager function started
+2021-03-03 17:00:58,574 INFO MonitoringLogger - BlobManager function started
+2021-03-03 18:26:34,963 INFO MonitoringLogger - BlobManager function started
+2021-03-03 18:27:09,260 INFO MonitoringLogger - BlobManager function started
+2021-03-03 18:27:45,506 INFO MonitoringLogger - BlobManager function started
+2021-03-03 18:29:06,589 INFO MonitoringLogger - Task Details Page
+2021-03-03 18:29:06,923 INFO MonitoringLogger - BlobManager function started
+2021-03-03 18:29:07,916 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-03 18:29:08,875 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-03 18:29:08,972 INFO MonitoringLogger - Task Details Page
+2021-03-03 18:29:09,279 INFO MonitoringLogger - BlobManager function started
+2021-03-03 18:29:10,081 INFO MonitoringLogger - Comment's ParentID : 789
+2021-03-03 18:29:10,167 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-03 18:29:12,462 INFO MonitoringLogger - Task Details Page
+2021-03-03 18:29:12,761 INFO MonitoringLogger - BlobManager function started
+2021-03-04 16:35:28,196 INFO MonitoringLogger - Canvas Login Mail while adding an Employee :
+2021-03-04 16:41:25,357 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-04 16:44:55,062 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-04 16:47:05,667 INFO MonitoringLogger - BOB Logedout from Zuptu

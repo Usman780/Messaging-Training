@@ -1,0 +1,1050 @@
+﻿
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+@using TrainingTracker.HelpingClasses
+
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<style>
+    .page-header-default {
+        background-color: #fff;
+        margin-bottom: 00px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    /*.dataTables_filter {
+        display: none;
+    }*/
+</style>
+
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Assignments</li>
+            <li class="active">Tasks</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+
+<div class="content">
+    <div class="panel panel-flat">
+        <div class="panel-heading page-header page-header-default has-cover">
+
+
+            <center><h3 class="panel-title"><b>Search Assignments</b></h3></center>
+            <div class="heading-elements page-header page-header-default has-cover">
+                <ul class="icons-list">
+
+
+                    <li><a data-action="collapse"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body panel-body1">
+            <div class="" style="margin-left:20px;">
+                <h3>Search: </h3>
+                @*<form method="post" action="@Url.Action("displayEmployeeTask","Trainee")" class="form-group">*@
+
+
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Task Name</label>
+                    <input type="text" id="name" name="name" class="form-control" value="@ViewBag.taskName" maxlength="150" placeholder="Task Name" />
+                </div>
+
+
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Task Type</label>
+                    <select class="select" id="taskType" name="taskType">
+                        <option value="" selected>Select Task Type</option>
+                        @if (ViewBag.taskType != null)
+                        {
+                            <option value="@ViewBag.taskType.Id" selected>@ViewBag.taskType.Name</option>
+                            foreach (var item in ViewBag.taskTypes)
+                            {
+                                if (ViewBag.taskType.Id != item.Id)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+
+                            }
+                        }
+                        else
+                        {
+
+
+                            foreach (var item in ViewBag.taskTypes)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+
+
+                            }
+                        }
+
+
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Status</label>
+                    <select class="select" id="status" name="status">
+
+                        @if (ViewBag.status != -1)
+                        {
+                            <option value="@ViewBag.status" selected>@General_Purpose.getStatusValue(ViewBag.status)</option>
+                            <option value="">Select status</option>
+
+                            foreach (var item in ViewBag.statuses)
+                            {
+                                <option value="@item">@General_Purpose.getStatusValue(item)</option>
+
+
+                            }
+                        }
+                        else
+                        {
+
+                            <option value="-1" selected>Select Status</option>
+
+                            foreach (var item in ViewBag.statuses)
+                            {
+                                <option value="@item">@General_Purpose.getStatusValue(item)</option>
+
+
+                            }
+
+                        }
+
+
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Priority</label>
+                    <select class="select" id="priority" name="priority">
+                        <option value="" selected>Select Priority</option>
+                        @if (ViewBag.priority != -1)
+                        {
+                            <option value="@ViewBag.priority" selected>@General_Purpose.getPriorityValue((ViewBag.priority))</option>
+                            foreach (var item in ViewBag.priorities)
+                            {
+                                if (ViewBag.priority != item)
+                                {
+                                    <option value="@item">@General_Purpose.getPriorityValue((item))</option>
+                                }
+
+                            }
+                        }
+                        else
+                        {
+
+
+                            foreach (var item in ViewBag.priorities)
+                            {
+                                <option value="@item">@General_Purpose.getPriorityValue((item))</option>
+
+
+                            }
+                        }
+
+
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Starting Date</label>  <input type="date" id="startDate" name="startDate" class="form-control" value="@ViewBag.startDate" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Ending Date</label> <input type="date" id="endDate" name="endDate" class="form-control" value="@ViewBag.endDate" />
+                </div>
+
+                <div class="form-group col-md-3" style="width:100%;">
+                    @if (ViewBag.sd == 1)
+                    {
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">Start Date</p>
+                            <input type="checkbox" id="start" name="start" value="" checked class="fancytree-checkbox" />                                <span class="slider round"></span>
+                        </label>
+                    }
+                    else
+                    {
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">Start Date</p>
+                            <input type="checkbox" id="start" name="start" value="" class="fancytree-checkbox" />                                <span class="slider round"></span>
+                        </label>
+                    }
+                </div>
+                <div class="form-group col-md-3" style="width:100%;">
+                    @if (ViewBag.ed == 0)
+                    {
+
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">End Date</p>
+                            <input type="checkbox" id="end" name="end" value="" class="fancytree-checkbox" />
+                            <span class="slider round"></span>
+                        </label>
+                    }
+                    else
+                    {
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">End Date</p>
+                            <input type="checkbox" id="end" name="end" value="" checked class="fancytree-checkbox" />
+                            <span class="slider round"></span>
+                        </label>
+                    }
+                </div>
+                <div class="form-group col-md-3" style="width:100%;">
+                    @if (ViewBag.cd == 0)
+                    {
+
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">Completed Date</p>
+                            <input type="checkbox" id="complete" name="complete" value="" class="fancytree-checkbox" />
+                            <span class="slider round"></span>
+                        </label>
+                    }
+                    else
+                    {
+                        <label class="control-label switch">
+                            <p style="margin-left:55px;">Completed Date</p>
+                            <input type="checkbox" id="complete" name="complete" value="" checked class="fancytree-checkbox" />
+                            <span class="slider round"></span>
+                        </label>
+
+                    }
+                </div>
+
+                <div class="form-group col-md-3">
+                    <input type="submit" onclick="usersSearch()" value="Search" class="btn btn-sm  bg-primary-400" />
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="submit" onclick="ClearAllSearches()" value="Clear Filters" class="btn  btn-sm  bg-default-400" />
+                </div>
+                @*</form>*@
+            </div>
+        </div>
+    </div>
+    <!-- Basic initialization -->
+    <div id="panel1" class="panel panel-flat">
+        <div class="panel-heading">
+
+
+            <center><h3 class="panel-title"><b>List of Tasks</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li class="dropdown">
+                        <a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+
+                            <li>
+                                @*<a href="#" id="delete"> Delete Selected</a>*@
+                            </li>
+                            <li>
+                                @*<a href="@Url.Action("ExportEmployeesTask","ExportReport",new { empselftask="v3ck2"})"> Export Excel </a>*@
+                                <a onclick="AsynchEmpExcelGeneration()"> Export Excel </a>
+                            </li>
+
+                            <li>
+                                @*<a href="@Url.Action("ExportEmployeesPdf","ExportReport",new { empselftask="v3ck2"})">Export to pdf</a>*@
+                                <a onclick="AsynchEmpPDFGeneration()">Export to pdf</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+
+
+
+
+            <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+
+                        <th>Task</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+
+                        <th>Assigned By</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @*<tbody>
+                        @{
+                            int i = 0;
+                            foreach (User_Task item in ViewBag.Tasks)
+                            {
+                        <tr>
+                            <td>@item.Task.Name</td>
+                            <td>
+                                @item.StartDate.Value.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>@item.EndDate.Value.ToString("dd/MM/yyyy")</td>
+
+                            @if (item.CreatedID == null)
+                            {
+                                <td>
+                                    Self Assigned
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @item.User.FirstName   @item.User.LastName
+                                </td>
+                            }
+                            @if (!item.Priority.HasValue)
+                            {
+                                <td> </td>
+
+                            }
+                            else if (General_Purpose.getPriorityValue(item.Priority.Value) == "Medium")
+                            {
+                                <td><span class="label label-warning">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                            }
+                            else if (General_Purpose.getPriorityValue(item.Priority.Value) == "Low")
+                            {
+                                <td><span class="label label-success">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="label label-danger">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                            }
+                            <td>
+                                @General_Purpose.getStatusValue(item.Status.Value)
+                            </td>
+
+                            <td>
+                                <a class="btn  btn-sm bg-secondary" href="@Url.Action("taskDetails","Task", new  { v=HttpUtility.UrlEncode(General_Purpose.Encrypt(item.Id)), way="EmpAssignTask"})"> View </a>
+
+                                @if (item.CreatedID == null)
+                                {
+                                    <button class="btn  btn-sm btn-danger" onclick="deleteTask(@item.Id)"> Delete </button>
+
+                                }
+                            </td>
+
+                        </tr>
+                                i++;
+                            }
+                        }
+
+                    </tbody>*@
+            </table>
+        </div>
+    </div>
+    <div id="panel2" class="panel panel-flat">
+        <div class="panel-heading">
+
+
+            <center><h3 class="panel-title"><b>List of Tasks</b></h3></center>
+
+            <div id="wait1" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li class="dropdown">
+                        <a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+
+                            <li>
+                                @*<a href="#" id="delete"> Delete Selected</a>*@
+                            </li>
+                            <li>
+                                <a onclick="generateExcel()"> Export Excel </a>
+                            </li>
+
+                            <li>
+                                <a onclick="generatePDF()">Export to pdf</a>
+                            </li>
+                            @*<li>
+                                    <a href="@Url.Action("ExportEmployeesTask","ExportReport",new {startDate=ViewBag.startDate,endDate=ViewBag.endDate,tag=ViewBag.tag,departarment=ViewBag.departarment,division=ViewBag.division,taskName=ViewBag.taskName,taskType=ViewBag.taskType,status=ViewBag.status,fname=ViewBag.fname,lname=ViewBag.lname,priority=ViewBag.priority,completionStatus=ViewBag.completionStatus,sd=ViewBag.sd,ed=ViewBag.ed,cd=ViewBag.cd}))"> Export Excel </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("ExportEmployeesPdf","ExportReport",new {startDate=ViewBag.startDate,endDate=ViewBag.endDate,tag=ViewBag.tag,departarment=ViewBag.departarment,division=ViewBag.division,taskName=ViewBag.taskName,taskType=ViewBag.taskType,status=ViewBag.status,fname=ViewBag.fname,lname=ViewBag.lname,priority=ViewBag.priority,completionStatus=ViewBag.completionStatus,sd=ViewBag.sd,ed=ViewBag.ed,cd=ViewBag.cd}))">Export to pdf</a>
+                                </li>*@
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        @*<div class="" style="margin-left:20px;">
+                <h3>Search: </h3>
+                <form method="post" action="@Url.Action("displayEmployeeTask","Trainee")">
+                    <div class="form-group col-md-3">
+                        <label>Starting Date</label>
+                        <input type="date" name="startDate" class="form-control" value="@ViewBag.startDate" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Ending Date</label>
+                        <input type="date" name="endDate" class="form-control" value="@ViewBag.endDate" />
+                    </div>
+                    <div class="form-group col-md-3">
+
+                        <label>Name</label>
+                        <input type="text" name="name" class="form-control" value="@ViewBag.name" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Status</label>
+                        <select class="form-control" name="status" id="Status">
+                            @if (ViewBag.status == 0)
+                            {
+                                <option disabled selected value="">Select task</option>
+                            }
+                            else
+                            {
+                                <option value="@ViewBag.status">
+                                    @General_Purpose.getStatusValue(ViewBag.status)
+                                </option>
+                                <option value="">Select task</option>
+
+                            }
+                            @foreach (var item in ViewBag.statusList)
+                            {
+                                <option value="@item">
+                                    @General_Purpose.getStatusValue(item)
+                                </option>
+
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="submit" value="Search" class="btn bg-primary-400" />
+                    </div>
+                </form>
+            </div>*@
+
+
+
+        <div>
+
+
+
+
+            <table id="example2" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+
+                        <th>Task</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+
+                        <th>Assigned By</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @*<tbody>
+                        @{
+                            int i = 0;
+                            foreach (User_Task item in ViewBag.Tasks)
+                            {
+                        <tr>
+                            <td>@item.Task.Name</td>
+                            <td>
+                                @item.StartDate.Value.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>@item.EndDate.Value.ToString("dd/MM/yyyy")</td>
+
+                            @if (item.CreatedID == null)
+                            {
+                                <td>
+                                    Self Assigned
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @item.User.FirstName   @item.User.LastName
+                                </td>
+                            }
+                            @if (!item.Priority.HasValue)
+                            {
+                                <td> </td>
+
+                            }
+                            else if (General_Purpose.getPriorityValue(item.Priority.Value) == "Medium")
+                            {
+                                <td><span class="label label-warning">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                            }
+                            else if (General_Purpose.getPriorityValue(item.Priority.Value) == "Low")
+                            {
+                                <td><span class="label label-success">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="label label-danger">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                            }
+                            <td>
+                                @General_Purpose.getStatusValue(item.Status.Value)
+                            </td>
+
+                            <td>
+                                <a class="btn  btn-sm bg-secondary" href="@Url.Action("taskDetails","Task", new  { v=HttpUtility.UrlEncode(General_Purpose.Encrypt(item.Id)), way="EmpAssignTask"})"> View </a>
+
+                                @if (item.CreatedID == null)
+                                {
+                                    <button class="btn  btn-sm btn-danger" onclick="deleteTask(@item.Id)"> Delete </button>
+
+                                }
+                            </td>
+
+                        </tr>
+                                i++;
+                            }
+                        }
+
+                    </tbody>*@
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="addComment" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("addTraineeTask","Task")" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="taskName"></h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Status</label>
+                        <div class="col-lg-9">
+                            <select class="form-control" name="Status" id="Status">
+                                <option disabled selected value="">Select task</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" name="Comment" id="notes"></textarea>
+                        </div>
+                    </div>
+                    <div id="data"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="completetciketmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("deleteTraineeTask", "Trainee")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure You want to delete the selected Task? <small class="display-block"></small></h5>
+                </div>
+                <input type="hidden" id="taskId" name="id" value="0" />
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn  btn-sm bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn  btn-sm btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script>
+     function ClearAllSearches() {
+
+            // var fname=$("#fname").val();
+         //var lname=   $("#lname").val();
+         // var department=  $("#department").val();
+           var taskName= $("#name").val();
+           var taskType= $("#taskType").val();
+           // var tag = $("#tag").val();
+        //    var completionStatus= $("#completionStatus").val();
+            var status=$("#status").val();
+            var priority=$("#priority").val();
+
+            var startDate= document.getElementById("startDate").value;
+            var endDate=document.getElementById("endDate").value;
+
+
+            if (taskName == "" && taskType == "" && status == "-1" && priority == "" && startDate == "" && endDate == "" && $("#start").prop('checked') == false && $("#end").prop('checked') == false && $("#complete").prop('checked') == false) {
+
+
+
+            } else {
+
+                   //  $("#fname").val("").change();
+        // $("#lname").val("").change();
+        //   $("#department").val("-1").change();
+            $("#name").val("").change();
+            $("#taskType").val("").change();
+            // $("#tag").val("").change();
+           //  $("#completionStatus").val("-1").change();
+            $("#status").val("-1").change();
+            $("#priority").val("").change();
+
+            document.getElementById("startDate").value="";
+            document.getElementById("endDate").value = "";
+
+            $("#start").prop('checked', false);
+
+            $("#end").prop('checked',false) ;
+            $("#complete").prop('checked',false)  ;
+                 usersSearch();
+            }
+
+      //  $("#fname").val("").change();
+        // $("#lname").val("").change();
+        //   $("#department").val("-1").change();
+            $("#name").val("").change();
+            $("#taskType").val("").change();
+            // $("#tag").val("").change();
+             //$("#completionStatus").val("-1").change();
+            $("#status").val("-1").change();
+            $("#priority").val("").change();
+
+            document.getElementById("startDate").value="";
+            document.getElementById("endDate").value = "";
+
+            $("#start").prop('checked', false);
+
+            $("#end").prop('checked',false) ;
+            $("#complete").prop('checked',false)  ;
+
+
+
+
+        }
+        function generateExcel()
+        {
+            //href = "@Url.Action("","")
+               if ($("#start").prop('checked') == true) {
+                var start = 1;
+            }
+            if ($("#end").prop('checked') == true) {
+                var end = 1;
+            }
+            if ($("#complete").prop('checked') == true) {
+                var complete = 1;
+            }
+            var startDate = document.getElementById("startDate").value;
+            var endDate = document.getElementById("endDate").value;
+            var name = document.getElementById("name").value;
+            var status = document.getElementById("status").value;
+            var taskType = document.getElementById("taskType").value;
+        var priority = document.getElementById("priority").value;
+
+               var origin = window.location.origin;
+                                var empurl;
+                                var manurl;
+
+ //empurl = "" + origin + "/ExportReport/ExportEmployeesTask?startDate="+startDate+"&endDate="+endDate+"&taskName="+name+"&taskType="+taskType+ "&status="+status+"&priority="+priority+"&sd=" +start+ "&ed="+end+ "&cd="+complete+"&empselftask=v3ck2";
+ //                                   //  location.replace(empurl)
+ //                                   window.location.href = empurl;
+
+
+            $.ajax({
+                type: 'POST',
+                url: "../ExportReport/AsyncTraineeExcel",
+                data: {
+                    startDate: startDate,
+                    endDate: endDate,
+                    //tag: tag,
+                    //department: department,
+                    taskName: name,
+                    taskType: taskType,
+                    status: status,
+                    //fname: fname,
+                    //lname: lname,
+                    priority: priority,
+                    //completionStatus: completionStatus,
+                    sd: start,
+                    ed: end,
+                    cd: complete,
+                    //DivDepID: DivDepID,
+                    empselftask: "v3ck2"
+                },
+                //dataType: "json",
+                success: function (data) {
+                    $("#modal-Report").modal("show");
+
+                },
+                error: function () { alert('fail'); }
+            });
+        }
+
+          function generatePDF()
+        {
+            href = "@Url.Action("","")"
+                if ($("#start").prop('checked') == true) {
+                var start = 1;
+            }
+            if ($("#end").prop('checked') == true) {
+                var end = 1;
+            }
+            if ($("#complete").prop('checked') == true) {
+                var complete = 1;
+            }
+            var startDate = document.getElementById("startDate").value;
+            var endDate = document.getElementById("endDate").value;
+            var name = document.getElementById("name").value;
+            var status = document.getElementById("status").value;
+            var taskType = document.getElementById("taskType").value;
+        var priority = document.getElementById("priority").value;
+
+               var origin = window.location.origin;
+                                var empurl;
+                                var manurl;
+        //empurl = "" + origin + "/ExportReport/ExportEmployeesPdf?startDate="+startDate+"&endDate="+endDate+"&taskName="+name+"&taskType="+taskType+ "&status="+status+"&priority="+priority+"&sd=" +start+ "&ed="+end+ "&cd="+complete+"&empselftask=v3ck2";
+
+ //empurl = "" + origin + "/ExportReport/ExportEmployeesPdf?startDate="+startDate+"&endDate="+endDate+"&tag="+tag+"&department="+department+"&taskName="+taskName+"&taskType="+taskType+ "&status="+status+ "&fname="+fname+ "&lname="+lname+ "&priority="+priority+ "&completionStatus="+completionStatus+ "&sd=" +start+ "&ed="+end+ "&cd="+complete+"&DivDepID="+DivDepID;
+ //empurl = "" + origin + "/ExportReport/ExportEmployeesPdf?list="+ListofObjects;
+                                    //  location.replace(empurl)
+                                    //window.location.href = empurl;
+
+
+              $.ajax({
+                  type: 'POST',
+                  url: "../ExportReport/AsyncTraineePDF",
+                  data: {
+                      startDate: startDate,
+                      endDate: endDate,
+                      //tag: tag,
+                      //department: department,
+                      taskName: name,
+                      taskType: taskType,
+                      status: status,
+                      //fname: fname,
+                      //lname: lname,
+                      priority: priority,
+                      //completionStatus: completionStatus,
+                      sd: start,
+                      ed: end,
+                      cd: complete,
+                      //DivDepID: DivDepID,
+                      empselftask: "v3ck2"
+                  },
+                  //dataType: "json",
+                  success: function (data) {
+                      $("#modal-Report").modal("show");
+
+                  },
+                  error: function () { alert('fail'); }
+              });
+        }
+
+    $("#panel2").hide();
+
+    function usersSearch() {
+
+                    if ($("#start").prop('checked') == true) {
+                var start = 1;
+            }
+            if ($("#end").prop('checked') == true) {
+                var end = 1;
+            }
+            if ($("#complete").prop('checked') == true) {
+                var complete = 1;
+            }
+            var startDate = document.getElementById("startDate").value;
+            var endDate = document.getElementById("endDate").value;
+            var name = document.getElementById("name").value;
+            var status = document.getElementById("status").value;
+            var taskType = document.getElementById("taskType").value;
+        var priority = document.getElementById("priority").value;
+
+       $("#wait1").css("display", "block");
+            $("#panel1").hide();
+            $("#panel2").show();
+
+            $('#example2').DataTable().clear();
+        $('#example2').DataTable().destroy();
+
+          $('#example2').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetdisplayEmployeeTask","Trainee")',
+                        "type": "GET",
+                        data: { startDate: startDate, endDate: endDate, name: name, status: status, taskType: taskType, priority: priority, start: start, end: end, complete: complete },
+
+                        "datatype": "json"
+                    },
+
+                    "columns": [
+
+                        { "data": "Task", "name": "Task" },
+                        { "data": "StartDate", "name": "StartDate" },
+                        { "data": "EndtDate", "name": "EndtDate" },
+                        { "data": "Name", "name": "Name" },
+                        { "data": "Priority", "name": "Priority" },
+                        { "data": "WorkStatus", "name": "WorkStatus" },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+                            //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                            render: function (data, type, full, meta) {
+                                //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                                var s = "EmpAssignTask";
+                                if (full.IsActive == 1) {
+                                    return '<a style="margin-top:2px;" class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + full.EncryptedId + '&way=' + s + '"> View </a>' +
+                                        '&nbsp;&nbsp;<button class="btn btn-sm  btn-danger btn-sm" onclick="deleteTask(' + full.Id + ')"> Delete </button>';
+                                } else {
+                                    return '<a class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + full.EncryptedId + '&way=' + s + '"> View </a>';
+                                }
+
+
+                            },
+                            targets: 6
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait1").css("display", "none");
+             },
+                })
+    }
+         //Entries Search
+    @*function usersSearch() {
+
+
+
+            if ($("#start").prop('checked') == true) {
+                var start = 1;
+            }
+            if ($("#end").prop('checked') == true) {
+                var end = 1;
+            }
+            if ($("#complete").prop('checked') == true) {
+                var complete = 1;
+            }
+            var startDate = document.getElementById("startDate").value;
+            var endDate = document.getElementById("endDate").value;
+            var name = document.getElementById("name").value;
+            var status = document.getElementById("status").value;
+            var taskType = document.getElementById("taskType").value;
+            var priority = document.getElementById("priority").value;
+
+        $("#wait").css("display", "block");
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: '@Url.Action("GetdisplayEmpTaskBySearch", "Trainee")',
+                contentType: "application/json; charset=utf-8",
+                data: { startDate: startDate, endDate: endDate, name: name, status: status, taskType: taskType, priority: priority, start: start, end: end, complete: complete },
+                success: function (response) {
+                    $("#example > tbody").html("");
+                    var i = 0;
+                    var trobject = "";
+                   var s = "EmpAssignTask";
+                    $.each(response, function () {
+
+                        if (response[i].IsActive == 1) {
+                            trobject = '<tr><td>' + response[i].Task +
+                                '</td><td>' + response[i].StartDate + '</td><td>' + response[i].EndtDate + '</td><td>' + response[i].Name + '</td><td>' + response[i].Priority +
+                                '</td><td>' + response[i].WorkStatus + '</td> <td><a class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + response[i].EncryptedId + '&way=' + s + '"> View </a>' +
+                                '<button class="btn btn-sm  btn-danger btn-sm" onclick="deleteTask(' + response[i].Id + ')"> Delete </button></td > ';
+
+                        } else
+                        {
+                            trobject = '<tr><td>' + response[i].Task +
+                                '</td><td>' + response[i].StartDate + '</td><td>' + response[i].EndtDate + '</td><td>' + response[i].Name + '</td><td>' + response[i].Priority +
+                                '</td><td>' + response[i].WorkStatus + '</td> <td><a class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + response[i].EncryptedId + '&way=' + s + '"> View </a></td > ';
+
+                        }
+
+
+                        trobject = trobject + '</tr>';
+                        $('#example > tbody:last-child').append(trobject);
+                        i++;
+                    });
+                    $("#wait").css("display", "none");
+                },
+                error: function (response) {
+                    alert('Error');
+                    $("#wait").css("display", "none");
+                }
+            });
+
+
+
+    }*@
+</script>
+
+<script>
+
+
+    $(document).ready(function () {
+
+
+            $("#wait").css("display", "block");
+             $('#example').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetdisplayEmployeeTask","Trainee")',
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+
+                    "columns": [
+
+                        { "data": "Task", "name": "Task" },
+                        { "data": "StartDate", "name": "StartDate" },
+                        { "data": "EndtDate", "name": "EndtDate" },
+                        { "data": "Name", "name": "Name" },
+                        { "data": "Priority", "name": "Priority" },
+                        { "data": "WorkStatus", "name": "WorkStatus" },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+                            //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                            render: function (data, type, full, meta) {
+                                //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                                var s = "EmpAssignTask";
+                                if (full.IsActive == 1) {
+                                    return '<a style="margin-top:2px;" class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + full.EncryptedId + '&way=' + s + '"> View </a>' +
+                                        '&nbsp; <a class="btn btn-sm  btn-danger" onclick="deleteTask(' + full.Id + ')"> Delete </a>';
+                                } else {
+                                    return '<a class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + full.EncryptedId + '&way=' + s + '"> View </a>';
+                                }
+
+
+                            },
+                            targets: 6
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+                })
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    function deleteTask(id) {
+        $('#taskId').val(id);
+        $('#completetciketmodal').modal("show");
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#EmpAssignedTasks").css('background-color', '#0150A1');
+        $("#EmpAssignedTasks").css('color', '#ffffff');
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+
+        $(".panel-body1").css('display', 'none');
+
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#dropdown3").css('display', 'block', 'important');
+    });
+</script>
+
+<script>
+    function AsynchEmpPDFGeneration() {
+        //var DivDepID = $("#DivDepID1").val();
+        $.ajax({
+            type: 'POST',
+            url: "../ExportReport/AsyncTraineePDF",
+            data: { empselftask: "v3ck2" },
+            //dataType: "json",
+            success: function (data) {
+                $("#modal-Report").modal("show");
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+    function AsynchEmpExcelGeneration() {
+        //var DivDepID = $("#DivDepID1").val();
+        $.ajax({
+            type: 'POST',
+            url: "../ExportReport/AsyncTraineeExcel",
+            data: { empselftask: "v3ck2" },
+            //dataType: "json",
+            success: function (data) {
+                $("#modal-Report").modal("show");
+
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+</script>
+
+
+
+
+
+

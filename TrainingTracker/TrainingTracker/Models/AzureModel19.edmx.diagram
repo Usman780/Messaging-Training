@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ffef340def424bdd96c3cc2a41ec67f4" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Answer" Width="1.5" PointX="33.75" PointY="95.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Attempted_Quiz" Width="1.5" PointX="38.25" PointY="84.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Certificate" Width="1.5" PointX="3" PointY="78.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Company" Width="1.5" PointX="0.75" PointY="75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Contact" Width="1.5" PointX="15.75" PointY="79" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Course" Width="1.5" PointX="18.75" PointY="78.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Course_File" Width="1.5" PointX="24" PointY="74.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Course_UserTask" Width="1.5" PointX="33" PointY="82.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DelegateFile" Width="1.5" PointX="15.75" PointY="74.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Department" Width="1.5" PointX="5.25" PointY="78.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Division" Width="1.5" PointX="3" PointY="82.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ExtensionRequest" Width="1.5" PointX="32.25" PointY="78.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FavoriteReport" Width="1.5" PointX="15.75" PointY="83.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.File" Width="1.5" PointX="21.75" PointY="77.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FileDownloadLink" Width="1.5" PointX="15.75" PointY="99.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FileLog" Width="1.5" PointX="30" PointY="79.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FileVersion" Width="1.5" PointX="30" PointY="83.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Folder" Width="1.5" PointX="18.75" PointY="84.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FolderAccess" Width="1.5" PointX="21" PointY="86" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GroupTask" Width="1.5" PointX="18.75" PointY="74.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GroupTask_Task" Width="1.5" PointX="24" PointY="78.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GroupTask_Ticket" Width="1.5" PointX="35.25" PointY="77.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GroupTask_User" Width="1.5" PointX="35.25" PointY="73.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GroupTaskComment" Width="1.5" PointX="40.5" PointY="77.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GroupTaskReminder" Width="1.5" PointX="35.25" PointY="85.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GroupTasks_Details" Width="1.5" PointX="27" PointY="76.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Meeting" Width="1.5" PointX="38.25" PointY="79.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OldPassword" Width="1.5" PointX="21.75" PointY="73.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Option" Width="1.5" PointX="31.5" PointY="96.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Question" Width="1.5" PointX="29.25" PointY="94.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Question_File" Width="1.5" PointX="31.5" PointY="99.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Quiz" Width="1.5" PointX="27" PointY="84.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Quiz_Result" Width="1.5" PointX="38.25" PointY="88.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SuperAdmin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Tag" Width="1.5" PointX="8.25" PointY="80.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Task" Width="1.5" PointX="10.5" PointY="79.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Task_Ticket" Width="1.5" PointX="30" PointY="71.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TaskComment" Width="1.5" PointX="33" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TaskFile" Width="1.5" PointX="18.75" PointY="70.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TaskTag" Width="1.5" PointX="15.75" PointY="69.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TaskType" Width="1.5" PointX="3" PointY="87.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="13.5" PointY="72" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User_Meeting" Width="1.5" PointX="43.5" PointY="79.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User_Task" Width="1.5" PointX="24.75" PointY="82.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User_Worktype" Width="1.5" PointX="15.75" PointY="91.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserSecurity" Width="1.5" PointX="15.75" PointY="128.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserTask_QuizResult" Width="1.5" PointX="38.25" PointY="74.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Worktype" Width="1.5" PointX="3" PointY="109.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.database_firewall_rules" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Answer_Option" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Answer_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Attempted_Quiz_Course_UserTask" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Attempted_Quiz_Quiz" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Certificates_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Certificates_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CompanyTaskType" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CompanyUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Contact_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Course_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Department_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Division_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ExtensionRequest_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FavoriteReport_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_File_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Folder_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Task_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_User_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskComment_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskReminder_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTasks_Details_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskTicket_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OldPassword_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Tag_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskComment_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskFile_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskTag_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskTicket_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_User_Task_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_User_Worktype_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Worktype_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Contact_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Course_File_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Course_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Course_UserTask_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Quiz_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Course_File_Quiz" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Course_File_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Course_UserTask_User_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Meeting_Course_UserTask" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Quiz_Result_Course_UserTask" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_UserTask_QuizResult_Course_UserTask" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DelegateFile_FileVersion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DelegateFile_SharedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DelegateFile_SharedWith_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Department_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_File_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Folder_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskComment_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskTicket_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_DepartmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskComment_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskTicket_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_User_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_File_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Folder_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskComment_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskTicket_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Tag_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskComment_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskTicket_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_User_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ExtensionRequest_GroupTaskDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ExtensionRequest_User_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FavoriteReport_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_File_ArchivedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_File_CheckOutBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_File_Folder" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_File_SignedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_File_UploadedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileLog_File" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_File" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileDownloadLink_User_" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileLog_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_ArchivedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_CheckOutBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_Folder" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_SignedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileVersion_UploadedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Folder_ArchivedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Folder_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FolderAccess_Folder" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FolderAccess_SharedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FolderAccess_SharedWith_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Task_GrouptTask" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTasks_Details_GroupTask" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Task_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Ticket_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Ticket_GroupTaskDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Ticket_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Manager_GroupTaskDetailsId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Manager_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskComment_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GroupTask__Paren__74794A92" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTask_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskComment_GroupTasks_Details" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskComment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskReminder_GroupTasks_DetailsID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTaskReminder_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupTasks_Details_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Meeting_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Meeting_User_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_User_Meeting_Meeting" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OldPassword_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Option_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Quiz_Result_Option" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Question_File_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Question_Quiz" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Quiz_Result_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Quiz_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Quiz_PublishedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_UserTask_QuizResult_Quiz" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Quiz_Result_SubmittedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskTag_Tag" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_TaskID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_TaskType" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskFile_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskTag_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_Ticket_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_Ticket_CreatedOn" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_Ticket_User_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_Ticket_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__TaskComme__Paren__73852659" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Task_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskComment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TaskComment_User_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__User_Worktype__User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Quiz_Result_PublishedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Created" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_User_Meeting_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_UserSecurity_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__User_Task__Paren__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__User_Worktype__Worktype" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FileDownloadLink_Company" />
+        <AssociationConnector Association="Model.FK_GroupTask_Division" />
+        <EntityTypeShape EntityType="Model.CourseGroupStudy" Width="1.5" PointX="27" PointY="71.875" />
+        <AssociationConnector Association="Model.FK_CourseGroupStudy_Course" />
+        <AssociationConnector Association="Model.FK_CourseGroupStudy_CreatedBy" />
+        <AssociationConnector Association="Model.FK_CourseGroupStudy_LeadBy" />
+        <AssociationConnector Association="Model.FK_CourseGroupStudy_User_Task" />
+        <AssociationConnector Association="Model.FK_GroupTasks_Details_Course" />
+        <AssociationConnector Association="Model.FK_User_Task_GroupTasks_Details" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

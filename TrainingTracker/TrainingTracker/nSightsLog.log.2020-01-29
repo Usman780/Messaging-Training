@@ -1,0 +1,22 @@
+2020-01-29 10:36:51,232 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-29 11:00:04,523 INFO MonitoringLogger - Task Details Page
+2020-01-29 11:00:04,938 INFO MonitoringLogger - BlobManager function started
+2020-01-29 15:27:57,679 INFO MonitoringLogger - Task Details Page
+2020-01-29 15:27:58,506 INFO MonitoringLogger - BlobManager function started
+2020-01-29 15:28:12,896 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-29 16:18:23,271 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-29 16:20:29,563 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-29 16:22:02,970 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-29 16:24:07,642 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-29 16:28:19,477 INFO MonitoringLogger - Update Admin Page...
+2020-01-29 16:28:20,287 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: uzair@nodlays.com
+2020-01-29 16:29:14,829 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:uzair@nodlays.com
+2020-01-29 16:29:19,640 INFO MonitoringLogger - BlobManager function started
+2020-01-29 16:29:24,566 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: uzair@nodlays.com
+2020-01-29 16:29:36,251 INFO MonitoringLogger - Update Admin Page...
+2020-01-29 16:29:36,989 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: uzair@nodlays.com
+2020-01-29 16:29:58,099 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-29 16:30:48,808 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-29 16:35:49,478 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-29 16:36:24,566 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-29 16:38:45,832 INFO MonitoringLogger - Uzair Loged Into Zuptu

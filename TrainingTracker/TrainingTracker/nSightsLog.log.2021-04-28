@@ -1,0 +1,21 @@
+2021-04-27 15:43:34,916 INFO MonitoringLogger - Task Details Page
+2021-04-27 15:43:35,293 INFO MonitoringLogger - BlobManager function started
+2021-04-27 15:43:35,897 INFO MonitoringLogger - Task Details Page
+2021-04-27 15:43:36,218 INFO MonitoringLogger - BlobManager function started
+2021-04-27 15:43:37,084 INFO MonitoringLogger - Task Details Page
+2021-04-27 15:43:37,337 INFO MonitoringLogger - BlobManager function started
+2021-04-27 15:44:33,199 INFO MonitoringLogger - Task Details Page
+2021-04-27 15:44:33,456 INFO MonitoringLogger - BlobManager function started
+2021-04-27 15:44:34,240 INFO MonitoringLogger - Comment's ParentID : 
+2021-04-27 17:55:33,354 INFO MonitoringLogger - Task Details Page
+2021-04-27 17:55:33,715 INFO MonitoringLogger - BlobManager function started
+2021-04-27 17:56:45,705 INFO MonitoringLogger - Roxie Logedout from Zuptu
+2021-04-27 18:01:40,684 INFO MonitoringLogger - Task Details Page
+2021-04-27 18:01:41,001 INFO MonitoringLogger - BlobManager function started
+2021-04-28 10:24:22,175 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-04-28 11:30:05,048 INFO MonitoringLogger - Joe Logedout from Zuptu
+2021-04-28 16:32:36,813 INFO MonitoringLogger - Manger's Canvas Login Mail while adding Manager to DataBase: 
+2021-04-28 16:33:02,563 INFO MonitoringLogger - Manager's Canvas Login Mail before adding into Database: 
+2021-04-28 16:39:54,561 INFO MonitoringLogger - Update Manger Page
+2021-04-28 16:39:54,825 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2021-04-28 16:39:55,930 INFO MonitoringLogger - Manager's info sending to Update Manager Page

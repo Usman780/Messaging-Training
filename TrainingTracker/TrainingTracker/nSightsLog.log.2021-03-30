@@ -1,0 +1,53 @@
+2021-03-30 14:06:04,518 INFO MonitoringLogger - Templates View Page
+2021-03-30 14:06:04,926 INFO MonitoringLogger - BlobManager function started
+2021-03-30 14:06:07,235 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 14:06:11,295 INFO MonitoringLogger - Comment's ParentID : 48153
+2021-03-30 14:06:11,298 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 15:04:46,971 INFO MonitoringLogger - Update Employee Page...
+2021-03-30 15:04:48,383 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-03-30 15:53:07,813 INFO MonitoringLogger - Update Manger Page
+2021-03-30 15:53:08,339 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2021-03-30 15:53:10,090 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2021-03-30 15:57:08,389 INFO MonitoringLogger - Templates View Page
+2021-03-30 15:57:08,758 INFO MonitoringLogger - BlobManager function started
+2021-03-30 15:57:11,044 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 15:57:13,249 INFO MonitoringLogger - Comment's ParentID : 48153
+2021-03-30 15:57:13,254 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 15:58:00,754 INFO MonitoringLogger - Templates View Page
+2021-03-30 15:58:01,112 INFO MonitoringLogger - BlobManager function started
+2021-03-30 15:58:02,155 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 15:58:04,305 INFO MonitoringLogger - Comment's ParentID : 48153
+2021-03-30 15:58:04,310 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:16:21,876 INFO MonitoringLogger - Templates View Page
+2021-03-30 17:16:56,536 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-03-30 17:20:07,666 INFO MonitoringLogger - Task Details Page
+2021-03-30 17:20:08,098 INFO MonitoringLogger - BlobManager function started
+2021-03-30 17:20:10,603 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:20:12,546 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:20:13,658 INFO MonitoringLogger - Comment's ParentID : 48150
+2021-03-30 17:20:13,668 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:25:19,059 INFO MonitoringLogger - Task Details Page
+2021-03-30 17:25:19,528 INFO MonitoringLogger - BlobManager function started
+2021-03-30 17:25:22,423 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:25:28,872 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:25:30,314 INFO MonitoringLogger - Comment's ParentID : 48150
+2021-03-30 17:25:30,332 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:28:11,049 INFO MonitoringLogger - Task Details Page
+2021-03-30 17:28:11,419 INFO MonitoringLogger - BlobManager function started
+2021-03-30 17:28:13,572 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:28:15,484 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:28:16,574 INFO MonitoringLogger - Comment's ParentID : 48150
+2021-03-30 17:28:16,593 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:31:41,438 INFO MonitoringLogger - Task Details Page
+2021-03-30 17:31:42,026 INFO MonitoringLogger - BlobManager function started
+2021-03-30 17:31:44,273 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:31:46,201 INFO MonitoringLogger - Comment's ParentID : 48194
+2021-03-30 17:31:46,220 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:31:47,315 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:38:07,427 INFO MonitoringLogger - Task Details Page
+2021-03-30 17:38:07,793 INFO MonitoringLogger - BlobManager function started
+2021-03-30 17:38:09,977 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:38:11,845 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 17:38:12,945 INFO MonitoringLogger - Comment's ParentID : 48150
+2021-03-30 17:38:12,963 INFO MonitoringLogger - Comment's ParentID : 
+2021-03-30 23:38:38,832 INFO MonitoringLogger - Joe Logedout from Zuptu

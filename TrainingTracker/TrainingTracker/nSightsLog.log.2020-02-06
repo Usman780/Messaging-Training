@@ -1,0 +1,81 @@
+2020-02-06 10:21:53,629 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-06 12:16:43,386 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 12:16:45,805 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-06 12:18:47,949 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 12:18:49,270 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-06 12:38:02,786 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 12:38:03,480 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-06 12:39:25,906 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:test1@nodlays.com
+2020-02-06 12:39:50,835 INFO MonitoringLogger - BlobManager function started
+2020-02-06 12:39:55,630 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: test1@nodlays.com
+2020-02-06 12:39:59,697 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 12:40:00,658 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-06 12:40:17,731 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 12:40:19,968 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-06 12:42:09,746 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 12:44:17,957 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 12:44:29,621 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-06 12:45:10,566 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-06 12:45:21,330 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-06 13:21:38,918 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 13:21:40,271 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-06 13:22:11,007 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2020-02-06 13:22:11,330 INFO MonitoringLogger - BlobManager function started
+2020-02-06 13:22:13,694 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :test@nodlays.com
+2020-02-06 13:33:01,836 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 13:33:03,188 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-02-06 13:34:39,584 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2020-02-06 13:34:39,900 INFO MonitoringLogger - BlobManager function started
+2020-02-06 13:34:42,287 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :
+2020-02-06 13:39:31,662 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 13:39:32,938 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-06 13:41:03,723 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 13:41:04,979 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: easydrive121@gmail.com
+2020-02-06 13:41:55,118 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 13:41:56,421 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-02-06 13:42:02,847 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 13:42:04,098 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-02-06 14:57:10,849 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-06 14:59:56,920 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-06 15:01:21,385 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-06 15:02:13,548 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-06 15:02:34,610 INFO MonitoringLogger - Waseem Loged Into Zuptu
+2020-02-06 16:32:59,027 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-06 16:32:59,080 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-06 16:32:59,084 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-06 16:32:59,088 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-06-2--16-32-59.pdf
+2020-02-06 16:34:35,886 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-06 16:34:35,896 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-06 16:34:35,899 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-06 16:34:35,901 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-06-2--16-34-35.pdf
+2020-02-06 17:17:03,909 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-06 17:17:03,937 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-06 17:17:03,941 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-06 17:17:03,945 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-06-2--17-17-03.pdf
+2020-02-06 17:17:36,871 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-06 17:17:36,874 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-06 17:17:36,877 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-06 17:17:36,879 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-06-2--17-17-36.pdf
+2020-02-06 17:34:49,733 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 17:34:50,758 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-06 17:35:22,879 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:test1@nodlays.com
+2020-02-06 17:35:24,804 INFO MonitoringLogger - BlobManager function started
+2020-02-06 17:36:02,783 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: test1@nodlays.com
+2020-02-06 17:36:34,063 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 17:36:34,148 INFO MonitoringLogger - Update Admin Page...
+2020-02-06 17:36:35,355 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-06 17:36:35,925 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-06 17:41:16,781 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-06 17:43:23,990 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-06 17:43:54,257 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 17:43:57,235 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-06 17:44:20,116 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:test@nodlays.com
+2020-02-06 17:44:33,762 INFO MonitoringLogger - BlobManager function started
+2020-02-06 17:45:23,022 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :test@nodlays.com
+2020-02-06 17:45:24,307 INFO MonitoringLogger - Update Employee Page...
+2020-02-06 17:45:25,577 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-06 17:46:06,777 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-06 17:49:19,247 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-06 19:26:31,262 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-06 19:27:06,446 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-06 19:38:01,186 INFO MonitoringLogger - Task Details Page

@@ -1,0 +1,178 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zuptu</title>
+    <link rel="icon" href="~/Content/Images/ig.png" type="image/x-icon" sizes="16x16">
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/colors.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/bootstrap.min.js"></script>
+
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/validation/validate.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/styling/uniform.min.js"></script>
+
+
+    <script type="text/javascript" src="~/Content/assets/js/pages/login_validation.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/ripple.min.js"></script>
+    <!-- /theme JS files -->
+    <style>
+        #loginbtn {
+            background-color: #008940 !important;
+            border-radius: 22px !important;
+            color: white !important;
+            height: 40px;
+            width: 130px;
+            padding-top: 7px;
+            font-size: medium;
+        }
+
+            #loginbtn:hover {
+                background-color: #ffffff !important;
+                color: #008940 !important;
+                border-radius: 22px !important;
+            }
+
+        .clr {
+            color: #0150A1;
+        }
+    </style>
+</head>
+
+<body class="login-container">
+    <!-- Main navbar -->
+    <div class="navbar navbar-inverse bg-primary-600">
+
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <!-- Content area -->
+                <div class="content">
+                    <!-- Simple login form -->
+                    <form action="@Url.Action("sendResetMail","Auth")" method="post">
+                        <div class="panel panel-body login-form">
+                            <div class="text-center">
+                                <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+                                <h5 class="content-group"><b>Confirm Email</b><small class="display-block"></small></h5>
+                            </div>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <input type="text" value="@ViewBag.company" class="form-control" maxlength="49" @*onkeyup="validatecompany(this)"*@ placeholder="Compnay Name" id="CompanyName" name="companyname" required>
+                                <div class="form-control-feedback">
+                                    <i class="icon-home9 text-muted"></i>
+                                </div>
+                                <label id="CompanyerrorDisplay" class="control-label text-danger" hidden> Company Name Not Exist In The System.  </label>
+                            </div>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <input type="text" value="@ViewBag.email" class="form-control" placeholder="Email" maxlength="150" name="email" required>
+                                <div class="form-control-feedback">
+                                    <i class="icon-user text-muted"></i>
+                                </div>
+                            </div>
+                            <div class="form-group login-options">
+                                <div class="row">
+
+                                    <div class="col-sm-12 text-left">
+                                        <a class="text-danger">@ViewBag.message</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="submit" class="btn  btn-sm  bg-primary-600 btn-block">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                            </div>
+
+
+                            <span> <b>Powered By <a class="clr" href="https://nodlays.com/" target="_blank">Nodlays</a></b></span>
+
+                        </div>
+                    </form>
+                    <!-- /simple login form -->
+
+                    <center><h3><a id="loginbtn" href="@Url.Action("Login","Auth")" class="smoothScroll btn btn-sm btn-default wow fadeInDown" data-wow-delay="2000">Login</a></h3></center>
+
+                    <!-- Footer -->
+                    <div class="footer text-muted text-center">
+
+                    </div>
+                    <!-- /footer -->
+                </div>
+                <!-- /content area -->
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+    </div>
+    <!-- /page container -->
+    <script>
+    var y=false;
+
+    function validatecompany(title) {
+
+    $.ajax({
+
+    type: 'POST',
+    url: '@Url.Action("SignUpCompanyValidation", "Utilities")',
+    timeout: 100000000,
+    data: { _data:title.value },
+    dataType: "json",
+    success: function (json) {
+
+    if (json != 0) {
+    $('#CompanyerrorDisplay').hide();
+    $('#submit').attr('disabled', false)
+    $('#password1').attr('disabled', false)
+    $('#password2').attr('disabled', false)
+    $('#email').attr('disabled', false)
+
+    y = false;
+    }
+    else
+    {
+    $('#CompanyerrorDisplay').show();
+    $('#submit').attr('disabled', true)
+    $('#password1').attr('disabled', true)
+    $('#password2').attr('disabled', true)
+    $('#email').attr('disabled', true)
+
+    y = true;
+    }
+
+    },
+    error: function (data) {
+    alert(data)
+    $('.loading3').hide();
+    $('#curvechart_error').show();
+    $('#curve_chart').hide();
+    }
+    });
+
+    }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "EditManagerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content area -->
+<div class="content">
+
+
+
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Create Manager</b></h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-horizontal form-validate-jquery" action="#">
+                <fieldset class="content-group">
+                    <legend class="text-bold"><span class="text-danger">*</span> Fields are Mandatory to Fill</legend>
+
+
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter First Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email field <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" name="email" class="form-control" id="email" required="required" maxlength="150" placeholder="Enter a valid email address">
+                        </div>
+                    </div>
+                    <!-- /email field -->
+                    <!-- Repeat email -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Repeat email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" name="repeat_email" class="form-control" required="required" maxlength="150" placeholder="Enter a valid email address">
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <!-- Password field -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Password field <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="password" name="password" id="password" class="form-control" required="required" maxlength="150"` placeholder="Minimum 5 characters allowed">
+                        </div>
+                    </div>
+                    <!-- /password field -->
+                    <!-- Repeat password -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Repeat password <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="password" name="repeat_password" class="form-control" required="required" maxlength="150" placeholder="Try different password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="numbers" class="form-control" required="required" maxlength="150" placeholder="Enter Personal Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="numbers" class="form-control" required="required" maxlength="150" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Notes<span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="textarea" class="form-control" maxlength="500" required="required" placeholder="Enter Notes"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <!-- /repeat password -->
+                    <!-- Email field -->
+                    <!-- /repeat email -->
+                    <!-- Minimum characters -->
+
+
+                </fieldset>
+
+
+
+                <div class="text-right">
+
+                    <button type="submit" class="btn  btn-sm  bg-primary">Update <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /dashboard content -->
+</div>
+<!-- /content area -->

@@ -1,0 +1,1597 @@
+#RainMan .overview .container a, #RainMan .customer-quote .trial a, #RainMan .support .text a.call, #RainMan .support .text a.email {
+  font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  padding: 0.9rem 1.75rem;
+  border-radius: 9999px;
+  text-shadow: none;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+  color: white;
+  outline: 0 none;
+  letter-spacing: 0 !important;
+  border-radius: 1.75em;
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */ }
+  #RainMan .overview .container a:lang(en), #RainMan .customer-quote .trial a:lang(en), #RainMan .support .text a.call:lang(en), #RainMan .support .text a.email:lang(en) {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.05em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(en), #RainMan .customer-quote .trial a:lang(en), #RainMan .support .text a.call:lang(en), #RainMan .support .text a.email:lang(en) {
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.06em; } }
+  #RainMan .overview .container a:lang(es), #RainMan .customer-quote .trial a:lang(es), #RainMan .support .text a.call:lang(es), #RainMan .support .text a.email:lang(es) {
+    font-size: 0.95625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(es), #RainMan .customer-quote .trial a:lang(es), #RainMan .support .text a.call:lang(es), #RainMan .support .text a.email:lang(es) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.05em; } }
+  #RainMan .overview .container a:lang(de), #RainMan .customer-quote .trial a:lang(de), #RainMan .support .text a.call:lang(de), #RainMan .support .text a.email:lang(de) {
+    font-size: 0.7875rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.035em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(de), #RainMan .customer-quote .trial a:lang(de), #RainMan .support .text a.call:lang(de), #RainMan .support .text a.email:lang(de) {
+        font-size: 0.7875rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.04em; } }
+  #RainMan .overview .container a:lang(pt), #RainMan .customer-quote .trial a:lang(pt), #RainMan .support .text a.call:lang(pt), #RainMan .support .text a.email:lang(pt) {
+    font-size: 0.95625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(pt), #RainMan .customer-quote .trial a:lang(pt), #RainMan .support .text a.call:lang(pt), #RainMan .support .text a.email:lang(pt) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.05em; } }
+  #RainMan .overview .container a:lang(it), #RainMan .customer-quote .trial a:lang(it), #RainMan .support .text a.call:lang(it), #RainMan .support .text a.email:lang(it) {
+    font-size: 0.95625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(it), #RainMan .customer-quote .trial a:lang(it), #RainMan .support .text a.call:lang(it), #RainMan .support .text a.email:lang(it) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.05em; } }
+  #RainMan .overview .container a:lang(ja), #RainMan .customer-quote .trial a:lang(ja), #RainMan .support .text a.call:lang(ja), #RainMan .support .text a.email:lang(ja) {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.05em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(ja), #RainMan .customer-quote .trial a:lang(ja), #RainMan .support .text a.call:lang(ja), #RainMan .support .text a.email:lang(ja) {
+        font-size: 1.2375rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.07em; } }
+  #RainMan .overview .container a:lang(ru), #RainMan .customer-quote .trial a:lang(ru), #RainMan .support .text a.call:lang(ru), #RainMan .support .text a.email:lang(ru) {
+    font-size: 0.84375rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(ru), #RainMan .customer-quote .trial a:lang(ru), #RainMan .support .text a.call:lang(ru), #RainMan .support .text a.email:lang(ru) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.05em; } }
+  #RainMan .overview .container a:lang(fr), #RainMan .customer-quote .trial a:lang(fr), #RainMan .support .text a.call:lang(fr), #RainMan .support .text a.email:lang(fr) {
+    font-size: 0.95625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.042em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(fr), #RainMan .customer-quote .trial a:lang(fr), #RainMan .support .text a.call:lang(fr), #RainMan .support .text a.email:lang(fr) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.051em; } }
+  #RainMan .overview .container a:hover, #RainMan .customer-quote .trial a:hover, #RainMan .support .text a.call:hover, #RainMan .support .text a.email:hover {
+    text-decoration: none; }
+  #RainMan .overview .container a:link, #RainMan .customer-quote .trial a:link, #RainMan .support .text a.call:link, #RainMan .support .text a.email:link {
+    color: white; }
+    #RainMan .overview .container a:link:hover, #RainMan .customer-quote .trial a:link:hover, #RainMan .support .text a.call:link:hover, #RainMan .support .text a.email:link:hover {
+      color: white;
+      text-decoration: none; }
+  #RainMan .overview .container a:visited, #RainMan .customer-quote .trial a:visited, #RainMan .support .text a.call:visited, #RainMan .support .text a.email:visited {
+    color: white; }
+    #RainMan .overview .container a:visited:hover, #RainMan .customer-quote .trial a:visited:hover, #RainMan .support .text a.call:visited:hover, #RainMan .support .text a.email:visited:hover {
+      color: white;
+      text-decoration: none; }
+
+#RainMan .overview .container a, #RainMan .customer-quote .trial a, #RainMan .support .text a.call, #RainMan .support .text a.email {
+  font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  padding: 0.9rem 1.75rem;
+  border-radius: 9999px;
+  text-shadow: none;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+  color: white;
+  outline: 0 none;
+  letter-spacing: 0 !important;
+  border-radius: 1.75em;
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */ }
+  #RainMan .overview .container a:lang(en), #RainMan .customer-quote .trial a:lang(en), #RainMan .support .text a.call:lang(en), #RainMan .support .text a.email:lang(en) {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.05em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(en), #RainMan .customer-quote .trial a:lang(en), #RainMan .support .text a.call:lang(en), #RainMan .support .text a.email:lang(en) {
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.06em; } }
+  #RainMan .overview .container a:lang(es), #RainMan .customer-quote .trial a:lang(es), #RainMan .support .text a.call:lang(es), #RainMan .support .text a.email:lang(es) {
+    font-size: 0.95625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(es), #RainMan .customer-quote .trial a:lang(es), #RainMan .support .text a.call:lang(es), #RainMan .support .text a.email:lang(es) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.05em; } }
+  #RainMan .overview .container a:lang(de), #RainMan .customer-quote .trial a:lang(de), #RainMan .support .text a.call:lang(de), #RainMan .support .text a.email:lang(de) {
+    font-size: 0.7875rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.035em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(de), #RainMan .customer-quote .trial a:lang(de), #RainMan .support .text a.call:lang(de), #RainMan .support .text a.email:lang(de) {
+        font-size: 0.7875rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.04em; } }
+  #RainMan .overview .container a:lang(pt), #RainMan .customer-quote .trial a:lang(pt), #RainMan .support .text a.call:lang(pt), #RainMan .support .text a.email:lang(pt) {
+    font-size: 0.95625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(pt), #RainMan .customer-quote .trial a:lang(pt), #RainMan .support .text a.call:lang(pt), #RainMan .support .text a.email:lang(pt) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.05em; } }
+  #RainMan .overview .container a:lang(it), #RainMan .customer-quote .trial a:lang(it), #RainMan .support .text a.call:lang(it), #RainMan .support .text a.email:lang(it) {
+    font-size: 0.95625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(it), #RainMan .customer-quote .trial a:lang(it), #RainMan .support .text a.call:lang(it), #RainMan .support .text a.email:lang(it) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.05em; } }
+  #RainMan .overview .container a:lang(ja), #RainMan .customer-quote .trial a:lang(ja), #RainMan .support .text a.call:lang(ja), #RainMan .support .text a.email:lang(ja) {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.05em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(ja), #RainMan .customer-quote .trial a:lang(ja), #RainMan .support .text a.call:lang(ja), #RainMan .support .text a.email:lang(ja) {
+        font-size: 1.2375rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.07em; } }
+  #RainMan .overview .container a:lang(ru), #RainMan .customer-quote .trial a:lang(ru), #RainMan .support .text a.call:lang(ru), #RainMan .support .text a.email:lang(ru) {
+    font-size: 0.84375rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(ru), #RainMan .customer-quote .trial a:lang(ru), #RainMan .support .text a.call:lang(ru), #RainMan .support .text a.email:lang(ru) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.05em; } }
+  #RainMan .overview .container a:lang(fr), #RainMan .customer-quote .trial a:lang(fr), #RainMan .support .text a.call:lang(fr), #RainMan .support .text a.email:lang(fr) {
+    font-size: 0.95625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.042em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .overview .container a:lang(fr), #RainMan .customer-quote .trial a:lang(fr), #RainMan .support .text a.call:lang(fr), #RainMan .support .text a.email:lang(fr) {
+        font-size: 0.95625rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.051em; } }
+  #RainMan .overview .container a:hover, #RainMan .customer-quote .trial a:hover, #RainMan .support .text a.call:hover, #RainMan .support .text a.email:hover {
+    text-decoration: none; }
+  #RainMan .overview .container a:link, #RainMan .customer-quote .trial a:link, #RainMan .support .text a.call:link, #RainMan .support .text a.email:link {
+    color: white; }
+    #RainMan .overview .container a:link:hover, #RainMan .customer-quote .trial a:link:hover, #RainMan .support .text a.call:link:hover, #RainMan .support .text a.email:link:hover {
+      color: white;
+      text-decoration: none; }
+  #RainMan .overview .container a:visited, #RainMan .customer-quote .trial a:visited, #RainMan .support .text a.call:visited, #RainMan .support .text a.email:visited {
+    color: white; }
+    #RainMan .overview .container a:visited:hover, #RainMan .customer-quote .trial a:visited:hover, #RainMan .support .text a.call:visited:hover, #RainMan .support .text a.email:visited:hover {
+      color: white;
+      text-decoration: none; }
+
+.navigation-wrapper {
+  display: none; }
+
+.layout-container {
+  margin-top: 0; }
+  .layout-container > footer {
+    border-top: none; }
+    .layout-container > footer > .container {
+      display: none; }
+    .layout-container > footer .ankle .content .app-buttons a.inline {
+      display: block; }
+
+#RainMan section {
+  width: 100%;
+  float: left; }
+
+#RainMan .hero-section {
+    width: 100%;
+    float: left;
+    height: auto;
+    background: #1d9cdf;
+    background-size: cover;
+    padding: 2em 0;
+    background: url(../../../../default/files/rainman-header.jpg) 0 0 no-repeat;
+    background-size: cover;
+}
+  @media screen and (min-width: 39.5em) {
+    #RainMan .hero-section {
+      padding: 3.375em 0; } }
+  @media screen and (min-width: 64em) {
+    #RainMan .hero-section {
+      height: 29.688em; } }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    #RainMan .hero-section {
+      background-size: cover; } }
+  @media screen and (min-width: 64em) {
+    #RainMan .hero-section h1 {
+      margin-left: -3px; } }
+  @media screen and (min-width: 64em) {
+    #RainMan .hero-section {
+      height: 39.125em; }
+      #RainMan .hero-section.short {
+        height: 38em; } }
+  @media screen and (min-width: 79em) {
+    #RainMan .hero-section.short {
+      height: 33.125em; } }
+  #RainMan .hero-section .logo img {
+    max-width: 12.813em;
+    margin: 0 0 1em 0; }
+    @media screen and (min-width: 64em) {
+      #RainMan .hero-section .logo img {
+        margin: 0 0 2em 0; } }
+  #RainMan .hero-section .content {
+    height: auto; }
+    #RainMan .hero-section .content .container {
+      text-align: center;
+      display: block;
+      margin: 0 1em;
+      width: auto;
+      float: none;
+      color: white; }
+      @media screen and (min-width: 20.313em) {
+        #RainMan .hero-section .content .container {
+          margin: 0 2em; } }
+      @media screen and (min-width: 79em) {
+        #RainMan .hero-section .content .container {
+          margin: 0 auto;
+          max-width: 75em; } }
+      @media screen and (min-width: 64em) {
+        #RainMan .hero-section .content .container {
+          position: relative;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); } }
+      @media screen and (min-width: 64em) {
+        #RainMan .hero-section .content .container {
+          -webkit-transform: none;
+          transform: none; } }
+      #RainMan .hero-section .content .container h1 {
+        font-style: normal;
+        font-size: 2.625em;
+        line-height: 1.143em;
+        font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+        letter-spacing: -0.08em;
+        font-family: "open_sanslight", "proxima_nova_thin_cyrillic", Arial, Helvetica, sans-serif;
+        color: white;
+        margin: 0 0 0.3em 0; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .hero-section .content .container h1 {
+            font-size: 3.250em;
+            line-height: 1.192em; } }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .hero-section .content .container h1 {
+            font-style: normal;
+            font-size: 3.250em;
+            line-height: 1.192em;
+            font-family: "open_sansbold", "proxima_nova_bold_cyrillic", Arial, Helvetica, sans-serif;
+            letter-spacing: -0.06em;
+            font-family: "open_sanslight", "proxima_nova_thin_cyrillic", Arial, Helvetica, sans-serif; } }
+  @media screen and (min-width: 39.5em) and (min-width: 39.5em) {
+    #RainMan .hero-section .content .container h1 {
+      font-size: 5.125em;
+      line-height: 1em;
+      letter-spacing: -0.06em; } }
+      #RainMan .hero-section .content .container h2 {
+        font-style: normal;
+        font-size: 1.125em;
+        line-height: 1.500em;
+        font-family: "open_sanslight", "proxima_nova_thin_cyrillic", Arial, Helvetica, sans-serif;
+        letter-spacing: -0.025em;
+        font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+        color: white; }
+        #RainMan .hero-section .content .container h2 li {
+          line-height: 1.2;
+          margin-bottom: 0.5em; }
+          #RainMan .hero-section .content .container h2 li li {
+            font-size: 0.889em; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .hero-section .content .container h2 {
+            font-size: 1.5rem;
+            line-height: 1.875rem; } }
+  #RainMan .hero-section form {
+    width: 100%;
+    margin: 2em 0 0 0;
+    text-align: center; }
+    @media screen and (min-width: 64em) {
+      #RainMan .hero-section form {
+        margin: 4em 0 0 0; } }
+    #RainMan .hero-section form input#email {
+      width: 100%;
+      display: inline-block;
+      margin: 0 1em 1em 0; }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .hero-section form input#email {
+          max-width: 23.125em; } }
+    #RainMan .hero-section form input[type=submit] {
+      width: auto; }
+    #RainMan .hero-section form p {
+      font-style: normal;
+      font-size: 1.125em;
+      line-height: 1.500em;
+      font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+      letter-spacing: -0.025em;
+      color: white; }
+      #RainMan .hero-section form p li {
+        line-height: 1.2;
+        margin-bottom: 0.5em; }
+        #RainMan .hero-section form p li li {
+          font-size: 0.889em; }
+      #RainMan .hero-section form p a {
+        color: #E7CF78; }
+      #RainMan .hero-section form p.gdpr-privacy {
+        font-size: .775rem;
+        margin-bottom: 1.225rem; }
+        #RainMan .hero-section form p.gdpr-privacy a {
+          color: inherit;
+          text-decoration: underline; }
+          #RainMan .hero-section form p.gdpr-privacy a:hover {
+            color: inherit; }
+    #RainMan .hero-section form #form-tooltip {
+      color: white;
+      justify-content: center; }
+    #RainMan .hero-section form .alert-message-email-validation-container {
+      position: static; }
+
+#RainMan .customers-banner {
+  background: #0E2947;
+  padding: 2em 0; }
+  #RainMan .customers-banner .container {
+    display: block;
+    margin: 0 1em;
+    width: auto;
+    float: none; }
+    @media screen and (min-width: 20.313em) {
+      #RainMan .customers-banner .container {
+        margin: 0 2em; } }
+    @media screen and (min-width: 79em) {
+      #RainMan .customers-banner .container {
+        margin: 0 auto;
+        max-width: 75em; } }
+    #RainMan .customers-banner .container p {
+      color: white;
+      opacity: 0.5;
+      text-align: center;
+      display: block;
+      width: 100%; }
+    #RainMan .customers-banner .container .logos {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between; }
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        #RainMan .customers-banner .container .logos {
+          display: block; } }
+      #RainMan .customers-banner .container .logos img {
+        max-height: 3em;
+        width: auto;
+        max-width: inherit;
+        margin: 1em 0 0 0; }
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+          #RainMan .customers-banner .container .logos img {
+            float: left;
+            margin: 1em; } }
+
+#RainMan .powerful-tool .container {
+  text-align: center; }
+  #RainMan .powerful-tool .container h2 {
+    margin: 0 0 1.5em 0; }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .powerful-tool .container .columns {
+      display: grid;
+      display: -ms-grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 1.5em;
+      -ms-grid-columns: 1fr 1.5em 1fr 1.5em 1fr;
+      grid-template-rows: auto auto auto;
+      grid-row-gap: 1.5em;
+      -ms-grid-rows: auto 1.5em auto 1.5em auto;
+      grid-auto-flow: column; }
+      #RainMan .powerful-tool .container .columns :nth-child(1) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1; }
+      #RainMan .powerful-tool .container .columns :nth-child(2) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 3; }
+      #RainMan .powerful-tool .container .columns :nth-child(3) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 5; }
+      #RainMan .powerful-tool .container .columns :nth-child(4) {
+        -ms-grid-column: 3;
+        -ms-grid-row: 1; }
+      #RainMan .powerful-tool .container .columns :nth-child(5) {
+        -ms-grid-column: 3;
+        -ms-grid-row: 3; }
+      #RainMan .powerful-tool .container .columns :nth-child(6) {
+        -ms-grid-column: 3;
+        -ms-grid-row: 5; }
+      #RainMan .powerful-tool .container .columns :nth-child(7) {
+        -ms-grid-column: 5;
+        -ms-grid-row: 1; }
+      #RainMan .powerful-tool .container .columns :nth-child(8) {
+        -ms-grid-column: 5;
+        -ms-grid-row: 3; }
+      #RainMan .powerful-tool .container .columns :nth-child(9) {
+        -ms-grid-column: 5;
+        -ms-grid-row: 5; } }
+  #RainMan .powerful-tool .container .columns h3 {
+    font-style: normal;
+    font-size: 1.125em;
+    line-height: 1.500em;
+    font-family: "open_sanslight", "proxima_nova_thin_cyrillic", Arial, Helvetica, sans-serif;
+    letter-spacing: -0.025em;
+    font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+    margin: 0; }
+    #RainMan .powerful-tool .container .columns h3 li {
+      line-height: 1.2;
+      margin-bottom: 0.5em; }
+      #RainMan .powerful-tool .container .columns h3 li li {
+        font-size: 0.889em; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .powerful-tool .container .columns h3 {
+        font-size: 1.5rem;
+        line-height: 1.875rem; } }
+  #RainMan .powerful-tool .container .columns img {
+    align-self: center;
+    width: 100%; }
+    #RainMan .powerful-tool .container .columns img.icon {
+      margin: 0 auto;
+      max-width: 3.5em; }
+
+#RainMan .resources .view-tiles > .view-content {
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-auto-flow: row; }
+  #RainMan .resources .view-tiles > .view-content :nth-child(1) {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1; }
+  #RainMan .resources .view-tiles > .view-content :nth-child(2) {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1; }
+  #RainMan .resources .view-tiles > .view-content :nth-child(3) {
+    -ms-grid-column: 3;
+    -ms-grid-row: 1; }
+  #RainMan .resources .view-tiles > .view-content :nth-child(4) {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2; }
+  #RainMan .resources .view-tiles > .view-content :nth-child(5) {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2; }
+  #RainMan .resources .view-tiles > .view-content :nth-child(6) {
+    -ms-grid-column: 3;
+    -ms-grid-row: 2; }
+  @media screen and (min-width: 64em) {
+    #RainMan .resources .view-tiles > .view-content .views-row, #RainMan .resources .view-tiles > .view-content a.tile {
+      min-height: 508px; } }
+  @supports (display: grid) {
+    @media all and (min-width: 39.5em) {
+      #RainMan .resources .view-tiles > .view-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(23.5em, 1fr));
+        grid-gap: 1em; } }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .resources .view-tiles > .view-content .views-row {
+        width: auto;
+        margin: auto;
+        margin-right: auto; } }
+    @media screen and (min-width: 64em) {
+      #RainMan .resources .view-tiles > .view-content .views-row {
+        width: auto;
+        margin: auto;
+        margin-right: auto;
+        min-height: auto;
+        height: 100%; } }
+    #RainMan .resources .view-tiles > .view-content .views-row a.tile {
+      min-height: auto;
+      height: 100%; } }
+
+#RainMan .testimonial {
+    background: url(../../../../default/files/rainman-stats-quotes-blade.jpg) 0 0 no-repeat;
+    background-size: cover;
+}
+  #RainMan .testimonial .quotes {
+    text-align: center;
+    margin: 0 0 2em 0; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .testimonial .quotes {
+        display: grid;
+        display: -ms-grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-rows: -webkit-max-content -webkit-max-content -webkit-max-content;
+        grid-template-rows: max-content max-content max-content;
+        -ms-grid-rows: max-content max-content max-content;
+        grid-auto-flow: row;
+        margin: 0 0 4em 0; }
+        #RainMan .testimonial .quotes :nth-child(1) {
+          -ms-grid-column: 1;
+          -ms-grid-row: 1; }
+        #RainMan .testimonial .quotes :nth-child(2) {
+          -ms-grid-column: 2;
+          -ms-grid-row: 1; }
+        #RainMan .testimonial .quotes :nth-child(3) {
+          -ms-grid-column: 3;
+          -ms-grid-row: 1; }
+        #RainMan .testimonial .quotes :nth-child(4) {
+          -ms-grid-column: 1;
+          -ms-grid-row: 2; }
+        #RainMan .testimonial .quotes :nth-child(5) {
+          -ms-grid-column: 2;
+          -ms-grid-row: 2; }
+        #RainMan .testimonial .quotes :nth-child(6) {
+          -ms-grid-column: 3;
+          -ms-grid-row: 2; }
+        #RainMan .testimonial .quotes :nth-child(7) {
+          -ms-grid-column: 1;
+          -ms-grid-row: 3; }
+        #RainMan .testimonial .quotes :nth-child(8) {
+          -ms-grid-column: 2;
+          -ms-grid-row: 3; }
+        #RainMan .testimonial .quotes :nth-child(9) {
+          -ms-grid-column: 3;
+          -ms-grid-row: 3; } }
+    #RainMan .testimonial .quotes p {
+      max-width: 16.875em;
+      margin: 0 auto; }
+    #RainMan .testimonial .quotes div {
+      display: block;
+      margin: 0 0 3.5em 0; }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .testimonial .quotes div:nth-child(2) {
+          border-right: 2px solid #333333;
+          border-left: 2px solid #333333; } }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .testimonial .quotes div {
+          display: grid;
+          margin: 0;
+          align-self: center; } }
+  #RainMan .testimonial p {
+    color: #333333; }
+    #RainMan .testimonial p a {
+      color: white; }
+    #RainMan .testimonial p img {
+      display: block;
+      margin: 1em auto 0 auto; }
+      #RainMan .testimonial p img.cisco-logo {
+        max-width: 5em; }
+    #RainMan .testimonial p span {
+      font-size: 3em;
+      font-family: "open_sanssemibold", "proxima_nova_sbold_cyrillic", Arial, Helvetica, sans-serif;
+      margin-bottom: 0.25em;
+      display: block;
+      letter-spacing: -3px; }
+
+#RainMan .overview .container {
+  display: block;
+  margin: 0 1em;
+  width: auto;
+  float: none;
+  text-align: center; }
+  @media screen and (min-width: 20.313em) {
+    #RainMan .overview .container {
+      margin: 0 2em; } }
+  @media screen and (min-width: 79em) {
+    #RainMan .overview .container {
+      margin: 0 auto;
+      max-width: 60em; } }
+  #RainMan .overview .container a {
+    background: #3FAD48;
+    border: 2px solid #96E65C;
+    margin: 0 0 2.5em 0; }
+    @media only print {
+      #RainMan .overview .container a {
+        display: none !important; } }
+    #RainMan .overview .container a:hover {
+      background: #96E65C; }
+
+#RainMan .templates {
+  background: whitesmoke; }
+  #RainMan .templates .container {
+    text-align: center; }
+    #RainMan .templates .container h2 {
+      margin: 0 0 1.5em 0; }
+
+@media screen and (min-width: 39.5em) {
+  #RainMan .app-links {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+    -ms-grid-columns: 1fr 2em 1fr 2em 1fr;
+    grid-template-rows: auto auto;
+    grid-row-gap: 2em;
+    -ms-grid-rows: auto 2em auto;
+    grid-auto-flow: column; }
+    #RainMan .app-links :nth-child(1) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 1; }
+    #RainMan .app-links :nth-child(2) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 3; }
+    #RainMan .app-links :nth-child(3) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 1; }
+    #RainMan .app-links :nth-child(4) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 3; }
+    #RainMan .app-links :nth-child(5) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 1; }
+    #RainMan .app-links :nth-child(6) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 3; } }
+
+@media screen and (min-width: 64em) {
+  #RainMan .app-links {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5em;
+    -ms-grid-columns: 1fr 5em 1fr 5em 1fr 5em 1fr 5em 1fr;
+    grid-template-rows: auto;
+    -ms-grid-rows: auto;
+    grid-auto-flow: column; }
+    #RainMan .app-links :nth-child(1) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 1; }
+    #RainMan .app-links :nth-child(2) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 1; }
+    #RainMan .app-links :nth-child(3) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 1; }
+    #RainMan .app-links :nth-child(4) {
+      -ms-grid-column: 7;
+      -ms-grid-row: 1; }
+    #RainMan .app-links :nth-child(5) {
+      -ms-grid-column: 9;
+      -ms-grid-row: 1; } }
+
+#RainMan .app-links img {
+  max-width: 7.125em;
+  max-height: 5.625em;
+  display: block;
+  margin: 0 auto 0.5em auto; }
+
+#RainMan .app-links a {
+  display: block;
+  text-align: center;
+  line-height: 1.5;
+  align-self: start;
+  margin: 0 0 2em 0; }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .app-links a {
+      margin: 0;
+      display: grid; } }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .app-links a:first-of-type img {
+      margin: 0 auto 2em auto; } }
+
+#RainMan .apps, #RainMan .footer-signup.dark {
+    background: url(../../../../default/files/rainman-apps-blade.jpg) 0 0 no-repeat;
+    background-size: cover;
+}
+  #RainMan .apps .container, #RainMan .footer-signup.dark .container {
+    text-align: center; }
+    #RainMan .apps .container h2, #RainMan .footer-signup.dark .container h2 {
+      color: white;
+      margin: 0 0 1em 0; }
+    #RainMan .apps .container p, #RainMan .footer-signup.dark .container p {
+      color: white; }
+      #RainMan .apps .container p a, #RainMan .footer-signup.dark .container p a {
+        color: #E7CF78; }
+    #RainMan .apps .container img, #RainMan .footer-signup.dark .container img {
+      margin: 0 0 2em 0;
+      width: 100%; }
+
+#RainMan .pricing-four-up .container {
+  text-align: center; }
+  #RainMan .pricing-four-up .container h2 {
+    margin: 0 0 1.5em 0; }
+
+@media screen and (min-width: 39.5em) {
+  #RainMan .pricing-four-up .plans {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1em;
+    -ms-grid-columns: 1fr 1em 1fr 1em 1fr 1em 1fr;
+    grid-template-rows: -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content;
+    grid-template-rows: max-content max-content max-content max-content max-content max-content;
+    -ms-grid-rows: max-content max-content max-content max-content max-content max-content;
+    grid-auto-flow: column; }
+    #RainMan .pricing-four-up .plans :nth-child(1) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 1; }
+    #RainMan .pricing-four-up .plans :nth-child(2) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 2; }
+    #RainMan .pricing-four-up .plans :nth-child(3) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 3; }
+    #RainMan .pricing-four-up .plans :nth-child(4) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 4; }
+    #RainMan .pricing-four-up .plans :nth-child(5) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 5; }
+    #RainMan .pricing-four-up .plans :nth-child(6) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 6; }
+    #RainMan .pricing-four-up .plans :nth-child(7) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 1; }
+    #RainMan .pricing-four-up .plans :nth-child(8) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 2; }
+    #RainMan .pricing-four-up .plans :nth-child(9) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 3; }
+    #RainMan .pricing-four-up .plans :nth-child(10) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 4; }
+    #RainMan .pricing-four-up .plans :nth-child(11) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 5; }
+    #RainMan .pricing-four-up .plans :nth-child(12) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 6; }
+    #RainMan .pricing-four-up .plans :nth-child(13) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 1; }
+    #RainMan .pricing-four-up .plans :nth-child(14) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 2; }
+    #RainMan .pricing-four-up .plans :nth-child(15) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 3; }
+    #RainMan .pricing-four-up .plans :nth-child(16) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 4; }
+    #RainMan .pricing-four-up .plans :nth-child(17) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 5; }
+    #RainMan .pricing-four-up .plans :nth-child(18) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 6; }
+    #RainMan .pricing-four-up .plans :nth-child(19) {
+      -ms-grid-column: 7;
+      -ms-grid-row: 1; }
+    #RainMan .pricing-four-up .plans :nth-child(20) {
+      -ms-grid-column: 7;
+      -ms-grid-row: 2; }
+    #RainMan .pricing-four-up .plans :nth-child(21) {
+      -ms-grid-column: 7;
+      -ms-grid-row: 3; }
+    #RainMan .pricing-four-up .plans :nth-child(22) {
+      -ms-grid-column: 7;
+      -ms-grid-row: 4; }
+    #RainMan .pricing-four-up .plans :nth-child(23) {
+      -ms-grid-column: 7;
+      -ms-grid-row: 5; }
+    #RainMan .pricing-four-up .plans :nth-child(24) {
+      -ms-grid-column: 7;
+      -ms-grid-row: 6; } }
+
+@media screen and (min-width: 64em) {
+  #RainMan .pricing-four-up .plans {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1.5em;
+    -ms-grid-columns: 1fr 1.5em 1fr 1.5em 1fr 1.5em 1fr; } }
+
+@media screen and (min-width: 39.5em) and (max-width: 63.937em) {
+  #RainMan .pricing-four-up .plans {
+    font-size: 0.8em; } }
+
+#RainMan .pricing-three-up .container {
+  text-align: center; }
+  #RainMan .pricing-three-up .container h2 {
+    margin: 0 0 1.5em 0; }
+
+@media screen and (min-width: 39.5em) {
+  #RainMan .pricing-three-up .plans {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1em;
+    -ms-grid-columns: 1fr 1em 1fr 1em 1fr;
+    grid-template-rows: -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content;
+    grid-template-rows: max-content max-content max-content max-content max-content max-content;
+    -ms-grid-rows: max-content max-content max-content max-content max-content max-content;
+    grid-auto-flow: column; }
+    #RainMan .pricing-three-up .plans :nth-child(1) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 1; }
+    #RainMan .pricing-three-up .plans :nth-child(2) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 2; }
+    #RainMan .pricing-three-up .plans :nth-child(3) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 3; }
+    #RainMan .pricing-three-up .plans :nth-child(4) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 4; }
+    #RainMan .pricing-three-up .plans :nth-child(5) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 5; }
+    #RainMan .pricing-three-up .plans :nth-child(6) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 6; }
+    #RainMan .pricing-three-up .plans :nth-child(7) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 1; }
+    #RainMan .pricing-three-up .plans :nth-child(8) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 2; }
+    #RainMan .pricing-three-up .plans :nth-child(9) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 3; }
+    #RainMan .pricing-three-up .plans :nth-child(10) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 4; }
+    #RainMan .pricing-three-up .plans :nth-child(11) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 5; }
+    #RainMan .pricing-three-up .plans :nth-child(12) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 6; }
+    #RainMan .pricing-three-up .plans :nth-child(13) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 1; }
+    #RainMan .pricing-three-up .plans :nth-child(14) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 2; }
+    #RainMan .pricing-three-up .plans :nth-child(15) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 3; }
+    #RainMan .pricing-three-up .plans :nth-child(16) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 4; }
+    #RainMan .pricing-three-up .plans :nth-child(17) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 5; }
+    #RainMan .pricing-three-up .plans :nth-child(18) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 6; } }
+
+@media screen and (min-width: 64em) {
+  #RainMan .pricing-three-up .plans {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1.5em;
+    -ms-grid-columns: 1fr 1.5em 1fr 1.5em 1fr; } }
+
+@media screen and (min-width: 39.5em) and (max-width: 63.937em) {
+  #RainMan .pricing-three-up .plans {
+    font-size: 0.8em; } }
+
+#RainMan .plans .header {
+  color: white;
+  padding: 0.2em 0;
+  margin: 0; }
+  #RainMan .plans .header.enterprise {
+    background: #0E2947; }
+  #RainMan .plans .header.business {
+    background: #3FAD48; }
+  #RainMan .plans .header.team {
+    background: #295598; }
+  #RainMan .plans .header.individual {
+    background: #1D9DE0; }
+  @media screen and (min-width: 39.5em) and (max-width: 63.937em) {
+    #RainMan .plans .header {
+      font-size: 2.1em; } }
+
+#RainMan .plans .best-deal {
+  background: whitesmoke;
+  margin: 0; }
+  #RainMan .plans .best-deal.active {
+    padding: 0.25em 0;
+    text-transform: uppercase;
+    font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+    background: #96E65C; }
+
+#RainMan .plans .price {
+  background: whitesmoke;
+  margin: 0; }
+
+#RainMan .plans p.price {
+  font-size: 3.5em; }
+  @media screen and (min-width: 39.5em) and (max-width: 63.937em) {
+    #RainMan .plans p.price {
+      font-size: 3em; } }
+  #RainMan .plans p.price span {
+    font-size: 0.8em; }
+  #RainMan .plans p.price:after {
+    content: "/mo";
+    font-size: 0.45em; }
+
+#RainMan .plans div.price a,
+#RainMan .plans div.price span {
+  font-style: normal;
+  font-size: 1.125em;
+  line-height: 1.500em;
+  font-family: "open_sanslight", "proxima_nova_thin_cyrillic", Arial, Helvetica, sans-serif;
+  letter-spacing: -0.025em;
+  font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+  display: block; }
+  #RainMan .plans div.price a li,
+  #RainMan .plans div.price span li {
+    line-height: 1.2;
+    margin-bottom: 0.5em; }
+    #RainMan .plans div.price a li li,
+    #RainMan .plans div.price span li li {
+      font-size: 0.889em; }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .plans div.price a,
+    #RainMan .plans div.price span {
+      font-size: 1.5rem;
+      line-height: 1.875rem; } }
+  @media screen and (min-width: 39.5em) and (max-width: 63.937em) {
+    #RainMan .plans div.price a,
+    #RainMan .plans div.price span {
+      font-style: normal;
+      font-size: 1.125em;
+      line-height: 1.500em;
+      font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+      letter-spacing: -0.025em; }
+      #RainMan .plans div.price a li,
+      #RainMan .plans div.price span li {
+        line-height: 1.2;
+        margin-bottom: 0.5em; }
+        #RainMan .plans div.price a li li,
+        #RainMan .plans div.price span li li {
+          font-size: 0.889em; } }
+
+#RainMan .plans .description {
+  background: whitesmoke;
+  margin: 0;
+  font-style: normal;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+  letter-spacing: -0.025em;
+  padding: 2em; }
+  #RainMan .plans .description li {
+    line-height: 1.2;
+    margin-bottom: 0.5em; }
+
+#RainMan .plans .compare {
+  background: whitesmoke;
+  margin: 0;
+  font-style: normal;
+  font-size: 1.125em;
+  line-height: 1.500em;
+  font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+  letter-spacing: -0.025em;
+  text-decoration: underline;
+  padding: 0 0 1em 0;
+  display: block; }
+  #RainMan .plans .compare li {
+    line-height: 1.2;
+    margin-bottom: 0.5em; }
+    #RainMan .plans .compare li li {
+      font-size: 0.889em; }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .plans .compare {
+      display: grid; } }
+
+#RainMan .plans .features {
+  background: #dddddd;
+  text-align: left;
+  padding: 1.5em 2em;
+  margin: 0 0 2em 0; }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .plans .features {
+      margin: 0; } }
+  #RainMan .plans .features p {
+    text-transform: uppercase;
+    font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+    margin: 0 0 0.5em 0; }
+  #RainMan .plans .features ul li {
+    font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+    list-style-type: disc;
+    margin: 0 0 0.75em 1em; }
+
+#RainMan .customer-quote {
+  background: whitesmoke; }
+  #RainMan .customer-quote .quote {
+    display: block;
+    margin: 0 1em;
+    width: auto;
+    float: none;
+    text-align: center; }
+    @media screen and (min-width: 20.313em) {
+      #RainMan .customer-quote .quote {
+        margin: 0 2em; } }
+    @media screen and (min-width: 79em) {
+      #RainMan .customer-quote .quote {
+        margin: 0 auto;
+        max-width: 60em; } }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .customer-quote .quote {
+        text-align: left;
+        display: grid;
+        display: -ms-grid;
+        grid-template-columns: 12em auto;
+        grid-column-gap: 2em;
+        -ms-grid-columns: 12em 2em auto;
+        grid-template-rows: -webkit-max-content;
+        grid-template-rows: max-content;
+        -ms-grid-rows: max-content;
+        grid-auto-flow: row; }
+        #RainMan .customer-quote .quote :nth-child(1) {
+          -ms-grid-column: 1;
+          -ms-grid-row: 1; }
+        #RainMan .customer-quote .quote :nth-child(2) {
+          -ms-grid-column: 3;
+          -ms-grid-row: 1; }
+        #RainMan .customer-quote .quote :nth-child(3) {
+          -ms-grid-column: 5;
+          -ms-grid-row: 1; } }
+    #RainMan .customer-quote .quote blockquote {
+      margin: 0 0 1.5em 0; }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .customer-quote .quote blockquote {
+          align-self: center;
+          margin: 0; } }
+    #RainMan .customer-quote .quote img {
+      margin: 0 0 1.5em 0;
+      width: auto; }
+  #RainMan .customer-quote .trial {
+    text-align: center; }
+    #RainMan .customer-quote .trial a {
+      background: #3FAD48;
+      border: 2px solid #96E65C;
+      margin: 0 0 1em 0; }
+      @media only print {
+        #RainMan .customer-quote .trial a {
+          display: none !important; } }
+      #RainMan .customer-quote .trial a:hover {
+        background: #96E65C; }
+    #RainMan .customer-quote .trial p {
+      margin: 0; }
+
+#RainMan .features h2 {
+  text-align: center; }
+
+#RainMan .features .table-container {
+  padding: 1em;
+  background: white;
+  border-radius: 1em; }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .features .table-container {
+      padding: 2em; } }
+  #RainMan .features .table-container table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+    border: none; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .features .table-container table {
+        display: table; } }
+    #RainMan .features .table-container table thead,
+    #RainMan .features .table-container table tbody {
+      display: block;
+      width: 100%; }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .features .table-container table thead,
+        #RainMan .features .table-container table tbody {
+          display: table-row-group; } }
+    #RainMan .features .table-container table tr {
+      display: block;
+      border: none;
+      width: 100%; }
+      #RainMan .features .table-container table tr.desktop-logos {
+        display: none;
+        border: none; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table tr.desktop-logos {
+            display: table-row; } }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .features .table-container table tr {
+          display: table-row; } }
+      #RainMan .features .table-container table tr th,
+      #RainMan .features .table-container table tr td {
+        display: block;
+        border: none;
+        width: 100%; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table tr th,
+          #RainMan .features .table-container table tr td {
+            display: table-cell;
+            width: auto; } }
+    #RainMan .features .table-container table thead {
+      border: none; }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .features .table-container table thead tr.category th {
+          padding: 1em 0.5em 0.5em 0.5em; } }
+      #RainMan .features .table-container table thead th {
+        font-family: "open_sansbold", "proxima_nova_bold_cyrillic", Arial, Helvetica, sans-serif !important;
+        font-size: 1.25em;
+        padding: 0.5em 0;
+        margin: 0 0 1em 0;
+        text-align: center; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table thead th {
+            text-align: left;
+            font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif; } }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table thead th img {
+            display: block;
+            margin: 0 auto; } }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table thead th.td1 {
+            width: 35%; } }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table thead th.td2 {
+            width: 25%; } }
+        #RainMan .features .table-container table thead th.td2 img {
+          height: 1.75em; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table thead th.td3 {
+            width: 13.3333%; } }
+        #RainMan .features .table-container table thead th.td3 img {
+          height: 1em; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table thead th.td4 {
+            width: 13.3333%; } }
+        #RainMan .features .table-container table thead th.td4 img {
+          height: 1.2em; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table thead th.td5 {
+            width: 13.3333%; } }
+        #RainMan .features .table-container table thead th.td5 img {
+          height: 1em; }
+    #RainMan .features .table-container table tbody {
+      border: none; }
+      #RainMan .features .table-container table tbody tr {
+        margin: 0 0 2.5em 0; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table tbody tr:nth-child(odd) {
+            background: rgba(0, 0, 0, 0.05); } }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table tbody tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.025); } }
+      #RainMan .features .table-container table tbody td {
+        padding: 1em 0;
+        opacity: 0.8; }
+        @media screen and (min-width: 39.5em) {
+          #RainMan .features .table-container table tbody td {
+            padding: 0.5em;
+            opacity: 1;
+            border-right: 3px solid white; } }
+        #RainMan .features .table-container table tbody td img {
+          margin-left: 80%; }
+          @media screen and (min-width: 39.5em) {
+            #RainMan .features .table-container table tbody td img {
+              margin: 0 auto;
+              display: block; } }
+        #RainMan .features .table-container table tbody td.td1 {
+          background: white;
+          text-align: center;
+          font-family: "open_sansbold", "proxima_nova_bold_cyrillic", Arial, Helvetica, sans-serif; }
+          @media screen and (min-width: 39.5em) {
+            #RainMan .features .table-container table tbody td.td1 {
+              text-align: left;
+              width: 35%;
+              background: none;
+              font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif; } }
+#RainMan .features .table-container table tbody td.td2 {
+    background: white url(../../../../default/files/ppc-ss-logo.png) 25% center no-repeat;
+    background-size: 7em;
+}
+          @media screen and (min-width: 39.5em) {
+            #RainMan .features .table-container table tbody td.td2 {
+              width: 25%;
+              background: none; } }
+#RainMan .features .table-container table tbody td.td3 {
+    background: whitesmoke url(../../../../default/files/ms_project_logo2.png) 25% center no-repeat;
+    background-size: 5em;
+}
+          @media screen and (min-width: 39.5em) {
+            #RainMan .features .table-container table tbody td.td3 {
+              width: 13.333333%;
+              background: none; } }
+#RainMan .features .table-container table tbody td.td4 {
+    background: white url(../../../../default/files/haymaker/bc-logo.png) 25% center no-repeat;
+    background-size: 5em;
+}
+          @media screen and (min-width: 39.5em) {
+            #RainMan .features .table-container table tbody td.td4 {
+              width: 13.333333%;
+              background: none; } }
+#RainMan .features .table-container table tbody td.td5 {
+    background: whitesmoke url(../../../../default/files/asana_logo.png) 25% center no-repeat;
+    background-size: 5em;
+}
+          @media screen and (min-width: 39.5em) {
+            #RainMan .features .table-container table tbody td.td5 {
+              width: 13.333333%;
+              background: none; } }
+
+#RainMan .project-dimensions {
+  text-align: center; }
+  #RainMan .project-dimensions h2, #RainMan .project-dimensions h3 {
+    font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif; }
+  #RainMan .project-dimensions .compare-grid img {
+    height: auto;
+    width: auto;
+    display: none; }
+    #RainMan .project-dimensions .compare-grid img.logo {
+      display: block;
+      height: auto;
+      max-height: 1.5em;
+      margin: 0 auto 2em auto; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .project-dimensions .compare-grid img {
+        display: block; } }
+  #RainMan .project-dimensions .compare-grid .video-section {
+    display: none;
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    width: 100%; }
+    #RainMan .project-dimensions .compare-grid .video-section video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    @media screen and (min-width: 39.5em) {
+      #RainMan .project-dimensions .compare-grid .video-section {
+        display: block; } }
+  #RainMan .project-dimensions .compare-grid p {
+    text-align: left; }
+    #RainMan .project-dimensions .compare-grid p.caption {
+      font-style: normal;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+      letter-spacing: -0.025em;
+      text-align: center;
+      font-family: "open_sanssemibold", "proxima_nova_sbold_cyrillic", Arial, Helvetica, sans-serif;
+      margin-top: 1em;
+      display: none; }
+      #RainMan .project-dimensions .compare-grid p.caption li {
+        line-height: 1.2;
+        margin-bottom: 0.5em; }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .project-dimensions .compare-grid p.caption {
+          display: block; } }
+  #RainMan .project-dimensions .compare-grid.vertical img.picture {
+    padding: 0 2em 1.5em 2em; }
+  @media screen and (min-width: 64em) {
+    #RainMan .project-dimensions .compare-grid.vertical {
+      display: grid;
+      display: -ms-grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 2em;
+      -ms-grid-columns: 1fr 2em 1fr;
+      grid-template-rows: -webkit-max-content;
+      grid-template-rows: max-content;
+      grid-row-gap: 2em;
+      -ms-grid-rows: max-content;
+      grid-auto-flow: column; }
+      #RainMan .project-dimensions .compare-grid.vertical :nth-child(1) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1; }
+      #RainMan .project-dimensions .compare-grid.vertical :nth-child(2) {
+        -ms-grid-column: 3;
+        -ms-grid-row: 1; } }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .project-dimensions .compare-grid.horizontal {
+      display: grid;
+      display: -ms-grid;
+      grid-template-columns: 1fr 2fr;
+      grid-column-gap: 2em;
+      -ms-grid-columns: 1fr 2em 2fr;
+      grid-template-rows: auto auto;
+      -ms-grid-rows: auto auto;
+      grid-auto-flow: row; }
+      #RainMan .project-dimensions .compare-grid.horizontal :nth-child(1) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1; }
+      #RainMan .project-dimensions .compare-grid.horizontal :nth-child(2) {
+        -ms-grid-column: 3;
+        -ms-grid-row: 1; } }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .project-dimensions .compare-grid.horizontal.reverse {
+      grid-template-columns: 2fr 1fr;
+      grid-column-gap: 2em;
+      -ms-grid-columns: 2fr 2em 1fr; } }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .project-dimensions .compare-grid.horizontal.large-img {
+      grid-template-columns: 2fr 2fr;
+      grid-column-gap: 2em;
+      -ms-grid-columns: 2fr 2em 2fr; } }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .project-dimensions .compare-grid.horizontal.no-image {
+      display: block; } }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .project-dimensions .compare-grid.horizontal .horizontal-grid {
+      display: grid;
+      display: -ms-grid;
+      grid-template-columns: 1fr 3fr;
+      grid-column-gap: 1em;
+      -ms-grid-columns: 1fr 1em 3fr;
+      grid-template-rows: auto auto;
+      grid-row-gap: 1em;
+      -ms-grid-rows: auto 1em auto;
+      grid-auto-flow: row;
+      align-content: center; }
+      #RainMan .project-dimensions .compare-grid.horizontal .horizontal-grid :nth-child(1) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1; }
+      #RainMan .project-dimensions .compare-grid.horizontal .horizontal-grid :nth-child(2) {
+        -ms-grid-column: 3;
+        -ms-grid-row: 1; }
+      #RainMan .project-dimensions .compare-grid.horizontal .horizontal-grid :nth-child(3) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 3; }
+      #RainMan .project-dimensions .compare-grid.horizontal .horizontal-grid :nth-child(4) {
+        -ms-grid-column: 3;
+        -ms-grid-row: 3; } }
+  #RainMan .project-dimensions.customer-quote {
+    padding: 3.2em 0; }
+
+#RainMan .sap-quote {
+    background: url(../../../../default/files/rainman-testimonial-blade.jpg) 0 0 no-repeat;
+    background-size: cover;
+}
+  #RainMan .sap-quote .container {
+    text-align: center; }
+    #RainMan .sap-quote .container blockquote {
+      color: white;
+      margin: 0 0 2rem 0;
+      font-style: normal;
+      font-size: 1.125em;
+      line-height: 1.500em;
+      font-family: "open_sanslight", "proxima_nova_thin_cyrillic", Arial, Helvetica, sans-serif;
+      letter-spacing: -0.025em; }
+      #RainMan .sap-quote .container blockquote li {
+        line-height: 1.2;
+        margin-bottom: 0.5em; }
+        #RainMan .sap-quote .container blockquote li li {
+          font-size: 0.889em; }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .sap-quote .container blockquote {
+          font-size: 1.5rem;
+          line-height: 1.875rem; } }
+      #RainMan .sap-quote .container blockquote footer {
+        color: white;
+        font-size: 0.7em;
+        padding: 0;
+        font-style: italic; }
+    #RainMan .sap-quote .container img {
+      max-width: 10.000em;
+      margin: 0 auto; }
+
+#RainMan .support {
+    background: url(../../../../default/files/rainman-support-blade.jpg) 0 0 no-repeat;
+    background-size: cover;
+}
+  @media screen and (min-width: 39.5em) {
+    #RainMan .support .text {
+      width: 75%;
+      float: right;
+      text-align: right; } }
+  @media screen and (min-width: 64em) {
+    #RainMan .support .text {
+      width: 55%; } }
+  #RainMan .support .text h2 {
+    color: white; }
+  #RainMan .support .text p {
+    color: white; }
+  #RainMan .support .text a.call {
+    background: #3FAD48;
+    border: 2px solid #96E65C; }
+    @media only print {
+      #RainMan .support .text a.call {
+        display: none !important; } }
+    #RainMan .support .text a.call:hover {
+      background: #96E65C; }
+  #RainMan .support .text a.email {
+    background: #1D9DE0;
+    border: 2px solid #3ad9e8; }
+    @media only print {
+      #RainMan .support .text a.email {
+        display: none !important; } }
+    #RainMan .support .text a.email:hover {
+      background: #3ad9e8; }
+  @media screen and (min-width: 64em) {
+    #RainMan .support .container {
+      min-height: 20em; } }
+  #RainMan .support .best-company {
+    display: block;
+    margin: 0 1em;
+    width: auto;
+    float: none;
+    position: relative;
+    height: 0;
+    overflow: visible; }
+    @media screen and (min-width: 20.313em) {
+      #RainMan .support .best-company {
+        margin: 0 2em; } }
+    @media screen and (min-width: 79em) {
+      #RainMan .support .best-company {
+        margin: 0 auto;
+        max-width: 75em; } }
+    #RainMan .support .best-company .awards {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none; }
+      @media screen and (min-width: 64em) {
+        #RainMan .support .best-company .awards {
+          display: block;
+          width: 50%; } }
+    #RainMan .support .best-company div {
+      position: relative;
+      z-index: 1;
+      float: left;
+      margin: 0 1em 0 0; }
+      #RainMan .support .best-company div:nth-child(1) {
+        z-index: 8; }
+      #RainMan .support .best-company div:nth-child(2) {
+        z-index: 7; }
+      #RainMan .support .best-company div:nth-child(3) {
+        z-index: 6; }
+      #RainMan .support .best-company div:nth-child(4) {
+        z-index: 5; }
+      #RainMan .support .best-company div img {
+        background-color: #2e82c7;
+        background: #2e82c7;
+        background: linear-gradient(to bottom, #2e82c7 0%, #0f2639 100%);
+        padding: .813em;
+        max-width: 10em; }
+      #RainMan .support .best-company div.perspective-dropshadow:before {
+        content: "";
+        position: absolute;
+        z-index: -2;
+        left: 4.750em;
+        bottom: 0.625em;
+        width: 78%;
+        height: 79%;
+        max-width: 9.5em;
+        max-height: 12.500em;
+        box-shadow: -4.875em 0.313em 0 rgba(0, 0, 0, 0.4);
+        -webkit-transform: skew(50deg);
+        transform: skew(20deg);
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%; }
+      #RainMan .support .best-company div.perspective-dropshadow:after {
+        content: "";
+        position: absolute;
+        z-index: -2;
+        display: none; }
+
+@media screen and (min-width: 39.5em) {
+  #RainMan .download {
+    padding-top: 9em; } }
+
+@media screen and (min-width: 39.5em) {
+  #RainMan .download .container {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 3em;
+    -ms-grid-columns: 1fr 3em 2fr;
+    grid-template-rows: -webkit-max-content;
+    grid-template-rows: max-content;
+    -ms-grid-rows: max-content;
+    grid-auto-flow: row; }
+    #RainMan .download .container :nth-child(1) {
+      -ms-grid-column: 1;
+      -ms-grid-row: 1; }
+    #RainMan .download .container :nth-child(2) {
+      -ms-grid-column: 3;
+      -ms-grid-row: 1; }
+    #RainMan .download .container :nth-child(3) {
+      -ms-grid-column: 5;
+      -ms-grid-row: 1; } }
+
+@media screen and (min-width: 64em) {
+  #RainMan .download .container {
+    grid-template-columns: 40% 40% auto;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 5em;
+    -ms-grid-columns: 1fr 5em 2fr; } }
+
+#RainMan .download .graphic {
+  width: 100%; }
+  #RainMan .download .graphic img {
+    width: 100%; }
+    @media screen and (min-width: 64em) {
+      #RainMan .download .graphic img {
+        max-width: 26.250em; } }
+
+#RainMan .download .text {
+  width: 100%; }
+  @media screen and (min-width: 39.5em) {
+    #RainMan .download .text {
+      align-self: center; } }
+  #RainMan .download .text a {
+    max-width: 15.313rem; }
+  #RainMan .download .text p {
+    margin: 0; }
+
+#RainMan .footer-signup {
+  background: whitesmoke; }
+  #RainMan .footer-signup h2 {
+    text-align: center; }
+  #RainMan .footer-signup p {
+    text-align: center; }
+  #RainMan .footer-signup form {
+    width: 100%;
+    margin: 2em 0 0 0;
+    text-align: center; }
+    @media screen and (min-width: 64em) {
+      #RainMan .footer-signup form {
+        margin: 4em 0 0 0; } }
+    #RainMan .footer-signup form input#email {
+      width: 100%;
+      display: inline-block;
+      margin: 0 1em 1em 0; }
+      @media screen and (min-width: 39.5em) {
+        #RainMan .footer-signup form input#email {
+          max-width: 23.125em; } }
+    #RainMan .footer-signup form input[type=submit] {
+      width: auto; }
+    #RainMan .footer-signup form p {
+      font-style: normal;
+      font-size: 1.125em;
+      line-height: 1.500em;
+      font-family: "open_sansregular", "proxima_nova_reg_cyrillic", Arial, Helvetica, sans-serif;
+      letter-spacing: -0.025em; }
+      #RainMan .footer-signup form p li {
+        line-height: 1.2;
+        margin-bottom: 0.5em; }
+        #RainMan .footer-signup form p li li {
+          font-size: 0.889em; }
+      #RainMan .footer-signup form p.gdpr-privacy {
+        font-size: .775em;
+        margin-bottom: 1.5em; }
+        #RainMan .footer-signup form p.gdpr-privacy a {
+          color: inherit;
+          text-decoration: underline; }
+    #RainMan .footer-signup form .alert-message-email-validation-container {
+      position: static; }
+  #RainMan .footer-signup.dark p.gdpr-privacy > a {
+    color: inherit; }
+
+.g-recaptcha {
+  position: relative;
+  z-index: 10000; }

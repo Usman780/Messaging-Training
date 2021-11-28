@@ -1,0 +1,58 @@
+public static string DEFAULTPATH = ConfigurationManager.AppSettings["DEFAULTPATH"];
+        public static string IMAGEPATH = ConfigurationManager.AppSettings["IMAGEPATH"];
+        public static string PDFPATH = ConfigurationManager.AppSettings["PDFPATH"];
+        public static string ErrorFolder = ConfigurationManager.AppSettings["ErrorFolder"];
+        public static string EMAIL = ConfigurationManager.AppSettings["EMAIL"];
+        public static string PASSWORD = ConfigurationManager.AppSettings["PASSWORD"];
+        public static string WEBHOST = ConfigurationManager.AppSettings["WEBHOST"];
+        public static string TWILIO_ACCOUNTSID = ConfigurationManager.AppSettings["TWILIO_ACCOUNTSID"];
+        public static string TWILIO_AUTHENTTOKEN = ConfigurationManager.AppSettings["TWILIO_AUTHENTTOKEN"];
+        public static string TWILIO_SENDERNUMBER = ConfigurationManager.AppSettings["TWILIO_SENDERNUMBER"];
+        public static string BACKUP_FOLDER_LOCATION = ConfigurationManager.AppSettings["BACKUP_FOLDER_LOCATION"];
+        public static string GOOGLE_APP_Name = ConfigurationManager.AppSettings["GOOGLE_APP_Name"];
+        public static string GOOGLE_REFRESH_TOKEN = ConfigurationManager.AppSettings["GOOGLE_REFRESH_TOKEN"];
+        public static string GOOGLE_CLIENT_ID = ConfigurationManager.AppSettings["GOOGLE_CLIENT_ID"];
+        public static string GOOGLE_SECRET_KEY = ConfigurationManager.AppSettings["GOOGLE_SECRET_KEY"];
+        public static string IRONPDF_License = ConfigurationManager.AppSettings["IRONPDF_License"];
+        //public const string SYSTEM_URL = @"http://localhost:60126";
+        public static string SYSTEM_URL = ConfigurationManager.AppSettings["SYSTEM_URL"];
+        //public const string SYSTEM_URL = @"https://zuptu.nodlays.com/";
+        public static string APPID = ConfigurationManager.AppSettings["APPID"];
+        public static string AppPassword = ConfigurationManager.AppSettings["AppPassword"];
+        //public const string RedirectUri = "http://localhost:60126/";
+        public static string RedirectUri = ConfigurationManager.AppSettings["RedirectUri"];
+        //public const string RedirectUri = "https://zuptu.nodlays.com/";
+        public static string AppScopes = ConfigurationManager.AppSettings["AppScopes"];
+        public static string AZURE_CLOUD_STORAGE = ConfigurationManager.AppSettings["AZURE_CLOUD_STORAGE"];
+        public static string COMPANY_ALPHABET = ConfigurationManager.AppSettings["COMPANY_ALPHABET"];
+        // Canvas Azure 
+        public static string CanvasRestClient = ConfigurationManager.AppSettings["CanvasRestClient"];
+        public static string CanvasAccessToken = ConfigurationManager.AppSettings["CanvasAccessToken"];
+        public static string DeveloperMail = ConfigurationManager.AppSettings["DeveloperMail"];
+        // Canvas Local
+        //public const string CanvasRestClient = "https://canvas.instructure.com";
+        // public const string CanvasAccessToken = "7~SWvsFuDcmNBY3eCBcP7EJDVivdgE8b3MW2EdEsOXF7slxj5ytjdfOiGmJ5yv3BKq";2020-01-09 23:40:40,929 INFO MonitoringLogger - Update Admin Page...
+2020-01-09 23:40:57,181 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-01-09 23:41:24,471 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:
+2020-01-09 23:41:38,895 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:41:49,938 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: 
+2020-01-09 23:42:15,492 INFO MonitoringLogger - Update Admin Page...
+2020-01-09 23:42:16,375 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: 
+2020-01-09 23:43:59,095 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-09 23:43:59,106 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-09 23:43:59,116 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-09 23:43:59,129 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-09-1--23-43-59.pdf
+2020-01-09 23:45:34,945 INFO MonitoringLogger - Task Details Page
+2020-01-09 23:45:35,592 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:48:41,909 INFO MonitoringLogger - Task Details Page
+2020-01-09 23:48:43,322 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:48:47,483 INFO MonitoringLogger - Comment's ParentID : 
+2020-01-09 23:54:29,924 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:54:29,924 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:54:30,418 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:54:30,818 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:54:31,199 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:54:31,820 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:54:31,911 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:54:32,428 INFO MonitoringLogger - BlobManager function started
+2020-01-09 23:55:07,547 INFO MonitoringLogger - BlobManager function started

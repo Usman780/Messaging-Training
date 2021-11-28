@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "BatteryTraining";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using TrainingTracker.Models;
+<div class="content">
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title"><b>Create Task</b></h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>
+                        <a data-action="collapse"></a>
+                    </li>
+                    <li>
+                        <a data-action="reload"></a>
+                    </li>
+                    <li>
+                        <a data-action="close"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="panel-body">
+            <form class="form-horizontal form-validate-jquery" method="post" action="@Url.Action("AddTask", "Task")" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-9">
+                        <ul class="list list-inline list-unstyled">
+                            <li><i class="icon-user-plus" style="color:black;"></i></li>
+                            <li><span class="c3-circle">XY</span></li>
+                            <li><span class="c3-circle">XY</span></li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label class="control-label">Bucket</label>
+                                <input type="text" class="form-control" aria-label="..." disabled>
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-3">
+                                <label class="control-label">Progress</label>
+                                <input type="text" class="form-control" aria-label="..." disabled>
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-3">
+                                <label class="control-label">Start Date</label>
+                                <input type="date" class="form-control" aria-label="..." disabled>
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-3">
+                                <label class="control-label">Due Date</label>
+                                <input type="date" class="form-control" aria-label="..." disabled>
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <br />
+                            <div class="col-md-12">
+                                <p class="pull-left">Description</p>
+                                <p class="pull-right">Show on card <input type="checkbox" name="name" value="" /></p>
+                            </div>
+                            <div class="col-lg-12">
+                                <textarea rows="8" class="form-control" disabled></textarea>
+                            </div><!-- /.col-lg-6 -->
+                        </div>
+                        <div class="row">
+                            <br />
+                            <div class="col-md-12">
+                                <p class="pull-left">Checklist 1/7</p>
+                                <p class="pull-right">Show on card <input type="checkbox" name="name" value="" /></p>
+                            </div>
+                            <div class="col-lg-12">
+                                <label><input type="checkbox" name="name" value="" /> General Awareness Training</label><br />
+                                <label><input type="checkbox" name="name" value="" /> Safety Training</label><br />
+                                <label><input type="checkbox" name="name" value="" /> Function Specific Training</label><br />
+                                <label><input type="checkbox" name="name" value="" /> Security Training</label><br />
+                                <label><input type="checkbox" name="name" value="" /> Flow Chart</label><br />
+                                <label><input type="checkbox" name="name" value="" /> Slides</label><br />
+                                <label><input type="checkbox" name="name" value="" /> Voice Over</label><br />
+                                <label><input type="checkbox" name="name" value="" /> Add an Item</label><br />
+                            </div><!-- /.col-lg-6 -->
+                        </div>
+                        <div class="row">
+                            <br />
+                            <div class="col-md-12">
+                                <p class="pull-left">Attachments</p>
+                            </div>
+                            <div class="col-lg-12">
+                                <input type="file" name="name" class=" btn-sm btn-file" value="" />
+
+                            </div><!-- /.col-lg-6 -->
+                        </div>
+                        <div class="row">
+                            <br />
+                            <div class="col-md-12">
+                                <p class="pull-left">Comments</p>
+                            </div>
+                            <div class="col-lg-12">
+                                <textarea rows="8" class="form-control"></textarea>
+                            </div><!-- /.col-lg-6 -->
+
+                            <div class="col-md-12">
+                                <br />
+                                <button type="submit" class="btn btn-sm  btn-primary pull-right">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="list list-inline list-unstyled">
+                            <li><i class="icon-user-plus" style="color:black;"></i></li>
+                            <li><span class="c3-circle">XY</span></li>
+                            <li><span class="c3-circle">XY</span></li>
+                        </ul>
+                        <ul class="list-group">
+                            <li class="list-group-item text-center"><a href="#"><i class="icon-2x icon-plus-circle2"></i></a></li>
+                        </ul>
+                        <br />
+                        <ul class="list-group">
+                            <li class="list-group-item"><label><input type="checkbox" name="name" value="" /> Safety Training</label></li>
+                            <li class="list-group-item"><label><input type="checkbox" name="name" value="" /> Function Specific Training</label></li>
+                            <li class="list-group-item"><label><input type="checkbox" name="name" value="" /> Security Training</label></li>
+                            <li class="list-group-item"><label><input type="checkbox" name="name" value="" /> Flow Chart</label></li>
+                            <li class="list-group-item"><label><input type="checkbox" name="name" value="" /> Slides</label></li>
+                            <li class="list-group-item"><label><input type="checkbox" name="name" value="" /> Voice Over</label></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

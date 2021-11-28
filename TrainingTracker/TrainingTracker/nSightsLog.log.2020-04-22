@@ -1,0 +1,91 @@
+2020-04-22 16:51:00,401 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-04-22 16:58:07,274 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-04-22 16:59:51,153 INFO MonitoringLogger - Task Details Page
+2020-04-22 16:59:51,622 INFO MonitoringLogger - BlobManager function started
+2020-04-22 17:02:46,352 INFO MonitoringLogger - Task Details Page
+2020-04-22 17:02:46,701 INFO MonitoringLogger - BlobManager function started
+2020-04-22 17:48:16,808 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-04-22 17:51:19,059 INFO MonitoringLogger - Pdf generation method called
+2020-04-22 17:51:56,843 INFO MonitoringLogger - Pdf generation method search completed
+2020-04-22 17:53:26,129 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 17:53:26,175 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-04-22 17:53:26,179 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-04-22 17:53:26,201 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-04-22 18:02:14,207 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-04-22 18:04:19,031 INFO MonitoringLogger - Pdf generation method called
+2020-04-22 18:04:21,460 INFO MonitoringLogger - Pdf generation method search completed
+2020-04-22 18:04:21,472 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 18:04:21,526 INFO MonitoringLogger - Pdf generation inner method called 1
+2020-04-22 18:04:21,529 INFO MonitoringLogger - Pdf generation inner method called 2
+2020-04-22 18:04:21,531 INFO MonitoringLogger - Pdf generation inner method 3 level called
+2020-04-22 18:05:24,879 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 18:05:24,921 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-04-22 18:05:24,968 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-04-22 18:05:26,558 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-22-4--18-05-24.pdf
+2020-04-22 18:17:03,267 INFO MonitoringLogger - Pdf generation method called
+2020-04-22 18:17:07,190 INFO MonitoringLogger - Pdf generation method search completed
+2020-04-22 18:17:07,197 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 18:17:07,324 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-04-22 18:17:07,551 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-04-22 18:17:09,146 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-22-4--18-17-07.pdf
+2020-04-22 18:35:40,883 INFO MonitoringLogger - Pdf generation method called
+2020-04-22 18:35:44,668 INFO MonitoringLogger - Pdf generation method search completed
+2020-04-22 18:35:44,685 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 18:35:44,851 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-04-22 18:35:44,860 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-04-22 18:35:45,836 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-22-4--18-35-44.pdf
+2020-04-22 18:39:56,217 INFO MonitoringLogger - Pdf generation method called
+2020-04-22 18:40:00,267 INFO MonitoringLogger - Pdf generation method search completed
+2020-04-22 18:40:00,278 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 18:40:00,371 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-04-22 18:40:00,399 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-04-22 18:40:01,387 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-22-4--18-40-00.pdf
+2020-04-22 19:33:48,194 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-04-22 19:35:18,170 INFO MonitoringLogger - Pdf generation method called
+2020-04-22 19:35:21,759 INFO MonitoringLogger - Pdf generation method search completed
+2020-04-22 19:35:22,173 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 19:35:22,217 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-04-22 19:35:22,234 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-04-22 19:35:23,202 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-22-4--19-35-21.pdf
+2020-04-22 20:00:26,444 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-04-22 20:02:18,559 INFO MonitoringLogger - Pdf generation method called
+2020-04-22 20:02:29,929 INFO MonitoringLogger - Pdf generation method search completed
+2020-04-22 20:02:29,946 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 20:02:30,141 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-04-22 20:02:30,155 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-04-22 20:02:31,612 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-22-4--20-02-29.pdf
+2020-04-22 20:04:17,892 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-04-22 20:04:35,762 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-04-22 20:07:32,530 INFO MonitoringLogger - Pdf generation method called
+2020-04-22 20:08:16,192 INFO MonitoringLogger - Pdf generation method search completed
+2020-04-22 20:08:16,197 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-04-22 20:08:16,203 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-04-22 20:08:16,206 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-04-22 20:09:32,353 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:01:45,815 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-04-22 21:03:11,378 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:08:19,021 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:08:44,489 INFO MonitoringLogger - Task Details Page
+2020-04-22 21:08:45,951 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:09:11,738 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:09:54,744 INFO MonitoringLogger - Task Details Page
+2020-04-22 21:09:55,304 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:09:58,870 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:11:07,468 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:13:38,562 INFO MonitoringLogger - Task Details Page
+2020-04-22 21:13:39,894 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:14:05,194 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:14:57,193 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:37:28,367 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-04-22 21:41:33,631 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:42:01,742 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:43:12,271 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:43:14,065 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:47:31,132 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:47:36,265 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:50:38,892 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:50:57,408 INFO MonitoringLogger - BlobManager function started
+2020-04-22 21:57:14,610 INFO MonitoringLogger - BlobManager function started
+2020-04-22 22:00:04,263 INFO MonitoringLogger - BlobManager function started
+2020-04-22 22:03:02,770 INFO MonitoringLogger - BlobManager function started
+2020-04-22 22:03:07,710 INFO MonitoringLogger - BlobManager function started

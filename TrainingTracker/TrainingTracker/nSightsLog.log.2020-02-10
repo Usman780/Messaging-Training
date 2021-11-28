@@ -1,0 +1,171 @@
+2020-02-10 11:18:13,734 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-10 11:20:18,234 INFO MonitoringLogger - BlobManager function started
+2020-02-10 11:22:29,608 INFO MonitoringLogger - Task Details Page
+2020-02-10 11:22:29,936 INFO MonitoringLogger - BlobManager function started
+2020-02-10 11:26:15,810 INFO MonitoringLogger - Task Details Page
+2020-02-10 11:26:31,095 INFO MonitoringLogger - BlobManager function started
+2020-02-10 11:29:36,249 INFO MonitoringLogger - Task Details Page
+2020-02-10 12:00:42,676 INFO MonitoringLogger - Task Details Page
+2020-02-10 12:00:45,464 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:01:24,520 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-10 12:01:35,969 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-10 12:02:27,651 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:03:51,637 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:05:41,709 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:08:21,871 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:10:43,837 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:12:52,614 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:20:11,713 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:21:20,437 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:22:22,912 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-10 12:22:36,798 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-10 12:25:07,619 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-10 12:26:41,743 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-10 12:27:48,307 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-10 12:28:20,753 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-10 12:28:35,346 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-10 12:37:57,836 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:39:17,143 INFO MonitoringLogger - Task Details Page
+2020-02-10 12:39:21,514 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:41:55,900 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:42:25,103 INFO MonitoringLogger - Task Details Page
+2020-02-10 12:42:35,690 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:43:22,827 INFO MonitoringLogger - Update Admin Page...
+2020-02-10 12:43:24,065 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-10 12:45:58,057 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:test1@nodlays.com
+2020-02-10 12:46:13,682 INFO MonitoringLogger - BlobManager function started
+2020-02-10 12:46:18,564 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: test1@nodlays.com
+2020-02-10 12:46:20,530 INFO MonitoringLogger - Update Admin Page...
+2020-02-10 12:46:26,617 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-10 12:48:20,365 INFO MonitoringLogger - Update Admin Page...
+2020-02-10 12:48:21,592 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-02-10 12:49:46,284 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:test1@nodlays.com
+2020-02-10 14:26:13,714 INFO MonitoringLogger - Task Details Page
+2020-02-10 14:26:27,473 INFO MonitoringLogger - BlobManager function started
+2020-02-10 14:26:30,098 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 14:26:32,066 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 14:41:18,323 INFO MonitoringLogger - Task Details Page
+2020-02-10 14:41:31,808 INFO MonitoringLogger - BlobManager function started
+2020-02-10 14:41:33,964 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 14:41:35,253 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 14:47:58,904 INFO MonitoringLogger - Task Details Page
+2020-02-10 14:48:08,052 INFO MonitoringLogger - BlobManager function started
+2020-02-10 14:48:10,272 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 14:48:11,578 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:00:15,234 INFO MonitoringLogger - Task Details Page
+2020-02-10 15:00:28,335 INFO MonitoringLogger - BlobManager function started
+2020-02-10 15:00:31,080 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:00:34,006 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:03:18,827 INFO MonitoringLogger - Task Details Page
+2020-02-10 15:03:30,026 INFO MonitoringLogger - BlobManager function started
+2020-02-10 15:03:34,702 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:03:36,644 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:08:43,008 INFO MonitoringLogger - Task Details Page
+2020-02-10 15:08:54,216 INFO MonitoringLogger - BlobManager function started
+2020-02-10 15:08:58,512 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:09:01,573 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:43:25,125 INFO MonitoringLogger - Task Details Page
+2020-02-10 15:45:37,901 INFO MonitoringLogger - Task Details Page
+2020-02-10 15:45:47,762 INFO MonitoringLogger - BlobManager function started
+2020-02-10 15:45:50,427 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:45:52,750 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:48:17,052 INFO MonitoringLogger - Task Details Page
+2020-02-10 15:48:26,613 INFO MonitoringLogger - BlobManager function started
+2020-02-10 15:48:30,508 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:48:32,582 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:52:48,707 INFO MonitoringLogger - Task Details Page
+2020-02-10 15:52:57,884 INFO MonitoringLogger - BlobManager function started
+2020-02-10 15:53:00,127 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:53:01,459 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:57:57,676 INFO MonitoringLogger - Task Details Page
+2020-02-10 15:58:06,953 INFO MonitoringLogger - BlobManager function started
+2020-02-10 15:58:09,139 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 15:58:11,103 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 16:00:23,707 INFO MonitoringLogger - Task Details Page
+2020-02-10 16:00:33,252 INFO MonitoringLogger - BlobManager function started
+2020-02-10 16:00:37,073 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 16:00:38,396 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 16:19:48,316 INFO MonitoringLogger - BlobManager function started
+2020-02-10 16:22:09,353 INFO MonitoringLogger - BlobManager function started
+2020-02-10 16:23:06,733 INFO MonitoringLogger - BlobManager function started
+2020-02-10 16:23:52,063 INFO MonitoringLogger - BlobManager function started
+2020-02-10 16:25:14,287 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:05:35,373 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:05:38,414 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:05:41,368 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:05:43,002 INFO MonitoringLogger - Task Details Page
+2020-02-10 17:05:53,487 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:05:54,791 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 17:05:56,816 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 17:07:21,955 INFO MonitoringLogger - Task Details Page
+2020-02-10 17:07:31,077 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:07:32,056 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 17:07:33,395 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 17:13:46,411 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:34:07,463 INFO MonitoringLogger - Task Details Page
+2020-02-10 17:34:07,842 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:35:06,248 INFO MonitoringLogger - Task Details Page
+2020-02-10 17:35:06,576 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:35:40,263 INFO MonitoringLogger - Task Details Page
+2020-02-10 17:35:40,985 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:36:39,865 INFO MonitoringLogger - Task Details Page
+2020-02-10 17:36:40,214 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:37:30,478 INFO MonitoringLogger - Task Details Page
+2020-02-10 17:37:30,807 INFO MonitoringLogger - BlobManager function started
+2020-02-10 17:38:09,689 INFO MonitoringLogger - Task Details Page
+2020-02-10 17:38:10,015 INFO MonitoringLogger - BlobManager function started
+2020-02-10 18:03:50,249 INFO MonitoringLogger - Task Details Page
+2020-02-10 18:03:59,222 INFO MonitoringLogger - BlobManager function started
+2020-02-10 18:04:01,646 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 18:04:03,286 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 18:06:05,578 INFO MonitoringLogger - Task Details Page
+2020-02-10 18:06:15,535 INFO MonitoringLogger - BlobManager function started
+2020-02-10 18:06:18,519 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 18:06:19,804 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 18:18:10,466 INFO MonitoringLogger - Task Details Page
+2020-02-10 18:18:19,505 INFO MonitoringLogger - BlobManager function started
+2020-02-10 18:18:23,511 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 18:18:24,790 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:08:53,635 INFO MonitoringLogger - Task Details Page
+2020-02-10 19:09:02,721 INFO MonitoringLogger - BlobManager function started
+2020-02-10 19:09:05,017 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:09:06,647 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:35:02,745 INFO MonitoringLogger - Task Details Page
+2020-02-10 19:35:14,016 INFO MonitoringLogger - BlobManager function started
+2020-02-10 19:35:17,172 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:35:18,633 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:45:12,367 INFO MonitoringLogger - Task Details Page
+2020-02-10 19:45:21,404 INFO MonitoringLogger - BlobManager function started
+2020-02-10 19:45:24,077 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:45:25,466 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:48:14,534 INFO MonitoringLogger - Task Details Page
+2020-02-10 19:48:23,520 INFO MonitoringLogger - BlobManager function started
+2020-02-10 19:48:26,688 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:48:28,274 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:52:27,995 INFO MonitoringLogger - Task Details Page
+2020-02-10 19:52:36,846 INFO MonitoringLogger - BlobManager function started
+2020-02-10 19:52:39,154 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:52:40,517 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:53:28,622 INFO MonitoringLogger - Task Details Page
+2020-02-10 19:53:37,954 INFO MonitoringLogger - BlobManager function started
+2020-02-10 19:53:39,035 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:53:40,527 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:54:45,690 INFO MonitoringLogger - Task Details Page
+2020-02-10 19:54:54,690 INFO MonitoringLogger - BlobManager function started
+2020-02-10 19:54:55,675 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 19:54:56,981 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 20:10:39,526 INFO MonitoringLogger - Task Details Page
+2020-02-10 20:10:42,586 INFO MonitoringLogger - BlobManager function started
+2020-02-10 20:10:44,977 INFO MonitoringLogger - BlobManager function started
+2020-02-10 20:10:48,743 INFO MonitoringLogger - BlobManager function started
+2020-02-10 20:10:49,695 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 20:10:51,004 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 20:11:47,510 INFO MonitoringLogger - Task Details Page
+2020-02-10 20:11:57,782 INFO MonitoringLogger - BlobManager function started
+2020-02-10 20:11:58,917 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 20:12:00,890 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-10 20:15:32,325 INFO MonitoringLogger - BlobManager function started
+2020-02-10 20:15:43,601 INFO MonitoringLogger - BlobManager function started
+2020-02-10 20:17:06,540 INFO MonitoringLogger - BlobManager function started
+2020-02-10 20:31:59,695 INFO MonitoringLogger - BlobManager function started
+2020-02-10 20:33:36,103 INFO MonitoringLogger - BlobManager function started

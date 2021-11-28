@@ -1,0 +1,1116 @@
+﻿
+@{
+    ViewBag.Title = "ManagerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model TrainingTracker.Models.User
+
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+@using TrainingTracker.BL
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    Company company1 = new CompanyBL().getCompanyById(Convert.ToInt32(logedinuser.Company));
+
+}
+
+
+<link href="~/Content/assets/css/mycss.css" rel="stylesheet" />
+<!-- Content area -->
+<style>
+    #backbtn {
+        margin-left: 20px;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+@{
+    if (ViewBag.way == "Department")
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li><a href="@Url.Action("displayDivision","Utilities")">Division</a></li>
+                    <li><a href="@Url.Action("displayDivisionDetails","Utilities" , new { sid =  General_Purpose.EncryptId(Convert.ToInt32(Model.Department.DivisionID)), page1="Division"})">@Model.Department.Division.Name</a></li>
+                    <li><a href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(Convert.ToInt32(Model.DepartmentId))  })">@Model.Department.Name</a></li>
+                    <li class="active">@Model.FirstName @Model.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(ViewBag.depId)})">Back</a>
+        <br />
+        <br />
+    }
+    else if (ViewBag.way == "Manager")
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li class="active"><a href="@Url.Action("DisplayEmployee","Utilities" )">Employees</a></li>
+                    <li class="active">@Model.FirstName @Model.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("DisplayEmployee","Utilities" )">Back</a>
+        <br />
+        <br />
+    }
+    else if (ViewBag.way == "setupDep")
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li><a href="@Url.Action("displayDepartment","Utilities")">Departments</a></li>
+                    <li><a href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(Convert.ToInt32(Model.DepartmentId)), way = ViewBag.way  })">@Model.Department.Name</a></li>
+                    <li class="active">@Model.FirstName @Model.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayDepartmentDetails","Utilities" , new { sid =General_Purpose.EncryptId(Convert.ToInt32(Model.DepartmentId)), way = ViewBag.way  })">Back</a>
+        <br />
+        <br />
+    }
+    else if (ViewBag.way == "Structure")
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li><a href="@Url.Action("ViewStructure","OrgStructure")">@company1.Name Structure</a></li>
+                    <li class="active">Update @Model.FirstName @Model.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("ViewStructure","OrgStructure")">Back</a>
+        <br />
+        <br />
+    }
+    else
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Update Profile</li>
+                    <li class="active">@Model.FirstName @Model.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("Index","Auth" )">Back</a>
+        <br />
+        <br />
+    }
+}
+<div id="UpdateCanvasModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Update your Canvas Login Email</h4>
+            </div>
+
+            <div class="form-group" style="margin-top:20px">
+                <label class="control-label col-lg-3 text-bold">Canvas Login Email<span class="text-danger"></span></label>
+                <div class="col-lg-9">
+                    <input type="email" value="@Model.CanvasLoginId" name="UpdateCanvasLoginId" id="UpdateCanvasLoginId" maxlength="49" class="form-control" placeholder="Enter a valid Canvas Login email address">
+                </div>
+            </div>
+
+            <input type="hidden" name="userid" value="@ViewBag.sid" id="userid" />
+
+
+
+            <center style="margin-bottom:20px">
+                <button style="margin-top:20px" type="button" data-dismiss="modal" class="btn  btn-sm bg-primary">Close</button>
+                <a style="margin-top:20px" onclick="UpdateCanvasMail()" id="sbbutton1" class="btn  btn-sm btn-danger">Update</a>
+
+
+            </center>
+
+
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+<div id="RemoveCanvasMailModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header  bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <br />
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you would like to Remove your Canvas mail?<small class="display-block"></small></h5>
+                </div>
+            </div>
+
+            <input type="hidden" id="UtaskId" value="-1" />
+            <center>
+                <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">No</button>
+                <button type="submit" id="deletecanvasmail" onclick="RemoveCanvasMail()" class="btn btn-sm  btn-danger">Yes</button>
+                <br />
+
+
+            </center>
+            <br />
+
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Update Employee Profile</b></h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                </ul>
+            </div>
+        </div>
+        @if (Model.Id == logedinuser.Id)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-3">
+                        <p style="color:red" id="message"></p>
+                    </div>
+                    <div class="col-lg-2">
+
+                        @*<a onclick="ShowCanvasModal()" id="submitcanvaslogin" style="margin-bottom:-20px;margin-right:10px" class="btn btn-sm  bg-primary pull-right">Update Canvas Mail</a>*@
+                    </div>
+                    @if (Model.CanvasLoginId != null && Model.CanvasLoginId != "")
+                    {
+                        <div id="remove" class="col-lg-2">
+
+                            @*<a onclick="RemoveCanvasModal()" id="removecanvaslogin" style="margin-bottom:-20px;margin-right:10px" class="btn btn-sm  bg-danger pull-right">Remove Canvas Mail</a>*@
+
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <div class="panel-body">
+            <form enctype="multipart/form-data" class="form-horizontal form-validate-jquery" method="post" action="@Url.Action("updateEmployeeAction", "Utilities", new { way=ViewBag.way})">
+                <fieldset class="content-group">
+                    <legend class="text-bold"><span class="text-danger"></span> </legend>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Company Name <span class="text-danger"></span></label>
+                        <div class="col-lg-9">
+                            <input type="text" value="@Model.Company.Name" name="" maxlength="150" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" value="@Model.FirstName" name="FirstName" maxlength="150" class="form-control" required="required" placeholder="Enter First Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" value="@Model.LastName" name="LastName" maxlength="150" class="form-control" required="required" placeholder="Enter Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" readonly onkeyup="vlidate(this)" value="@Model.Email" maxlength="150" name="email" class="form-control" id="email" required="required" placeholder="Enter Email Address">
+                        </div>
+                    </div>
+                    @{
+                        if (Model.CanvasLoginId != "" && Model.CanvasLoginId != null && logedinuser.Role == 3)
+                        {
+                            @*<div id="canvasmailfield" class="form-group">
+                                    <label class="control-label col-lg-3 text-bold">Canvas Login Email<span class="text-danger"></span></label>
+                                    <div class="col-lg-9">
+                                        <input type="email" value="@Model.CanvasLoginId" name="CanvasLoginId" maxlength="49" readonly class="form-control" placeholder="Enter a valid Canvas Login email address">
+                                    </div>
+                                </div>*@
+                        }
+                    }
+
+
+                    @if (logedinuser.Id == Model.Id)
+                    {
+
+                        <!-- /email field -->
+                        <!-- Repeat email -->
+                        <!-- Password field -->
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Password <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                <input type="password" maxlength="150" value="@Model.Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?@("@")/])[A-Za-z\d$!%*?@("@")/]{8,}$" name="password" id="password" class="form-control" required="required" placeholder="Enter Password">
+                                <span style="color:red">Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character($!%*?@("@")/)</span>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Repeat Password <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                <input type="password" maxlength="150" value="@Model.Password" name="repeat_password" class="form-control" required="required" placeholder="Repeat Password">
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" value="@Model.Password" name="password" id="password" class="form-control">
+
+                    }
+                    <!-- /password field -->
+                    <!-- Repeat password -->
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="phoneNumber" maxlength="150" required="required" value="@Model.PhoneNumber" class="form-control" placeholder="Enter Personal Phone Number">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number <span class="text-danger"></span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="homeNumber" maxlength="150" value="@Model.HomeNumber" class="form-control" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Slack User Name </label>
+                        <div class="col-lg-9">
+                            <input type="text" name="SlackAddress" maxlength="150" value="@Model.SlackAddress" class="form-control" placeholder="Enter Your Slack User Name">
+                        </div>
+                    </div>
+                    @if (logedinuser.Id != Model.Id)
+                    {
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Work Type </label>
+                            <div class="col-lg-9">
+                                <select multiple="multiple" data-placeholder="Select Work Types" name="Worktypes" class="select-size-lg">
+
+
+                                    @foreach (Worktype wt in ViewBag.Worktype)
+                                    {
+                                        int count = 0;
+                                        foreach (User_Worktype w in ViewBag.UserWorktypes)
+                                        {
+                                            if (w.Worktype.Id == wt.Id)
+                                            {
+                                                count++;
+                                            }
+                                        }
+                                        if (count > 0)
+                                        {
+                                            <option value="@wt.Id" selected>@wt.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@wt.Id">@wt.Name</option>
+                                        }
+
+                                    }
+
+
+
+                                </select>
+                            </div>
+                        </div>
+                    }
+
+                    <input type="hidden" name="Role" value="@Model.Role" class="form-control">
+                    <input type="hidden" name="CompanyID" value="@Model.CompanyID" class="form-control">
+                    <input type="hidden" name="dep" value="@ViewBag.dep" />
+                    <input type="hidden" name="departmentId" value="@Model.DepartmentId" class="form-control" required="required" placeholder="Enter Home Number">
+                    <input type="hidden" name="Image" value="@Model.Image" class="form-control" required="required" placeholder="Enter Home Number">
+                    <input type="hidden" name="isActive" value="@Model.IsActive" class="form-control" required="required" placeholder="Enter Home Number">
+                    <input type="hidden" name="Id" value="@Model.Id" class="form-control" required="required" placeholder="Enter Home Number">
+                    <input type="hidden" name="GoogleKeyLength" value="@Model.GoogleKeyLength" class="form-control" required="required">
+                    <input type="hidden" name="IsMasterAdmin" value="@Model.IsMasterAdmin" class="form-control" required="required">
+                    @*<input type="hidden" name="OutlookToken" value="@Model.OutlookToken" class="form-control" required="required">*@
+                    <input type="hidden" name="LowPriorityColor" value="@Model.LowPriorityColor" class="form-control" required="required">
+                    <input type="hidden" name="MediumPriorityColor" value="@Model.MediumPriorityColor" class="form-control" required="required">
+                    <input type="hidden" name="HighPriorityColor" value="@Model.HighPriorityColor" class="form-control" required="required">
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="Notes" class="form-control" placeholder="Enter Notes">@Model.Notes</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Receive Notitfications <span class="text-danger"></span></label>
+                        <div class="col-lg-9">
+                            <div class="row">
+                                @{
+                                    string sms = "Via Sms   ";
+                                    string emali = "Via Email   ";
+                                    string slack = "Via Slack";
+                                    <div class="col-md-3">
+                                        @if (Model.isSMS == 1)
+                                        {<p>@sms</p>
+                                        <label class="switch">
+
+                                            <input type="checkbox" name="isSMS" value="isSMS" id="isSmss" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    }
+                                    else
+
+                                    {<p>@sms</p>
+                                    <label class="switch">
+                                        <input type="checkbox" name="isSMS" value="isSMS" id="isSmss">
+                                        <span class="slider round"></span>
+                                    </label>
+                                }
+                                    </div>
+                                    <div class="col-md-3">
+                                        @if (Model.isMail == 1)
+                                        {
+                                            <p>@emali</p>
+                                            <label class="switch">
+                                                <input type="checkbox" name="isMail" value="isMail" id="isMail" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        }
+                                        else
+
+                                        {
+                                            <p>@emali</p>
+                                            <label class="switch">
+                                                <input type="checkbox" name="isMail" value="isMail" id="isMail">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        }
+                                    </div>
+                                    <div class="col-md-3">
+                                        @if (Model.isSlack == 1)
+                                        {
+                                            <p>@slack</p>
+                                            <label class="switch">
+                                                <input type="checkbox" name="isSlack" value="isSlack" id="isSlack" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        }
+                                        else
+
+                                        {
+                                            <p>@slack</p>
+                                            <label class="switch">
+                                                <input type="checkbox" name="isSlack" value="isSlack" id="isSlack">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        }
+                                    </div>
+
+
+                                }
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    @if (Model.Image == null)
+                    {
+                        <input type="hidden" name="Image" value="\TrainingTracker\Content\Images\avt.png" class="form-control" required="required">
+
+                    }
+                    else
+                    { <input type="hidden" name="Image" value="@Model.Image" class="form-control" required="required">
+
+
+                    }
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Profile Picture &nbsp;&nbsp;<span class="small text-danger">(Max 2 MBs)</span></label>
+                        <div class="col-lg-5">
+                            <input type="file" onchange="ValidateSizeProfile(this)" accept="image/png,image/jpg,image/jpeg" class="form-control" name="File" id="profilepic" /> <span><b>(png , jpg , jpeg)</b></span>
+                            <br />
+                            <p class="text-danger" id="errorMessageProfile"></p>
+                        </div>
+                        @if (Model.Image != null && Model.Image != "")
+                        {
+                            <div class="col-lg-2">
+                                <a class="btn btn-danger btn-sm bg-danger-400" id="btnRemoveFile" onclick="RemoveFile()">Remove Profie Picture</a>
+                                <input type="hidden" id="RemoveFile" name="RemoveFile" value="0" />
+                            </div>
+                        }
+                    </div>
+
+
+                </fieldset>
+
+
+
+                <div class="text-right">
+                    @if ((logedinuser.Role == 2 || logedinuser.Role == 4) && Model.Password.Equals("--"))
+                    {
+                        <a id="submit" href="@Url.Action("sendMailInviteEmployee", "Utilities", new { id = Model.Id, em = Model.Email, fn = Model.FirstName })" class="btn btn-sm bg-primary">Send Invite Again </a>
+                    }
+
+                    @if (Model.Id == logedinuser.Id || logedinuser.Role == 1 || logedinuser.Role == 2 || logedinuser.Role == 4)
+                    {
+                        <button type="submit" id="submitUpdate" class="btn btn-sm  bg-primary">Update <i class="icon-arrow-right14 position-right"></i></button>
+
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /dashboard content -->
+    <!-- Scrollable table -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title">Employee Documents</h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+
+                    <li>  <button type="button" class="btn  btn-sm bg-primary btn-block" data-toggle="modal" data-target="#modal-login"><i class=" icon-add"></i>  Add Document</button></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <h4>List of Added Documents</h4>
+
+
+            <div class="">
+                <table id="example2" class="table datatable-button-html5-basic">
+                    <thead>
+                        <tr>
+                            <th>Sr#</th>
+                            <th>File Name</th>
+                            <th>File Upload Date</th>
+                            <th>Link</th>
+
+                        </tr>
+                    </thead>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <!--Course Completion-->
+    @if (company1.IsLMS == 1)
+    {
+        if (logedinuser.Role == 1 || logedinuser.Id == Model.Id)
+        {
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <center><h3 class="panel-title">LMS Completed Courses</h3></center>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+
+                            <li>  @*<button type="button" class="btn  btn-sm bg-primary btn-block" data-toggle="modal" data-target="#modal-login"><i class=" icon-add"></i>  Add Document</button>*@</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <h4>List of  Completed Courses</h4>
+
+
+                    <div class="">
+                        <table class="table datatable-button-html5-basic table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr#</th>
+                                    <th>Course Name</th>
+                                    <th>Task Name</th>
+                                    <th>Assigned To</th>
+                                    <th>Assigned By</th>
+                                    <th>Date Issued</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int c = 0;
+                                    List<Course_UserTask> List = new Course_UserTaskBL().getCourse_UserTaskList().Where(x => x.User_Task.UserID == Model.Id && x.ResultStatus == 1).ToList();
+                                    foreach (Course_UserTask item in List.OrderByDescending(y => y.CompletedAt))
+                                    {
+                                        Course cou = new CourseBL().getCourseById((int)item.CourseID);
+                                        if (cou.CreateCertificate != 1)
+                                        {
+                                            continue;
+                                        }
+                                        c++;
+                                        User us = new UserBL().getUsersById((int)item.User_Task.UserID);
+                                        User_Task ut = new User_TaskBL().getUser_TasksById((int)item.User_TaskID);
+                                        Course course = new CourseBL().getCourseById((int)item.CourseID);
+                                        string assinto = us.FirstName + " " + us.LastName;
+                                        string assinby = "";
+                                        User us1 = new User();
+                                        if (ut == null || course == null)
+                                        {
+                                            continue;
+                                        }
+                                        if (ut.CreatedID.HasValue)
+                                        {
+                                            us1 = new UserBL().getUsersById((int)ut.CreatedID);
+                                            assinby = us1.FirstName + " " + us1.LastName;
+
+                                        }
+                                        else
+                                        {
+                                            us1 = new UserBL().getUsersById(us.Id);
+                                            assinby = "Self Assigned";
+
+                                        }
+
+
+                                                                <tr>
+                                                                    <td>@c</td>
+                                                                    <td>@course.Name</td>
+                                                                    <td>@ut.Task.Name</td>
+                                                                    <td>@assinto</td>
+                                                                    <td>@assinby</td>
+                                                                    <td>@item.CompletedAt.Value.ToString("MM/dd/yyyy")</td>
+                                                                    @if (item.ResultStatus == 1)
+                                                                    {
+                                                                        <td style="color:green">PASS</td>
+
+                                                                    }
+                                                                    else if (item.ResultStatus == 0)
+                                                                    {
+                                                                        <td style="color:red">FAIL</td>
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td></td>
+                                                                    }
+                                                                    <td><a href="@Url.Action("CourseCompletionCertificatePdf","ExportReport" , new { CutId=General_Purpose.EncryptId(item.Id) })" class="btn bg-primary btn-sm">Certificate&nbsp;<i title="Download Certificate" class="icon icon-download"></i></a></td>
+                                                                </tr>
+                                    }
+                                }
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title">Employee Tasks</h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>  <a href="@Url.Action("generateEmployeeIndividualReport","ExportReport", new { sid = Model.Id })" class="btn btn-sm  bg-primary btn-block text-white">Export PDF</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <h4>List of  all the Tasks of @Model.FirstName</h4>
+            <input type="hidden" id="empId" value="@ViewBag.sid" />
+            <input type="hidden" id="deptId" value="@ViewBag.department" />
+
+            <div class="">
+                <table id="example" class="table datatable-button-html5-basic">
+
+                    <thead>
+                        <tr>
+
+
+
+                            <th>Task Name</th>
+                            <th>Start date</th>
+                            <th>End Date</th>
+
+                            <th>Work Status</th>
+                            <th>Priority</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    @*<tbody>
+                            @{
+
+                                List<TrainingTracker.Models.User_Task> tt = Model.User_Task1.Where(x => x.IsActive == 1 && x.IsPrivate == 0).ToList();
+                                foreach (TrainingTracker.Models.User_Task item in tt)
+                                {
+
+                                    <tr>
+
+
+
+                                        <td>@item.Task.Name </td>
+                                        <td>@item.StartDate.Value.ToString("MM/dd/yyyy")</td>
+                                        <td>@item.EndDate.Value.ToString("MM/dd/yyyy")</td>
+
+
+                                        @if (item.Status.HasValue)
+                                        {
+                                            <td>@General_Purpose.getStatusValue(item.Status.Value)</td>
+                                        }
+                                        else
+
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (!item.Priority.HasValue)
+                                        {
+                                            <td> </td>
+
+                                        }
+                                        else if (General_Purpose.getPriorityValue(item.Priority.Value) == "Medium")
+                                        {
+                                            <td><span class="label label-warning">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                                        }
+                                        else if (General_Purpose.getPriorityValue(item.Priority.Value) == "Low")
+                                        {
+                                            <td><span class="label label-success">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td><span class="label label-danger">@General_Purpose.getPriorityValue(item.Priority.Value)</span></td>
+                                        }
+
+
+                                        <td>
+                                            <a class="btn btn-sm  bg-secondary" href="@Url.Action("taskDetails", "Task", new { v = HttpUtility.UrlEncode(General_Purpose.Encrypt(item.Id)),way="0" })"> View </a>
+                                            <button class="btn btn-sm  btn-danger" onclick="deleteTask(@item.Id)"> Delete </button>
+                                        </td>
+
+                                    </tr>
+                                }
+
+
+
+                            }
+
+
+                        </tbody>*@
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<input type="hidden" id="way" value="@ViewBag.way" />
+<!-- /content area -->
+<div id="modal-login" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <form class="modal-body" method="post" action="@Url.Action("uploadFile","Trainee",new { way=ViewBag.way})" enctype="multipart/form-data">
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Upload Document <small class="display-block"></small></h5>
+                </div>
+
+                <div class="form-group has-feedback has-feedback-left">
+                    <input type="text" class="form-control" maxlength="150" name="name" placeholder="Name of Document" required>
+                    <div class="form-control-feedback">
+                        <i class="icon-file text-muted"></i>
+                    </div>
+                </div>
+
+                <div class="form-group has-feedback has-feedback-left">
+                    <input type="file" name="file123" class="file-styled" required>
+
+                </div>
+                <input type="hidden" name="UserId" value="@Model.Id" />
+                <div class="form-group">
+                    <label id="errorDisplay" class="control-label text-danger" hidden> Email already exist in the System!  </label>
+
+                    <button type="submit" id="submit" class="btn btn-sm bg-primary btn-block">Upload <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+            @*<div class="progress">
+                    <div class="bar"></div>
+                    <div class="percent">0%</div>
+                </div>*@
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+
+<div id="deleteTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("deleteTaskFunctionEmployeePage", "Task",new { way=ViewBag.way})" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you want to delete the selected Task? <small class="display-block"></small></h5>
+                </div>
+                <input type="hidden" id="sid" name="sid" value="0" />
+                <input type="hidden" id="empId" name="empid" value="@Model.Id" />
+
+
+
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn  btn-sm bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+<div id="deleteTaskFile" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("deleteFile", "Trainee")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you want to delete the document? <small class="display-block"></small></h5>
+                </div>
+                @*<input type="hidden" id="sid" name="sid" value="0" />*@
+                <input type="hidden" name="way" value="@ViewBag.way" />
+                <input type="hidden" name="userId" value="@Model.Id" />
+                <input type="hidden" name="id" id="fileeId" />
+
+
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn  btn-sm bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#profilepic").change(function () {
+        var fileExtension = ['jpeg', 'jpg', 'png'];
+        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only formats are allowed : " + fileExtension.join(', '));
+        }
+    });
+    function RemoveFile() {
+        $('#RemoveFile').val(1);
+        $('#btnRemoveFile').attr("disabled", true);
+
+
+    }
+
+    function ShowCanvasModal() {
+        $('#UpdateCanvasModal').modal("show");
+
+    }
+    function UpdateCanvasMail() {
+        var userid = $("#userid").val();
+        var UpdateCanvasLoginId = $("#UpdateCanvasLoginId").val();
+        $.ajax({
+            type: 'POST',
+            url: "../utilities/UpdateCanvasLoginId",
+            data: {
+                Id: userid,
+                CanvasMail: UpdateCanvasLoginId,
+            },
+            dataType: "json",
+            success: function (data) {
+
+
+                $('#UpdateCanvasModal').modal("hide");
+                $("#message").text("Email has been sent to your Canvas Mail. Please confirm to Update. ");
+
+
+            },
+            error: function () { alert('error'); }
+        });
+    }
+
+    function RemoveCanvasModal() {
+        $('#RemoveCanvasMailModal').modal("show");
+
+    }
+    function RemoveCanvasMail() {
+        $("#deletecanvasmail").attr("disabled", true);
+
+        // var userid = $("#userid").val();
+        // var UpdateCanvasLoginId = $("#UpdateCanvasLoginId").val();
+        $.ajax({
+            type: 'POST',
+            url: "../utilities/RemoveCanvasLoginId",
+            data: {
+                //Id: userid,
+                // CanvasMail:UpdateCanvasLoginId,
+            },
+            dataType: "json",
+            success: function (data) {
+
+
+                $('#RemoveCanvasMailModal').modal("hide");
+                $("#deletecanvasmail").attr("disabled", false);
+                $("#canvasmailfield").hide();
+                $("#remove").hide();
+
+                $("#message").text("Canvas mail has been removed");
+
+
+            },
+            error: function () { alert('error'); }
+        });
+    }
+
+    $(document).ready(function () {
+
+        var empid = document.getElementById("empId").value;
+        var deptId = document.getElementById("deptId").value;
+        var s = document.getElementById("way").value;
+
+        $('#example').DataTable(
+            {
+
+
+                "ajax": {
+                    "url": '../Utilities/GetUpdateEmployeeTask',
+
+                    "type": "GET",
+                    "datatype": "json",
+                    "data": { sid: empid }
+                },
+
+                "columns": [
+
+                    { "data": "Task", "name": "Task" },
+                    { "data": "StartDate", "name": "StartDate" },
+                    { "data": "EndtDate", "name": "EndtDate" },
+                    { "data": "WorkStatus", "name": "WorkStatus" },
+                    { "data": "Priority", "name": "Priority" },
+
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+                        //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                        render: function (data, type, full, meta) {
+                            //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+
+                            //  var s = "0";
+
+                            return '<a style="margin-right:2px;margin-top:2px" class="btn btn-sm  bg-secondary" href="../Task/taskDetails?v=' + full.EncryptedId + '&way=' + s + '&department=' + deptId + '&sid=' + empid + '"> View </a>' +
+                                '<button class="btn btn-sm  btn-danger btn-sm" onclick="deleteTask(' + full.Id + ')"> Delete </button>';
+
+
+
+                        },
+                        targets: 5
+                    }
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                }
+            })
+
+
+        $('#example2').DataTable(
+            {
+
+
+                "ajax": {
+                    "url": '../Utilities/GetUpdateEmployeeDocuments',
+
+                    "type": "GET",
+                    "datatype": "json",
+                    "data": { sid: empid }
+                },
+
+                "columns": [
+
+                    { "data": "Sr", "name": "Sr" },
+                    { "data": "Name", "name": "Name" },
+                    { "data": "CreatedAt", "name": "CreatedAt" },
+                    // { "data": "WorkStatus", "name": "WorkStatus" },
+                    // { "data": "Priority", "name": "Priority" },
+
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+                        //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                        render: function (data, type, full, meta) {
+                            //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+
+                            //  var s = "0";
+
+                            return '<a style="margin-right:2px;margin-top:2px" class="btn btn-sm  bg-secondary" href="../Trainee/download?filepath=' + full.Path + '&name=' + full.Name + '"> Download </a>' +
+                                '<button class="btn btn-sm  btn-danger btn-sm" onclick="deleteTaskFile(' + full.Id + ')"> Delete </button>';
+
+
+
+                        },
+                        targets: 3
+                    }
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                }
+            })
+
+
+
+    });
+
+
+</script>
+
+
+<script type="text/javascript">
+     function vlidate(title) {
+
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("emailValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data:title.value },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json == 0) {
+                       $('#errorDisplay').hide();
+                       $('#submit').attr('disabled', false)
+                       }
+               else
+                   {
+                       $('#errorDisplay').show();
+                       $('#submit').attr('disabled', true)
+
+               }
+
+               },
+               error: function (data) {
+                   alert(data)
+                   //$('.loading3').hide();
+                   //$('#curvechart_error').show();
+                   //$('#curve_chart').hide();
+               }
+           });
+    }
+
+     $(function () {
+
+         var bar = $('.bar');
+         var percent = $('.percent');
+         var status = $('#status');
+
+         $('form').ajaxForm({
+             beforeSend: function () {
+                 status.empty();
+                 var percentVal = '0%';
+                 bar.width(percentVal);
+                 percent.html(percentVal);
+             },
+             uploadProgress: function (event, position, total, percentComplete) {
+                 var percentVal = percentComplete + '%';
+                 bar.width(percentVal);
+                 percent.html(percentVal);
+             },
+             complete: function (xhr) {
+                 status.html(xhr.responseText);
+             }
+         });
+     });
+    function deleteTask(id) {
+        $('#sid').val(id);
+        $('#deleteTask').modal("show");
+    }
+     function deleteTaskFile(id) {
+        $('#fileeId').val(id);
+        $('#deleteTaskFile').modal("show");
+    }
+</script>
+
+<script>
+    function ValidateSizeProfile(file) {
+        var FileSize = file.files[0].size / 1024 / 1024; // in MB
+        if (FileSize > 2) {
+            $('#errorMessageProfile').text('File size exceeds 2 MBs');
+
+            $('#submitUpdate').attr("disabled", true);
+        } else {
+            $('#errorMessageProfile').text('');
+
+            $('#submitUpdate').attr("disabled", false);
+        }
+    }
+</script>

@@ -1,0 +1,32 @@
+2020-06-20 17:31:56,863 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-06-20 17:34:50,291 INFO MonitoringLogger - Update Employee Page...
+2020-06-20 17:34:51,310 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2020-06-20 17:35:03,959 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-06-20 17:35:19,892 INFO MonitoringLogger - Hussnain Loged Into Zuptu
+2020-06-20 19:00:36,125 INFO MonitoringLogger - UBS Loged Into Zuptu
+2020-06-20 19:01:23,122 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:04:27,307 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:05:03,363 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:06:23,296 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:07:16,709 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:11:19,305 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:12:09,781 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:12:54,527 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:19:01,528 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:21:13,751 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:22:28,988 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:27:55,889 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:35:35,670 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:36:55,980 INFO MonitoringLogger - Add Group Task Comment Function
+2020-06-20 19:36:55,988 INFO MonitoringLogger - Child Comment ID : -1
+2020-06-20 19:36:55,996 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-06-20 19:36:59,252 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:38:00,263 INFO MonitoringLogger - Add Group Task Comment Function
+2020-06-20 19:38:00,271 INFO MonitoringLogger - Child Comment ID : 532
+2020-06-20 19:38:00,273 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  532
+2020-06-20 19:38:00,275 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 532
+2020-06-20 19:38:03,765 INFO MonitoringLogger - BlobManager function started
+2020-06-20 19:38:24,731 INFO MonitoringLogger - Add Group Task Comment Function
+2020-06-20 19:38:24,739 INFO MonitoringLogger - Child Comment ID : -1
+2020-06-20 19:38:24,749 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-06-20 19:38:27,959 INFO MonitoringLogger - BlobManager function started

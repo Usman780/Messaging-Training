@@ -1,0 +1,31 @@
+2020-01-31 11:13:11,743 INFO MonitoringLogger - BlobManager function started
+2020-01-31 11:25:04,234 INFO MonitoringLogger - BlobManager function started
+2020-01-31 11:27:00,451 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-31 11:27:09,033 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-01-31 11:28:29,603 INFO MonitoringLogger - BlobManager function started
+2020-01-31 11:29:03,252 INFO MonitoringLogger - BlobManager function started
+2020-01-31 11:47:07,169 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-01-31 11:47:16,056 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-31 14:01:18,833 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-31 14:10:26,500 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-01-31 14:11:04,310 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-31 14:11:20,603 INFO MonitoringLogger - Update Admin Page...
+2020-01-31 14:12:04,995 INFO MonitoringLogger - Update Admin Page...
+2020-01-31 14:12:06,443 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-01-31 14:12:39,217 INFO MonitoringLogger - UpdateAdminActin Function Starting with Canvas Login Mail:test1@nodlays.com
+2020-01-31 14:12:59,116 INFO MonitoringLogger - BlobManager function started
+2020-01-31 14:13:11,527 INFO MonitoringLogger - Canvas Login Mail Before updating Admin's info  to DataBase: test1@nodlays.com
+2020-01-31 14:13:14,348 INFO MonitoringLogger - Update Admin Page...
+2020-01-31 14:13:15,899 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-01-31 14:14:55,875 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-01-31 14:47:50,201 INFO MonitoringLogger - Task Details Page
+2020-01-31 14:47:50,581 INFO MonitoringLogger - BlobManager function started
+2020-01-31 14:52:04,448 INFO MonitoringLogger - BlobManager function started
+2020-01-31 15:36:20,280 INFO MonitoringLogger - BlobManager function started
+2020-01-31 15:43:29,232 INFO MonitoringLogger - BlobManager function started
+2020-01-31 15:44:04,039 INFO MonitoringLogger - Task Details Page
+2020-01-31 15:44:04,425 INFO MonitoringLogger - BlobManager function started
+2020-01-31 17:10:20,719 INFO MonitoringLogger - Task Details Page
+2020-01-31 17:10:33,001 INFO MonitoringLogger - BlobManager function started
+2020-01-31 17:36:17,326 INFO MonitoringLogger - BlobManager function started
+2020-01-31 18:02:39,925 INFO MonitoringLogger - BlobManager function started

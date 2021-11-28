@@ -1,0 +1,37 @@
+2020-03-13 10:21:18,794 INFO MonitoringLogger - BlobManager function started
+2020-03-13 10:22:19,520 INFO MonitoringLogger - BlobManager function started
+2020-03-13 10:22:39,847 INFO MonitoringLogger - BlobManager function started
+2020-03-13 10:23:17,991 INFO MonitoringLogger - BlobManager function started
+2020-03-13 10:31:14,461 INFO MonitoringLogger - Canvas Login Mail while adding an Employee :
+2020-03-13 10:51:36,198 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-03-13 10:52:12,928 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-13 10:56:03,066 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-03-13 10:56:33,872 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-03-13 11:16:01,408 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-03-13 12:18:27,374 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-03-13 12:37:08,256 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-03-13 12:39:11,890 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-03-13 13:24:06,763 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-03-13 13:24:16,533 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-13 13:26:30,602 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-03-13 13:29:45,523 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-03-13 13:31:24,138 INFO MonitoringLogger - Manger's Canvas Login Mail while adding Manager to DataBase: 
+2020-03-13 13:31:24,150 INFO MonitoringLogger - Manager's Canvas Login Mail before adding into Database: 
+2020-03-13 13:40:33,455 INFO MonitoringLogger - Task Details Page
+2020-03-13 13:40:33,837 INFO MonitoringLogger - BlobManager function started
+2020-03-13 13:40:36,353 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-13 13:41:14,281 INFO MonitoringLogger - Task Details Page
+2020-03-13 13:41:14,723 INFO MonitoringLogger - BlobManager function started
+2020-03-13 13:41:15,146 INFO MonitoringLogger - Task Details Page
+2020-03-13 13:41:15,819 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-13 13:41:17,212 INFO MonitoringLogger - BlobManager function started
+2020-03-13 13:41:18,416 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-13 13:45:28,430 INFO MonitoringLogger - Task Details Page
+2020-03-13 13:45:28,760 INFO MonitoringLogger - BlobManager function started
+2020-03-13 13:45:31,232 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-13 13:46:38,816 INFO MonitoringLogger - Task Details Page
+2020-03-13 13:46:39,147 INFO MonitoringLogger - BlobManager function started
+2020-03-13 13:46:40,152 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-13 13:47:37,581 INFO MonitoringLogger - Task Details Page
+2020-03-13 13:47:37,913 INFO MonitoringLogger - BlobManager function started
+2020-03-13 13:47:38,915 INFO MonitoringLogger - Comment's ParentID : 

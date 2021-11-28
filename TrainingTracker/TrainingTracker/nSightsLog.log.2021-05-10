@@ -1,0 +1,18 @@
+2021-05-07 15:30:17,257 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-05-07 15:47:34,562 INFO MonitoringLogger - BOB Logedout from Zuptu
+2021-05-07 16:35:27,742 INFO MonitoringLogger - Joe Logedout from Zuptu
+2021-05-07 16:37:22,260 INFO MonitoringLogger - Update Manger Page
+2021-05-07 16:37:22,550 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2021-05-07 16:37:23,656 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2021-05-07 16:38:19,803 INFO MonitoringLogger - UpdateManagerAction Function Starting...
+2021-05-07 16:38:20,115 INFO MonitoringLogger - Set Canvas Login Mail to Manager Info Object.
+2021-05-07 16:38:20,383 INFO MonitoringLogger - BlobManager function started
+2021-05-07 16:38:21,740 INFO MonitoringLogger - Canvas Login Mail updating Manager's info to Database: 
+2021-05-07 16:38:48,998 INFO MonitoringLogger - Update Employee Page...
+2021-05-07 16:38:50,080 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-05-07 16:39:40,267 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2021-05-07 16:39:40,523 INFO MonitoringLogger - BlobManager function started
+2021-05-07 16:39:40,813 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :
+2021-05-07 16:41:21,782 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2021-05-07 16:41:22,036 INFO MonitoringLogger - BlobManager function started
+2021-05-07 16:41:23,387 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :

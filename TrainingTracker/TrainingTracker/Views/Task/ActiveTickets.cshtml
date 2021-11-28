@@ -1,0 +1,436 @@
+﻿
+@{
+    ViewBag.Title = "ActiveTickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+@using TrainingTracker.BL
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+
+    #glyphicon {
+        font-weight:bolder;
+        font-size: 1.8em;
+    }
+</style>
+
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Assignments</li>
+            <li class="active">Active To Do</li>
+        </ul>
+    </div>
+</div>
+
+<br />
+
+<div id="completetciketmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("CloseTaskTicket", "Task")" method="post">
+                <input type="hidden" name="isModal" value="0" />
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you would like to mark this To Do as complete? <small class="display-block"></small></h5>
+                </div>
+                <input type="hidden" id="ticketId" name="ticketId" value="0" />
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+<div id="completeAllticketmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("CloseAllTaskTickets", "Task")" method="post">
+                <input type="hidden" name="isModal" value="0" />
+                <input type="hidden" name="TaskName" id="closetname" />
+                <input type="hidden" name="CreationDate" id="closecdate"/>
+                <input type="hidden" name="Ticketnotes" id="closenotes"/>
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group" id="closetext">Are you sure you would like to mark all To Dos as complete? <small class="display-block"></small></h5>
+                </div>
+                @*<input type="hidden" id="ticketId" name="ticketId" value="0" />*@
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<div class="content">
+
+
+    <div class="panel panel-flat">
+        <div class="panel-heading page-header page-header-default has-cover">
+
+
+            <center><h3 class="panel-title"><b>Active To Do Search</b></h3></center>
+            <div class="heading-elements page-header page-header-default has-cover">
+                <ul class="icons-list">
+
+
+                    <li>
+                        <a data-toggle="collapse" data-target="#collapseExample" id="collapsecaret">
+                            <i class="glyphicon glyphicon-menu-down" id="glyphicon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="panel-body panel1 collapse" id="collapseExample">
+            <div class="" style="margin-left:5px;">
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Task Name</label>
+                    <select class="select-results-color" id="tname" name="TaskName">
+                        <option value="" selected>Select Task Name</option>
+                        @{
+                            List<string> dlist = new List<string>();
+                        }
+                        @foreach (var item in ViewBag.listtickets)
+                        {
+                            if (dlist.Contains(item.User_Task.Task.Name))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                dlist.Add(item.User_Task.Task.Name);
+                            }
+                        }
+
+                        @foreach (var item2 in dlist)
+                        {
+                            <option value="@item2">@item2</option>
+
+                        }
+
+
+                    </select>
+                </div>
+                
+                <div class="form-group col-md-3">
+                    <label class="control-label">To Do Name</label>
+                    <select class="select-results-color" id="notes" name="Ticketnotes">
+                        <option value="" selected>Select To Do Name</option>
+
+                        @{
+                            List<string> dlist2 = new List<string>();
+                        }
+                        @foreach (var item in ViewBag.listtickets)
+                        {
+                            if (dlist2.Contains(item.Name))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                dlist2.Add(item.Name);
+                            }
+                        }
+
+                        @foreach (var item in dlist2)
+                        {
+
+                            <option value="@item">@item</option>
+                        }
+                        }
+
+                    </select>
+                </div>
+
+
+                @*<div class="form-group col-md-3">
+            <label class="control-label">Task Name</label>
+            <input type="text" class="form-control" id="tname" name="TaskName">
+        </div>*@
+                <div class="form-group col-md-3">
+                    <label class="control-label">Creation Date</label>
+                    <input type="date" class="form-control" id="cdate" name="CreationDate">
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-3">
+                        <input type="submit" onclick="todoSearch()" value="Search" class="btn  btn-sm  bg-primary-400" />
+                    </div>
+                    <div class="form-group col-md-2 pull-right">
+                        <input type="submit" onclick="ClearAllSearches()" value="Clear Filters" class="btn  btn-sm  bg-default-400" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Active To Do</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            @if(ViewBag.listtickets.Count != 0)
+            {
+                <div class="heading-elements">
+                    <a class=" btn btn-sm btn-primary" onclick="alltickets()">Close All</a>
+                </div>
+            }
+        </div>
+
+        <div class="m-20">
+            <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>To Do Created by </th>
+                        <th>Notes</th>
+                        <th>Creation Time</th>
+                        <th>Action</th>
+
+
+                    </tr>
+                </thead>
+                @*<tbody>
+
+                @if (Convert.ToInt32(Session["Role"]) == 3 || Convert.ToInt32(Session["Role"]) == 2 || Convert.ToInt32(Session["Role"]) ==4 )
+                {
+                    foreach (TodosDTO empticket in ViewBag.emptickets)
+                    {
+
+
+                        <tr>
+                            <td>@empticket.TaskName</td>
+                            <td>@empticket.TodoCreatedBy</td>
+                            <td>@empticket.TicketNotes</td>
+                            <td>@empticket.CreationDatetime</td>
+                            <td>
+
+                                <button class="btn btn-sm bg-primary-400" onclick="updatToDo(@empticket.Id)"> Close</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+
+                    foreach (TodosDTO ticket in ViewBag.emptickets)
+                    {
+                        <tr>
+                            <td>@ticket.TaskName</td>
+                            <td>@ticket.TodoCreatedBy</td>
+                            <td>@ticket.TicketNotes</td>
+                            <td>@ticket.CreationDatetime</td>
+                            <td>
+
+                                <button class="btn btn-sm bg-primary-400" onclick="updatToDo(@ticket.Id)"> Close</button>
+                            </td>
+                        </tr>
+                    }
+
+                }
+
+
+
+
+            </tbody>*@
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function alltickets() {
+        $("#completeAllticketmodal").modal("show");
+    }
+    $(document).ready(function () {
+
+        $("#wait").css("display", "block");
+        $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetActiveTickets","Task")',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+
+                "columns": [
+                 { "data": "TaskName", "name": "TaskName" },
+                    { "data": "TodoCreatedBy", "name": "TodoCreatedBy" },
+                    { "data": "TicketNotes", "name": "TicketNotes" },
+                    { "data": "CreationDatetime", "name": "CreationDatetime" },
+                    //{ "data": "IsActive", "name": "IsActive" },
+                    //{ "data": "EncryptedId", "name": "EncryptedId", "visible": false },
+                    ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                    //{ "data": "Email", "name": "Email", "visible": false },
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+                        //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+                            //data = JSON.stringify(data);
+                        render: function (data, type, full, meta) {
+                            //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                            //var myJSON = JSON.stringify(data.get);
+                           // type = json;
+
+                            return ' <button class="btn btn-sm bg-primary-400" onclick="updatToDo(' + full.Id + ')"> Close</button>';
+
+
+                        },
+                        targets: 4
+                    }@*@Url.Action("sendMailInviteManager", "Utilities", new { id = i.Id, em = item.Email, fn = item.FirstName, isUtilityPage = true })*@
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+            })
+    });
+
+
+</script>
+
+
+<script>
+
+    function updatToDo(id) {
+        $('#ticketId').val(id);
+        $('#completetciketmodal').modal("show");
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#ActiveTickets").css('background-color', '#0150A1');
+        $("#ActiveTickets").css('color', '#ffffff');
+        $("#Assignments").css('display', 'block', 'important');
+
+    });
+
+
+
+    function ClearAllSearches()
+    {
+        $("#tname").val("").change();
+        $("#notes").val("").change();
+        document.getElementById("cdate").value = "";
+    }
+
+    function todoSearch()
+    {
+        var taskname = document.getElementById("tname").value;
+        var creationdate = document.getElementById("cdate").value;
+        var notes = document.getElementById("notes").value;
+
+
+
+        document.getElementById("closetname").value = taskname;
+        document.getElementById("closecdate").value = creationdate;
+        document.getElementById("closenotes").value = notes;
+        document.getElementById("closetext").innerHTML = "Are you sure you would like to mark selected To Dos as complete?";
+
+        $("#wait").css("display", "block");
+        $("#panel").hide();
+
+        $('#example').DataTable().clear();
+        $('#example').DataTable().destroy();
+
+
+          $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetActiveTickets","Task")',
+                    "type": "GET",
+                    "datatype": "json",
+                    "data": { TaskName: taskname, CreationDate: creationdate, Ticketnotes: notes }
+                },
+
+                "columns": [
+                 { "data": "TaskName", "name": "TaskName" },
+                    { "data": "TodoCreatedBy", "name": "TodoCreatedBy" },
+                    { "data": "TicketNotes", "name": "TicketNotes" },
+                    { "data": "CreationDatetime", "name": "CreationDatetime" },
+                    //{ "data": "IsActive", "name": "IsActive" },
+                    //{ "data": "EncryptedId", "name": "EncryptedId", "visible": false },
+                    ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                    //{ "data": "Email", "name": "Email", "visible": false },
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+                        //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+                            //data = JSON.stringify(data);
+                        render: function (data, type, full, meta) {
+                            //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                            //var myJSON = JSON.stringify(data.get);
+                           // type = json;
+
+                            return ' <button class="btn btn-sm bg-primary-400" onclick="updatToDo(' + full.Id + ')"> Close</button>';
+
+
+                        },
+                        targets: 4
+                    }@*@Url.Action("sendMailInviteManager", "Utilities", new { id = i.Id, em = item.Email, fn = item.FirstName, isUtilityPage = true })*@
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+            })
+
+    }
+
+</script>
+
+<script>//function used to manually handling the caret Down and up icon for search bar collapsing
+    $(document).on('click', '#collapsecaret', function (e) {
+        var $this = $(this);
+        var icon = $this.find('i');
+        if (icon.hasClass('glyphicon-menu-down')) {
+            $this.find('i').removeClass('glyphicon-menu-down').addClass('glyphicon-menu-up');
+        } else {
+            $this.find('i').removeClass('glyphicon-menu-up').addClass('glyphicon-menu-down');
+        }
+    });
+</script>

@@ -1,0 +1,121 @@
+2020-02-27 10:30:28,639 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-27 10:31:51,153 INFO MonitoringLogger - Task Details Page
+2020-02-27 10:31:51,492 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:32:40,129 INFO MonitoringLogger - Task Details Page
+2020-02-27 10:32:40,469 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:33:02,604 INFO MonitoringLogger - Task Details Page
+2020-02-27 10:33:02,936 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:33:33,486 INFO MonitoringLogger - Task Details Page
+2020-02-27 10:33:33,808 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:34:56,858 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:35:59,457 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:36:32,168 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:37:31,589 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:37:56,843 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:38:44,534 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:57:48,232 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:57:50,357 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:58:19,431 INFO MonitoringLogger - BlobManager function started
+2020-02-27 10:58:27,224 INFO MonitoringLogger - BlobManager function started
+2020-02-27 11:00:17,015 INFO MonitoringLogger - BlobManager function started
+2020-02-27 14:03:45,468 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-27 14:03:45,500 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-27 14:03:45,504 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-27 14:03:45,507 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2020-27-2--14-03-45.pdf
+2020-02-27 14:29:47,501 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-27 14:29:47,534 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-27 14:29:47,538 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-27 14:29:47,541 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-27-2--14-29-47.pdf
+2020-02-27 14:30:32,213 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-27 14:36:03,634 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-27 14:36:03,639 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-27 14:36:03,642 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-27 14:36:03,645 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2020-27-2--14-36-03.pdf
+2020-02-27 14:44:12,163 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-27 14:44:12,170 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-27 14:44:12,172 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-27 14:44:12,491 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Ali Shahid Manager2020-27-2--14-44-12.pdf
+2020-02-27 15:20:21,256 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-27 15:32:30,600 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 15:32:34,353 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-27 15:33:04,134 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 15:33:05,429 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-27 15:33:42,003 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 15:33:43,318 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-27 15:34:17,813 INFO MonitoringLogger - BlobManager function started
+2020-02-27 15:34:22,025 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 15:34:23,338 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-27 15:36:14,215 INFO MonitoringLogger - Update Manger Page
+2020-02-27 15:36:14,544 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: bilalahmed151214@gmail.com
+2020-02-27 15:36:15,881 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-02-27 15:37:14,355 INFO MonitoringLogger - Update Manger Page
+2020-02-27 15:37:14,678 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: bilalahmed151214@gmail.com
+2020-02-27 15:37:15,978 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-02-27 15:45:30,113 INFO MonitoringLogger - Task Details Page
+2020-02-27 15:45:30,444 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:00:43,936 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-27 16:00:55,857 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-27 16:01:23,558 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:01:23,990 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:01:25,924 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-27 16:03:24,232 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-27 16:03:35,827 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-27 16:04:04,054 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:04:04,406 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:04:59,045 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:04:59,366 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:11:45,743 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:11:46,075 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:12:12,605 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:12:12,928 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:16:38,161 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:16:38,515 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:16:40,693 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-27 16:17:37,037 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:17:37,361 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:17:38,431 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-27 16:19:05,696 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:19:06,024 INFO MonitoringLogger - BlobManager function started
+2020-02-27 16:19:06,992 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-27 16:25:12,375 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-27 16:27:12,353 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-27 16:28:54,743 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 16:28:56,047 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: easydrive121@gmail.com
+2020-02-27 16:29:27,911 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-27 16:29:37,993 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-27 16:36:28,709 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-27 16:41:20,808 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-27 16:41:59,333 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 16:42:00,621 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: easydrive121@gmail.com
+2020-02-27 16:43:05,458 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:43:16,553 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:44:14,669 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:45:17,023 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:46:34,260 INFO MonitoringLogger - Task Details Page
+2020-02-27 16:49:18,374 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 16:53:16,321 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 16:53:26,443 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 16:55:56,828 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 16:56:35,734 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 16:56:37,061 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: easydrive121@gmail.com
+2020-02-27 17:00:48,116 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 17:00:48,774 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 17:00:50,416 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 17:01:55,671 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 17:02:43,492 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 17:02:44,802 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-27 17:04:14,518 INFO MonitoringLogger - Task Details Page
+2020-02-27 17:04:14,872 INFO MonitoringLogger - BlobManager function started
+2020-02-27 17:05:17,049 INFO MonitoringLogger - Task Details Page
+2020-02-27 17:05:20,927 INFO MonitoringLogger - BlobManager function started
+2020-02-27 17:05:22,519 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-27 17:05:36,765 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 17:05:38,115 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: test@nodlays.com
+2020-02-27 19:52:44,995 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-27 19:52:57,821 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-27 19:55:02,387 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-27 19:55:12,427 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-27 19:59:50,910 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 19:59:52,313 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: easydrive121@gmail.com
+2020-02-27 19:59:58,330 INFO MonitoringLogger - Update Employee Page...
+2020-02-27 19:59:59,663 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: easydrive121@gmail.com

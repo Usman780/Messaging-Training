@@ -1,0 +1,147 @@
+2021-02-16 12:20:23,175 INFO MonitoringLogger - Hussnain Logedout from Zuptu
+2021-02-16 12:55:48,242 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 12:55:49,769 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 12:55:53,281 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 12:55:56,129 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 12:56:14,972 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2021-02-16 12:56:15,293 INFO MonitoringLogger - BlobManager function started
+2021-02-16 12:56:16,934 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :
+2021-02-16 12:56:32,660 INFO MonitoringLogger - UpdateEmployeeAction function starting with Canvas Login mail:
+2021-02-16 12:56:32,985 INFO MonitoringLogger - BlobManager function started
+2021-02-16 12:56:33,305 INFO MonitoringLogger - Canvas Login Mail before updating Employee's info to Database :
+2021-02-16 12:56:34,802 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 12:56:36,065 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 12:56:57,724 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 12:56:58,924 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 12:57:27,429 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 12:57:28,670 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 12:58:06,743 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:00:21,047 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:00:21,383 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:00:23,799 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:00:25,337 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:01:29,883 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:01:32,454 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:01:33,663 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:02:13,719 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:02:15,254 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:02:47,887 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:02:49,209 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:03:20,024 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:03:22,948 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:03:24,716 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:04:19,936 INFO MonitoringLogger - Task Details Page
+2021-02-16 13:04:20,273 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:04:29,325 INFO MonitoringLogger - Task Details Page
+2021-02-16 13:04:29,663 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:07:14,586 INFO MonitoringLogger - Task Details Page
+2021-02-16 13:07:14,929 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:07:17,060 INFO MonitoringLogger - Comment's ParentID : 
+2021-02-16 13:09:01,988 INFO MonitoringLogger - Task Details Page
+2021-02-16 13:09:02,523 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:09:02,576 INFO MonitoringLogger - Task Details Page
+2021-02-16 13:09:02,923 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:09:04,778 INFO MonitoringLogger - Comment's ParentID : 
+2021-02-16 13:09:04,799 INFO MonitoringLogger - Comment's ParentID : 
+2021-02-16 13:10:18,701 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:10:19,937 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:10:43,998 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:10:45,206 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:11:06,087 INFO MonitoringLogger - Update Employee Page...
+2021-02-16 13:11:07,295 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2021-02-16 13:15:08,555 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:16:33,361 INFO MonitoringLogger - BlobManager function started
+2021-02-16 13:22:27,380 INFO MonitoringLogger - Hussnain's Logedout from Zuptu
+2021-02-18 15:02:34,147 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:02:35,030 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:02:36,044 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:02:37,408 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:03:18,717 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:03:19,101 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:03:21,058 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:03:21,858 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:03:24,033 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:03:57,530 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:03:58,439 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:03:59,520 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:04:01,276 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:04:27,270 INFO MonitoringLogger - UBS Logedout from Zuptu
+2021-02-18 15:06:00,637 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:06:01,055 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:06:01,783 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:07:06,772 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:07:27,034 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:08:07,335 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:11:15,687 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:12:29,678 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:14:28,651 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:17:03,683 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:17:33,770 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:19:01,682 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:20:13,147 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:24:34,121 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:25:31,467 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:26:29,484 INFO MonitoringLogger - Task Details Page
+2021-02-18 15:26:29,813 INFO MonitoringLogger - BlobManager function started
+2021-02-18 15:58:41,468 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:00:16,364 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:16:41,878 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:16:41,883 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:16:42,214 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:16:42,645 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:16:42,939 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:16:43,686 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:17:18,941 INFO MonitoringLogger - Sue Logedout from Zuptu
+2021-02-18 16:18:43,100 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:18:43,404 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:19:33,561 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:19:33,856 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:19:59,462 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:19:59,757 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:36:08,550 INFO MonitoringLogger - Joe Logedout from Zuptu
+2021-02-18 16:41:24,659 INFO MonitoringLogger - Bob Logedout from Zuptu
+2021-02-18 16:44:14,153 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:44:14,664 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:44:43,671 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:44:43,964 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:47:50,376 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:48:00,205 INFO MonitoringLogger - Task Details Page
+2021-02-18 16:48:00,597 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:57:31,810 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:57:33,919 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:58:41,285 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:59:14,395 INFO MonitoringLogger - BlobManager function started
+2021-02-18 16:59:20,125 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:01:37,554 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:02:41,384 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:03:37,743 INFO MonitoringLogger - Task Details Page
+2021-02-18 17:03:38,043 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:04:14,929 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:04:26,321 INFO MonitoringLogger - Task Details Page
+2021-02-18 17:04:26,621 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:04:27,509 INFO MonitoringLogger - Comment's ParentID : 
+2021-02-18 17:04:47,840 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:04:52,419 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:05:51,628 INFO MonitoringLogger - Task Details Page
+2021-02-18 17:05:52,171 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:05:54,292 INFO MonitoringLogger - Comment's ParentID : 
+2021-02-18 17:07:03,880 INFO MonitoringLogger - Task Details Page
+2021-02-18 17:07:04,182 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:07:05,310 INFO MonitoringLogger - Comment's ParentID : 
+2021-02-18 17:07:26,588 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:07:27,403 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:08:28,718 INFO MonitoringLogger - Task Details Page
+2021-02-18 17:08:29,015 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:08:30,091 INFO MonitoringLogger - Comment's ParentID : 
+2021-02-18 17:08:38,141 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:08:58,463 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:09:01,575 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:09:04,344 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:09:26,837 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:12:18,458 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:12:50,899 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:12:52,500 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:44:07,075 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:44:08,589 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:44:34,015 INFO MonitoringLogger - BlobManager function started
+2021-02-18 17:44:35,973 INFO MonitoringLogger - BlobManager function started

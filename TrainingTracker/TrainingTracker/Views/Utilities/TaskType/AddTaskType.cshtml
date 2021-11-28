@@ -1,0 +1,320 @@
+﻿@{
+    ViewBag.Title = "TaskTypes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active">Task Types</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+
+<div id="modalTasktypeDelete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <form class="modal-body " action="@Url.Action("DeleteTaskType","Utilities")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are You Sure you want to Delete? <small class="display-block"></small></h5>
+                </div>
+
+                <input type="hidden" name="id" id="tasktypeId" />
+
+
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn bg-primary btn-sm">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-danger btn-sm">Yes</button>
+
+
+                </center>
+
+            </form>
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Task Types</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>
+
+                        <a href="" data-target="#myModal" data-toggle="modal" class="btn  btn-sm bg-primary-400" style="color:white;">Add<i style="margin-top:-5%; margin-left:6px" class="icon-plus-circle2"></i></a>
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <table id="example" class="table datatable-button-html5-basic  table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th style="width:20px !important">Sr#</th>
+                    <th>Name</th>
+
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+
+
+
+        </table>
+    </div>
+</div>
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("addTaskType","Utilities")">
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Task Type</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Task Type Name</label>
+                        <div class="col-lg-9">
+                            <input required type="text" maxlength="49" name="Name" onkeyup="vlidate(this,document.getElementById('errorDisplay').id,document.getElementById('sb').id)" class="form-control" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <label id="errorDisplay" class="control-label text-danger" hidden> TaskType with same Name already exist in Database</label>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sb" class="btn btn-sm  bg-primary-400">Add Task Type</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="editTaskType" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("UpdateTaskTypeAction","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Task Type</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Task Type</label>
+                        <div class="col-lg-9">
+                            <input required type="text" maxlength="49" onkeyup="vlidate(this,document.getElementById('updateerrorDisplay').id,document.getElementById('updateSb').id)" class="form-control" name="Name" id="updateTas">
+                            <input type="hidden" class="form-control" name="Id" id="updateId">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <label id="updateerrorDisplay" class="control-label text-danger" hidden> Task Type with same Name already exist in Database</label>
+
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="updateSb" class="btn btn-sm  bg-primary-400">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign Tasks to Multiple Trainees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="150" name="" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">TaskType</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select task</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#wait").css("display", "block");
+        $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetdisplayTaskType","Utilities")',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "CompanyID", "name": "CompanyID" },
+                    { "data": "Name", "name": "Name" },
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+                        render: function (data, type, full, meta) {
+
+                            return '<a class="btn btn-sm btn-success" onclick="updateTaskType(' + full.Id + ') "><i class="icon-pencil" ></i></a>&nbsp<button type="button" class="btn btn-sm bg-danger" onclick="DeleteTaskType(' + data + ')" data-toggle="modal" data-target="#modal_theme_danger"><i class="icon-trash"></i></button>';
+                    @*<a class="btn btn-sm  btn-success" onclick="updateTaskType(@item.Id,'@item.Name')">
+                                                        <i class="icon-pencil"></i>
+                                                    </a>*@
+                        },
+                        targets: 2
+                    }
+                ],
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+            })
+    });
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+         function DeleteTaskType(id) {
+        $('#tasktypeId').val(id);
+
+        $('#modalTasktypeDelete').modal("show");
+    }
+
+    function deleteArea(title,id,names,ids) {
+        swal({
+            title: "Edit",
+            text: '<form role="form" id="DeleteMeModal" action="/Area/Delete/' + areaId + '" id="contact-form" method="get"><div class="control-group"><label for="categoryName">You Are Going To Delete Area Permanently!</label></div></div></form>',
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#FF7043",
+            confirmButtonText: "Yes, delete it!"
+        }, function () {
+            $("#DeleteMeModal").submit();
+        });
+    }
+
+    function vlidate(title, errorDisplay, button) {
+
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("TaskTypeNameValidation","Utilities")',
+               timeout: 100000000,
+               data: { _data:title.value },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json != 1) {
+                       $('#' + errorDisplay).hide();
+                       $('#' + button).attr('disabled', false)
+                   }
+                   else {
+                       $('#' + errorDisplay).show();
+                       $('#' + button).attr('disabled', true)
+
+                   }
+
+               },
+               error: function (data) {
+                   alert(data)
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+    function updateTaskType(vaid) {
+
+        //$("#updateTas").val(nme);
+        $("#updateId").val(vaid);
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("GetTaskType","Utilities")',
+
+            data: {tasktypeid:vaid},
+                    dataType: "json",
+            success: function (data) {
+                $("#updateTas").val(data);
+                 $('#editTaskType').modal("show"); // open the modal
+                    },
+                    error: function (data) {
+                      alert(data)
+                    }
+                });
+
+    };
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#TaskType").css('background-color', '#0150A1');
+        $("#TaskType").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+    });
+</script>
+

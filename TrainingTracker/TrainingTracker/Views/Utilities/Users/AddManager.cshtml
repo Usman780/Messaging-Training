@@ -1,0 +1,430 @@
+﻿@{
+    ViewBag.Title = "AddManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+<style>
+    #backbtn {
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+</style>
+@{
+    if (ViewBag.page == "division")
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li class="active"><a href="@Url.Action("displayDivision","Utilities")">Division</a></li>
+                    @foreach (var i in ViewBag.divisions)
+                    {
+                        if (i.Id == General_Purpose.DecryptId(ViewBag.DivisionId))
+                        {
+                            <li><a href="@Url.Action("displayDivisionDetails", "Utilities", new { sid = ViewBag.DivisionId })">@i.Name</a></li>
+                        }
+                    }
+                    <li class="active">Add Manager</li>
+
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayDivisionDetails", "Utilities", new { sid = ViewBag.DivisionId })">Back</a>
+        <br />
+    }
+    else if (ViewBag.page == "list")
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li class="active"><a href="@Url.Action("DisplayManager", "Utilities")">Managers</a></li>
+                    <li class="active">Add Manager</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("DisplayManager", "Utilities", new { sid = ViewBag.DivisionId })">Back</a>
+        <br />
+    }
+
+}
+
+<div class="content">
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Create Manager</b></h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    @*<li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>*@
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-horizontal form-validate-jquery" action="@Url.Action("AddManagerAction","Utilities")" method="post">
+                <fieldset class="content-group">
+                    <legend class="text-bold"><span class="text-danger">*</span> Fields are Mandatory to Fill</legend>
+
+
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="FirstName" class="form-control" required="required" maxlength="150" placeholder="Please enter First Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="LastName" class="form-control" required="required" maxlength="150" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" onkeyup="vlidate()" name="email" maxlength="150" class="form-control" id="email" required="required" placeholder="Enter a valid email address">
+
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                    <label class="control-label col-lg-3 text-bold">Canvas Login Email<span class="text-danger"></span></label>
+                    <div class="col-lg-9">
+                        <input type="email" value="" name="CanvasLoginId" maxlength="49" class="form-control" placeholder="Enter a valid Canvas Login email address">
+                    </div>
+                </div>*@
+                    <!-- /email field -->
+                    <!-- Repeat email -->
+                    <!-- Password field -->
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="tel" name="phoneNumber" maxlength="150" class="form-control" required="required" placeholder="Enter Personal Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number <span class="text-danger"></span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="HomeNumber" maxlength="150" class="form-control" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Slack Address</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="SlackAddress" value="" maxlength="150" class="form-control" placeholder="Enter Slack Address">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                    <label class="col-lg-3 control-label text-bold">Role <span class="text-danger">*</span></label>
+                    <div class="col-lg-9">
+                        <select class="select" required="required" name="Role">
+                            <option disabled selected value="">Select Role</option>
+                            @{
+
+                                if ((int)Session["Role"] == (int)Enums.Role.Admin)
+                                {
+
+
+                                    <option value="2">Manager</option>
+                                    <option value="4">Cordinator</option>
+
+
+                                }
+
+
+
+                            }
+
+                        </select>
+                    </div>
+                </div>*@
+
+
+
+
+
+                    <input type="hidden" id="viewbagpage" value="@ViewBag.page" />
+
+                    @if (ViewBag.page == "list")
+                    {
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label text-bold">Division <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                <select class="select" onchange="WorktypeDTO()" name="DivisionID" id="DivisionID" required>
+                                    <option value="" disabled selected>Select Division</option>
+                                    @{
+
+
+
+
+                                        foreach (var item in ViewBag.divisions)
+                                        {
+
+                                            <option value="@General_Purpose.EncryptId(item.Id)"> @item.Name</option>
+
+                                        }
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" value="@ViewBag.DivisionId" id="diD" name="dID" />
+                    }
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Work Type </label>
+                        <div class="col-lg-9">
+                            <select multiple="multiple" data-placeholder="Select Work Types" id="selectAdminWorktype" name="Worktypes" class="select-size-lg">
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="notes" maxlength="500" class="form-control" placeholder="Enter Notes"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <!-- /repeat password -->
+                    <!-- Email field -->
+                    <!-- /repeat email -->
+                    <!-- Minimum characters -->
+
+
+                </fieldset>
+
+
+
+                <div class="text-right">
+                    <label id="errorDisplay" class="control-label text-danger" hidden> Email already exist in the System!  </label>
+
+                    <button type="submit" id="submit" class="btn btn-sm bg-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+
+
+            <hr />
+
+
+            <center><h3 class="panel-title"><b>Create Managers Through CSV</b></h3></center>
+
+            <form class="form-horizontal form-validate-jquery" action="@Url.Action("PostAddManagerFromExcel","Utilities")" method="post" enctype="multipart/form-data">
+                <fieldset class="content-group">
+                    <legend class="text-bold">
+                        <span class="text-danger">*</span> &amp; <span class="text-danger">highlighted</span> Fields are Mandatory to Fill<br />
+                        Please <a href="../Content/Backup/Add_Users_Template.xlsx" download>Download</a> Template To Fill Entries
+                    </legend>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">File <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="file" name="File" class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+                            <label class="text-danger">only .xlsx Files are allowed.</label>
+                        </div>
+                    </div>
+
+
+                    <input type="hidden" id="viewbagpage" value="@ViewBag.page" name="Page"/>
+
+                    @if (ViewBag.page == "list")
+                    {
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label text-bold">Division <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                <select class="select" onchange="WorktypeDTO()" name="DivisionID" id="DivisionID" required>
+                                    <option value="" disabled selected>Select Division</option>
+                                    @foreach (var item in ViewBag.divisions)
+                                        {
+                                            <option value="@General_Purpose.EncryptId(item.Id)"> @item.Name</option>
+                                        }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" value="@ViewBag.DivisionId" name="DivisionID" />
+                    }
+
+
+
+                </fieldset>
+
+
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-sm bg-primary">Upload <i class="icon-upload position-right"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    if ($("#viewbagpage").val() != "list") {
+        var divisionId = $("#diD").val();
+
+                  $.ajax({
+            type: 'POST',
+                  url: "../task/getWorktypeDTOs",
+                  data: {EnDivisionID:divisionId},
+            dataType: "json",
+            success: function (data) {
+                // get role of the user then if you are an admin then assign tasks to manager and employee
+                // if you are manager then assign to employee
+                // if you can self assign
+                var role = data[0].SessionRole;
+
+                if (role == "1") {
+
+                    $("#selectAdminWorktype").html("");
+                    var count1 = 0;
+                    $('#selectAdminWorktype').empty();
+                  //  $('#selectAdminWorktype').append('<option value=""  ></option>');
+
+                    for (var i = 0; i < data.length; i++) {
+                        var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                        $('#selectAdminWorktype').append(division);
+                    }
+
+                    $("#WorkerTypeField").show();
+                }
+                else if (role == "2" || role == "4") {
+                    alert('manager');
+                }
+                else if (role == "3") {
+                    alert('employee');
+                }
+                else {
+                    alert('No Session!!');
+                }
+            },
+            error: function () { alert('fail'); }
+                               });
+    }
+    function WorktypeDTO()
+    {
+        var divisionId = $("#DivisionID").val();
+
+                  $.ajax({
+            type: 'POST',
+                  url: "../task/getWorktypeDTOs",
+                  data: {EnDivisionID:divisionId},
+            dataType: "json",
+            success: function (data) {
+                // get role of the user then if you are an admin then assign tasks to manager and employee
+                // if you are manager then assign to employee
+                // if you can self assign
+
+
+
+
+                    $("#selectAdminWorktype").html("");
+                    var count1 = 0;
+                    $('#selectAdminWorktype').empty();
+                  //  $('#selectAdminWorktype').append('<option value=""  ></option>');
+
+                    for (var i = 0; i < data.length; i++) {
+                        var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                        $('#selectAdminWorktype').append(division);
+                    }
+
+
+            },
+            error: function () { alert('fail'); }
+                               });
+    }
+
+
+
+        function validatepassword() {
+            if (document.getElementById("password").value != document.getElementById("confirm_password").value) {
+                document.getElementById("submit").disabled = true;
+                $('#displayerror').show();
+            }
+            else {
+                document.getElementById("submit").disabled = false;
+                $('#displayerror').hide();
+
+            }
+        }
+        function validatepassword() {
+            if (document.getElementById("password").value != document.getElementById("confirm_password").value) {
+                document.getElementById("submit").disabled = true;
+                $('#displayerror').show();
+            }
+            else {
+                document.getElementById("submit").disabled = false;
+                $('#displayerror').hide();
+
+            }
+
+            vlidate();
+        }
+
+
+         function vlidate() {
+
+             var title = $('#email').val();
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("emailValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data: title },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json == 0) {
+                       $('#errorDisplay').hide();
+                       $('#submit').attr('disabled', false)
+                       }
+               else
+                   {
+                       $('#errorDisplay').show();
+                       $('#submit').attr('disabled', true)
+
+               }
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+</script>

@@ -1,0 +1,231 @@
+﻿@{
+    ViewBag.Title = "Admin Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/assets/css/mycss.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<!-- Content area -->
+
+@using TrainingTracker.BL
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    User loggedInUser = new UserBL().getUsersById(logedinuser.Id);
+}
+
+<style>
+    #backbtn {
+        margin-left: 20px;
+    }
+</style>
+
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active"><a href="@Url.Action("DisplayAdmin","Utilities")">Administrator</a></li>
+            <li class="active">Add Admin</li>
+
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+<br />
+<a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("DisplayAdmin","Utilities")">Back</a>
+<br />
+<div class="content">
+    <br />
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Add Admin</b></h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list"></ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-horizontal form-validate-jquery" method="post" action="@Url.Action("addAdmin", "Utilities")">
+                <fieldset class="content-group">
+                    <legend class="text-bold"><span class="text-danger">*</span> Fields are Mandatory to Fill</legend>
+                    <input type="hidden" name="admintype" value="simpleadmin" />
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" maxlength="49" name="FirstName" class="form-control" required="required" placeholder="Please enter First Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="LastName" maxlength="49" class="form-control" required="required" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+
+                    @{
+                        string pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$";
+                    }
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" name="email" maxlength="50" onkeyup="vlidate(this)" pattern="@pattern" class="form-control" id="email" required="required" placeholder="Enter a valid email address">
+                        </div>
+                    </div>
+                    <!-- /email field -->
+                    @*<div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Canvas Login Email<span class="text-danger"></span></label>
+                            <div class="col-lg-9">
+                                <input type="email" value="" name="CanvasLoginId" maxlength="49" class="form-control" placeholder="Enter a valid Canvas Login email address">
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="PhoneNumber" required="required" maxlength="19" class="form-control" placeholder="Enter Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="HomeNumber" maxlength="19" class="form-control" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Password <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input id="pass" onkeyup="validatePassword()" type="password" class="form-control" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?@("@")/])[A-Za-z\d$!%*?@("@")/]{8,}$" maxlength="19" placeholder="Password" required>
+                            <span style="color:red">Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character($!%*?@("@")/)</span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Confirm Password <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input id="cpass" onkeyup="validatePassword()" type="password" class="form-control" name="password2" maxlength="19" placeholder="Confirm Password" required>
+                            <span id="errorDisplay" style="color:red;display:none;">Password not matched!</span>
+                        </div>
+                    </div>
+
+                    @if (loggedInUser.IsPrimary == 1)
+                    {
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Set as Master Admin </label>
+
+                            <div style="margin-top: 0.6em;" class="col-lg-9">
+                                <label class="switch">
+                                    <input type="checkbox" name="IsMasterAdmin" class="data" value="1" />
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+
+                        </div>
+                    }
+                </fieldset>
+
+
+
+                <div class="text-right">
+                    <label id="errorDisplay" class="control-label text-danger" hidden> Email already exist in the System!  </label>
+
+
+                    <button type="submit" id="submit" class="btn btn-sm  bg-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+
+
+
+        </div>
+    </div>
+    <!-- /dashboard content -->
+    <!-- Scrollable table -->
+
+</div>
+
+
+
+<script>
+            $(document).ready(function () {
+                $("#password2").keyup(validate);
+            });
+
+
+            function validate() {
+                var password1 = $("#password1").val();
+                var password2 = $("#password2").val();
+
+
+
+                if (password1 == password2) {
+                    $("#validate-status1").text("Password is valid.");
+                    $("#validate-status").text("");
+                    $('#submit').attr('disabled', false)
+                }
+                else {
+                    $("#validate-status1").text("");
+                    $("#validate-status").text("Password and Confirm Password doesn't match.");
+                    $('#submit').attr('disabled', true)
+
+                }
+
+            }
+            function vlidate(title) {
+
+
+            $.ajax({
+
+                   type: 'POST',
+                   url: '@Url.Action("emailValidation", "Utilities")',
+                   timeout: 100000000,
+                   data: { _data:title.value },
+                   dataType: "json",
+                   success: function (json) {
+
+                       if (json != 0) {
+                          $('#errorDisplay').show();
+                           $('#submit').attr('disabled', true)
+                           }
+                   else
+                       {
+                            $('#errorDisplay').hide();
+                           $('#submit').attr('disabled', false)
+
+
+                   }
+
+                   },
+                   error: function (data) {
+                       alert(data)
+                       $('.loading3').hide();
+                       $('#curvechart_error').show();
+                       $('#curve_chart').hide();
+                   }
+               });
+       }
+
+    function validatePassword() {
+        var Password = $("#pass").val();
+        var Password1 = $("#cpass").val();
+
+        if (Password != Password1) {
+            $('#errorDisplay').show();
+            $('#submit').attr('disabled', true)
+        }
+        else {
+            $('#errorDisplay').hide();
+            $('#submit').attr('disabled', false)
+        }
+    }
+</script>

@@ -1,0 +1,100 @@
+2020-03-02 11:27:09,460 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-03-02 11:34:38,174 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:34:38,512 INFO MonitoringLogger - BlobManager function started
+2020-03-02 11:36:45,926 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-03-02 11:37:00,957 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-02 11:37:35,116 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:37:35,448 INFO MonitoringLogger - BlobManager function started
+2020-03-02 11:40:04,160 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:40:04,485 INFO MonitoringLogger - BlobManager function started
+2020-03-02 11:40:50,263 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:40:52,313 INFO MonitoringLogger - BlobManager function started
+2020-03-02 11:41:35,953 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:41:36,297 INFO MonitoringLogger - BlobManager function started
+2020-03-02 11:42:27,537 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:42:27,869 INFO MonitoringLogger - BlobManager function started
+2020-03-02 11:43:44,117 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:43:44,483 INFO MonitoringLogger - BlobManager function started
+2020-03-02 11:43:45,478 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 11:43:48,814 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 11:43:51,485 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 11:47:53,672 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:47:54,204 INFO MonitoringLogger - BlobManager function started
+2020-03-02 11:48:33,315 INFO MonitoringLogger - Task Details Page
+2020-03-02 11:48:35,428 INFO MonitoringLogger - BlobManager function started
+2020-03-02 12:21:06,693 INFO MonitoringLogger - Task Details Page
+2020-03-02 12:21:07,017 INFO MonitoringLogger - BlobManager function started
+2020-03-02 12:21:09,200 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 12:21:11,876 INFO MonitoringLogger - Comment's ParentID : 497
+2020-03-02 12:21:11,880 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 12:53:26,559 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-03-02 12:53:26,616 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-03-02 12:53:26,620 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-03-02 12:53:27,085 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-02-3--12-53-26.pdf
+2020-03-02 12:54:58,782 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-03-02 12:54:58,793 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-03-02 12:54:58,807 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-03-02 12:54:59,150 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-02-3--12-54-58.pdf
+2020-03-02 13:21:05,506 INFO MonitoringLogger - Task Details Page
+2020-03-02 13:21:05,887 INFO MonitoringLogger - BlobManager function started
+2020-03-02 13:21:06,572 INFO MonitoringLogger - Task Details Page
+2020-03-02 13:21:06,970 INFO MonitoringLogger - BlobManager function started
+2020-03-02 13:21:08,154 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:09,340 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:09,664 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:11,453 INFO MonitoringLogger - Comment's ParentID : 536
+2020-03-02 13:21:11,463 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:18,027 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:18,821 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:20,612 INFO MonitoringLogger - Comment's ParentID : 521
+2020-03-02 13:21:20,621 INFO MonitoringLogger - Comment's ParentID : 521
+2020-03-02 13:21:20,625 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:21,424 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:22,220 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:23,034 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:24,222 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:25,328 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 13:21:29,952 INFO MonitoringLogger - Comment's ParentID : 529
+2020-03-02 13:21:29,956 INFO MonitoringLogger - Comment's ParentID : 529
+2020-03-02 13:21:29,960 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 14:12:31,268 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-03-02 14:12:42,861 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-03-02 14:30:36,337 INFO MonitoringLogger - Update Admin Page...
+2020-03-02 14:30:37,889 INFO MonitoringLogger - Canvas Login Mail Retreived from Database: test1@nodlays.com
+2020-03-02 14:30:38,208 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-03-02 14:31:54,292 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-02 14:43:37,098 INFO MonitoringLogger - Task Details Page
+2020-03-02 14:43:37,500 INFO MonitoringLogger - BlobManager function started
+2020-03-02 14:43:39,851 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 14:43:42,236 INFO MonitoringLogger - Comment's ParentID : 3926
+2020-03-02 14:43:42,243 INFO MonitoringLogger - Comment's ParentID : 
+2020-03-02 14:47:19,183 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-03-02 14:47:34,626 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-02 14:53:56,784 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-03-02 14:54:08,612 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-03-02 16:38:12,547 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-03-02 16:38:22,845 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-02 16:39:47,893 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-03-02 16:40:00,499 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-03-02 16:44:14,519 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-03-02 16:44:14,524 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-03-02 16:44:14,530 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-03-02 16:44:14,848 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-02-3--16-44-14.pdf
+2020-03-02 16:49:00,825 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-03-02 16:49:13,751 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-02 16:51:45,448 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-03-02 16:51:45,451 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-03-02 16:51:45,454 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-03-02 16:51:45,799 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-02-3--16-51-45.pdf
+2020-03-02 16:52:25,416 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-03-02 16:52:43,863 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-03-02 16:55:45,719 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-03-02 16:55:56,922 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-03-02 16:57:37,176 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-03-02 16:57:37,179 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-03-02 16:57:37,183 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-03-02 16:57:37,186 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-02-3--16-57-37.pdf
+2020-03-02 16:58:55,542 INFO MonitoringLogger - Task Details Page
+2020-03-02 16:58:56,028 INFO MonitoringLogger - BlobManager function started
+2020-03-02 17:00:35,013 INFO MonitoringLogger - Task Details Page
+2020-03-02 17:00:35,336 INFO MonitoringLogger - BlobManager function started

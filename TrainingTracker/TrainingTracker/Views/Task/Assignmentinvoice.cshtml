@@ -1,0 +1,117 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+
+    <title>Zuptu Invoice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <button onclick="javascript:demoFromHTML();">EXPORT PDF</button>
+    <div id="customers" style="width:100%; font-size:20px;">
+        <h2 style="text-align:center;">Trainer Reports</h2>
+        <br>
+
+        <table style=" text-align: left;">
+            <tbody>
+                <tr>
+                    <th>Name: </th>
+                    <td>ABC</td>
+                </tr>
+                <tr>
+                    <th>Division: </th>
+                    <td>ABC</td>
+                </tr>
+                <tr>
+                    <th>Email: </th>
+                    <td>ABC</td>
+                </tr>
+                <tr>
+                    <th>Department: </th>
+                    <td>ABC</td>
+                </tr>
+                <tr>
+                    <th>Phone Number: </th>
+                    <td>ABC</td>
+                </tr>
+                <tr>
+                    <th>Task: </th>
+                    <td>ABC</td>
+                </tr>
+                <tr>
+                    <th>Task Name: </th>
+                    <td>ABC</td>
+                </tr>
+                <tr>
+                    <th>CEU's: </th>
+                    <td>1</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table style="width:100%">
+            <tbody>
+                <tr>
+                    <th>Description: </th>
+                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="width:100%;">
+            <thead>
+                <tr style="text-align:center;">
+                    <th>Assigned Date</th>
+                    <th>Due Date</th>
+                    <th>Completion Date</th>
+                    <th>Grade</th>
+                    <th>Frequency (days)</th>
+                    <th>Next Due Date</th>
+                    <th>Completion Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="text-align:center;">
+                    <td style="border-bottom:1px solid black;">11/22/18</td>
+                    <td style="border-bottom:1px solid black;">11/22/18</td>
+                    <td style="border-bottom:1px solid black;">11/22/18</td>
+                    <td style="border-bottom:1px solid black;">90%</td>
+                    <td style="border-bottom:1px solid black;">1095</td>
+                    <td style="border-bottom:1px solid black;">11/22/18</td>
+                    <td style="border-bottom:1px solid black;">Completed</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+        <footer style=" text-align: right;width: 100%;">
+            <p style="text-align:right;">Powered by Zuptu.com</p>
+        </footer>
+    </div>
+    <script>
+        function demoFromHTML() {
+            html2canvas($('#customers')[0], {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("Table.pdf");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

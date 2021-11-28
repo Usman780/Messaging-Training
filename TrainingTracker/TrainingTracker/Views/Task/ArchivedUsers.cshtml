@@ -1,0 +1,286 @@
+﻿
+@{
+    ViewBag.Title = "ArchivedUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using TrainingTracker.Models;
+@using TrainingTracker.HelpingClasses;
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+}
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active">Archived Users</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+<div class="content">
+    <br />
+    <br />
+
+    <input type="hidden" id="loggedInUserRole" value="@logedinuser.Role" />
+    <input type="hidden" id="IsMasterAdmin" value="@logedinuser.IsMasterAdmin" />
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+
+
+            <center><h3 class="panel-title"><b>List of Archived Users</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            @*<div class="heading-elements">
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+
+                                <li>
+
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("ExportEmployeesTask","ExportReport",new {startDate=ViewBag.startDate,endDate=ViewBag.endDate,tag=ViewBag.tag,department=ViewBag.department,division=ViewBag.division,taskName=ViewBag.taskNamee,taskType=ViewBag.taskType,status=ViewBag.status,fname=ViewBag.fname,lname=ViewBag.lname,priority=ViewBag.priority,completionStatus=ViewBag.completionStatus,sd=ViewBag.sd,ed=ViewBag.ed,cd=ViewBag.cd,DivDepID=ViewBag.DivDepID})"> Export Excel </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("ExportEmployeesPdf","ExportReport",new { DivDepID=ViewBag.DivDepID})">Export to pdf</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>*@
+
+        </div>
+
+
+
+        <div class="panel-body">
+
+            <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+
+                <thead>
+                    <tr>
+
+
+                        <th>User Name</th>
+                        <th>Division</th>
+                        <th>Department</th>
+                        <th>Role</th>
+
+
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+
+            </table>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<div id="ActivateUserModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("ActivateUser", "Task")" method="post">
+
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are you sure you would like to Activate this User?<small class="display-block"></small></h5>
+                </div>
+                <input type="hidden" name="UserId" id="UId" />
+                <center>
+                    <span style="color:red" id="errorDisplay">This User's email already exists in company. You can not activate this user. </span>
+                </center>
+                <br />
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm bg-primary">No</button>
+                    <button type="submit" id="submit" class="btn btn-sm  btn-danger">Yes</button>
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="ActivateDelegateAccessModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("ActivateDelegateAccess", "Auth")" method="post">
+
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group"><b>Are you sure you would like to Activate Delegate Access of Document Manager for this User?</b><small class="display-block"></small></h5>
+                </div>
+               
+
+                <input type="hidden" id="delegateaccessuser" name="delegateaccessuserid" />
+                <br />
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm bg-primary">No</button>
+                    <button type="submit" id="submit" class="btn btn-sm  btn-danger">Yes</button>
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function ActivateDelegateAccess(id) {
+        $("#delegateaccessuser").val(id);
+        $("#ActivateDelegateAccessModal").modal("show");
+    }
+    function ActivateUser(vl) {
+        $("#UId").val(vl);
+         $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("ActivateUserValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data:vl },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json == 0) {
+                       $('#errorDisplay').hide();
+                       $('#submit').attr('disabled', false);
+                       $("#ActivateUserModal").modal("show");
+                       }
+               else
+                   {
+                       $('#errorDisplay').show();
+                       $('#submit').attr('disabled', true);
+                       $("#ActivateUserModal").modal("show");
+
+               }
+
+               },
+               error: function (data) {
+                   alert(data)
+                   //$('.loading3').hide();
+                   //$('#curvechart_error').show();
+                   //$('#curve_chart').hide();
+               }
+           });
+
+
+    }
+        $(document).ready(function () {
+
+
+            $("#wait").css("display", "block");
+
+            var loggedInRole = $("#loggedInUserRole").val();
+            var IsMasterAdmin = $("#IsMasterAdmin").val();
+
+            $('#example').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetArchivedUsers","Task")',
+
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+
+                    "columns": [
+                        { "data": "Name", "name": "Name" },
+                        { "data": "Division", "name": "Division" },
+                        { "data": "Department", "name": "Department" },
+                        { "data": "AssignUserRole", "name": "AssignUserRole" },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+                            //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                            render: function (data, type, full, meta) {
+                                //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+
+                                if (full.IsDelegate == 1) {                               
+                                    if (loggedInRole == 1 && IsMasterAdmin == 1) {
+                                        return '<a style="margin-top:2px;" style="margin-right:3px" class="btn btn-sm  bg-secondary" href="../Task/ArchivedUserDetail?sid=' + full.EncriptedId + '"> View </a>' +
+                                            '&nbsp;<a disabled title="Master admin has already acquired delegate access" class="btn btn-sm  bg-primary"> Activate User </a>' +
+                                            '&nbsp;<a disabled title="Master admin has already acquired delegate access" class="btn btn-sm  bg-warning"> Delegate Access </a>';
+                                    }
+                                    else {
+                                        return '<a style="margin-top:2px;" style="margin-right:3px" class="btn btn-sm  bg-secondary" href="../Task/ArchivedUserDetail?sid=' + full.EncriptedId + '"> View </a>' +
+                                            '&nbsp;<a disabled title="Master admin has already acquired delegate access" class="btn btn-sm  bg-primary"> Activate User </a>';
+                                    }
+                                }
+                                else {
+                                    if (loggedInRole == 1 && IsMasterAdmin == 1) {
+                                        return '<a style="margin-top:2px;" style="margin-right:3px" class="btn btn-sm  bg-secondary" href="../Task/ArchivedUserDetail?sid=' + full.EncriptedId + '"> View </a>' +
+                                            '&nbsp;<a class="btn btn-sm  bg-primary" onclick="ActivateUser(' + full.Id + ')"> Activate User </a>' + 
+                                            '&nbsp;<a class="btn btn-sm  bg-warning" onclick="ActivateDelegateAccess(' + full.Id + ')"> Delegate Access </a>';
+                                    }
+                                    else {
+                                        return '<a style="margin-top:2px;" style="margin-right:3px" class="btn btn-sm  bg-secondary" href="../Task/ArchivedUserDetail?sid=' + full.EncriptedId + '"> View </a>' +
+                                            '&nbsp;<a class="btn btn-sm  bg-primary" onclick="ActivateUser(' + full.Id + ')"> Activate User </a>';                                    }
+                                    
+                                }
+                                
+
+
+
+
+
+                            },
+                            targets: 4
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+
+                })
+
+        //}
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#ArchivedUsers").css('background-color', '#0150A1');
+        $("#ArchivedUsers").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+
+    });
+</script>

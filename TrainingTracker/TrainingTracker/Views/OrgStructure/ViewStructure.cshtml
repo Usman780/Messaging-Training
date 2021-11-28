@@ -1,0 +1,1656 @@
+﻿@using TrainingTracker.Models;
+@using TrainingTracker.HelpingClasses;
+@using TrainingTracker.BL;
+
+@{
+    ViewBag.Title = "ViewStructure";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    User loggedInUser = new UserBL().getUsersById(logedinuser.Id);
+}
+
+
+<style>
+    ul, #structure {
+        list-style-type: none;
+    }
+
+    .nested {
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">@ViewBag.Company.Name Structure</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+
+<div id="addDivisionModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("AddDivisions","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Division</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" value="structure" name="Way" />
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division Name </label>
+                        <div class="col-lg-9">
+                            <input required class="form-control" type="text" maxlength="49" name="Name" onkeyup="validateDivision(this.value)" />
+                        </div>
+                        <label id="errMsgDiv" class="control-label text-danger" hidden> Division with same Name already exist in Database</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="addDivSubBtn" class="btn btn-sm  bg-primary-400">Add Division</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="addDepartmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("AddDepartments","Utilities")">
+                <input type="hidden" value="structure" name="way" />
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Add Department</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Department</label>
+                        <div class="col-lg-9">
+                            <input required type="text" maxlength="150" class="form-control" name="Name" id="addDepName" />
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Divisions</label>
+                        <div class="col-lg-9">
+                            <select required class="select" onchange="validateDepartment(this.value)" name="DivisionID">
+                                <option value="">Select division</option>
+                                @foreach (var item in ViewBag.Divisions)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <label id="errMsgDep" class="control-label text-danger" hidden><b>Name not available in the selected division</b></label>
+                    </div>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="addDepSubBtn" class="btn btn-sm  bg-primary-400">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="addAdminModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("addAdmin","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">New Administrator</h4>
+                </div>
+                <div class="modal-body">
+                    <legend class="text-bold"><span class="text-danger">*</span> Fields are Mandatory to Fill</legend>
+
+
+                    <input type="hidden" name="way" value="structure" />
+                    <input type="hidden" name="admintype" value="simpleadmin" />
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" maxlength="49" name="FirstName" class="form-control" required="required" placeholder="Please enter First Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="LastName" maxlength="49" class="form-control" required="required" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+                    @{
+                        string pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$";
+                    }
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" name="email" maxlength="50" pattern="@pattern" onkeyup="validateEmail(this.value, 'addAdmin')" class="form-control" id="email" required="required" placeholder="Enter a valid email address">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="PhoneNumber" required="required" maxlength="19" class="form-control" placeholder="Enter Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="HomeNumber" maxlength="19" class="form-control" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Password <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input onkeyup="validatePassword('addAdmin')" id="addAdminPw" type="password" class="form-control" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?@("@")/])[A-Za-z\d$!%*?@("@")/]{8,}$" maxlength="19" placeholder="Password" required>
+                            <span style="color:red">Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character($!%*?@("@")/)</span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Confirm Password <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input onkeyup="validatePassword('addAdmin')" id="addAdminCPw" type="password" class="form-control" name="password2" maxlength="19" placeholder="Confirm Password" required>
+                            <span id="addAdminErrorPassword" style="color:red;display:none;">Password not matched!</span>
+                        </div>
+                    </div>
+
+                    @if (loggedInUser.IsPrimary == 1)
+                    {
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Set as Master Admin </label>
+
+                            <div style="margin-top: 0.6em;" class="col-lg-9">
+                                <label class="switch">
+                                    <input type="checkbox" name="IsMasterAdmin" class="data" value="1" />
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <label class="control-label text-danger" id="addAdminErrorEmail" hidden> Email already exist in the System!  </label>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="addAdminSubmit" class="btn btn-sm  bg-primary-400">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="updAdminModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("PostUpdateAdmin","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Administrator</h4>
+                </div>
+
+
+                <input id="updAdminId" type="hidden" name="Id" />
+                <input type="hidden" name="way" value="structure" />
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Select Admin <i class="icon-spinner spinner" id="updAdminSpin" style="display:none;"></i></label>
+                        <div class="col-lg-9">
+                            <select id="updAdminSelect" class="form-control" onchange="getUpdAdminData(this.value)">
+                            </select>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="updAdminBody" hidden>
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">First Name </label>
+                            <div class="col-lg-9">
+                                <input id="updAdminFName" type="text" maxlength="49" name="FirstName" class="form-control" placeholder="Please enter First Name">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Last Name </label>
+                            <div class="col-lg-9">
+                                <input id="updAdminLName" type="text" name="LastName" maxlength="49" class="form-control" placeholder="Please enter Last Name">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Email </label>
+                            <div class="col-lg-9">
+                                <input id="updAdminEmail" readonly type="email" maxlength="50" class="form-control" placeholder="Enter a valid email address">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Phone Number </label>
+                            <div class="col-lg-9">
+                                <input id="updAdminContact" type="text" name="PhoneNumber" maxlength="19" class="form-control" placeholder="Enter Phone Number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Home Number</label>
+                            <div class="col-lg-9">
+                                <input id="updAdminHouse" type="text" name="HomeNumber" maxlength="19" class="form-control" placeholder="Enter Home Number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Password </label>
+                            <div class="col-lg-9">
+                                <input onkeyup="validatePassword('updAdmin')" id="updAdminPassword" type="password" class="form-control" name="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?@("@")/])[A-Za-z\d$!%*?@("@")/]{8,}$" maxlength="19" placeholder="Password">
+                                <span style="color:red">Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character($!%*?@("@")/)</span>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Confirm Password </label>
+                            <div class="col-lg-9">
+                                <input onkeyup="validatePassword('updAdmin')" id="updAdminConPassword" type="password" class="form-control" name="confirmPassword" maxlength="19" placeholder="Confirm Password">
+                                <span id="updAdminErrorPassword" style="color:red;display:none;">Password not matched!</span>
+                            </div>
+                        </div>
+
+                        @if (loggedInUser.IsPrimary == 1)
+                        {
+                            <div class="form-group">
+                                <label class="control-label col-lg-3 text-bold">Set as Master Admin </label>
+
+                                <div style="margin-top: 0.6em;" class="col-lg-9">
+                                    <label class="switch">
+                                        <input type="checkbox" id="updAdminIsMaster" name="IsMasterAdmin" class="data" value="1" />
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                <div class="updAdminBody" hidden>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" id="updAdminSubmit" class="btn btn-sm  bg-primary-400">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="csvManagerModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("PostAddManagerFromExcel","Utilities")" enctype="multipart/form-data" method="post">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Create Managers Through CSV</h4>
+                </div>
+
+
+
+                <div class="modal-body">
+
+                    <fieldset class="content-group">
+
+                        <legend class="text-bold">
+                            <span class="text-danger">*</span> &amp; <span class="text-danger">highlighted</span> Fields are Mandatory to Fill<br />
+                            Please <a href="../Content/Backup/Add_Users_Template.xlsx" class="text-info" download><b>Download</b></a> Template To Fill Entries
+                        </legend>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">File <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                <input type="file" name="File" class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+                                <label class="text-danger">only .xlsx Files are allowed.</label>
+                            </div>
+                        </div>
+
+
+                        <input type="hidden" value="Structure" name="Page" />
+                        <input type="hidden" name="DivisionID" id="csvManagerDivId" />
+
+
+
+
+                    </fieldset>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="csvManagerSubmit" class="btn btn-sm  bg-primary-400">Upload</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="addManagerModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("AddManagerAction","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">New Manager</h4>
+                </div>
+                <div class="modal-body">
+                    <legend class="text-bold"><span class="text-danger">*</span> Fields are Mandatory to Fill</legend>
+
+
+                    <input type="hidden" name="way" value="structure" />
+                    <input type="hidden" name="DivisionID" id="addManagerDId" />
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="FirstName" class="form-control" required="required" maxlength="150" placeholder="Please enter First Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="LastName" class="form-control" required="required" maxlength="150" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" onkeyup="validateEmail(this.value, 'addManager')" name="email" maxlength="150" class="form-control" id="email" required="required" placeholder="Enter a valid email address">
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="tel" name="phoneNumber" maxlength="150" class="form-control" required="required" placeholder="Enter Personal Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number <span class="text-danger"></span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="HomeNumber" maxlength="150" class="form-control" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Slack Address</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="SlackAddress" value="" maxlength="150" class="form-control" placeholder="Enter Slack Address">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Work Type </label>
+                        <div class="col-lg-9">
+                            <select multiple="multiple" data-placeholder="Select Work Types" id="addManagerWorktype" name="Worktypes" class="select-size-lg">
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="notes" maxlength="500" class="form-control" placeholder="Enter Notes"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <label class="control-label text-danger" id="addManagerErrorEmail" hidden> Email already exist in the System!  </label>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="addManagerSubmit" class="btn btn-sm  bg-primary-400">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="updManagerModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("UpdateManager","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Manager</h4>
+                </div>
+
+
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Select Manager </label>
+                        <div class="col-lg-9">
+                            <select id="updManagerSelect" class="form-control" name="sid" required>
+                            </select>
+                        </div>
+                    </div>
+                   
+                    <input id="updManagerId" type="hidden" name="division" value="yes" />
+                    <input type="hidden" name="way" value="Structure" />
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="updManagerSubmit" class="btn btn-sm  bg-primary-400">Update</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="csvEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("PostAddEmployeeFromExcel","Utilities")" enctype="multipart/form-data" method="post">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Create Employees Through CSV</h4>
+                </div>
+
+
+
+                <div class="modal-body">
+
+                    <fieldset class="content-group">
+
+                        <legend class="text-bold">
+                            <span class="text-danger">*</span> &amp; <span class="text-danger">highlighted</span> Fields are Mandatory to Fill<br />
+                            Please <a href="../Content/Backup/Add_Users_Template.xlsx" class="text-info" download><b>Download</b></a> Template To Fill Entries
+                        </legend>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">File <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                <input type="file" name="File" class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+                                <label class="text-danger">only .xlsx Files are allowed.</label>
+                            </div>
+                        </div>
+
+
+                        <input type="hidden" value="Structure" name="way" />
+                        <input type="hidden" name="depId" id="csvEmpDepId" />
+
+
+
+
+                    </fieldset>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="csvEmployeeSubmit" class="btn btn-sm  bg-primary-400">Upload</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="addEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("AddEmployeeAction","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">New Employee</h4>
+                </div>
+                <div class="modal-body">
+                    <legend class="text-bold"><span class="text-danger">*</span> Fields are Mandatory to Fill</legend>
+
+
+                    <input type="hidden" name="way" value="Structure" />
+                    <input type="hidden" name="depId" id="addEmployeeDepId" />
+                    <input type="hidden" value="3" name="AccessLevel">
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="FirstName" class="form-control" required="required" maxlength="150" placeholder="Please enter First Name">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="LastName" class="form-control" required="required" maxlength="150" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" onkeyup="validateEmail(this.value, 'addEmployee')" name="email" maxlength="150" class="form-control" id="email" required="required" placeholder="Enter a valid email address">
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="phoneNumber" class="form-control" required="required" maxlength="150" placeholder="Enter Personal Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number <span class="text-danger"></span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="HomeNumber" class="form-control" maxlength="150" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Slack Address </label>
+                        <div class="col-lg-9">
+                            <input type="text" name="SlackAddress" value="" class="form-control" maxlength="150" placeholder="Enter Slack Address">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Work Type </label>
+                        <div class="col-lg-9">
+                            <select multiple="multiple" data-placeholder="Select Work Types" id="addEmployeeWorktype" name="Worktypes" class="select-size-lg">
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="notes" maxlength="500" class="form-control" placeholder="Enter Notes"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <label class="control-label text-danger" id="addEmployeeErrorEmail" hidden> Email already exist in the System!  </label>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="addEmployeeSubmit" class="btn btn-sm  bg-primary-400">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="updEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("UpdateEmployee","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Employee</h4>
+                </div>
+
+
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Select Employee </label>
+                        <div class="col-lg-9">
+                            <select id="updEmployeeSelect" class="form-control" name="sid" required>
+                            </select>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="department" id="updEmployeeDepId" value="yes" />
+                    <input type="hidden" name="way" value="Structure" />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="updEmployeeSubmit" class="btn btn-sm  bg-primary-400">Update</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<center><h2>Organizational Structure</h2></center>
+<div class="content bg-white m-10" style="min-height:600px;">
+
+    <center>
+        <h3><u>Company # @ViewBag.Company.Name</u></h3>
+    </center>
+
+    <input type="hidden" id="compName" value="@ViewBag.Company.Name" />
+    <input type="hidden" id="compId" value="@ViewBag.Company.Id" />
+    <input type="hidden" id="divCount" value="@ViewBag.Divisions.Count" />
+
+    <div class="col-lg-6">
+        @*<button onclick="colapseAll()">Collapse All</button>*@
+        <h4>
+            <i class="icon-minus-circle2 text-info" id="compIcon" onclick="toggleCompany()"></i>
+            <a onclick="getCompanyDetail(@ViewBag.Company.Id)"> 
+                @ViewBag.Company.Name
+            </a> 
+            <i class="icon-spinner spinner" id="compSpin" style="display:none;"></i>
+        </h4>
+        <div id="mainStructure">
+            <ul>
+                <li>
+                    <h6>
+                        <i class="glyphicon glyphicon-plus-sign text-info" id="adminIcon" onclick="toggleAdmins()"></i>
+                        <b>Administrators</b>
+                    </h6>
+                    <ul class="nested" id="adminStructure">
+                        @if (ViewBag.Admin != null)
+                        {
+                            foreach (User u in ViewBag.Admin)
+                            {
+                                string spinId = "empSpin" + u.Id;
+                                
+                                <div class="ml-20"><a onclick="getEmployeeDetail(@u.Id)">@u.FirstName @u.LastName</a> <i class="icon-spinner spinner" style="display:none;" id="@spinId"></i></div>
+                            }
+                        }
+                    </ul>
+                </li>
+            </ul>
+
+
+            <ul>
+                <li>
+                    <h6>
+                        <i class="glyphicon glyphicon-plus-sign text-info" id="Div1Icon" onclick="toggleDivs()"></i>
+                        <b>Divisions</b>
+                    </h6>
+
+                    <ul class="nested" id="structure">
+                        @if (ViewBag.Divisions != null)
+                        {
+                            foreach (Division d in ViewBag.Divisions)
+                            {
+                                string div = "div" + d.Id;
+                                string divName = "divName" + d.Id;
+                                string divIcon = "divIcon" + d.Id;
+                                string divspin = "divSpin" + d.Id;
+
+                                <div id="@div">
+                                    <h5>
+                                        <input type="hidden" id="@divName" value="@d.Name" />
+                                        <i class="glyphicon glyphicon-plus-sign text-info" id="@divIcon" onclick="toggleDivision(@d.Id)"></i>
+                                        <a onclick="getDivisionDetail(@d.Id)">@d.Name</a>
+                                        <i class="icon-spinner spinner" style="display:none;" id="@divspin"></i>
+                                    </h5>
+                                </div>
+                            }
+                        }
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-lg-6" style="border:1px solid lightgray" id="detailDiv" hidden>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+    function toggleCompany() {
+        if ($('#compIcon').hasClass('icon-minus-circle2 text-info')) {
+            $('#mainStructure').removeClass('active').addClass('nested');
+            $('#compIcon').removeClass('icon-minus-circle2 text-info').addClass('icon-plus-circle2 text-info');
+        }
+        else {
+            $('#mainStructure').removeClass('nested').addClass('active');
+            $('#compIcon').removeClass('icon-plus-circle2 text-info').addClass('icon-minus-circle2 text-info');
+        }
+    }
+
+    function toggleAdmins() {
+        if ($('#adminIcon').hasClass('glyphicon glyphicon-minus-sign text-info'))
+        {
+            $('#adminStructure').removeClass('active').addClass('nested');
+            $('#adminIcon').removeClass('glyphicon glyphicon-minus-sign text-info').addClass('glyphicon glyphicon-plus-sign text-info');
+        }
+        else {
+            $('#adminStructure').removeClass('nested').addClass('active');
+            $('#adminIcon').removeClass('glyphicon glyphicon-plus-sign text-info').addClass('glyphicon glyphicon-minus-sign text-info');
+        }
+    }
+
+    function toggleDivs() {
+        if ($('#Div1Icon').hasClass('glyphicon glyphicon-minus-sign text-info'))
+        {
+            $('#structure').removeClass('active').addClass('nested');
+            $('#Div1Icon').removeClass('glyphicon glyphicon-minus-sign text-info').addClass('glyphicon glyphicon-plus-sign text-info');
+        }
+        else {
+            $('#structure').removeClass('nested').addClass('active');
+            $('#Div1Icon').removeClass('glyphicon glyphicon-plus-sign text-info').addClass('glyphicon glyphicon-minus-sign text-info');
+        }
+    }
+
+    function toggleDivision(dId) {
+
+        if ($('#divIcon' + dId).hasClass('glyphicon glyphicon-minus-sign text-info')) {
+            $('#div' + dId + "Opt").remove();
+            $('#divIcon' + dId).removeClass('glyphicon glyphicon-minus-sign text-info').addClass('glyphicon glyphicon-plus-sign text-info');
+        }
+        else {
+            $('#div' + dId).removeClass('nested').addClass('active');
+            $('#divIcon' + dId).removeClass('glyphicon glyphicon-plus-sign text-info').addClass('glyphicon glyphicon-minus-sign text-info');
+
+            $('#div' + dId).append('<ul class="active" id="div' + dId + 'Opt">' +
+                '<div id="manager' + dId + '">' +
+                '<i class="glyphicon glyphicon-plus-sign text-info" id="managerIcon' + dId + '" onclick="toggleManager(' + dId + ')"></i> &nbsp;' +
+                '<b>Managers</b> ' +
+                '<i class="icon-spinner spinner" style="display:none;" id="managerSpin' + dId + '"></i>' +
+                '</div>' +
+
+                '<div id="department' + dId + '">' +
+                '<i class="glyphicon glyphicon-plus-sign text-info" id="departmentIcon' + dId + '" onclick="toggleDepartment(' + dId + ')"></i> &nbsp;' +
+                '<b>Departments</b> ' +
+                '<i class="icon-spinner spinner" style="display:none;" id="departmentSpin' + dId + '"></i>' +
+                '</div>' +
+
+                '</ul>');
+
+        }
+    }
+
+    function toggleManager(divId) {
+        if ($('#managerIcon' + divId).hasClass('glyphicon glyphicon-minus-sign text-info')) {
+            $('#div' + divId + 'manList').remove();
+            $('#managerIcon' + divId).removeClass('glyphicon glyphicon-minus-sign text-info').addClass('glyphicon glyphicon-plus-sign text-info');
+        }
+        else {
+            $('#managerSpin' + divId).show();
+            $('#managerIcon' + divId).hide();
+
+            $.ajax({
+                type: 'POST',
+                url: "../OrgStructure/GetManagerList",
+                data: { DivId: divId },
+                dataType: "json",
+                success: function (response) {
+                    $('#managerIcon' + divId).removeClass('glyphicon glyphicon-plus-sign text-info').addClass('glyphicon glyphicon-minus-sign text-info');
+
+                    $('#manager' + divId).append('<ul class="active" id="div' + divId + 'manList"></ul>');
+                    var i = 0;
+                    $.each(response, function () {
+
+                        if (response[i].IsActive == 2) {
+                            $('#div' + divId + 'manList').append(
+                                '<div id="man' + response[i].Id + '" class="ml-20">' +
+                                '<a onclick="getEmployeeDetail(' + response[i].Id + ')" class="text-danger" title="Pending Approval">' + response[i].Name + '</a> &nbsp;' +
+                                '<i class="icon-spinner spinner" style="display:none;" id="empSpin' + response[i].Id + '"></i>' +
+                                '</div>');
+                        }
+                        else {
+                            $('#div' + divId + 'manList').append(
+                                '<div id="man' + response[i].Id + '" class="ml-20">' +
+                                '<a onclick="getEmployeeDetail(' + response[i].Id + ')">' + response[i].Name + '</a> &nbsp;' +
+                                '<i class="icon-spinner spinner" style="display:none;" id="empSpin' + response[i].Id + '"></i>' +
+                                '</div>');
+                        }
+                        i++;
+                    });
+
+                    $('#managerSpin' + divId).hide();
+                    $('#managerIcon' + divId).show();
+                },
+                error: function () {
+                    alert('fail');
+                }
+            });
+        }
+    }
+
+    function toggleDepartment(divId) {
+
+        if ($('#departmentIcon' + divId).hasClass('glyphicon glyphicon-minus-sign text-info')) {
+            $('#depList' + divId).remove();
+            $('#departmentIcon' + divId).removeClass('glyphicon glyphicon-minus-sign text-info').addClass('glyphicon glyphicon-plus-sign text-info');
+        }
+        else {
+            $('#departmentSpin' + divId).show();
+            $('#departmentIcon' + divId).hide();
+            $.ajax({
+                type: 'POST',
+                url: "../OrgStructure/GetDepartmentList",
+                data: { DivId: divId },
+                dataType: "json",
+                success: function (response) {
+                    $('#departmentIcon' + divId).removeClass('glyphicon glyphicon-plus-sign text-info').addClass('glyphicon glyphicon-minus-sign text-info');
+                    $('#department' + divId).append('<div id="depList' + divId + '" class="ml-20"></div>');
+
+                    var i = 0;
+                    $.each(response, function () {
+                        $('#depList' + divId).append(
+                            '<div id="dep' + response[i].Id + '">' +
+                            '<i class="glyphicon glyphicon-plus-sign text-info" id="depIcon' + response[i].Id + '" onclick="toggleEmployee(' + response[i].Id + ')"></i> &nbsp;' +
+                            '<a onclick="getDepartmentDetail(' + divId + ', ' + response[i].Id + ')">' + response[i].Name + '</a>' +
+                            ' <i class="icon-spinner spinner" style="display:none;" id="depSpin' + response[i].Id + '"></i>' +
+                            '</div>');
+
+                        i++;
+                    });
+
+                    $('#departmentSpin' + divId).hide();
+                    $('#departmentIcon' + divId).show();
+
+                },
+                error: function () {
+                    alert('fail');
+                }
+            });
+        }
+    }
+
+    function toggleEmployee(depId) {
+        if ($('#depIcon' + depId).hasClass('glyphicon glyphicon-minus-sign text-info')) {
+            $('#dep' + depId + "Opt").remove();
+            $('#depIcon' + depId).removeClass('glyphicon glyphicon-minus-sign text-info').addClass('glyphicon glyphicon-plus-sign text-info');
+        }
+        else {
+            $('#depIcon' + depId).removeClass('glyphicon glyphicon-plus-sign text-info').addClass('glyphicon glyphicon-minus-sign text-info');
+
+            $('#dep' + depId).append('<ul class="active" id="dep' + depId + 'Opt">' +
+                '<div id="empDep' + depId + '">' +
+                '<i class="glyphicon glyphicon-plus-sign text-info" id="employeeIcon' + depId + '" onclick="toggleDepEmployee(' + depId + ')"></i> &nbsp;' +
+                '<b>Employees</b> ' +
+                '<i class="icon-spinner spinner" style="display:none;" id="employeeSpin' + depId + '"></i>' +
+                '</div>' +
+                '</ul>');
+
+        }
+
+
+    }
+
+    function toggleDepEmployee(depId) {
+        if ($('#employeeIcon' + depId).hasClass('glyphicon glyphicon-minus-sign text-info')) {
+            $('#dep' + depId + "empList").remove();
+            $('#employeeIcon' + depId).removeClass('glyphicon glyphicon-minus-sign text-info').addClass('glyphicon glyphicon-plus-sign text-info');
+        }
+        else {
+            $('#employeeSpin' + depId).show();
+            $('#employeeIcon' + depId).hide();
+
+            $.ajax({
+                type: 'POST',
+                url: "../OrgStructure/GetEmployeeList",
+                data: { DepId: depId },
+                dataType: "json",
+                success: function (response) {
+                    $('#employeeIcon' + depId).removeClass('glyphicon glyphicon-plus-sign text-info').addClass('glyphicon glyphicon-minus-sign text-info');
+
+                    $('#empDep' + depId).append('<ul class="active" id="dep' + depId + 'empList"></ul>');
+                    var i = 0;
+                    $.each(response, function ()
+                    {
+                        if (response[i].IsActive == 2) {
+                            $('#dep' + depId + 'empList').append(
+                                '<div id="emp' + response[i].Id + '" class="ml-20">' +
+                                '<a onclick="getEmployeeDetail(' + response[i].Id + ')" class="text-danger" title="Pending Approval">' + response[i].Name + '</a> &nbsp;' +
+                                '<i class="icon-spinner spinner" style="display:none;" id="empSpin' + response[i].Id + '"></i>' +
+                                '</div>');
+                        }
+                        else {
+                            $('#dep' + depId + 'empList').append(
+                                '<div id="emp' + response[i].Id + '" class="ml-20">' +
+                                '<a onclick="getEmployeeDetail(' + response[i].Id + ')">' + response[i].Name + '</a> &nbsp;' +
+                                '<i class="icon-spinner spinner" style="display:none;" id="empSpin' + response[i].Id + '"></i>' +
+                                '</div>');
+                        }
+                        i++;
+                    });
+
+                    $('#employeeSpin' + depId).hide();
+                    $('#employeeIcon' + depId).show();
+                },
+                error: function () {
+                    alert('fail');
+                }
+            });
+
+        }
+
+    }
+</script>
+
+<script>
+
+    function getCompanyDetail(cId) {
+
+        $('#compSpin').show();
+
+        $.ajax({
+            type: 'POST',
+            url: "../OrgStructure/GetCompanyDetail",
+            data: { CompId: cId },
+            dataType: "json",
+            success: function (response) {
+                $('#detailDiv').empty();
+
+                $('#detailDiv').append('<i class="glyphicon glyphicon-remove-circle pull-right text-danger mt-5" title="Close Section" onclick="closeDetailDiv()"></i>' +
+                    '<center class="row mt-10">' +
+                    '<button class="btn btn-info" data-toggle="modal" data-target="#addDivisionModal">Add Division</button> ' +
+                    '<button class="btn btn-info" data-toggle="modal" data-target="#addDepartmentModal">Add Department</button>' +
+                    '</center>' +
+                    '<br />' +
+                    '<div class="row mt-10">' +
+                    '<ul style="list-style-type:unset">' +
+                    '<li><b>Company Name: </b>' + $('#compName').val() + '</li>' +
+                    '<li><b>Company Admins: </b></li>' +
+                    '<div id="compAdminList" style="margin-left:120px;"></div>' +
+                    '<br>' +
+                    '<li><b>Number of Divisions: </b>' + $('#divCount').val() + '</li>' +
+                    '<li><b>Number of Departments: </b>' + response[0].Department + '</li>' +
+                    '<li><b>Number of Accounts: </b>' + response[0].Profile + '</li>' +
+                    '</ul>' +
+                    '</div>' +
+                    '<br>' +
+                    '<center class="row mt-10">' +
+                    '<button class="btn btn-info" data-toggle="modal" data-target="#addAdminModal">Add Administrator</button> ' +
+                    '<button class="btn btn-info" onclick="getUserList(' + $('#compId').val() + ', 1)">Edit Administrator <i class="icon-spinner spinner" id="updUserSpin" style="display:none;"></i></button>' +
+                    '</center>' +
+                    '<br>');
+
+                var i = 0;
+                $.each(response, function ()
+                {
+                    if (response[i].IsActive == 2) {
+                        $('#compAdminList').append(
+                            '<div>' +
+                            response[i].Name +
+                            'inactive</div>');
+                    }
+                    else {
+                        $('#compAdminList').append(
+                            '<div>' +
+                            response[i].Name +
+                            '</div>');
+                    }
+                    i++;
+                });
+
+                $('#compSpin').hide();
+                $('#detailDiv').show();
+
+            },
+            error: function () {
+                alert('fail');
+            }
+        });
+
+    }
+
+    function getDivisionDetail(divId) {
+        $('#divSpin' + divId).show();
+
+        $.ajax({
+            type: 'POST',
+            url: "../OrgStructure/GetManagerList",
+            data: { DivId: divId },
+            dataType: "json",
+            success: function (response) {
+                $('#detailDiv').empty();
+
+                $('#detailDiv').append('<i class="glyphicon glyphicon-remove-circle pull-right text-danger mt-5" title="Close Section" onclick="closeDetailDiv()"></i>' +
+                    '<center class="row mt-10">' +
+                    '<button class="btn btn-info" data-toggle="modal" data-target="#addDivisionModal">Add Division</button> ' +
+                    '<button class="btn btn-info" data-toggle="modal" data-target="#addDepartmentModal">Add Department</button>' +
+                    '</center>' +
+                    '<br />' +
+                    '<div class="row mt-10">' +
+                    '<ul style="list-style-type:unset">' +
+                    '<li><b>Company Name: </b>' + $('#compName').val() + '</li>' +
+                    '<li><b>Division Name: </b>' + $('#divName' + divId).val() + '</li>' +
+                    '<li><b>Number of Managers: </b><span id="manNo"></span></li>' +
+                    '<li><b>Division Managers: </b></li>' +
+                    '<div id="divManagerList" style="margin-left:120px;"></div>' +
+                    '<br>' +
+                    '</ul>' +
+                    '</div>' +
+                    '<br>' +
+                    '<center class="row mt-10">' +
+                        '<button class="btn btn-success" onclick="openCSVManagerModal(' + divId + ')">Upload CSV</button> ' +
+                        '<button class="btn btn-info" onclick="openAddManagerModal(' + divId + ')" >Add Manager <i class="icon-spinner spinner" id="addUserSpin" style="display:none;"></i></button> ' +
+                        '<button class="btn btn-info" onclick="getUserList(' + divId + ', 2)">Edit Managers <i class="icon-spinner spinner" id="updUserSpin" style="display:none;"></i></button> ' +
+                    '</center>' +
+                    '<br>');
+
+
+                var i = 0;
+                $.each(response, function () {
+
+                    if (response[i].IsActive == 2) {
+                        $('#divManagerList').append(
+                            '<div class="text-danger" title="Pending Approval">' +
+                            response[i].Name +
+                            '</div>');
+                    }
+                    else {
+                        $('#divManagerList').append(
+                            '<div>' +
+                            response[i].Name +
+                            '</div>');
+                    }
+                    i++;
+                });
+
+                if (i == 0) {
+                    $('#divManagerList').append(
+                        '<div class="text-danger">Nil</div>');
+                }
+
+                $('#manNo').text(i);
+
+                $('#divSpin' + divId).hide();
+
+                $('#detailDiv').show();
+
+            },
+            error: function () {
+                alert('fail');
+            }
+        });
+    }
+
+    function getDepartmentDetail(divId, depId) {
+        $('#detailDiv').hide();
+
+        $('#depSpin' + depId).show();
+
+        $('#detailDiv').empty();
+
+        $('#detailDiv').append('<i class="glyphicon glyphicon-remove-circle pull-right text-danger mt-5" title="Close Section" onclick="closeDetailDiv()"></i>' +
+            '<center class="row mt-10">' +
+            '<button class="btn btn-info" data-toggle="modal" data-target="#addDivisionModal">Add Division</button> ' +
+            '<button class="btn btn-info" data-toggle="modal" data-target="#addDepartmentModal">Add Department</button>' +
+            '</center>' +
+            '<br />' +
+            '<div class="row mt-10">' +
+            '<ul style="list-style-type:unset">' +
+            '<li><b>Company Name: </b>' + $('#compName').val() + '</li>' +
+            '<li><b>Division Name: </b>' + $('#divName' + divId).val() + '</li>' +
+            '<li><b>Division Managers: </b></li>' +
+            '<div id="divManagerList" style="margin-left:120px;"></div>' +
+            '<br>' +
+            '<li><b>Number of Employees: </b><span id="EmpNo"><span></li>' +
+            '<li><b>Department Employees: </b></li>' +
+            '<div id="depEmployeeList" style="margin-left:120px;"></div>' +
+            '<br>' +
+            '</ul>' +
+            '</div>' +
+            '<br>' +
+            '<center class="row mt-10">' +
+                '<button class="btn btn-success" onclick="openCSVEmployeeModal(' + depId + ')">Upload CSV</button> ' +
+                '<button class="btn btn-info" onclick="openAddEmployeeModal(' + depId + ')" >Add Employee <i class="icon-spinner spinner" id="addUserSpin" style="display:none;"></i></button> ' +
+                '<button class="btn btn-info" onclick="getUserList(' + depId + ', 3)">Edit Employees <i class="icon-spinner spinner" id="updUserSpin" style="display:none;"></i></button> ' +
+            '</center>' +
+            '<br>');
+
+        $.ajax({
+            type: 'POST',
+            url: "../OrgStructure/GetManagerList",
+            data: { DivId: divId },
+            dataType: "json",
+            success: function (response) {
+                var i = 0;
+                $.each(response, function ()
+                {
+                    if (response[i].IsActive == 2) {
+                        $('#divManagerList').append(
+                            '<div class="text-danger" title="Pending Approval">' +
+                            response[i].Name +
+                            '</div>');
+                    }
+                    else {
+                        $('#divManagerList').append(
+                            '<div>' +
+                            response[i].Name +
+                            '</div>');
+                    }
+                    i++;
+                });
+
+                if (i == 0) {
+                    $('#divManagerList').append(
+                        '<div class="text-danger">Nil</div>');
+                }
+            },
+            error: function () {
+                alert('Manager ajax call failed');
+            }
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "../OrgStructure/GetEmployeeList",
+            data: { DepId: depId },
+            dataType: "json",
+            success: function (response) {
+                var i = 0;
+                $.each(response, function () {
+
+                    if (response[i].IsActive == 2) {
+                        $('#depEmployeeList').append(
+                            '<div class="text-danger" title="Pending Approval">' +
+                            response[i].Name +
+                            '</div>');
+                    }
+                    else {
+                        $('#depEmployeeList').append(
+                            '<div>' +
+                            response[i].Name +
+                            '</div>');
+                    }
+                    i++;
+                });
+
+                if (i == 0) {
+                    $('#depEmployeeList').append(
+                        '<div class="text-danger">Nil</div>');
+                }
+
+                $('#EmpNo').text(i);
+
+                $('#depSpin' + depId).hide();
+                $('#detailDiv').show();
+            },
+            error: function () {
+                alert('Manager ajax call failed');
+            }
+        });
+
+
+    }
+
+    function getEmployeeDetail(empId)
+    {
+        $('#empSpin' + empId).show();
+
+        $.ajax({
+            type: 'POST',
+            url: "../Task/GetUserProfileModalDTOs",
+            data: { Id: empId, active:1 },
+            dataType: "json",
+            success: function (response)
+            {
+                $('#detailDiv').empty();
+
+                $('#detailDiv').append('<i class="glyphicon glyphicon-remove-circle pull-right text-danger mt-5" title="Close Section" onclick="closeDetailDiv()"></i>' +
+                    '<center class="row mt-10">' +
+                    '<button class="btn btn-info" data-toggle="modal" data-target="#addDivisionModal">Add Division</button> ' +
+                    '<button class="btn btn-info" data-toggle="modal" data-target="#addDepartmentModal">Add Department</button>' +
+                    '</center>' +
+                    '<br />' +
+                    '<center>' +
+                    '<img src="' + response.Profile + '" class="img-responsive" width="250px;" height="250px;">' +
+                    '</center>' +
+                    '<hr>' +
+                    '<div class="row mt-10">' +
+                    '<ul style="">' +
+                    '<li><b>Company: </b>' + $('#compName').val() + '</li>' +
+                    '<li><b>Designation: </b>' + response.Designation + '</li>' +
+                    '<li><b>Name: </b>' + response.Name + '</li>' +
+                    '<li><b>Contact: </b>' + response.Contact + '</li>' +
+                    '<li><b>Email: </b>' + response.Email + '</li>' +
+                    '</ul>' +
+                    '</div>');
+
+                if (response.IsActive == 2) {
+                    if (response.Designation == "Employee") {
+                        $('#detailDiv').append('<center class="row mt-10">' +
+                            '<a href="../Utilities/sendMailInviteEmployee?id=' + response.Id + '&em=' + response.Email + '&isUtilityPage=' + 'false' + '&way=structure" class="btn btn-danger">Send Invite Again</a> ' +
+                            '</center><br>');
+                    }
+                    else {
+                        $('#detailDiv').append('<center class="row mt-10">' +
+                            '<a href="../Utilities/sendMailInviteManager?id=' + response.Id + '&em=' + response.Email + '&isUtilityPage=' + 'false' + '&way=structure" class="btn btn-danger">Send Invite Again</a> ' +
+                            '</center><br>');
+                    }
+                }
+
+                $('#empSpin' + empId).hide();
+
+                $('#detailDiv').show();
+
+            },
+            error: function () {
+                alert('fail');
+            }
+        });
+    }
+
+    function closeDetailDiv() {
+        $('#detailDiv').empty();
+        $('#detailDiv').hide();
+    }
+
+</script>
+
+<script>
+
+    function validateDivision(text)
+    {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("divisionNameValidation","Utilities")',
+            timeout: 100000000,
+            data: { _data:text, way: 1 },
+            dataType: "json",
+            success: function (response)
+            {
+                if (response == 0)
+                {
+                    $('#errMsgDiv').hide();
+                    $('#addDivSubBtn').attr('disabled', false)
+                }
+                else
+                {
+                    $('#errMsgDiv').show();
+                    $('#addDivSubBtn').attr('disabled', true)
+                }
+            },
+            error: function (data)
+            {
+                alert("ajax Fail");
+            }
+
+        });
+    }
+
+    function validateDepartment(divId)
+    {
+        var depName = $('#addDepName').val();
+
+        if (depName != "" && divId != "")
+        {
+            $.ajax({
+
+                type: 'POST',
+                url: '@Url.Action("departmentNameValidation", "Utilities")',
+                timeout: 100000000,
+                data: { _data: depName, divId: divId, way: 1 },
+                dataType: "json",
+                success: function (response) {
+                    if (response == 0) {
+                        $('#errMsgDep').hide();
+                        $('#addDepSubBtn').attr('disabled', false)
+                    }
+                    else {
+                        $('#errMsgDep').show();
+                        $('#addDepSubBtn').attr('disabled', true)
+                    }
+                },
+                error: function (data) {
+                    alert("ajax fail");
+                }
+
+            });
+        }
+    }
+
+    function validateEmail(title, type)
+    {
+        if (title != "" && title != null) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("emailValidation", "Utilities")',
+                timeout: 100000000,
+                data: { _data: title },
+                dataType: "json",
+                success: function (json)
+                {
+                    if (type == "addAdmin") {
+                        if (json != 0) {
+                            $('#addAdminErrorEmail').show();
+                            $('#addAdminSubmit').attr('disabled', true)
+                        }
+                        else {
+                            $('#addAdminErrorEmail').hide();
+                            $('#addAdminSubmit').attr('disabled', false)
+                        }
+                    }
+                    else if (type == "addManager") {
+                        if (json != 0) {
+                            $('#addManagerErrorEmail').show();
+                            $('#addManagerSubmit').attr('disabled', true)
+                        }
+                        else {
+                            $('#addManagerErrorEmail').hide();
+                            $('#addManagerSubmit').attr('disabled', false)
+                        }
+                    }
+                    else {
+                        if (json != 0) {
+                            $('#addEmployeeErrorEmail').show();
+                            $('#addEmployeeSubmit').attr('disabled', true)
+                        }
+                        else {
+                            $('#addEmployeeErrorEmail').hide();
+                            $('#addEmployeeSubmit').attr('disabled', false)
+                        }
+                    }
+                },
+                error: function (data)
+                {
+                    alert("Ajax failed");
+                }
+            });
+        }
+
+    }
+
+    function validatePassword(type)
+    {
+        if (type == "addAdmin") {
+            var Pw = $("#addAdminPw").val();
+            var ConPw = $("#addAdminCPw").val();
+
+            if (Pw != ConPw) {
+                $('#addAdminErrorPassword').show();
+                $('#addAdminSubmit').attr('disabled', true)
+            }
+            else {
+                $('#addAdminErrorPassword').hide();
+                $('#addAdminSubmit').attr('disabled', false)
+            }
+        }
+        else if (type == "updAdmin") {
+            var Pw = $("#updAdminPassword").val();
+            var ConPw = $("#updAdminConPassword").val();
+
+            if (Pw != ConPw) {
+                $('#updAdminErrorPassword').show();
+                $('#updAdminSubmit').attr('disabled', true)
+            }
+            else {
+                $('#updAdminErrorPassword').hide();
+                $('#updAdminSubmit').attr('disabled', false)
+            }
+        }
+    }
+</script>
+
+<script>
+
+    function getUserList(id, role)
+    {
+        $('#updUserSpin').show();
+
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            url: '@Url.Action("GetUserList", "OrgStructure")',
+            data: { Id: id, Role: role },
+            success: function (response)
+            {
+                if (role == 1) {
+                    $('#updAdminSelect').find('option').remove().end();
+
+                    $("#updAdminSelect").append('<option value="" selected>Please Select Admin To Update</option>');
+
+                    var i = 0;
+                    $.each(response, function () {
+                        $("#updAdminSelect").append('<option value=' + response[i].Id + '>' + response[i].Name + '</option>');
+
+                        i++;
+                    });
+
+                    $('#updAdminModal').modal('show');
+                    $('#updUserSpin').hide();
+
+                }
+                else if (role == 2) {
+                    $('#updManagerSelect').find('option').remove().end();
+
+                    $("#updManagerSelect").append('<option value="" selected>Please Select Manager To Update</option>');
+
+                    var i = 0;
+                    $.each(response, function () {
+                        if (response[i].IsActive != 2) {
+                            $("#updManagerSelect").append('<option value=' + response[i].EncriptedId + '>' + response[i].Name + '</option>');
+                        }
+                        i++;
+                    });
+
+                    $('#updManagerModal').modal('show');
+                    $('#updUserSpin').hide();
+
+                }
+                else {
+                    $('#updEmployeeDepId').val(id);
+                    $('#updEmployeeSelect').find('option').remove().end();
+
+                    $("#updEmployeeSelect").append('<option value="" selected>Please Select Employee To Update</option>');
+
+                    var i = 0;
+                    $.each(response, function ()
+                    {
+                        if (response[i].IsActive != 2) {
+                            $("#updEmployeeSelect").append('<option value=' + response[i].EncriptedId + '>' + response[i].Name + '</option>');
+                        }
+                        i++;
+                    });
+
+                    $('#updEmployeeModal').modal('show');
+                    $('#updUserSpin').hide();
+                }
+                
+            },
+            error: function (response)
+            {
+                alert('Ajax Failed');
+            }
+
+        });
+    }
+
+    function getUpdAdminData(id)
+    {
+        $('#updAdminId').val(id);
+
+        $("#updAdminIsMaster").attr('checked', false);
+        if (id != "")
+        {
+            $('.updAdminBody').hide();
+            $('#updAdminSpin').show();
+
+            $.ajax({
+                type: 'POST',
+                url: "../Utilities/GetUserById",
+                data: { Id: id },
+                dataType: "json",
+                success: function (response) {
+                    $("#updAdminFName").val(response.FirstName);
+                    $("#updAdminLName").val(response.LastName);
+                    $("#updAdminEmail").val(response.Email);
+                    $("#updAdminPassword").val(response.Password);
+                    $("#updAdminConPassword").val(response.Password);
+                    $("#updAdminContact").val(response.PhoneNumber);
+                    $("#updAdminHouse").val(response.HomeNumber);
+
+                    if (response.IsMasterAdmin == 1) {
+                        $("#updAdminIsMaster").attr('checked', true);
+                    }
+
+                    $('.updAdminBody').show();
+                    $('#updAdminSpin').hide();
+
+
+                },
+                error: function () { alert('Ajax failed'); }
+            });
+        }
+        else {
+            $('.updAdminBody').hide();
+        }
+    }
+
+
+    function openCSVManagerModal(divId)
+    {
+        $("#csvManagerDivId").val(divId);
+
+        $("#csvManagerModal").modal('show');
+
+    }
+
+    function openAddManagerModal(divId)
+    {
+        $("#addManagerDId").val(divId);
+        $("#addUserSpin").show();
+
+        $.ajax({
+            type: 'POST',
+            url: "../task/getWorktypeDTOs",
+            data: { DivisionID: divId },
+            dataType: "json",
+            success: function (response)
+            {
+                $("#addManagerWorktype").html("");
+                $('#addManagerWorktype').empty();
+                   
+
+                for (var i = 0; i < response.length; i++) 
+                {
+                    var division = '<option value="' + response[i]['Id'] + '">' + response[i]['Name'] + '</option>';
+                    $('#addManagerWorktype').append(division);
+                }
+
+                $("#addUserSpin").hide();
+                $("#addManagerModal").modal('show');
+            },
+            error: function ()
+            {
+                alert('Ajax failed');
+            }
+        });
+    }
+
+
+    function openCSVEmployeeModal(depId)
+    {
+        $("#csvEmpDepId").val(depId);
+
+        $("#csvEmployeeModal").modal('show');
+
+    }
+
+    function openAddEmployeeModal(depId)
+    {
+        $("#addEmployeeDepId").val(depId);
+        $("#addUserSpin").show();
+
+        $.ajax({
+            type: 'POST',
+            url: "../task/getWorktypeDTOs",
+            data: { DepartmentID: depId },
+            dataType: "json",
+            success: function (response)
+            {
+                $("#addEmployeeWorktype").html("");
+                $('#addEmployeeWorktype').empty();
+
+
+                for (var i = 0; i < response.length; i++) {
+                    var division = '<option value="' + response[i]['Id'] + '">' + response[i]['Name'] + '</option>';
+                    $('#addEmployeeWorktype').append(division);
+                }
+
+                $("#addUserSpin").hide();
+                $("#addEmployeeModal").modal('show');
+            },
+            error: function () {
+                alert('Ajax failed');
+            }
+        });
+    }
+</script>

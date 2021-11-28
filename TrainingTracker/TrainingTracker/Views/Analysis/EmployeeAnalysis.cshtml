@@ -1,0 +1,511 @@
+﻿@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL;
+@using TrainingTracker.Models
+
+@{
+    ViewBag.Title = "EmployeeAnalysis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #backbtn {
+        margin-left: 20px;
+    }
+</style>
+
+@{
+    User u = new UserBL().getUsersById(General_Purpose.DecryptId(ViewBag.emp1));
+    string empname = ViewBag.firstName + " Vs " + ViewBag.secondName;
+}
+
+@if (ViewBag.way == "Manager")
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("DisplayEmployee", "Utilities")">Employees</a></li>
+                <li><a href="@Url.Action("displayEmpAnalaysis", "Analysis", new { sid = ViewBag.sid, way = ViewBag.way })">Analytics</a></li>
+                <li class="active">@ViewBag.firstName Vs @ViewBag.secondName</li>
+
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayEmpAnalaysis", "Analysis", new { sid = ViewBag.sid, way = ViewBag.way })">Back</a>
+    <button class="btn bg-primary pull-right mr-20" id="download"> download pdf</button>
+    <br />
+}
+else if (ViewBag.way == "setupDep")
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("displayDepartment", "Utilities")">Departments</a></li>
+                <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = General_Purpose.EncryptId(Convert.ToInt32(u.DepartmentId)), way = ViewBag.way })">@u.Department.Name</a></li>
+                <li><a href="@Url.Action("displayEmpAnalaysis", "Analysis", new { sid = ViewBag.sid, way = ViewBag.way })">Analytics</a></li>
+                <li class="active">@ViewBag.firstName Vs @ViewBag.secondName</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayEmpAnalaysis", "Analysis", new { sid = ViewBag.sid, way = ViewBag.way })">Back</a>
+    <button class="btn bg-primary pull-right mr-20" id="download"> download pdf</button>
+    <br />
+}
+else
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("displayDivision", "Utilities")">Division</a></li>
+                <li><a href="@Url.Action("displayDivisionDetails", "Utilities", new { sid = General_Purpose.EncryptId(Convert.ToInt32(u.Department.Division.Id)), page1 = "Division" })">@u.Department.Division.Name</a></li>
+                <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = General_Purpose.EncryptId(Convert.ToInt32(u.DepartmentId)) })">@u.Department.Name</a></li>
+                <li><a href="@Url.Action("displayEmpAnalaysis", "Analysis", new { sid = ViewBag.sid, way = ViewBag.way })">Analytics</a></li>
+                <li class="active">@ViewBag.firstName Vs @ViewBag.secondName</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayEmpAnalaysis", "Analysis", new { sid = ViewBag.sid, way = ViewBag.way })">Back</a>
+    <button class="btn bg-primary pull-right mr-20" id="download"> download pdf</button>
+    <br />
+}
+
+<div id="loadingModal" class="modal" style="margin-left:20%;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <center class="modal-header text-size-large"><b>Please Wait</b></center>
+            <div class="modal-body">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <center>
+                    <img src="~/Content/Images/PrintLoader.gif" width="150" height="150" />
+                </center>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<input type="hidden" id="empname" value="@empname" />
+<input type="hidden" id="emp1" value="@ViewBag.emp1" />
+<input type="hidden" id="emp2" value="@ViewBag.emp2" />
+<div class="content">
+    <!-- Pies -->
+    <div id="pdfholder">
+
+        <!--hidden div is helpful while generation PDF file to make sapce between charts-->
+        <div style="height:160px;" id="space0" hidden></div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <center><h5 class="panel-title text-semibold">Completed Task for @ViewBag.firstName </h5></center>
+                        <div class="heading-elements">
+                            <ul class="icons-list"></ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-container text-center">
+                            <div class="display-inline-block" id="c3-donut-first"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <center><h5 class="panel-title text-semibold">Completed Task for  @ViewBag.secondName </h5></center>
+                        <div class="heading-elements">
+                            <ul class="icons-list"></ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-container text-center">
+                            <div class="display-inline-block" id="c3-donut-third"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--This hidden div is helpful while generation PDF file to make sapce between charts-->
+        <div style="height:400px;" id="space1" hidden></div>
+
+        <!-- /pies -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <center><h5 class="panel-title text-semibold">On Time Delivery for @ViewBag.firstName </h5></center>
+                        <div class="heading-elements">
+                            <ul class="icons-list"></ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-container text-center">
+                            <div class="display-inline-block" id="c3-donut-second"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <center><h5 class="panel-title text-semibold">On Time Delivery for @ViewBag.secondName </h5></center>
+                        <div class="heading-elements">
+                            <ul class="icons-list"></ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-container text-center">
+                            <div class="display-inline-block" id="c3-donut-fourth"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--This hidden div is helpful while generation PDF file to make sapce between charts-->
+        <div style="height:370px;" id="space2" hidden></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <center><h5 class="panel-title text-semibold">Completed Priority Wise Tasks for @ViewBag.firstName </h5></center>
+                        <div class="heading-elements">
+                            <ul class="icons-list"></ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-container text-center">
+                            <div class="display-inline-block" id="c3-donut-fifth"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <center><h5 class="panel-title text-semibold">Completed Priority Wise Tasks for @ViewBag.secondName </h5></center>
+                        <div class="heading-elements">
+                            <ul class="icons-list"></ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-container text-center">
+                            <div class="display-inline-block" id="c3-donut-sixth"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--This hidden div is helpful while generation PDF file to make sapce between charts-->
+        <div style="height:290px;" id="space3" hidden></div>
+
+        <!-- Bar chart -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <center><h5 class="panel-title text-semibold">Number of To Dos Completed Per Day</h5></center>
+                <div class="heading-elements">
+                    <ul class="icons-list"></ul>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="chart-container">
+                    <div id="chart_div" style="width: 1140px; height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    window.onload = function () {
+
+
+
+       // getPieChart($("#first").val(), $("#second").val());
+       // getBarGraph($("#first").val(), $("#second").val());
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(getCompletionRate);
+
+
+    };
+
+
+
+
+        function getCompletionRate() {
+            var o1 = $("#emp1").val();
+            var o2 = $("#emp2").val();
+        $.ajax({
+            type: 'Get',
+            url: '@Url.Action("employeesComparision", "Analysis")',
+            timeout: 100000000,
+            data: { id: o1, id2:o2 },
+            dataType: "json",
+            success: function (response) {
+
+                var first = [];
+                var second = [];
+                var third = [];
+                var fourth = [];
+                var fifth = [];
+                var sixth = [];
+                var barOne = [];
+                var smallBar = [];
+                var chart = [];
+                var k = 0;
+                var arr = [response[1].Value, response[0].Value];
+                first.push(arr);
+                arr = [];
+                arr = [response[3].Value, response[2].Value];
+                first.push(arr);
+                arr = [];
+                arr = [response[5].Value, response[4].Value];
+                second.push(arr);
+                arr = [];
+                arr = [response[7].Value, response[6].Value];
+                second.push(arr);
+                arr = [];
+                arr = [response[9].Value, response[8].Value];
+                third.push(arr);
+                arr = [];
+                arr = [response[11].Value, response[10].Value];
+                third.push(arr);
+                arr = [];
+                arr = [response[13].Value, response[12].Value];
+                fourth.push(arr);
+                arr = [];
+                arr = [response[15].Value, response[14].Value];
+                fourth.push(arr);
+                smallBar.push("Employees Tickets Completed Each day");
+                smallBar.push(response[19].Value);
+                smallBar.push(response[20].Value);
+                chart.push(smallBar);
+
+                arr = [];
+                arr = ["High Priority", response[21].Value];
+                fifth.push(arr);
+                arr = [];
+                arr = ["Medium Priority", response[22].Value];
+                fifth.push(arr);
+                arr = [];
+                arr = ["Low Priority", response[23].Value];
+                fifth.push(arr);
+
+                arr = [];
+                arr = ["High Priority", response[24].Value];
+                sixth.push(arr);
+                arr = [];
+                arr = ["Medium Priority", response[25].Value];
+                sixth.push(arr);
+                arr = [];
+                arr = ["Low Priority", response[26].Value];
+                sixth.push(arr);
+
+                var fValue = 30;
+                var t = 16;
+                var gg = response[16];
+                for (var l = 0; l < fValue; l++) {
+                    smallBar = [];
+                    smallBar.push(response[18].Value[l]);
+                    smallBar.push((response[16].Value[l]));
+                    smallBar.push((response[17].Value[l]));
+                    chart.push(smallBar);
+
+                }
+
+                displayPieC(first, '#c3-donut-first');
+                displayPieC(second, '#c3-donut-second');
+                displayPieC(third, '#c3-donut-third');
+                displayPieC(fourth, '#c3-donut-fourth');
+                displayPieC(fifth, '#c3-donut-fifth');
+                displayPieC(sixth, '#c3-donut-sixth');
+                var data = google.visualization.arrayToDataTable(chart);
+
+                var options = {
+                    chart: {
+                        title: '',
+                        subtitle: '',
+                    },
+                    width:950,
+                    bars: 'vertical' // Required for Material Bar Charts.
+                };
+
+                var chart1 = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                chart1.draw(data, options);
+                 },
+            error: function (data) {
+
+                $('.loading3').hide();
+                $('#curvechart_error').show();
+                $('#curve_chart').hide();
+            }
+            });
+    }
+
+
+    function getBarGraph(id) {
+
+
+
+
+        $.ajax({ type: 'Get',
+               url: '@Url.Action("getTickets", "Analysis")',
+            timeout: 100000000,
+            data: { gid:id },
+            dataType: "json",
+            success: function (response) {
+                var counts = [];
+                var dates = [];
+                dates.push('Tickets Closed');
+                counts.push('x');
+                var k = 0;
+                for (var i = 0; i < response.length; i++) {
+
+                    var date = response[i][1].Value;
+                    var count = response[i][0].Value;
+                    counts.push(count);
+                    dates.push(date);
+
+                    //Object.assign(dat, [[name, v]]);
+                     k = k + 1;
+                }
+                var cols = [];
+                cols.push(counts);
+                cols.push(dates);
+
+                var axis_tick_rotation = c3.generate({
+                    bindto: '#c3-axis-tick-rotation',
+                    size: { height: 325 },
+                    data: {
+                        x: 'x',
+                        columns: cols,
+                        type: 'bar'
+                    },
+                    color: {
+                        pattern: ['#00BCD4']
+                    },
+                    axis: {
+                        x: {
+                            type: 'category',
+                            tick: {
+                                rotate: 0
+                            },
+                            height: 80
+                        }
+                    },
+                    grid: {
+                        x: {
+                            show: false
+                        }
+                    }
+                });
+                 },
+            error: function (data) {
+
+                $('.loading3').hide();
+                $('#curvechart_error').show();
+                $('#curve_chart').hide();
+            }
+            });
+        }
+
+        function displayPieC(arr, id)
+        {
+            var pie_chart = c3.generate({
+                bindto: id,
+                size: { width: 350 },
+                color: {
+                    pattern: ['#3F51B5', '#FF9800', '#4CAF50', '#00BCD4', '#F44336']
+                },
+                data: {
+                    columns: arr,
+                    type: 'donut'
+                }
+            });
+        }
+        function drawChart(da) {
+              // chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+
+</script>
+
+
+<script>
+
+    var d = new Date();
+
+    var filename = document.getElementById("empname").value + " Analysis (" + (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + ").pdf";
+    document.getElementById("download")
+        .addEventListener("click", () => {
+
+            $('#loadingModal').show();
+
+            $('#space0').show();
+            $('#space1').show();
+            $('#space2').show();
+            $('#space3').show();
+
+            const analysis = this.document.getElementById("pdfholder");
+            console.log(analysis);
+            console.log(window);
+            var opt = {
+                margin: 0,
+                filename: String(filename),
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
+            };
+            html2pdf().from(analysis).set(opt).save();
+
+            setTimeout(function () {
+                $('#space0').hide();
+                $('#space1').hide();
+                $('#space2').hide();
+                $('#space3').hide();
+                $('#loadingModal').hide();
+            }, 5000);
+        })
+
+</script>

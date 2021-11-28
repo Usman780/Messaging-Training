@@ -1,0 +1,267 @@
+﻿
+@{
+    ViewBag.Title = "ManagerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Content area -->
+<div class="content">
+
+
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Create Manager</b>s</h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-horizontal form-validate-jquery" action="#">
+                <fieldset class="content-group">
+                    <legend class="text-bold"><span class="text-danger">*</span> Fields are Mandatory to Fill</legend>
+
+
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter First Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="basic" class="form-control" required="required" maxlength="150" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" name="email" class="form-control" id="email" required="required" maxlength="150" placeholder="Enter a valid email address">
+                        </div>
+                    </div>
+                    <!-- /email field -->
+                    <!-- Repeat email -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Repeat email <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="email" name="repeat_email" class="form-control" required="required" maxlength="150" placeholder="Enter a valid email address">
+                        </div>
+                    </div>
+
+                    <!-- Password field -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Password <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="password" name="password" id="password" class="form-control" maxlength="150" required="required" placeholder="Minimum 5 characters allowed">
+                        </div>
+                    </div>
+                    <!-- /password field -->
+                    <!-- Repeat password -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Repeat Password <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="password" name="repeat_password" class="form-control" required="required" maxlength="150" placeholder="Try different password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="numbers" class="form-control" required="required" maxlength="150" placeholder="Enter Personal Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number <span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="numbers" class="form-control" required="required" maxlength="150" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Notes<span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="textarea" class="form-control" required="required" maxlength="500" placeholder="Enter Notes"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <!-- /repeat password -->
+                    <!-- Email field -->
+                    <!-- /repeat email -->
+                    <!-- Minimum characters -->
+
+
+                </fieldset>
+
+
+
+                <div class="text-right">
+
+                    <button type="submit" class="btn btn-sm  bg-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /dashboard content -->
+    <!-- Scrollable table -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Document</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>  <button type="button" class="btn  btn-sm  bg-primary btn-block" data-toggle="modal" data-target="#modal-login"><i class=" icon-add"></i>  Add Document</button></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            List of Your Added Document
+        </div>
+
+        <div class="table-responsive pre-scrollable">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>File Name</th>
+                        <th>Link</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Eugene</td>
+                        <td>Kopyov</td>
+
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Victoria</td>
+                        <td>Baker</td>
+
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>James</td>
+                        <td>Alexander</td>
+
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Stanley</td>
+                        <td>Martins</td>
+
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Winnie</td>
+                        <td>the Pooh</td>
+
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Garry</td>
+                        <td>Smith</td>
+
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Ian</td>
+                        <td>Berg</td>
+
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>John</td>
+                        <td>Ryan</td>
+
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Frank</td>
+                        <td>Giggs</td>
+
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Jack</td>
+                        <td>Gram</td>
+
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Patrick</td>
+                        <td>Lawrence</td>
+
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Lucy</td>
+                        <td>Gulf</td>
+
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Dave</td>
+                        <td>Armstrong</td>
+
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Sean</td>
+                        <td>Lewis</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- /content area -->
+<div id="modal-login" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <form class="modal-body" action="index.html">
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Upload Document <small class="display-block"></small></h5>
+                </div>
+
+                <div class="form-group has-feedback has-feedback-left">
+                    <input type="text" class="form-control" maxlength="150" placeholder="Name of document" required>
+                    <div class="form-control-feedback">
+                        <i class="icon-file text-muted"></i>
+                    </div>
+                </div>
+
+                <div class="form-group has-feedback has-feedback-left">
+                    <input type="file" class="file-styled" required>
+
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn  btn-sm  bg-primary btn-block">Upload <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>

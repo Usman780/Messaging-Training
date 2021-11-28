@@ -1,0 +1,433 @@
+﻿
+@{
+    ViewBag.Title = "GroupTaskAnalysis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+@using TrainingTracker.BL;
+
+@{
+    int id;
+    string strr = "";
+    id = General_Purpose.Decrypt(HttpUtility.UrlDecode(ViewBag.GrpTskId));
+    if (id == 0)
+    {
+        strr = HttpUtility.UrlEncode(ViewBag.GrpTskId);
+        id = General_Purpose.Decrypt(HttpUtility.UrlDecode(strr));
+    }
+
+
+    GroupTasks_Details gt = new GroupTasks_DetailsBL().getGroupTasks_DetailssById(id);
+    GroupTask g = new GroupTaskBL().getGroupTasksById((int)gt.GroupTaskId);
+}
+
+<input type="hidden" id="empname" value="@g.Name" />
+
+@if (ViewBag.isModal == "0")
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Assignments</li>
+                <li class="active"><a href="@Url.Action("groupAssignments", "Task")">Group Tasks</a></li>
+                <li class="active"><a href="@Url.Action("grouptaskDetails", "Task", new { v = ViewBag.GrpTskId, IsModal = ViewBag.isModal })">@g.Name Details</a></li>
+                <li class="active">Analytics</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+}
+else
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active"><a href="@Url.Action("grouptaskDetails", "Task", new { v = ViewBag.GrpTskId, IsModal = ViewBag.isModal })">@g.Name Details</a></li>
+                <li class="active">Analytics</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+
+}
+<br />
+
+
+<div class="content">
+    <div class="row">
+        <button class="btn bg-primary pull-right mr-20" id="download"> download pdf</button>
+
+
+        <div class="col-md-12">
+            <div class="panel panel-flat">
+
+                <center><h2><strong>@g.Name</strong></h2></center>
+
+                <div class="table-responsive">
+
+                    <table class="table table-lg text-nowrap">
+                        <tbody>
+                            <tr>
+                                <td class="text-right col-md-2">
+                                    <a href="@Url.Action("grouptaskDetails","Task",new {v=ViewBag.GrpTskId , IsModal= ViewBag.isModal})" data-toggle="modal" class="btn btn-sm bg-primary">Switch to Basic Mode</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value='@ViewBag.id' name="g" id="gid">
+    <div id="pdfholder">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <center><h4 class="panel-title text-semibold">To-Do's Completed by Employees</h4></center>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-container text-center">
+                            <div class="display-inline-block" id="c3-pie-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h6 class="panel-title text-semibold">To Do Completed On Daily Basis</h6>
+                        <div class="heading-elements">
+
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-container text-center">
+                            <div class="chart" id="c3-axis-tick-rotation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h6 class="panel-title text-semibold text-center">Completed To Dos Gant Chart</h6>
+                        <div class="heading-elements">
+
+                        </div>
+                        <div class="panel-body" style="height:400px; overflow:auto">
+                            <div class="chart-container text-center">
+                                <div id="chart_div"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        google.charts.load('current', { 'packages': ['gantt'] });
+
+        getPieChart($("#gid").val());
+        getBarGraph($("#gid").val());
+        google.charts.setOnLoadCallback(ganttChart);
+
+    };
+
+    function setChartHeight() {
+        var maxHeight = $(window).height() - 300; // browser height minus any 'white space'
+        $(".gchartgrid").css("max-height", maxHeight + "px")
+        $(".glistgrid").css("max-height", (maxHeight - 17) + "px") // assuming scrollbar is 17px high
+    }
+    function daysToMilliseconds(days) {
+        return days * 24 * 60 * 60 * 1000;
+    }
+
+
+    function ganttChart()
+    {
+
+        var tValue = $("#gid").val();
+
+
+        $.ajax({
+
+            type: 'Get',
+            url: '@Url.Action("getGantChart", "Analysis")',
+            timeout: 100000000,
+            data: { gid: tValue },
+            dataType: "json",
+            success: function (response)
+            {
+
+
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Task ID');
+                data.addColumn('string', 'Task Name');
+                data.addColumn('date', 'Start Date');
+                data.addColumn('date', 'End Date');
+                data.addColumn('number', 'Duration');
+                data.addColumn('number', 'Percent Complete');
+                data.addColumn('string', 'Dependencies');
+
+
+
+                var i = 0;
+                $.each(response, function () {
+
+                    data.addRows([
+                        [String(response[i].Id), response[i].TaskName, new Date(String(response[i].StartDate)), new Date(String(response[i].EndDate)), null, 100, null]
+                    ]);
+
+                    i++;
+                });
+
+                var lenghtfactor = 0;
+                if (response.length < 2)
+                {
+                    lenghtfactor = 160;
+                }
+                else
+                {
+                    lenghtfactor = 100;
+                }
+
+                var options =
+                {
+                    height: response.length * lenghtfactor
+                };
+
+                var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+
+                chart.draw(data, options);
+
+                //var data = new google.visualization.DataTable();
+                //data.addColumn('string', 'Task ID');
+                //data.addColumn('string', 'Resource');
+                //data.addColumn('string', 'Task Name');
+                //data.addColumn('date', 'Start Date');
+                //data.addColumn('date', 'End Date');
+                //data.addColumn('number', 'Duration');
+                //data.addColumn('number', 'Percent Complete');
+                //data.addColumn('string', 'Dependencies');
+
+                //var j = 0;
+                //var arr = [];
+                //$.each(response, function () {
+                //    var t = "rr00" + j;
+
+                //    arr.push([t, String(response[j][0].Value), String(response[j][4].Value),
+                //        null, null, daysToMilliseconds(10), 100, null]);
+
+                //    j = j + 1;
+                //});
+                //data.addRows(arr);
+                //var heightt= 975;
+
+
+
+                //var options = {
+                //    height: heightt
+
+                //};
+                //var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+
+
+                //chart.draw(data, options);
+            },
+            error: function (data)
+            {
+                $('.loading3').hide();
+                $('#curvechart_error').show();
+                $('#curve_chart').hide();
+            }
+        });
+    }
+
+            function getClassName(id)
+            {
+            switch (id) {
+            case 1:
+            return "ggroupblack";
+            case 2:
+            return "gmilestone";
+            case 3:
+            return "ggroupblack";
+            case 4:
+            return "gtaskblue";
+            case 5:
+            return "gtaskred";
+            break;
+            case 6:
+            return "gtaskyellow";
+            case 7:
+            return "gtaskpurple";
+            case 8:
+            return "gtaskgreen";
+            default:
+            return "gtaskpink";
+            }
+            }
+    function getPieChart(id) {
+
+
+
+
+        $.ajax({ type: 'Get',
+               url: '@Url.Action("getGroupPie", "Analysis")',
+            timeout: 100000000,
+            data: { gid:id },
+            dataType: "json",
+            success: function (response) {
+                var dat = [];
+                var k = 0;
+                for (var i = 0; i < response.length; i++) {
+
+                    var name = response[i][0].Value;
+                    var v = response[i][1].Value;
+                    var arr = [name, v];
+                    dat.push(arr);
+                    //Object.assign(dat, [[name, v]]);
+                     k = k + 1;
+                }
+                var pie_chart = c3.generate({
+                    bindto: '#c3-pie-chart',
+                    size: { width: 350 },
+                    color: {
+                        pattern: ['#3F51B5', '#FF9800', '#4CAF50', '#00BCD4', '#F44336']
+                    },
+                    data: {
+                        columns: dat,
+                        type: 'pie'
+                    }
+                });
+                 },
+            error: function (data) {
+
+                $('.loading3').hide();
+                $('#curvechart_error').show();
+                $('#curve_chart').hide();
+            }
+            });
+    }
+
+
+    function getBarGraph(id) {
+
+
+
+
+        $.ajax({ type: 'Get',
+               url: '@Url.Action("getTickets", "Analysis")',
+            timeout: 100000000,
+            data: { gid:id },
+            dataType: "json",
+            success: function (response) {
+                var counts = [];
+                var dates = [];
+                dates.push('Tickets Closed');
+                counts.push('x');
+                var k = 0;
+                for (var i = 0; i < response.length; i++) {
+
+                    var date = response[i][1].Value;
+                    var count = response[i][0].Value;
+                    counts.push(count);
+                    dates.push(date);
+
+                    //Object.assign(dat, [[name, v]]);
+                     k = k + 1;
+                }
+                var cols = [];
+                cols.push(counts);
+                cols.push(dates);
+
+                var axis_tick_rotation = c3.generate({
+                    bindto: '#c3-axis-tick-rotation',
+                    size: { height: 325 },
+                    data: {
+                        x: 'x',
+                        columns: cols,
+                        type: 'bar'
+                    },
+                    color: {
+                        pattern: ['#00BCD4']
+                    },
+                    axis: {
+                        x: {
+                            type: 'category',
+                            tick: {
+                                rotate: 0
+                            },
+                            height: 80
+                        }
+                    },
+                    grid: {
+                        x: {
+                            show: false
+                        }
+                    }
+                });
+                 },
+            error: function (data) {
+
+                $('.loading3').hide();
+                $('#curvechart_error').show();
+                $('#curve_chart').hide();
+            }
+            });
+    }
+    function getDate(dateValue) {
+
+        var parts = dateValue.split('-');
+        // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
+        // January - 0, February - 1, etc.
+        return new Date(parts[0], parts[1] - 1, parts[2]);
+
+    }
+</script>
+
+<script>
+
+    var d = new Date();
+
+    var filename = document.getElementById("empname").value + " Analysis (" + (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + ").pdf";
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const analysis = this.document.getElementById("pdfholder");
+            console.log(analysis);
+            console.log(window);
+            var opt = {
+                margin: 0,
+                filename: String(filename),
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+            };
+            html2pdf().from(analysis).set(opt).save();
+        })
+
+</script>

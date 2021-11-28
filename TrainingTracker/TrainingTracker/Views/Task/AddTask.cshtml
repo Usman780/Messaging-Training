@@ -1,0 +1,1435 @@
+﻿@{
+    ViewBag.Title = "Task";
+    Layout = "~/Views/Shared/_Layout_withpdf.cshtml";
+}
+@using TrainingTracker.Models;
+@using TrainingTracker.Helper_Classes;
+@using TrainingTracker.HelpingClasses;
+@using TrainingTracker.BL;
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    List<Course> courses = new CourseBL().getCourseList();
+    Company Company = new CompanyBL().getCompanyById(Convert.ToInt32(logedinuser.Company));
+
+    string setupVar = "Set-Up";
+    if (logedinuser.Role == 3)
+    {
+        setupVar = "Task Set-Up";
+    }
+}
+
+<style>
+    #backbtn {
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+
+@{
+    if (ViewBag.Id != null && ViewBag.way == "")
+    {
+
+        Department depdiv = new DepartmentBL().getDepartmentsById(General_Purpose.DecryptId(ViewBag.Id));
+
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li><a href="@Url.Action("displayDivision","Utilities")">Division</a></li>
+                    <li><a href="@Url.Action("displayDivisionDetails","Utilities" , new { sid =General_Purpose.EncryptId(depdiv.Division.Id), page1="Division" })">@depdiv.Division.Name</a></li>
+
+                    <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = ViewBag.Id })">@depdiv.Name</a></li>
+                    <li class="active">Tasks</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = ViewBag.Id })">Back</a>
+        <br />
+    }
+    else if (ViewBag.Id != null && ViewBag.way == "setupDep")
+    {
+        Department depdiv = new DepartmentBL().getDepartmentsById(General_Purpose.DecryptId(ViewBag.Id));
+
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li><a href="@Url.Action("displayDepartment","Utilities")">Departments</a></li>
+                    <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = ViewBag.Id , way = ViewBag.way})">@depdiv.Name</a></li>
+                    <li class="active">Tasks</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = ViewBag.Id , way = ViewBag.way})">Back</a>
+        <br />
+    }
+    else
+    {
+        <!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">@setupVar</li>
+                    <li class="active">Tasks</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+
+    }
+}
+
+<div class="content">
+    @if (logedinuser.Role == 2 || logedinuser.Role == 4)
+    {
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <center> <h3 class="panel-title"><b>Create Task</b></h3></center>
+
+
+
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        @*<li>
+                                <a data-action="collapse"></a>
+                            </li>
+                            <li>
+                                <a data-action="reload"></a>
+                            </li>*@
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="panel-body">
+                <form class="form-horizontal form-validate-jquery" method="post" action="@Url.Action("AddTask", "Task")" enctype="multipart/form-data">
+                    <fieldset class="content-group">
+                        <legend class="text-bold">
+                            <span class="text-danger">*</span> Fields are Mandatory to Fill
+                        </legend>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">
+                                Task Name
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-4">
+                                <input type="text" name="Name" maxlength="49" onkeyup="VerifyTaskName()" id="taskname" class="form-control" required="required" placeholder="Please enter task name">
+                            </div>
+                            <label class="control-label col-lg-offset-1 col-lg-1 text-bold">
+                                CEUs
+
+                            </label>
+                            <div class="col-lg-4">
+                                <input type="number" min="0" step="0.01" maxlength="150" name="CEU" class="form-control" placeholder="Please enter CEUs">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">
+                                Task type
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-10">
+                                <select class="select" required="required" name="TaskTypeID">
+                                    <option selected disabled value="">Select Type</option>
+                                    @foreach (var item in ViewBag.taskTypes)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">
+                                Department
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-4">
+                                <select onchange="VerifyTaskName()" required class="select" id="DeptID" name="DepartmentId">
+                                    <option selected disabled value="">Select Department</option>
+                                    @foreach (var item in ViewBag.DepartmentNames)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+                            </div>
+                            @*<label class="control-label col-lg-1 col-lg-offset-1 text-bold">
+                                    Canvas Course
+
+                                </label>
+                                <div class="col-lg-4">
+                                    <select class="select-results-color" name="CourseId" id="CanvasCourseId">
+                                        <option value="">Select Canvas Course</option>
+                                        @if (ViewBag.canvascourses != null)
+                                        {
+                                            foreach (Course cr in ViewBag.canvascourses)
+                                            {
+                                                <option value="@cr.id">@cr.name</option>
+                                            }
+                                        }
+
+
+                                    </select>
+                                </div>*@
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">
+                                Cost ($)
+
+                            </label>
+                            <div class="col-lg-4">
+                                <input type="number" min="0" step="0.01" name="Cost_" class="form-control" placeholder="Please enter cost">
+                            </div>
+                            <label class="control-label col-lg-1 col-lg-offset-1 text-bold">
+                                Hours
+
+                            </label>
+                            <div class="col-lg-4">
+                                @*<input type="number" min="0" maxlength="9" name="Hours" class="form-control" placeholder="Please enter hours">*@
+                                <select class="select-results-color" name="Hours">
+                                    <option value="">Select Hours</option>
+                                    <option value="0.5">0.5</option>
+                                    <option value="1">1</option>
+                                    <option value="1.5">1.5</option>
+                                    <option value="2">2</option>
+                                    <option value="2.5">2.5</option>
+                                    <option value="3">3</option>
+                                    <option value="3.5">3.5</option>
+                                    <option value="4">4</option>
+                                    <option value="4.5">4.5</option>
+                                    <option value="5">5</option>
+                                    <option value="5.5">5.5</option>
+                                    <option value="6">6</option>
+                                    <option value="6.5">6.5</option>
+                                    <option value="7">7</option>
+                                    <option value="7.5">7.5</option>
+                                    <option value="8">8</option>
+                                    <option value="8.5">8.5</option>
+                                    <option value="9">9</option>
+                                    <option value="9.5">9.5</option>
+                                    <option value="10">10</option>
+                                    <option value="10.5">10.5</option>
+                                    <option value="11">11</option>
+                                    <option value="11.5">11.5</option>
+                                    <option value="12">12</option>
+                                    <option value="12.5">12.5</option>
+                                    <option value="13">13</option>
+                                    <option value="13.5">13.5</option>
+                                    <option value="14">14</option>
+                                    <option value="14.5">14.5</option>
+                                    <option value="15">15</option>
+                                    <option value="15.5">15.5</option>
+                                    <option value="16">16</option>
+                                    <option value="16.5">16.5</option>
+                                    <option value="17">17</option>
+                                    <option value="17.5">17.5</option>
+                                    <option value="18">18</option>
+                                    <option value="18.5">18.5</option>
+                                    <option value="19">19</option>
+                                    <option value="19.5">19.5</option>
+                                    <option value="20">20</option>
+                                    <option value="20.5">20.5</option>
+                                    <option value="21">21</option>
+                                    <option value="21.5">21.5</option>
+                                    <option value="22">22</option>
+                                    <option value="22.5">22.5</option>
+                                    <option value="23">23</option>
+                                    <option value="23.5">23.5</option>
+                                    <option value="24">24</option>
+                                    <option value="24.5">24.5</option>
+                                    <option value="25">25</option>
+                                    <option value="25.5">25.5</option>
+                                    <option value="26">26</option>
+                                    <option value="26.5">26.5</option>
+                                    <option value="27">27</option>
+                                    <option value="27.5">27.5</option>
+                                    <option value="28">28</option>
+                                    <option value="28.5">28.5</option>
+                                    <option value="29">29</option>
+                                    <option value="29.5">29.5</option>
+                                    <option value="30">30</option>
+                                    <option value="30.5">30.5</option>
+                                    <option value="31">31</option>
+                                    <option value="31.5">31.5</option>
+                                    <option value="32">32</option>
+                                    <option value="32.5">32.5</option>
+                                    <option value="33">33</option>
+                                    <option value="33.5">33.5</option>
+                                    <option value="34">34</option>
+                                    <option value="34.5">34.5</option>
+                                    <option value="35">35</option>
+                                    <option value="35.5">35.5</option>
+                                    <option value="36">36</option>
+                                    <option value="36.5">36.5</option>
+                                    <option value="37">37</option>
+                                    <option value="37.5">37.5</option>
+                                    <option value="38">38</option>
+                                    <option value="38.5">38.5</option>
+                                    <option value="39">39</option>
+                                    <option value="39.5">39.5</option>
+                                    <option value="40">40</option>
+                                    <option value="40.5">40.5</option>
+                                    <option value="41">41</option>
+                                    <option value="41.5">41.5</option>
+                                    <option value="42">42</option>
+                                    <option value="42.5">42.5</option>
+                                    <option value="43">43</option>
+                                    <option value="43.5">43.5</option>
+                                    <option value="44">44</option>
+                                    <option value="44.5">44.5</option>
+                                    <option value="45">45</option>
+                                    <option value="45.5">45.5</option>
+                                    <option value="46">46</option>
+                                    <option value="46.5">46.5</option>
+                                    <option value="47">47</option>
+                                    <option value="47.5">47.5</option>
+                                    <option value="48">48</option>
+                                    <option value="48.5">48.5</option>
+                                    <option value="49">49</option>
+                                    <option value="49.5">49.5</option>
+                                    <option value="50">50</option>
+
+
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">Description<span class="text-danger"></span></label>
+                            <div class="col-lg-10">
+                                <textarea rows="5" cols="5" maxlength="249" name="Description" class="form-control" placeholder="Enter Notes"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">Private</label>
+                            <div class="col-lg-4">
+                                <label class="switch">
+                                    <p style="margin-left:55px;">Yes</p>
+                                    <input type="checkbox" name="isPrivate">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 text-bold">File</label>
+                            <div class="col-lg-10">
+                                <input type="file" name="File" class="form-control" multiple="" />
+                                <br />
+                                <span class="text-danger"> Can select multiple files</span>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <div class="text-right formCheck">
+                        <span style="color:red" id="spanmsg"></span>
+                        <button type="submit" id="adminAssignBtn" class="btn  btn-sm  bg-primary">
+                            Submit
+                            <i class="icon-arrow-right14 position-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>List of Tasks</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+
+            </div>
+        </div>
+        <div class="" style="margin-left:20px;">
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+            <h3>Search: </h3>
+
+            <div class="form-group col-md-3">
+                <label>Task Name</label>
+                <input type="text" id="taskName" name="taskName" maxlength="150" class="form-control" value="" />
+            </div>
+            @*<div hidden class="form-group col-md-3">
+
+                <label>Division</label>
+                <input type="text" id="division" name="division" maxlength="150" class="form-control" value="" />
+            </div>
+            <div hidden class="form-group col-md-3">
+                <label>Department Name</label>
+                <input type="text" id="departmentName" name="departmentName" maxlength="150" class="form-control" value="" />
+            </div>*@
+            @if (logedinuser.Role == 1)
+            {
+                <div class="form-group col-md-3">
+
+                    <label>Division</label>
+                    <input type="text" id="division" name="division" maxlength="150" class="form-control" value="" />
+                </div>
+                @*<div hidden class="form-group col-md-3">
+                    <label>Department Name</label>
+                    <input type="text" id="departmentName" name="departmentName" maxlength="150" class="form-control" value="" />
+                </div>*@
+            }
+            @if (logedinuser.Role == 1 || logedinuser.Role == 2 || logedinuser.Role == 4)
+            {
+                @*<div hidden class="form-group col-md-3">
+
+                    <label>Division</label>
+                    <input type="text" id="division" name="division" maxlength="150" class="form-control" value="" />
+                </div>*@
+                <div class="form-group col-md-3">
+                    <label>Department Name</label>
+                    <input type="text" id="departmentName" name="departmentName" maxlength="150" class="form-control" value="" />
+                </div>
+            }
+            <div class="form-group col-md-3">
+                <input type="submit" value="Search" onclick="usersSearch()" class="btn btn-sm bg-primary-400 mt-30" id="myBtn" style="margin-top:25px;" />
+                <input type="button" value="Clear" onclick="clearSearch()" class="btn btn-sm bg-danger mt-30" id="myBtn" style="margin-top:25px;" />
+
+            </div>
+
+        </div>
+
+        <form>
+
+
+            @if (logedinuser.Role == 2 || logedinuser.Role == 4)
+            {
+                <div class="panel-body pull-right">
+
+                    @*<button  id="hello" class="btn btn-sm  btn-success">Group Selected</button>*@
+                    @*<button id="delButton" class="btn btn-sm  btn-danger">Delete Selected</button>*@
+
+                </div>
+            }
+
+            <div style="margin-top:20px;">
+
+
+
+                <br />
+                <input id="LoginRole" type="hidden" value="@ViewBag.role" />
+                <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            @*@if ((int)Session["Role"] == 2 || (int)Session["Role"] == 4)
+                                {
+                                    <th>Select</th>
+                                }*@
+                            <th>Task</th>
+                            <th>Division</th>
+                            <th>Cost ($)</th>
+                            <th>Hours</th>
+                            <th>CEUs</th>
+
+                            @if (logedinuser.Role != 1)
+                            {
+                                <th class="text-center">Action</th>
+                            }
+                            else
+                            {
+                                <th class="text-center">Action</th>
+                            }
+                        </tr>
+                    </thead>
+                    @*<tbody>
+                            @{
+                                int i = 0;
+                                foreach (Task item in ViewBag.task)
+                                {
+
+                                    <tr>
+                                        @if ((int)Session["Role"] == 2 || (int)Session["Role"] == 4)
+                                        {
+                                            <td>
+                                                <input type="checkbox" class="messageCheckbox" id="check @item.Id" value="@item.Id" name="@item.Name" />
+                                            </td>
+                                        }
+                                        <td><a href="@Url.Action("taskDisplay", "Task", new { v = StringCipher.Base64Encode(item.Id.ToString()) })">@item.Name</a></td>
+                                        <td>
+                                            @if (item.Division != null)
+                                            {
+                                                @item.Division.Name
+                                            }
+                                        </td>
+                                        <td>@item.Cost_</td>
+                                        <td>@item.Hours</td>
+                                        <td>
+                                            @item.CEU
+                                        </td>
+                                        <td>
+                                            @if ((int)Session["Role"] == 2 || (int)Session["Role"] == 4)
+                                            {
+                                                <a class="btn btn-sm  btn-success" href="@Url.Action("displayUpdateAction", "Task", new { sid = HttpUtility.UrlEncode(General_Purpose.Encrypt(item.Id ))})">
+                                                    <i class="icon-pencil"></i>
+                                                </a>
+                                            }
+
+
+                                            <a onclick="
+                            ('@item.Id','@item.CEU','@item.Hours','@item.Description','@item.Cost_')" data-toggle="modal" class="btn btn-sm  bg-secondary">Assign Yourself</a>
+
+
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            }
+
+                        </tbody>*@
+                </table>
+            </div>
+        </form>
+    </div>
+    <!-- /basic initialization -->
+</div>
+
+<div id="modal-login" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+            <div class="modal-header bg-primary">
+                <h1>Please select the group</h1>
+            </div>
+            <!-- Form -->
+            <form class="modal-body form-horizontal" action="@Url.Action("updateGroupTask","Task")" method="post">
+                <select class="select" name="id">
+                    <option disabled selected>Select Group</option>
+                    @{
+                        foreach (var item in ViewBag.groupTask)
+                        {
+                            <option value="@item.Id"> @item.Name</option>
+                        }
+                    }
+                </select>
+                <br />
+                <br />
+                <div id="data"></div>
+                <div class="form-group">
+                    <button type="submit" id="sbbutton" class="btn btn-sm  bg-primary btn-block">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+            <!-- /form -->
+        </div>
+    </div>
+</div>
+
+<div id="deleteTaskModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="modal-body " action="@Url.Action("DeleteTaskNew", "Task")" method="post">
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="glyphicon glyphicon-remove text-danger"></i></div>
+                    <h5 class="content-group">Are you sure you want to delete the task? <small class="display-block"></small></h5>
+                </div>
+                <label class="text-danger text-bold">* Once you have deleted the task, All the assignments of this task will be gone permanently.</label>
+                <input type="hidden" id="taskId" name="TaskId" />
+               
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">No</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Yes</button>
+
+
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="modal-delete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+            <!-- Form -->
+            <form class="modal-body " action="@Url.Action("deleteTask","Task")" method="post">
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Are You Sure ? <small class="display-block"></small></h5>
+                </div>
+                <div id="datadelete"></div>
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">Close</button>
+                    <button type="submit" id="sbbutton1" class="btn btn-sm  btn-danger">Submit</button>
+                    <br />
+                    <br />
+                    <p style="color:red" id="delmessg" class="content-group"></p>
+                </center>
+            </form>
+            <!-- /form -->
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn  btn-sm  btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="AssignTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("assignTome","Task")" id="a2me" method="post">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign Task</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="taskId" id="a2metaskId" />
+                    <input type="hidden" name="way" value="@ViewBag.way" />
+                    <input type="hidden" name="sid" value="@ViewBag.Id" />
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"><b>Cost ($)</b></label>
+                        <div class="col-lg-10">
+                            <input type="number" maxlength="9" class="form-control" name="Cost" id="cost">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"><b>CEU's</b></label>
+                        <div class="col-lg-10">
+                            <input type="number" class="form-control" maxlength="9" name="CEU" id="ceu">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"><b> Hours</b></label>
+                        <div class="col-lg-10">
+                            @*<input type="number" class="form-control" name="hours" id="hours">*@
+                            <select class="select-results-color" name="hours" id="hours">
+                                <option value="">Select Hours</option>
+                                <option value="0.5">0.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="14">14</option>
+                                <option value="14.5">14.5</option>
+                                <option value="15">15</option>
+                                <option value="15.5">15.5</option>
+                                <option value="16">16</option>
+                                <option value="16.5">16.5</option>
+                                <option value="17">17</option>
+                                <option value="17.5">17.5</option>
+                                <option value="18">18</option>
+                                <option value="18.5">18.5</option>
+                                <option value="19">19</option>
+                                <option value="19.5">19.5</option>
+                                <option value="20">20</option>
+                                <option value="20.5">20.5</option>
+                                <option value="21">21</option>
+                                <option value="21.5">21.5</option>
+                                <option value="22">22</option>
+                                <option value="22.5">22.5</option>
+                                <option value="23">23</option>
+                                <option value="23.5">23.5</option>
+                                <option value="24">24</option>
+                                <option value="24.5">24.5</option>
+                                <option value="25">25</option>
+                                <option value="25.5">25.5</option>
+                                <option value="26">26</option>
+                                <option value="26.5">26.5</option>
+                                <option value="27">27</option>
+                                <option value="27.5">27.5</option>
+                                <option value="28">28</option>
+                                <option value="28.5">28.5</option>
+                                <option value="29">29</option>
+                                <option value="29.5">29.5</option>
+                                <option value="30">30</option>
+                                <option value="30.5">30.5</option>
+                                <option value="31">31</option>
+                                <option value="31.5">31.5</option>
+                                <option value="32">32</option>
+                                <option value="32.5">32.5</option>
+                                <option value="33">33</option>
+                                <option value="33.5">33.5</option>
+                                <option value="34">34</option>
+                                <option value="34.5">34.5</option>
+                                <option value="35">35</option>
+                                <option value="35.5">35.5</option>
+                                <option value="36">36</option>
+                                <option value="36.5">36.5</option>
+                                <option value="37">37</option>
+                                <option value="37.5">37.5</option>
+                                <option value="38">38</option>
+                                <option value="38.5">38.5</option>
+                                <option value="39">39</option>
+                                <option value="39.5">39.5</option>
+                                <option value="40">40</option>
+                                <option value="40.5">40.5</option>
+                                <option value="41">41</option>
+                                <option value="41.5">41.5</option>
+                                <option value="42">42</option>
+                                <option value="42.5">42.5</option>
+                                <option value="43">43</option>
+                                <option value="43.5">43.5</option>
+                                <option value="44">44</option>
+                                <option value="44.5">44.5</option>
+                                <option value="45">45</option>
+                                <option value="45.5">45.5</option>
+                                <option value="46">46</option>
+                                <option value="46.5">46.5</option>
+                                <option value="47">47</option>
+                                <option value="47.5">47.5</option>
+                                <option value="48">48</option>
+                                <option value="48.5">48.5</option>
+                                <option value="49">49</option>
+                                <option value="49.5">49.5</option>
+                                <option value="50">50</option>
+
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div id="MyTaskGradeDiv" class="form-group">
+                        <label class="col-lg-2 control-label"><b>Grade (%)</b></label>
+                        <div class="col-lg-10">
+                            <input type="number"  class="form-control" min="0" max="100" name="Grad" id="Grad">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"><b>Notes</b></label>
+                        <div class="col-lg-10">
+                            <textarea class="form-control" maxlength="249" name="Notes" id="notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"><b>Priority</b></label>
+                        <div class="col-lg-10">
+                            <select class="select" name="Priority">
+                                <option value="0" selected>Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        <label class="col-lg-2 control-label"><b>Private</b></label>
+                        <div class="col-lg-10">
+                            <input type="checkbox" name="IsPrivate"> Yes
+                        </div>
+                    </div>*@
+                    @if (Company.IsLMS == 1)
+                    {
+                        <div id="" class="form-group">
+                            <label class="col-lg-2 control-label"><span class="text-danger"></span><b>Course</b></label>
+                            <div class="col-lg-10">
+                                <select class="select-results-color" onchange="CheckMyTaskSCORMCourse()" name="CanvasCourseId" id="CourseId">
+                                    <option value="">Select Course</option>
+
+                                    @foreach (Course cr in courses)
+                                    {
+                                        if (cr.IsScorm == 1)
+                                        {
+                                            <option id="@cr.Id" value="@cr.Id">@cr.Name</option>
+
+                                        }
+                                        else
+                                        {
+
+                                            <option value="@cr.Id">@cr.Name</option>
+                                        }
+                                    }
+
+
+
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label class="col-lg-2 control-label"><b>Start Date</b> <span style="color: red;">*</span></label>
+                        <div class="col-lg-10">
+                            <input type="date" class="form-control" name="StartDate" id="StartDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"><b>End Date</b></label>
+                        <div class="col-lg-4 ">
+                            <input type="date" required class="form-control" onchange="checkDates()" name="EndDate" id="EndDate">
+                        </div>
+                        <label class="col-lg-2 control-label"><b>End Time</b></label>
+                        <div class="col-lg-4">
+                            <input id="timepicker1" type="text" name="Time" maxlength="150" class="form-control input-small">
+                        </div>
+                    </div>
+                    <p class="text-center">OR</p>
+                    <fieldset>
+                        <legend>Frequency</legend>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><b>Frequency</b></label>
+                            <div class="col-lg-9">
+                                <input type="radio" id="radiotype1" name="days" value="1" onclick="setYourReminderOption(this.value)" /> Every Day<br />
+                                <input type="radio" id="radiotype2"  name="days" value="2" onclick="setYourReminderOption(this.value)" /> Every Week<br />
+                                <input type="radio" id="radiotype3"  name="days" value="3" onclick="setYourReminderOption(this.value)" /> Every Month<br />
+                                <input type="radio" id="radiotype4"  name="days" value="4" onclick="setYourReminderOption(this.value)" /> Every Year<br />
+                                <input type="radio" id="radiotype5"  name="days" value="5" onclick="setYourReminderOption(this.value)" /> Every 2 Years<br />
+                                <input type="radio" id="radiotype6"  name="days" value="6" onclick="setYourReminderOption(this.value)" /> Custom<br />
+                                <input type="radio" id="radiotype-1" checked name="days" value="-1" onclick="setYourReminderOption(this.value)" /> None <br />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><b>Custom Frequency</b></label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" name="freqDays" id="freqDays" maxlength="150" onkeyup="setCustomYourReminderOption(this.value)" placeholder="Days">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency Ending Date:</label>
+                            <div class="col-lg-9">
+
+
+                                <input type="date" id="FeqEndingDate" name="FeqEndingDate" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Set Reminder</legend>
+                        <div class="form-group col-md-12" id="DReminder">
+                            <label class="col-lg-3 control-label">Reminder: </label>
+                            <div class="col-lg-9">
+                                <select class="select" name="DReminder" id="yourDailyReminder">
+                                    @*<option selected value="@ViewBag.currentStatus">@General_Purpose.getStatusValue((int)ViewBag.currentStatus)</option>*@
+                                    <option value="">Select Type</option>
+                                    <option value="1">Daily</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <label id="errorDisplay" class="control-label text-danger" hidden> No Employee Selected !  </label>
+                    <button type="button" class="btn  btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="sbButton" class="btn  btn-sm  bg-secondary" onclick="checkValues()"> Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function VerifyTaskName() {
+        var newtasname = $("#taskname").val();
+        var dept = $("#DeptID").val();
+        if (newtasname != "" && newtasname != null) {
+            var isexist = true;
+            $.ajax({
+                type: 'POST',
+                url: "../task/VerifyTaskName",
+                data: {
+                    TaskName: newtasname,
+                    DepartmentID: dept,
+
+                },
+                dataType: "json",
+                success: function (data) {
+                    var w = "Hello";
+                    if (data == true) {
+                        $("#spanmsg").text("Task Name already exists.");
+                        $("#adminAssignBtn").attr("disabled", true);
+                        isexist = false;
+                    } else {
+                        $("#spanmsg").text("");
+                        $("#adminAssignBtn").attr("disabled", false);
+                        isexist = true;
+                    }
+                },
+                error: function () { alert('error'); }
+            });
+            // setTimeout(
+            //     function () {
+            //         //do something special
+            //// alert( isexist);
+
+            //     }, 2000);
+        }
+    }
+</script>
+
+<script>
+
+    var input1 = document.getElementById("taskName");
+input1.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("myBtn").click();
+  }
+});
+
+    var input2 = document.getElementById("division");
+input2.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("myBtn").click();
+  }
+});
+
+    var input3 = document.getElementById("departmentName");
+input3.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("myBtn").click();
+  }
+});
+
+    function clearSearch() {
+        $("#taskName").val("");
+        $("#division").val("");
+        $("#departmentName").val("");
+
+        usersSearch();
+    }
+         //Entries Search
+        function usersSearch() {
+
+            //var taskName = document.getElementById("taskName").value;
+            var taskName = $("#taskName").val();
+            //var division = document.getElementById("division").value;
+            var division = $("#division").val();
+            //var departmentName = document.getElementById("departmentName").value;
+            var departmentName = $("#departmentName").val();
+            var sid = "@ViewBag.Id";
+            var ww = "@ViewBag.way";
+
+              $("#wait").css("display", "block");
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: '@Url.Action("GetTaskBySearch", "Task")',
+                contentType: "application/json; charset=utf-8",
+                data: { taskName: taskName, division: division, departmentName: departmentName, Sid: sid, way: ww },
+                success: function (response) {
+
+                    $("#example > tbody").html("");
+                    var i = 0;
+                    var trobject = "";
+                    $.each(response, function () {
+                        if (response[i].IsActive == 11)
+                        {
+                            //trobject = '<tr><td>' + response[i].Name + '</td><td>' + response[i].DivisionName +
+                            //    '</td><td>' + response[i].Cost + '</td><td>' + response[i].Hours + '</td><td>' + response[i].CEU +
+                            //    '</td><td><a class="btn btn-sm  btn-success" href="../Task/displayUpdateAction?sid=' + response[i].EncryptedId + '">' +
+                            //    ' <i class="icon-pencil"></i>' +
+                            //    ' </a><a onclick="assignTaskToMe(' + response[i].Id + ',\'' + response[i].CEU + '\',\'' + response[i].Hours + '\',\'' + response[i].Description + '\',\'' + response[i].Cost + '\')" data-toggle="modal" class="btn btn-sm  bg-secondary">Assign Yourself</a></td>';
+
+                            var v = '@ViewBag.Id';
+                            var way = '@ViewBag.way';
+
+                            trobject = '<tr><td>' + response[i].Name + '</td><td>' + response[i].DivisionName +
+                                '</td><td>' + response[i].Cost + '</td><td>' + response[i].Hours + '</td><td>' + response[i].CEU +
+                                '</td><td>' +
+                                '<ul class="icons-list text-center">' +
+                                '<li class="dropdown">' +
+                                '	<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                '		<i class="icon-menu9"></i>' +
+                                '	</a>' +
+                                '	<ul class="dropdown-menu dropdown-menu-right">' +
+                                '		<li><a onclick="assignTaskToMe(' + response[i].Id + ',\'' + response[i].CEU + '\',\'' + response[i].Hours + '\',\'' + response[i].Description + '\',\'' + response[i].Cost + '\')" data-toggle="modal" ><i class="icon-checkmark-circle"></i> Assign Yourself </a></li>' +
+                                '		<li><a href="../Task/displayUpdateAction?sid=' + response[i].EncryptedId + '&v='+v+'&way='+way+'"><i class="icon-square-up-right"></i> Update</a></li>' +
+                                '	</ul>' +
+                                '</li>' +
+                                '</ul>'
+                                + '</td > ';
+
+                        }
+                        else
+                        {
+                            //trobject = '<tr><td>' + response[i].Name + '</td><td>' + response[i].DivisionName +
+                                //'</td><td>' + response[i].Cost + '</td><td>' + response[i].Hours + '</td><td>' + response[i].CEU +
+                                //'</td><td><a onclick="assignTaskToMe(' + response[i].Id + ',\'' + response[i].CEU + '\',\'' + response[i].Hours + '\',\'' + response[i].Description + '\',\'' + response[i].Cost + '\')" data-toggle="modal" class="btn btn-sm  bg-secondary">Assign Yourself</a></td>';
+
+                            trobject = '<tr><td>' + response[i].Name + '</td><td>' + response[i].DivisionName +
+                                '</td><td>' + response[i].Cost + '</td><td>' + response[i].Hours + '</td><td>' + response[i].CEU +
+                                '</td><td>' +
+                                '<ul class="icons-list text-center">' +
+                                '<li class="dropdown">' +
+                                '	<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                '		<i class="icon-menu9"></i>' +
+                                '	</a>' +
+                                '	<ul class="dropdown-menu dropdown-menu-right">' +
+                                '		<li><a onclick="assignTaskToMe(' + response[i].Id + ',\'' + response[i].CEU + '\',\'' + response[i].Hours + '\',\'' + response[i].Description + '\',\'' + response[i].Cost + '\')" data-toggle="modal" ><i class="icon-checkmark-circle"></i> Assign Yourself </a></li>' +
+                                '	</ul>' +
+                                '</li>' +
+                                '</ul>'
+                                + '</td>';
+
+                        }
+                            trobject = trobject + '</tr>';
+                            $('#example > tbody:last-child').append(trobject);
+                            i++;
+                    });
+                      $("#wait").css("display", "none");
+                },
+                error: function (response) {
+                    alert('Error');
+                      $("#wait").css("display", "none");
+                }
+            });
+        }
+</script>
+
+
+<script>
+
+
+    $(document).ready(function () {
+
+        var sid = "@ViewBag.Id";
+        var ww = "@ViewBag.way";
+        var t = document.getElementById("LoginRole").value;
+        @*if (t == 2) {
+
+                 $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetdisplayAddTask","Task")',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+
+                "columns": [
+                    { "data": "FirstName", "name": "FirstName" },
+                    { "data": "Name", "name": "Name" },
+                    { "data": "DivisionName", "name": "DivisionName" },
+                    { "data": "Cost", "name": "Cost" },
+                    { "data": "Hours", "name": "Hours" },
+                    { "data": "CEU", "name": "CEU" },
+                    ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                    //{ "data": "Email", "name": "Email", "visible": false },
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+                        //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                        render: function (data, type, full, meta) {
+                            //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                            if (full.IsActive == 11) {
+                                return  '<a class="btn btn-sm  btn-success" href="../Task/displayUpdateAction?sid=' + full.EncryptedId + '">'+
+                                               ' <i class="icon-pencil"></i>'+
+                                           ' </a>'+
+
+                                    ' <a onclick="assignTaskToMe('+full.Id+',\''+full.CEU+'\',\''+full.Hours+'\',\''+full.Description+'\',\''+full.Cost+'\')" data-toggle="modal" class="btn btn-sm  bg-secondary">Assign Yourself</a>';
+
+
+
+                            } else {
+                                return  ' <a onclick="assignTaskToMe('+full.Id+',\''+full.CEU+'\',\''+full.Hours+'\',\''+full.Description+'\',\''+full.Cost+'\')" data-toggle="modal" class="btn btn-sm  bg-secondary">Assign Yourself</a>';
+
+                            }
+                        },
+                        targets: 6
+                    }
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                }
+            })
+
+        }*@ /*else {*/
+           $("#wait").css("display", "block");
+            $('#example').DataTable(
+                {
+                    "ajax": {
+                        "url": '@Url.Action("GetdisplayAddTask","Task")',
+                        "type": "GET",
+                        "datatype": "json",
+                        "data": { Sid: sid, way: ww }
+                    },
+
+                    "columns": [
+                        { "data": "Name", "name": "Name" },
+                        { "data": "DivisionName", "name": "DivisionName" },
+                        { "data": "Cost", "name": "Cost" },
+                        { "data": "Hours", "name": "Hours" },
+                        { "data": "CEU", "name": "CEU" },
+                        ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                        //{ "data": "Email", "name": "Email", "visible": false },
+                        { "data": "Id", "name": "Id" },
+                    ],
+
+                    'columnDefs': [
+                        {
+                            //'<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+
+                            render: function (data, type, full, meta)
+                            {
+                                //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                                if (full.IsActive == 11)
+                                {
+                                    //return '<a class="btn btn-sm  btn-success" href="../Task/displayUpdateAction?sid=' + full.EncryptedId + '">' +
+                                    //    ' <i class="icon-pencil"></i>' +
+                                    //    ' </a>' +
+
+                                    //    ' <a onclick="assignTaskToMe(' + full.Id + ',\'' + full.CEU + '\',\'' + full.Hours + '\',\'' + full.Description + '\',\'' + full.Cost + '\')" data-toggle="modal" class="btn btn-sm  bg-secondary">Assign Yourself</a>';
+
+                                    var v = '@ViewBag.Id';
+                                    var way = '@ViewBag.way';
+
+                                    return '<ul class="icons-list text-center">' +
+                                        '<li class="dropdown">' +
+                                        '	<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                        '		<i class="icon-menu9"></i>' +
+                                        '	</a>' +
+                                        '	<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '		<li><a onclick="assignTaskToMe(' + full.Id + ',\'' + full.CEU + '\',\'' + full.Hours + '\',\'' + full.Description + '\',\'' + full.Cost + '\')" data-toggle="modal" ><i class="icon-checkmark-circle"></i> Assign Yourself </a></li>' +
+                                        '		<li><a href="../Task/displayUpdateAction?sid=' + full.EncryptedId + '&v=' + v + '&way=' + way + '"><i class="icon-square-up-right"></i> Update</a></li>' +
+                                        '       <li><a class="text-danger" onclick="deleteTask(' + full.Id + ')"><i class="glyphicon glyphicon-trash"></i> Delete </a></li>'+
+                                        '	</ul>' +
+                                        '</li>' +
+                                        '</ul>';
+
+                                }
+                                else
+                                {
+                                    //return ' <a onclick="assignTaskToMe(' + full.Id + ',\'' + full.CEU + '\',\'' + full.Hours + '\',\'' + full.Description + '\',\'' + full.Cost + '\')" data-toggle="modal" class="btn btn-sm  bg-secondary">Assign Yourself</a>';
+
+                                    return '<ul class="icons-list text-center">' +
+                                        '<li class="dropdown">' +
+                                        '	<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                        '		<i class="icon-menu9"></i>' +
+                                        '	</a>' +
+                                        '	<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '		<li><a onclick="assignTaskToMe(' + full.Id + ',\'' + full.CEU + '\',\'' + full.Hours + '\',\'' + full.Description + '\',\'' + full.Cost + '\')" data-toggle="modal" ><i class="icon-checkmark-circle"></i> Assign Yourself </a></li>' +
+                                        '	</ul>' +
+                                        '</li>' +
+                                        '</ul>';
+                                }
+                            },
+                            targets: 5
+                        }
+                    ],
+
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language":
+                    {
+                        "processing": "Processing... Please wait"
+                    },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+                })
+
+        //}
+    });
+
+
+    function deleteTask(id) {
+        $('#taskId').val(id);
+        $('#deleteTaskModal').modal("show");
+    }
+
+</script>
+
+
+<script type="text/javascript">
+    $('#timepicker1').timepicker();
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //var NotyJgrowl = function () {
+        //
+        // Setup module components
+        //
+        // Noty.js examples
+        var _componentNoty = function () {
+            if (typeof Noty == 'undefined') {
+                console.warn('Warning - noty.min.js is not loaded.');
+                return;
+            }
+            // Override Noty defaults
+            Noty.overrideDefaults({
+                theme: 'limitless',
+                layout: 'topRight',
+                type: 'alert',
+                timeout: 5000
+            });
+            alert("Baby I am in!");
+            new Noty({
+                text: 'Hello World',
+                type: 'error'
+            }).show();
+        };
+        //  }
+    });
+    $('#hello').on('click', function (e) {
+        $('#data').empty();
+        e.preventDefault();
+        var data = '';
+        var count = 0;
+        var checkedValue = null;
+        var inputElements = document.getElementsByClassName('messageCheckbox');
+        for (var i = 0; inputElements[i]; ++i) {
+            if (inputElements[i].checked) {
+                data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+                count = count + 1;
+                break;
+            }
+        }
+        if (count == 0) {
+            $('#sbbutton').attr('disabled', true);
+
+        }
+        else {
+            $('#sbbutton').attr('disabled', false);
+        }
+        $('#data').append(data);
+        $('#modal-login').modal("show"); // open the modal
+    });
+    $('#delButton').on('click', function (e) {
+        $('#datadelete').empty();
+        e.preventDefault();
+        var data = '';
+        var count = 0;
+        var checkedValue = null;
+        var inputElements = document.getElementsByClassName('messageCheckbox');
+        for (var i = 0; inputElements[i]; i++) {
+            if (inputElements[i].checked) {
+                data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+                count = count + 1;
+            }
+        }
+        if (count == 0) {
+            $('#sbbutton1').attr('disabled', true);
+            $("#delmessg").text("First Select the Task to Delete");
+        }
+        else {
+            $('#sbbutton1').attr('disabled', false);
+            $("#delmessg").text("");
+        }
+        $('#datadelete').append(data);
+        $('#modal-delete').modal("show"); // open the modal
+    });
+    function assignTaskToMe(taskId, ceu = '', hours = '', notes = '', cost = '') {
+        $('#a2metaskId').val(taskId);
+        $('#cost').val(cost);
+        $('#hours').val(hours).change();
+        $('#notes').val(notes);
+        $('#ceu').val(ceu);
+        $('#AssignTask').modal("show");
+    }
+    function checkDates() {
+        var startDate = document.getElementById("StartDate").value;
+        var endDate = document.getElementById("EndDate").value;
+        if ((Date.parse(startDate) > Date.parse(endDate))) {
+            scope2 = 0;
+            $('#errorDisplay').text("End date should be greater than Start date")
+            $('#errorDisplay').show();
+            $('#sbButton').attr('disabled', true);
+            document.getElementById("EndDate").value = "";
+        }
+        else {
+            $('#errorDisplay').hide();
+            $('#sbButton').attr('disabled', false);
+        }
+    }
+    function CheckMyTaskSCORMCourse() {
+        var val = $("#CourseId").val();
+
+
+        var val2 = $("#" + val + "").val();
+        if (val == val2) {
+            $("#Grade").val("");
+            $("#Grade").attr("required", false);
+            // $("#GradeSpan").text("");
+            $("#MyTaskGradeDiv").hide();
+
+        } else {
+            $("#MyTaskGradeDiv").show();
+            //$("#grpGrade").attr("required", true);
+            //   $("#GradeSpan").text("*");
+
+        }
+    }
+    function checkValues() {
+
+        if ($("#radiotype6").prop("checked") == true) {
+
+            $('#freqDays').prop("required", true);
+
+
+            var fdays = $('#freqDays').val();
+            if (fdays == "") {
+                $('#errorDisplay').text("Please Set Frequency");
+                $('#errorDisplay').show();
+                return false;
+            }
+
+        }
+        else {
+            $('#freqDays').prop("required", false);
+            $('#errorDisplay').hide();
+
+        }
+
+        var employeeCId = $('#CourseId').val();
+        var employeeGrade = $('#Grad').val();
+        if (employeeCId != "" && employeeGrade == "" && $('#MyTaskGradeDiv').css('display') != 'none') {
+            $('#Grad').prop("required", true);
+            $('#errorDisplay').text("Grad field must have value");
+            $('#errorDisplay').show();
+            return false;
+        } else {
+            $("#Grad").prop("required", false);
+            $('#errorDisplay').text("");
+            $('#errorDisplay').hide();
+        }
+
+        var isRepeat = false;
+        //if ($('input[type=radio]:checked').size() > 0) {
+        //    isRepeat = true;
+        //    $("EndDate").prop('required', false);
+        //}
+        //else $("EndDate").prop('required', true);
+        $("input[type=radio]").each(function () {
+            if (this.checked == true) {
+                isRepeat = true;
+                $("endDate").prop('required', true);
+                return false;
+            }
+        });
+        if (isRepeat == false) {
+            if (!Date.parse($('#EndDate').val())) {
+                $('#errorDisplay').text("Select End Date or Repeat Frequency !")
+                $('#errorDisplay').show();
+                $('#sbButton').prop("type", "button");
+            }
+            else {
+                $('#sbButton').prop("type", "submit");
+                $("#tarsbButtonget").click();
+            }
+        }
+        else {
+            $('#sbButton').prop("type", "submit");
+            $("#tarsbButtonget").click();
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#Tasks").css('background-color', '#0150A1');
+        $("#Tasks").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+    });
+</script>
+
+<script>
+    //Work Done by Waqas, to handle reminders dynamically on the basis of frequency selection
+    function setYourReminderOption(freq) {
+
+        if (freq == -1) {
+
+            $("#FeqEndingDate").attr("required", false);
+            $("#EndDate").attr("required", true);
+            //$("#Espanmsg").text("Frequency ending date is required");
+        } else {
+            $("#EndDate").attr("required", false);
+
+            $("#FeqEndingDate").attr("required", true);
+
+
+        }
+
+        if (freq == 1 || freq == -1 || freq == 6) {
+            $('#yourDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>')
+           
+        }
+
+        if (freq == 2) {
+            $('#yourDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option>')
+        }
+
+        if (freq == 3 || freq == 4 || freq == 5) {
+            $('#yourDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option> <option value="3">Monthly</option>')
+        }
+    }
+
+    function setCustomYourReminderOption(day) {
+        if (day > 0 && day < 7) {
+            $('#yourDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>');
+        }
+        else if (day > 6 && day < 31) {
+            $('#yourDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option>');
+        }
+        else if (day > 30) {
+            $('#yourDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option> <option value="3">Monthly</option>');
+        }
+    }
+</script>

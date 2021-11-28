@@ -1,0 +1,29 @@
+2019-12-05 12:58:12,894 INFO MonitoringLogger - Loged Into Zuptu
+2019-12-05 13:02:17,481 INFO MonitoringLogger - Update Manger Page
+2019-12-05 13:02:17,822 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2019-12-05 13:02:19,282 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2019-12-05 13:02:55,480 INFO MonitoringLogger - BlobManager function started
+2019-12-05 13:04:45,733 INFO MonitoringLogger - BlobManager function started
+2019-12-05 13:05:06,830 INFO MonitoringLogger - Update Manger Page
+2019-12-05 13:05:07,173 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2019-12-05 13:05:08,570 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2019-12-05 13:30:52,819 INFO MonitoringLogger - Task Details Page
+2019-12-05 13:52:39,602 INFO MonitoringLogger - Update Employee Page...
+2019-12-05 13:52:40,713 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 
+2019-12-05 13:53:56,608 INFO MonitoringLogger - Task Details Page
+2019-12-05 13:53:58,456 INFO MonitoringLogger - BlobManager function started
+2019-12-05 13:54:00,779 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-05 13:54:03,869 INFO MonitoringLogger - Comment's ParentID : 313
+2019-12-05 13:54:03,869 INFO MonitoringLogger - Comment's ParentID : 313
+2019-12-05 13:54:03,870 INFO MonitoringLogger - Comment's ParentID : 313
+2019-12-05 13:54:03,870 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-05 13:54:33,742 INFO MonitoringLogger - Task Details Page
+2019-12-05 13:54:35,571 INFO MonitoringLogger - BlobManager function started
+2019-12-05 13:54:36,574 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-05 13:54:39,656 INFO MonitoringLogger - Comment's ParentID : 313
+2019-12-05 13:54:39,656 INFO MonitoringLogger - Comment's ParentID : 313
+2019-12-05 13:54:39,656 INFO MonitoringLogger - Comment's ParentID : 313
+2019-12-05 13:54:39,656 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-05 13:54:40,353 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-05 13:54:56,192 INFO MonitoringLogger - Update Employee Page...
+2019-12-05 13:54:57,266 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: 

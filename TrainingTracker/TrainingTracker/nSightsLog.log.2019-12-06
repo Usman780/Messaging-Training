@@ -1,0 +1,112 @@
+2019-12-06 12:43:45,998 INFO MonitoringLogger - Loged Into Zuptu
+2019-12-06 14:43:56,126 INFO MonitoringLogger - Update Manger Page
+2019-12-06 14:43:56,470 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2019-12-06 14:43:57,895 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2019-12-06 14:45:04,038 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:45:12,949 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:45:22,546 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:45:53,221 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:46:38,251 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:47:21,594 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 14:47:21,595 INFO MonitoringLogger - Child Comment ID : 347
+2019-12-06 14:47:21,596 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  347
+2019-12-06 14:47:21,596 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 347
+2019-12-06 14:47:27,582 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:51:09,334 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:52:07,187 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:53:16,202 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 14:53:16,202 INFO MonitoringLogger - Child Comment ID : 346
+2019-12-06 14:53:16,202 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  346
+2019-12-06 14:53:16,202 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 346
+2019-12-06 14:53:22,046 INFO MonitoringLogger - BlobManager function started
+2019-12-06 14:54:21,135 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:04:31,321 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 15:04:31,321 INFO MonitoringLogger - Child Comment ID : -1
+2019-12-06 15:04:31,321 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2019-12-06 15:04:37,190 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:08:00,501 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 15:08:00,501 INFO MonitoringLogger - Child Comment ID : -1
+2019-12-06 15:08:00,501 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:08:03,603 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2019-12-06 15:08:08,883 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:08:56,899 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 15:08:56,899 INFO MonitoringLogger - Child Comment ID : -1
+2019-12-06 15:08:56,899 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:08:59,978 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2019-12-06 15:09:07,084 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:14:34,172 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:26:41,928 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:32:48,144 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:33:51,315 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:35:56,157 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:37:53,123 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:38:15,163 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:39:39,581 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:41:28,966 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:42:40,634 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:45:28,578 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:49:10,618 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 15:49:10,618 INFO MonitoringLogger - Child Comment ID : -1
+2019-12-06 15:49:10,618 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2019-12-06 15:49:17,478 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:49:30,045 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:49:33,172 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:49:34,232 INFO MonitoringLogger - Task Details Page
+2019-12-06 15:49:36,295 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:49:37,313 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-06 15:49:38,369 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-06 15:51:06,696 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:51:12,761 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:55:02,423 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:57:39,530 INFO MonitoringLogger - BlobManager function started
+2019-12-06 15:58:54,277 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:02:14,064 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:03:28,465 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:04:48,355 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 16:04:48,355 INFO MonitoringLogger - Child Comment ID : 392
+2019-12-06 16:04:48,355 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  392
+2019-12-06 16:04:48,355 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 392
+2019-12-06 16:04:53,895 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:07:05,520 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:07:07,112 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 16:07:07,112 INFO MonitoringLogger - Child Comment ID : -1
+2019-12-06 16:07:07,112 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2019-12-06 16:07:13,936 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:08:21,094 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:09:35,222 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:10:39,074 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:15:12,318 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:15:46,789 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:16:06,586 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:17:38,054 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:17:55,710 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:19:57,213 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:20:55,978 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:26:49,126 INFO MonitoringLogger - Task Details Page
+2019-12-06 16:26:49,484 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:28:21,438 INFO MonitoringLogger - Task Details Page
+2019-12-06 16:28:21,785 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:28:23,174 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-06 16:29:00,716 INFO MonitoringLogger - Task Details Page
+2019-12-06 16:29:01,085 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:29:03,438 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-06 16:29:04,730 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-06 16:30:15,803 INFO MonitoringLogger - Task Details Page
+2019-12-06 16:30:16,155 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:30:17,193 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-06 16:30:18,344 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-06 16:30:19,056 INFO MonitoringLogger - Comment's ParentID : 
+2019-12-06 16:33:13,826 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:33:16,915 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:35:00,559 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 16:35:00,559 INFO MonitoringLogger - Child Comment ID : -1
+2019-12-06 16:35:00,559 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2019-12-06 16:35:06,627 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:37:26,565 INFO MonitoringLogger - Add Group Task Comment Function
+2019-12-06 16:37:26,566 INFO MonitoringLogger - Child Comment ID : 396
+2019-12-06 16:37:26,566 INFO MonitoringLogger - Parent Comment ID after set into the ParentID  396
+2019-12-06 16:37:26,566 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 396
+2019-12-06 16:37:32,590 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:39:59,944 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:43:16,416 INFO MonitoringLogger - BlobManager function started
+2019-12-06 16:43:37,978 INFO MonitoringLogger - BlobManager function started

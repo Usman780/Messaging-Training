@@ -1,0 +1,72 @@
+2020-02-24 11:17:02,490 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-24 11:18:10,634 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-24 11:18:10,660 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-24 11:18:10,665 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-24 11:18:10,670 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-24-2--11-18-10.pdf
+2020-02-24 11:19:14,374 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-24 11:19:14,380 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-24 11:19:14,382 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-24 11:19:14,385 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-24-2--11-19-14.pdf
+2020-02-24 11:19:41,002 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-24 11:19:41,009 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-24 11:19:41,012 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-24 11:19:41,014 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-24-2--11-19-41.pdf
+2020-02-24 11:24:44,754 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-24 11:24:44,817 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-24 11:24:44,822 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-24 11:24:44,827 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-24-2--11-24-30.pdf
+2020-02-24 14:06:10,930 INFO MonitoringLogger - Task Details Page
+2020-02-24 14:06:11,799 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:06:40,225 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-24 14:06:52,213 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-24 14:07:34,928 INFO MonitoringLogger - Task Details Page
+2020-02-24 14:07:35,277 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:08:08,362 INFO MonitoringLogger - Task Details Page
+2020-02-24 14:08:08,701 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:08:57,647 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:08:59,484 INFO MonitoringLogger - Task Details Page
+2020-02-24 14:08:59,813 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:10:47,684 INFO MonitoringLogger - Task Details Page
+2020-02-24 14:10:48,015 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:12:29,951 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:12:33,783 INFO MonitoringLogger - Task Details Page
+2020-02-24 14:12:34,180 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:12:35,169 INFO MonitoringLogger - Comment's ParentID : 
+2020-02-24 14:23:42,981 INFO MonitoringLogger - Task Details Page
+2020-02-24 14:23:43,978 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:23:48,771 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:23:51,812 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:24:30,039 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:24:54,910 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:24:57,395 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:25:17,576 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:25:21,035 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:25:24,075 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:25:32,496 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:27:50,559 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:28:36,675 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:28:39,435 INFO MonitoringLogger - BlobManager function started
+2020-02-24 14:43:32,943 INFO MonitoringLogger - Nodlays Logedout from Zuptu
+2020-02-24 14:43:44,158 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-24 14:53:27,603 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-24 14:54:48,956 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-24 14:56:37,150 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-24 14:56:46,109 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-24 14:58:25,630 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-24 14:59:15,360 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-24 15:05:01,182 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-24 15:39:11,302 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-24 15:39:21,104 INFO MonitoringLogger - Muhammed Loged Into Zuptu
+2020-02-24 15:42:32,083 INFO MonitoringLogger - BlobManager function started
+2020-02-24 15:45:37,338 INFO MonitoringLogger - Muhammed Logedout from Zuptu
+2020-02-24 15:45:47,429 INFO MonitoringLogger - Ali Loged Into Zuptu
+2020-02-24 15:47:24,934 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-24 15:47:25,058 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-24 15:47:25,075 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-24 15:47:25,080 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Department2020-24-2--15-47-11.pdf
+2020-02-24 16:22:28,855 INFO MonitoringLogger - Ali Logedout from Zuptu
+2020-02-24 16:22:40,625 INFO MonitoringLogger - Nodlays Loged Into Zuptu
+2020-02-24 16:23:25,535 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-02-24 16:23:25,541 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-02-24 16:23:25,545 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-02-24 16:23:25,550 INFO MonitoringLogger - D:\Dot_Net_Projects\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Division2020-24-2--16-23-25.pdf

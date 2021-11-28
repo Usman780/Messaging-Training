@@ -1,0 +1,639 @@
+﻿
+@{
+    ViewBag.Title = "Task";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.BL;
+@using TrainingTracker.HelpingClasses
+@model TrainingTracker.Models.Task
+@using TrainingTracker.Models;
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+}
+<style>
+    #backbtn {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+@{
+    Department d = new Department();
+    Department d2 = new Department();
+
+    if (ViewBag.deptId != null)
+    {
+        d = new DepartmentBL().getDepartmentsById(General_Purpose.DecryptId(ViewBag.deptId));
+    }
+    if (ViewBag.Id != null && ViewBag.Id != "")
+    {
+        d2 = new DepartmentBL().getDepartmentsById(General_Purpose.DecryptId(ViewBag.Id));
+    }
+
+}
+
+@if (ViewBag.deptId != null && ViewBag.way != "setupDep")
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("displayDivision", "Utilities")">Division</a></li>
+                <li><a href="@Url.Action("displayDivisionDetails", "Utilities", new { sid = General_Purpose.EncryptId(Convert.ToInt32(d.DivisionID)), page1 = "Division" })">@d.Division.Name</a></li>
+                <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = General_Purpose.EncryptId(d.Id) })">@d.Name</a></li>
+                <li class="active">@ViewBag.obj.Name</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = ViewBag.deptId })">Back</a>
+}
+else if ((ViewBag.Id != null && ViewBag.Id != "") && ViewBag.way != "setupDep")
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("displayDivision", "Utilities")">Division</a></li>
+                <li><a href="@Url.Action("displayDivisionDetails", "Utilities", new { sid = General_Purpose.EncryptId(Convert.ToInt32(d2.DivisionID)), page1 = "Division" })">@d2.Division.Name</a></li>
+                <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = General_Purpose.EncryptId(d2.Id) })">@d2.Name</a></li>
+                <li><a href="@Url.Action("displayAddTask", "Task", new { sid = ViewBag.Id })">Tasks</a></li>
+                <li class="active">@ViewBag.obj.Name</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayAddTask", "Task", new { sid = ViewBag.Id })">Back</a>
+}
+else if (ViewBag.way == "setupDep")
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("displayDepartment", "Utilities")">Departments</a></li>
+                <li><a href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = General_Purpose.EncryptId(d.Id), way = ViewBag.way })">@d.Name</a></li>
+                <li class="active">@ViewBag.obj.Name</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayDepartmentDetails", "Utilities", new { sid = General_Purpose.EncryptId(d.Id), way = ViewBag.way })">Back</a>
+}
+else
+{
+    <!--Bread Crumb line-->
+    <div class="bg-white">
+        <div class="breadcrumb-line">
+            <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Set-Up</li>
+                <li><a href="@Url.Action("displayAddTask", "Task")">Tasks</a></li>
+                <li class="active">@ViewBag.obj.Name</li>
+            </ul>
+        </div>
+    </div>
+    <!--Bread Crumb line-->
+    <br />
+    <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayAddTask", "Task")">Back</a>
+}
+<br />
+<br />
+
+
+
+<div class="content">
+    <div class="panel panel-flat">
+
+        <center><h5 style="color: darkblue;">@ViewBag.msg</h5></center>
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Update Task</b></h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-horizontal form-validate-jquery" method="post" action="@Url.Action("updateTask", "Task")" enctype="multipart/form-data">
+                <fieldset class="content-group">
+                    <legend class="text-bold">
+                        <span class="text-danger">*</span> Fields are Mandatory to Fill
+                    </legend>
+
+                    <input type="hidden" name="deptId" value="@ViewBag.deptId" />
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 text-bold">
+                            Task Name
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="text" value="@ViewBag.obj.Name" name="Name" class="form-control" maxlength="150" placeholder="Please enter task name" required>
+                        </div>
+                        <label class="control-label col-lg-2 text-bold">
+                            CEUs
+
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="number" min="0" step="0.01" name="CEU" value="@ViewBag.obj.CEU" class="form-control" maxlength="150" placeholder="Please enter CEUs">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 text-bold">
+                            Task Type
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-4">
+                            <select class="select" name="TaskTypeId" required>
+                                @if (ViewBag.currentTask != null)
+                                {
+                                    <option selected value="@ViewBag.currentTask.Id"> @ViewBag.currentTask.Name</option>
+                                    foreach (var task in ViewBag.taskTypes)
+                                    {
+                                        if (task.Id != ViewBag.currentTask.Id)
+                                        {
+                                            <option value="@task.Id">@task.Name</option>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <option selected value=""> Please Select Task Type</option>
+                                    foreach (var task in ViewBag.taskTypes)
+                                    {
+
+                                        <option value="@task.Id">@task.Name</option>
+
+                                    }
+                                }
+
+
+
+                            </select>
+                        </div>
+                        <label class="control-label col-lg-2 text-bold">
+                            Cost ($)
+
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="number" min="0" step="0.01" name="Cost_" value="@ViewBag.obj.Cost_" class="form-control" maxlength="150" placeholder="Please enter cost">
+                        </div>
+                    </div>
+                    @if ((ViewBag.deptId != null))
+                    {
+                        <input type="hidden" name="DepartmentId" value="@General_Purpose.DecryptId(ViewBag.deptId)" />
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @if (logedinuser.Role == 1)
+                            {
+                                <label class="control-label col-lg-2 text-bold">
+                                    Department &nbsp; (Division-Department)
+                                    <span class="text-danger">*</span>
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="control-label col-lg-2 text-bold">
+                                    Department
+                                    <span class="text-danger">*</span>
+                                </label>
+                            }
+
+                            <div class="col-lg-10">
+                                <select class="form-control" name="DepartmentId">
+                                    @if (ViewBag.Department != null)
+                                    {
+                                        if (logedinuser.Role == 1)
+                                        {
+                                            <option selected value="@ViewBag.Department.Id">@ViewBag.Department.Division.Name - @ViewBag.Department.Name</option>
+
+                                        }
+                                        else
+                                        {
+                                            <option selected value="@ViewBag.Department.Id">@ViewBag.Department.Name</option>
+
+                                        }
+
+                                        foreach (Department chec in ViewBag.departments)
+                                        {
+
+                                            if (chec.Id != ViewBag.Department.Id)
+                                            {
+                                                if (logedinuser.Role == 1)
+                                                {
+                                                    <option value="@chec.Id">@chec.Division.Name - @chec.Name</option>
+
+                                                }
+                                                else
+                                                {
+                                                    <option value="@chec.Id"> @chec.Name</option>
+
+                                                }
+                                            }
+                                        }
+                                        <option disabled>Select a Department</option>
+
+                                    }
+                                    else
+                                    {
+                                        <option selected disabled>Select a Department</option>
+
+                                        foreach (var chec in ViewBag.departments)
+                                        {
+                                            if (logedinuser.Role == 1)
+                                            {
+                                                <option value="@chec.Id"> @chec.Name</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@chec.Id"> @chec.Name</option>
+
+                                            }
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form-group">
+
+                        <label class="control-label col-lg-2 text-bold">
+                            Hours
+
+                        </label>
+                        <div class="col-lg-4">
+                            <input type="hidden" id="hoursval" min="0" value="@ViewBag.obj.Hours" class="form-control" placeholder="Please enter hours">
+                            <select class="select-results-color" name="Hours" id="hours">
+
+                                <option value="">Select Hours</option>
+                                <option value="0.5">0.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="14">14</option>
+                                <option value="14.5">14.5</option>
+                                <option value="15">15</option>
+                                <option value="15.5">15.5</option>
+                                <option value="16">16</option>
+                                <option value="16.5">16.5</option>
+                                <option value="17">17</option>
+                                <option value="17.5">17.5</option>
+                                <option value="18">18</option>
+                                <option value="18.5">18.5</option>
+                                <option value="19">19</option>
+                                <option value="19.5">19.5</option>
+                                <option value="20">20</option>
+                                <option value="20.5">20.5</option>
+                                <option value="21">21</option>
+                                <option value="21.5">21.5</option>
+                                <option value="22">22</option>
+                                <option value="22.5">22.5</option>
+                                <option value="23">23</option>
+                                <option value="23.5">23.5</option>
+                                <option value="24">24</option>
+                                <option value="24.5">24.5</option>
+                                <option value="25">25</option>
+                                <option value="25.5">25.5</option>
+                                <option value="26">26</option>
+                                <option value="26.5">26.5</option>
+                                <option value="27">27</option>
+                                <option value="27.5">27.5</option>
+                                <option value="28">28</option>
+                                <option value="28.5">28.5</option>
+                                <option value="29">29</option>
+                                <option value="29.5">29.5</option>
+                                <option value="30">30</option>
+                                <option value="30.5">30.5</option>
+                                <option value="31">31</option>
+                                <option value="31.5">31.5</option>
+                                <option value="32">32</option>
+                                <option value="32.5">32.5</option>
+                                <option value="33">33</option>
+                                <option value="33.5">33.5</option>
+                                <option value="34">34</option>
+                                <option value="34.5">34.5</option>
+                                <option value="35">35</option>
+                                <option value="35.5">35.5</option>
+                                <option value="36">36</option>
+                                <option value="36.5">36.5</option>
+                                <option value="37">37</option>
+                                <option value="37.5">37.5</option>
+                                <option value="38">38</option>
+                                <option value="38.5">38.5</option>
+                                <option value="39">39</option>
+                                <option value="39.5">39.5</option>
+                                <option value="40">40</option>
+                                <option value="40.5">40.5</option>
+                                <option value="41">41</option>
+                                <option value="41.5">41.5</option>
+                                <option value="42">42</option>
+                                <option value="42.5">42.5</option>
+                                <option value="43">43</option>
+                                <option value="43.5">43.5</option>
+                                <option value="44">44</option>
+                                <option value="44.5">44.5</option>
+                                <option value="45">45</option>
+                                <option value="45.5">45.5</option>
+                                <option value="46">46</option>
+                                <option value="46.5">46.5</option>
+                                <option value="47">47</option>
+                                <option value="47.5">47.5</option>
+                                <option value="48">48</option>
+                                <option value="48.5">48.5</option>
+                                <option value="49">49</option>
+                                <option value="49.5">49.5</option>
+                                <option value="50">50</option>
+
+
+
+                            </select>
+                        </div>
+
+                        @*<label class="control-label col-lg-2 text-bold">
+                                Canvas Course
+
+                            </label>*@
+                        @*<div class="col-lg-4">
+                                <select class="select-results-color" name="CourseId" id="CanvasCourseId">
+                                    <option value="">Select Canvas Course</option>
+                                    @foreach (Course cr in ViewBag.canvascourses)
+                                    {
+                                        if (ViewBag.obj.CourseId == cr.id)
+                                        {
+                                            <option value="@cr.id" selected>@cr.name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@cr.id">@cr.name</option>
+                                        }
+
+                                    }
+
+                                </select>
+                            </div>*@
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2 text-bold">Description<span class="text-danger"></span></label>
+                        <div class="col-lg-10">
+                            <input type="hidden" value="@ViewBag.obj.Id" name="Id" />
+                            <input type="hidden" value="@ViewBag.obj.IsPrivate" name="isPrivate" />
+                            <input type="hidden" value="@ViewBag.Id" name="deptId" />
+                            <input type="hidden" value="@ViewBag.way" name="way" />
+
+                            <textarea rows="5" cols="5" name="Description" class="form-control" placeholder="Enter Notes"> @ViewBag.obj.Description</textarea>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <div class="text-right formCheck">
+
+                    <button type="submit" class="btn btn-sm  bg-primary">
+                        Update
+                        <i class="icon-arrow-right14 position-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title">Task File</h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>  <a data-toggle="modal" href="#modal-file" class="btn btn-sm  bg-primary btn-block text-white">Upload New File</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <h4>List of Task Files</h4>
+
+
+            <div class="">
+                <table class="table datatable-button-html5-basic">
+
+                    <thead>
+                        <tr>
+
+
+                            
+                            <th>File Name</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+
+                            foreach (TrainingTracker.Models.TaskFile item in Model.TaskFiles)
+                            {
+
+                                <tr>
+
+
+
+                                    <td>@item.Name </td>
+
+                                    <td>
+                                        <a style="margin-top:2px;" class="btn btn-sm  bg-secondary" href="@Url.Action("download","Trainee", new {filePath=item.Path,name=item.Name })"> Download </a>
+                                        @*<a class="btn btn-sm  bg-danger" href="@Url.Action("deleteTaskFile", "Task", new { fileId =item.Id, deptId=ViewBag.deptId, taskId=Model.Id, way = ViewBag.way })"> Delete </a>*@
+                                        <a class="btn btn-sm  bg-danger" href="@Url.Action("deleteTaskFile", "Task", new { fileId =item.Id, deptId=ViewBag.deptId, taskId=Model.Id, way = ViewBag.way })"> Delete </a>
+                                    </td>
+
+                                </tr>
+                            }
+
+
+
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="modal-file" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content login-form">
+
+            <!-- Form -->
+            <form class="modal-body" method="post" action="@Url.Action("uploadTaskFile","Task")" enctype="multipart/form-data">
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group">Upload Document <small class="display-block"></small></h5>
+                </div>
+
+
+                <input type="hidden" name="deptId" value="@ViewBag.deptId" />
+                <input type="hidden" name="taskId" value="@Model.Id" />
+                <input type="hidden" name="way" value="@ViewBag.way" />
+                <div class="form-group has-feedback has-feedback-left">
+                    <input type="file" name="file123" class="file-styled" required>
+
+                </div>
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn  btn-sm bg-danger">Cancel</button>
+
+                    <button type="submit" id="submit" class="btn  btn-sm bg-primary">Upload <i class="icon-arrow-right14 position-right"></i></button>
+                </center>
+            </form>
+
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var hr = $('#hoursval').val();
+    $('#hours').val(hr).change();
+
+    $('#hello').on('click', function (e) {
+        $('#data').empty();
+        e.preventDefault();
+        var data = '';
+        var count = 0;
+        var checkedValue = null;
+        var inputElements = document.getElementsByClassName('messageCheckbox');
+        for (var i = 0; inputElements[i]; ++i) {
+            if (inputElements[i].checked) {
+                data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+                alert(inputElements[i].value);
+                count = count + 1;
+                break;
+            }
+        }
+        if (count == 0) {
+            $('#sbbutton').attr('disabled', true);
+        }
+        else {
+            $('#sbbutton').attr('disabled', false);
+        }
+        $('#data').append(data);
+
+        //var x = document.getElementById("checkingValue");
+        //alert(x.value)
+
+        //for (i = 0; i < x; i++) {
+        //    alert(document.getElementById("check " + i).value)
+        //}
+        //alert(document.getElementById("checkingValue").innerText)
+        //        alert("Hello Mister");
+
+
+
+
+        //var aValue= $('#aValue').val(); //grab the value
+        // $('#HIDDEN_INPUT').val(aValue); //set this is has hidden value in the form
+        $('#modal-login').modal("show"); // open the modal
+    });
+
+
+
+    $('#delButton').on('click', function (e) {
+        $('#datadelete').empty();
+        e.preventDefault();
+        var data = '';
+        var count = 0;
+        var checkedValue = null;
+        var inputElements = document.getElementsByClassName('messageCheckbox');
+        for (var i = 0; inputElements[i]; ++i) {
+            if (inputElements[i].checked) {
+                data = data + '<input type="hidden" name="' + inputElements[i].value + '"  value="' + inputElements[i].value + '">';
+                alert(inputElements[i].value);
+                count = count + 1;
+                break;
+            }
+        }
+        if (count == 0) {
+            $('#sbbutton1').attr('disabled', true);
+        }
+        else {
+            $('#sbbutton1').attr('disabled', false);
+        }
+        $('#datadelete').append(data);
+
+        //var x = document.getElementById("checkingValue");
+        //alert(x.value)
+
+        //for (i = 0; i < x; i++) {
+        //    alert(document.getElementById("check " + i).value)
+        //}
+        //alert(document.getElementById("checkingValue").innerText)
+        //        alert("Hello Mister");
+
+
+
+
+        //var aValue= $('#aValue').val(); //grab the value
+        // $('#HIDDEN_INPUT').val(aValue); //set this is has hidden value in the form
+        $('#modal-delete').modal("show"); // open the modal
+    });
+    function ggg() {
+        $('#ttt').prop('disabled', true);
+
+        $('#fvid').val(-11);
+    }
+</script>

@@ -1,0 +1,155 @@
+2020-01-07 00:00:44,509 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 00:00:44,517 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 00:00:44,517 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 00:09:12,074 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-07 00:12:08,082 INFO MonitoringLogger -  Logedout from Zuptu
+2020-01-07 00:12:33,170 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-07 00:20:05,894 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 00:20:05,894 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 00:20:05,895 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 00:20:21,123 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Manager2020-07-1--00-20-02.pdf
+2020-01-07 00:26:56,250 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-07 00:27:19,055 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-07 00:29:01,422 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 00:29:01,423 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 00:29:01,424 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 00:29:20,879 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Manager2020-07-1--00-28-56.pdf
+2020-01-07 00:38:54,986 INFO MonitoringLogger - Uzair Logedout from Zuptu
+2020-01-07 00:39:12,368 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-07 00:40:04,795 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 00:40:04,796 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 00:40:04,798 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 00:40:08,360 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Manager2020-07-1--00-40-02.pdf
+2020-01-07 01:13:53,253 INFO MonitoringLogger - Update Manger Page
+2020-01-07 01:13:54,033 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2020-01-07 01:13:55,572 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-01-07 01:17:34,911 INFO MonitoringLogger - Hussnain Loged Into Zuptu
+2020-01-07 01:18:34,108 INFO MonitoringLogger - Hussnain Loged Into Zuptu
+2020-01-07 01:19:26,276 INFO MonitoringLogger - Update Employee Page...
+2020-01-07 01:19:27,704 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: demoemployee2@zuptu.com
+2020-01-07 01:20:21,789 INFO MonitoringLogger - Update Employee Page...
+2020-01-07 01:20:23,681 INFO MonitoringLogger - Employees's Canvas Login Mail Retreived from Database: tcarritt@isocaptllc.com
+2020-01-07 01:20:46,942 INFO MonitoringLogger - Task Details Page
+2020-01-07 01:20:47,312 INFO MonitoringLogger - BlobManager function started
+2020-01-07 01:20:52,955 INFO MonitoringLogger - Task Details Page
+2020-01-07 01:20:53,444 INFO MonitoringLogger - BlobManager function started
+2020-01-07 01:35:33,089 INFO MonitoringLogger - Hussnain Loged Into Zuptu
+2020-01-07 01:38:06,715 INFO MonitoringLogger - Hussnain Loged Into Zuptu
+2020-01-07 01:39:12,578 INFO MonitoringLogger - Task Details Page
+2020-01-07 01:39:14,346 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:36:53,280 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:37:19,459 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:37:23,575 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:37:23,998 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:37:24,486 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:37:25,295 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:37:32,466 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-07 14:37:32,467 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-07 14:37:32,469 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-07 14:37:52,955 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:39:16,286 INFO MonitoringLogger - Uzair Loged Into Zuptu
+2020-01-07 14:40:07,139 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:40:13,180 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:40:13,180 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:40:16,459 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:40:37,668 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-07 14:40:37,668 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-07 14:40:37,668 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-07 14:40:57,249 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:42:21,928 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-07 14:42:21,928 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-07 14:42:21,928 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-07 14:46:08,507 INFO MonitoringLogger - Hussnain Loged Into Zuptu
+2020-01-07 14:47:04,245 INFO MonitoringLogger - Hussnain Loged Into Zuptu
+2020-01-07 14:47:09,997 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:47:10,370 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:47:11,237 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:47:11,730 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:47:17,104 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:47:24,225 INFO MonitoringLogger - Update Manger Page
+2020-01-07 14:47:24,876 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2020-01-07 14:47:34,942 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-01-07 14:47:57,715 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-07 14:47:57,715 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-07 14:47:57,715 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-07 14:48:27,399 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:48:28,867 INFO MonitoringLogger - UpdateManagerAction Function Starting...
+2020-01-07 14:48:28,867 INFO MonitoringLogger - Canvas Login Mail Recieved from Update Manager Page:
+2020-01-07 14:48:28,867 INFO MonitoringLogger - Set Canvas Login Mail to Manager Info Object.
+2020-01-07 14:48:29,290 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:48:29,855 INFO MonitoringLogger - Canvas Login Mail updating Manager's info to Database: 
+2020-01-07 14:48:31,871 INFO MonitoringLogger - Update Manger Page
+2020-01-07 14:48:32,557 INFO MonitoringLogger - Canvas LogIn Mail retreived from Datbase: 
+2020-01-07 14:48:34,280 INFO MonitoringLogger - Manager's info sending to Update Manager Page
+2020-01-07 14:48:48,753 INFO MonitoringLogger - Add Group Task Comment Function
+2020-01-07 14:48:48,753 INFO MonitoringLogger - Child Comment ID : -1
+2020-01-07 14:48:48,753 INFO MonitoringLogger - Reply Comment Parent ID before update into DB: 
+2020-01-07 14:50:06,279 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:55:20,106 INFO MonitoringLogger - BlobManager function started
+2020-01-07 14:55:22,177 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:02:38,034 INFO MonitoringLogger - Hussnain Loged Into Zuptu
+2020-01-07 15:03:16,836 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:17,653 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:17,998 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:18,880 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:19,615 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:20,990 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:23,199 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:24,699 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:26,440 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:28,096 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:28,589 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:03:30,524 INFO MonitoringLogger - BlobManager function started
+2020-01-07 15:06:37,810 INFO MonitoringLogger - BlobManager function started
+2020-01-07 17:21:01,586 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 17:21:01,597 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 17:21:01,599 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 17:21:01,601 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Department2020-07-1--17-21-01.pdf
+2020-01-07 17:23:17,986 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 17:23:17,993 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 17:23:17,995 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 17:23:26,941 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Department2020-07-1--17-23-17.pdf
+2020-01-07 17:25:42,554 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 17:25:42,562 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 17:25:42,563 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 17:25:43,659 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Department2020-07-1--17-25-35.pdf
+2020-01-07 17:43:57,706 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 17:43:57,718 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 17:43:57,719 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 17:43:57,721 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--17-43-57.pdf
+2020-01-07 17:45:29,638 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 17:45:29,638 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 17:45:29,638 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 17:45:29,638 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--17-45-29.pdf
+2020-01-07 17:45:54,432 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 17:45:54,432 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 17:45:54,432 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 17:45:55,235 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Department2020-07-1--17-45-52.pdf
+2020-01-07 17:54:40,484 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 17:54:40,492 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 17:54:40,494 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 17:54:40,495 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--17-54-40.pdf
+2020-01-07 17:56:48,648 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 17:56:48,658 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 17:56:48,659 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 17:56:48,661 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--17-56-48.pdf
+2020-01-07 18:15:51,131 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 18:15:51,143 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 18:15:51,144 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 18:15:51,147 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--18-15-51.pdf
+2020-01-07 18:16:13,763 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 18:16:13,763 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 18:16:13,763 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 18:16:13,763 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--18-16-13.pdf
+2020-01-07 18:18:17,983 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 18:18:17,997 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 18:18:17,998 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 18:18:18,000 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--18-18-17.pdf
+2020-01-07 18:18:37,682 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 18:18:37,682 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 18:18:37,682 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 18:18:37,682 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--18-18-37.pdf
+2020-01-07 18:24:28,407 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-01-07 18:24:28,418 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-01-07 18:24:28,419 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-01-07 18:24:28,421 INFO MonitoringLogger - E:\Azure Projects\Zuptu (Azure)\Zuptu.App\TrainingTracker\\Content\Backup\Division2020-07-1--18-24-28.pdf

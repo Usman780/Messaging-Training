@@ -1,0 +1,2346 @@
+﻿
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using TrainingTracker.BL
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.Models
+
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    User loggedInUser = new UserBL().getUsersById(logedinuser.Id);
+}
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active">Administrator</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+
+<div id="AssignAdminTask" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" novalidate id="assignTask" onsubmit="return frequencyCheck()" action="@Url.Action("assigntaskAdmin", "Task")" method="post">
+
+                <input type="hidden" name="adminId" id="AdminID" />
+                <input type="hidden" name="" id="AdminID2" />
+                <input type="hidden" name="vqa" value="True" />
+
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign Task</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"><span class="text-danger">*</span>Divisions</label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required="required" onchange="setAdminDivisionValues()" name="divisionId" id="selectAdminDivision"></select>
+                        </div>
+                    </div>
+                    <br />
+                    @*<div id="WorkerTypeField" class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger"></span>Worker Type</label>
+                            <div class="col-lg-9">
+                                <select style="border-color:black" multiple="multiple" data-placeholder="Select Work Types" class="select-size-lg" required="required" onchange="setAdminWorkTypevalue()" name="WorktypeId" id="selectAdminWorktype"></select>
+                            </div>
+                        </div>*@
+
+                    <br />
+                    <div id="DepartmentField" class="form-group">
+                        <label class="col-lg-3 control-label"><span class="text-danger">*</span>Departments</label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required="required" onchange="setAdminDepartmentValues()" name="departmentId" id="selectAdminDepartment"></select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"><span class="text-danger">*</span>Tasks</label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" required onchange="setAdminTaskValues()" name="taskId" id="selectAdminTask"></select>
+                        </div>
+                    </div>
+                    <br />
+                    <div style="display:none" id="assignnewtask">
+                        <br />
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger">*</span>Task Name</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" name="newtaskname" maxlength="150" id="newtaskname">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:none" id="assigntasktype">
+                        <br />
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger">*</span>Task Types</label>
+                            <div class="col-lg-9">
+                                <select required class="select-results-color" onchange="setnewtasktypevalues()" name="newtasktype" id="newtasktype"></select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="display:none" id="assignnewtasktypename">
+                        <br />
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger">*</span>Task Type Name</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" name="newtasktypename" maxlength="150" id="newtasktypename">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:none" id="assignmanager">
+                        <br />
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger">*</span>Managers</label>
+                            <div class="col-lg-9">
+                                <select class="select-results-color" onchange="setAdminUserValues()" name="managerId" id="selectAdminManager"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:none" id="assignemployee">
+                        <br />
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger">*</span>Employees</label>
+                            <div class="col-lg-9">
+                                <select class="select-results-color" onchange="setAdminUserValues()" name="employeeId" id="selectAdminEmployee"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Priority</label>
+                        <div class="col-lg-9">
+                            <select class="select" name="priority">
+
+                                <option value="0" selected>Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label class="col-lg-2 control-label"><b>Start Date</b> <span style="color: red;">*</span></label>
+                        <div class="col-lg-4">
+                            <input type="date" class="form-control" onchange="checkDates()" name="StartDate" id="StartDate" required>
+                        </div>
+                        <label class="col-lg-2 control-label"><b>End Date</b></label>
+                        <div class="col-lg-4 ">
+                            <input type="date" class="form-control" onchange="checkDates()" name="EndDate" id="EndDate">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <label class="col-lg-2 control-label"><b>End Date</b></label>
+                            <div class="col-lg-4 ">
+                                <input type="date" class="form-control" onchange="checkDates()" name="EndDate" id="EndDate">
+                            </div>
+                            <label class="col-lg-2 control-label"><b>End Time</b></label>
+                            <div class="col-lg-4">
+                                <input id="timepicker1" type="text" name="Time" maxlength="150" class="form-control input-small">
+                            </div>
+                        </div>*@
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Cost ($)</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="Cost" maxlength="150" id="cost">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">CEU's</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="CEU" maxlength="150" id="ceu">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Hours </label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" name="hours" id="hours">
+                                <option value="">Select Hours</option>
+                                <option value="0.5">0.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="14">14</option>
+                                <option value="14.5">14.5</option>
+                                <option value="15">15</option>
+                                <option value="15.5">15.5</option>
+                                <option value="16">16</option>
+                                <option value="16.5">16.5</option>
+                                <option value="17">17</option>
+                                <option value="17.5">17.5</option>
+                                <option value="18">18</option>
+                                <option value="18.5">18.5</option>
+                                <option value="19">19</option>
+                                <option value="19.5">19.5</option>
+                                <option value="20">20</option>
+                                <option value="20.5">20.5</option>
+                                <option value="21">21</option>
+                                <option value="21.5">21.5</option>
+                                <option value="22">22</option>
+                                <option value="22.5">22.5</option>
+                                <option value="23">23</option>
+                                <option value="23.5">23.5</option>
+                                <option value="24">24</option>
+                                <option value="24.5">24.5</option>
+                                <option value="25">25</option>
+                                <option value="25.5">25.5</option>
+                                <option value="26">26</option>
+                                <option value="26.5">26.5</option>
+                                <option value="27">27</option>
+                                <option value="27.5">27.5</option>
+                                <option value="28">28</option>
+                                <option value="28.5">28.5</option>
+                                <option value="29">29</option>
+                                <option value="29.5">29.5</option>
+                                <option value="30">30</option>
+                                <option value="30.5">30.5</option>
+                                <option value="31">31</option>
+                                <option value="31.5">31.5</option>
+                                <option value="32">32</option>
+                                <option value="32.5">32.5</option>
+                                <option value="33">33</option>
+                                <option value="33.5">33.5</option>
+                                <option value="34">34</option>
+                                <option value="34.5">34.5</option>
+                                <option value="35">35</option>
+                                <option value="35.5">35.5</option>
+                                <option value="36">36</option>
+                                <option value="36.5">36.5</option>
+                                <option value="37">37</option>
+                                <option value="37.5">37.5</option>
+                                <option value="38">38</option>
+                                <option value="38.5">38.5</option>
+                                <option value="39">39</option>
+                                <option value="39.5">39.5</option>
+                                <option value="40">40</option>
+                                <option value="40.5">40.5</option>
+                                <option value="41">41</option>
+                                <option value="41.5">41.5</option>
+                                <option value="42">42</option>
+                                <option value="42.5">42.5</option>
+                                <option value="43">43</option>
+                                <option value="43.5">43.5</option>
+                                <option value="44">44</option>
+                                <option value="44.5">44.5</option>
+                                <option value="45">45</option>
+                                <option value="45.5">45.5</option>
+                                <option value="46">46</option>
+                                <option value="46.5">46.5</option>
+                                <option value="47">47</option>
+                                <option value="47.5">47.5</option>
+                                <option value="48">48</option>
+                                <option value="48.5">48.5</option>
+                                <option value="49">49</option>
+                                <option value="49.5">49.5</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="AdminTaskGradeDiv" class="form-group">
+                        <label class="col-lg-3 control-label">Grade (%)</label>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" min="0" max="100" maxlength="150" name="Grad" id="Grade">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Notes</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" name="Notes" id="notes" maxlength="500"></textarea>
+                        </div>
+                    </div>
+
+                    @*<div id="Course" class="form-group">
+                            <label class="col-lg-3 control-label"><span class="text-danger"></span>Canvas Course</label>
+                            <div class="col-lg-9">
+                                <select class="select-results-color" name="CanvasCourseId" id="CanvasCourseId">
+                                    <option value="">Select Canvas Course</option>
+                                    @if (ViewBag.canvascourses != null)
+                                    {
+                                        foreach (Course cr in ViewBag.canvascourses)
+                                        {
+                                            <option value="@cr.id">@cr.name</option>
+                                        }
+                                    }
+
+
+                                </select>
+                            </div>
+                        </div>*@
+
+                    <fieldset>
+                        <legend>Frequency</legend>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="radio" class="dayFreq" id="radiotype1" name="days" value="1" onclick="setAdminReminderOption(this.value)"/> Every Day<br />
+                                <input type="radio" class="dayFreq"  id="radiotype2" name="days" value="2" onclick="setAdminReminderOption(this.value)"/> Every Week<br />
+                                <input type="radio" class="dayFreq"  id="radiotype3" name="days" value="3" onclick="setAdminReminderOption(this.value)"/> Every Month<br />
+                                <input type="radio" class="dayFreq"  id="radiotype4" name="days" value="4" onclick="setAdminReminderOption(this.value)"/> Every Year<br />
+                                <input type="radio" class="dayFreq"  id="radiotype5" name="days" value="5" onclick="setAdminReminderOption(this.value)"/> Every 2 Years<br />
+                                <input type="radio" class="dayFreq"  id="radiotype6" name="days" value="6" onclick="setAdminReminderOption(this.value)"/> Custom<br />
+                                <input type="radio" class="dayFreq"  id="radiotype-1" checked name="days" value="-1" onclick="setAdminReminderOption(this.value)"/> None <br />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Custom Frequency</label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" name="freqDays" id="freqDays" maxlength="150" onkeyup="setCustomAdminReminderOption(this.value)" placeholder="Days">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Frequency Ending Date:</label>
+                            <div class="col-lg-9">
+
+
+                                <input type="date" id="FeqEndingDate" name="FeqEndingDate" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Set Reminder</legend>
+                        <div class="form-group col-md-12" id="DReminder">
+                            <label class="col-lg-3 control-label">Reminder: </label>
+                            <div class="col-lg-9">
+                                <select class="select" name="DReminder" id="adminDailyReminder">
+                                    @*<option selected value="@ViewBag.currentStatus">@General_Purpose.getStatusValue((int)ViewBag.currentStatus)</option>*@
+                                    <option value="">Select Type</option>
+                                    <option value="1">Daily</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <span style="color:red" id="spanmsg"></span>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sbButton" onclick="frequencyCheck()" class="btn btn-primary btn-sm bg-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>List of Administrator</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    @if (logedinuser.IsMasterAdmin == 1)
+                    {
+                        <li>
+                            <a href="@Url.Action("AddAdmin", "Utilities")" class="btn  btn-sm  bg-primary-400" style="color:white;"> Add Admin <i class="icon-plus-circle2"></i></a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+
+
+        <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+
+            <thead>
+                <tr>
+                    <th style="width:20px !important">Sr#</th>
+                    <th>Name</th>
+
+                    @if (logedinuser.IsMasterAdmin == 1)
+                    {
+                        <th>Action</th>
+                    }
+                </tr>
+            </thead>
+            @*<tbody>
+
+                    @{
+
+                    int i = 1;
+
+                    foreach (User item in ViewBag.Admins)
+                    {
+
+                                    <tr>
+                                        <td>@i</td>
+
+                                        <td>
+                                            @item.FirstName @item.LastName
+                                        </td>
+
+                                        @if ((int)Session["IsMasterAdmin"] == 1)
+                                        {
+                                    <td>
+
+                                        <button class="btn btn-sm  btn-danger" data-toggle="modal" data-target="#deleteAdmin" onclick="deleteUser('@item.Id')">
+                                            <i class="icon-trash"></i>
+                                        </button>
+                                    </td>
+                                        }
+
+                                    </tr>
+                    i++;
+                }
+                    }
+
+                </tbody>*@
+        </table>
+    </div>
+</div>
+
+<div id="editUser" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("PostUpdateAdmin","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Admin</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">First Name </label>
+                        <div class="col-lg-9">
+                            <input id="fname" type="text" maxlength="49" name="FirstName" class="form-control" placeholder="Please enter First Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Last Name </label>
+                        <div class="col-lg-9">
+                            <input id="lname" type="text" name="LastName" maxlength="49" class="form-control" placeholder="Please enter Last Name">
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Email </label>
+                        <div class="col-lg-9">
+                            <input id="email" readonly type="email" maxlength="50" class="form-control" placeholder="Enter a valid email address">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Phone Number </label>
+                        <div class="col-lg-9">
+                            <input id="pno" type="text" name="PhoneNumber" maxlength="19" class="form-control" placeholder="Enter Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Home Number</label>
+                        <div class="col-lg-9">
+                            <input id="hno" type="text" name="HomeNumber" maxlength="19" class="form-control" placeholder="Enter Home Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Password </label>
+                        <div class="col-lg-9">
+                            <input onkeyup="validatePassword()" id="pass" type="password" class="form-control" name="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?@("@")/])[A-Za-z\d$!%*?@("@")/]{8,}$" maxlength="19" placeholder="Password">
+                            <span style="color:red">Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character($!%*?@("@")/)</span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3 text-bold">Confirm Password </label>
+                        <div class="col-lg-9">
+                            <input onkeyup="validatePassword()" id="cpass" type="password" class="form-control" name="confirmPassword" maxlength="19" placeholder="Confirm Password">
+                            <span id="errorDisplay" style="color:red;display:none;">Password not matched!</span>
+                        </div>
+                    </div>
+
+                    @if (loggedInUser.IsPrimary == 1)
+                    {
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 text-bold">Set as Master Admin </label>
+
+                            <div style="margin-top: 0.6em;" class="col-lg-9">
+                                <label class="switch">
+                                    <input type="checkbox" id="IsMaster" name="IsMasterAdmin" class="data" value="1" />
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="updateSb" class="btn btn-sm  bg-primary-400">Update</button>
+                </div>
+                <input id="editUserId" type="hidden" name="Id" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="deleteAdmin" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("deleteUser", "Utilities")">
+                <input type="hidden" name="id" id="userid" />
+                <input type="hidden" name="accesslevel" value=1 />
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Warning</h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete the admin?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-sm  btn-danger">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="ChangeEmpType" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Change User Type</h4>
+                <input type="hidden" id="usertype" />
+                <input type="hidden" id="userid" />
+
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-md-12">
+                    <label class="control-label">Select Type</label>
+                    <select class="select" id="UType" onchange="selectUserType(this.value)" required>
+                        <option selected disabled value="">Please select Type</option>
+
+
+                        <option value="2">Manager</option>
+
+                        <option value="3">Employee</option>
+                        @*<option value="3">Employee</option>*@
+
+
+                    </select>
+                    <br />
+                    <br />
+
+                    <div id="DivisionField" style="display:none;">
+                        <label class="control-label">Select Division</label>
+
+                        <select class="select" onchange="getDepartment(this.value)" name="TypeDivisionID" id="TypeDivisionID">
+                            <option value="">Select Divsion</option>
+                            @foreach (Division d in ViewBag.Divisions)
+                            {
+                                <option value="@d.Id">@d.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <br />
+
+                    <div id="DepartmentField2" style="display: none">
+                        <label class="control-label">Select Department</label>
+
+                        <select class="select" name="TypeDepartmentID" id="TypeDepartmentID" required></select>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <span id="btnInfo" style="color:red"></span>
+                <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                <button onclick="ChangeEmp()" id="changetypebtn" class="btn btn-sm  bg-primary-400">Change</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="UserTurnOverModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Transfer User Tasks</h4>
+                @*<input type="hidden" id="useridTurnOver" />*@
+
+            </div>
+            <form action="@Url.Action("PostTurnOverTask","Task")" method="post">
+                <div class="modal-body">
+
+                    <input type="hidden" name="FromId" id="fromId" />
+                    <input type="hidden" name="Way" value="admin" />
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Select Admin</label>
+                        <select class="select" name="ToId" id="adminListTurnOver" @*onchange="selectUserTypeTurnOver(this.value)"*@ required>
+                            <option selected disabled value="">Please select Admin To Transfer Tasks</option>
+
+
+                            @*<option value="1">Admin</option>
+                    <option value="2">Manager</option>
+
+                    <option value="3">Employee</option>*@
+
+
+                        </select>
+
+
+                        @*<div id="DivisionFieldTurnOver" style="display:none;">
+                    <label class="control-label">Select Division</label>
+
+                    <select class="select" onchange="getDepartmentTurnOver(this.value)" name="TypeDivisionID" id="TypeDivisionIDTurnOver">
+                        <option value="">Select Divsion</option>
+                        @foreach (Division d in ViewBag.Divisions)
+                        {
+                            <option value="@d.Id">@d.Name</option>
+                        }
+                    </select>
+                </div>
+
+
+                <div id="DepartmentField2TurnOver" style="display: none">
+                    <label class="control-label">Select Department</label>
+
+                    <select class="select" name="TypeDepartmentID" onchange="SetUserValues()" id="TypeDepartmentIDTurnOver" required></select>
+                </div>
+
+                <div id="UserFieldTurnOver" style="display:none">
+                    <br />
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"><span class="text-danger">*</span>Users</label>
+                        <div class="col-lg-9">
+                            <select class="select-results-color" name="SimpleAdminId" id="selectAdminAdmin"></select>
+                        </div>
+                    </div>
+                </div>*@
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <span id="btnInfoTurnOver" style="color:red"></span>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button @*onclick="ChangeEmpTurnOver()"*@ id="changetypebtnTurnOver" class="btn btn-sm  bg-primary-400">Change</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    function checkDates() {
+        var startDate = document.getElementById("StartDate").value;
+        var endDate = document.getElementById("EndDate").value;
+        if ((Date.parse(startDate) > Date.parse(endDate))) {
+            scope2 = 0;
+            $('#spanmsg').text("End date should be greater than Start date")
+            $('#spanmsg').show();
+            $('#sbButton').attr('disabled', true);
+            document.getElementById("EndDate").value = "";
+        }
+        else {
+            $('#errorDisplay').hide();
+            $("#spanmsg").text("");
+
+            $('#sbButton').attr('disabled', false);
+        }
+    }
+
+    function checkValues() {
+        var isRepeat = false;
+        //if ($('input[type=radio]:checked').size() > 0) {
+        //    isRepeat = true;
+        //    $("EndDate").prop('required', false);
+        //}
+        //else $("EndDate").prop('required', true);
+        $("input[type=radio]").each(function () {
+            if (this.checked == true) {
+                isRepeat = true;
+                $("endDate").prop('required', true);
+                return false;
+            }
+        });
+        if (isRepeat == false) {
+            if (!Date.parse($('#EndDate').val())) {
+                $('#errorDisplay').text("Select End Date or Repeat Frequency !")
+                $('#errorDisplay').show();
+                $('#sbButton').prop("type", "button");
+            }
+            else {
+                $('#sbButton').prop("type", "submit");
+                $("#tarsbButtonget").click();
+            }
+        }
+        else {
+            $('#sbButton').prop("type", "submit");
+            $("#tarsbButtonget").click();
+        }
+    }
+
+    function setAdminDivisionValues() {
+        var divisionId = $("#selectAdminDivision").val();
+        var assignmentvalue = $("#selectAdminAssignment").val();
+
+        if (assignmentvalue == "assignbyworktype") {
+
+
+
+            if ($("#selectAdminDivision").val() != "-173") {
+
+                $.ajax({
+                    type: 'POST',
+                    url: "../task/getDepartmentDTOs",
+                    data: { divisionId: divisionId },
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+
+
+                        $("#selectAdminDepartment").html("");
+                        var count = 0;
+                        $('#selectAdminDepartment').empty();
+                        $('#selectAdminDepartment').append('<option value="" selected disabled> Please Choose a Department</option>');
+                        $('#selectAdminDepartment').append('<option value="-196"> Assign To All Departments Department</option>');
+                        for (var i = 0; i < data.length; i++) {
+                            var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                            $('#selectAdminDepartment').append(division);
+                        }
+                        $('#DepartmentField').show();
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+            } else {
+                $('#DepartmentField').hide();
+                $('#selectAdminDepartment').val("");
+
+                $("#ToDivision").val("");
+                $("#ToDepartment").val("");
+                $("#AdminID").val("");
+                $("#selectAdminManager").val("");
+                $("#selectAdminEmployee").val("");
+                $("#byWorktype").val(0);
+
+                $.ajax({
+                    type: 'POST',
+                    url: "../task/getTaskForDivisinDTOs",
+                    data: { DivisionId: divisionId },
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+
+
+
+                        if (data.empty) {
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            // $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                        }
+
+                        if (role == null) {
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            //   $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                        }
+                        var role = data[0].SessionRole;
+
+                        if (role == "1") {
+
+                            $("#selectAdminTask").html("");
+                            var count = 0;
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            // $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+                            // $('#selectAdminTask').append('<option value="" disabled>Existing Tasks</option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#selectAdminTask').append(division);
+                            }
+
+                        }
+                        else if (role == "2" || role == "4") {
+                            alert('manager');
+                        }
+                        else if (role == "3") {
+                            alert('employee');
+                        }
+                        else {
+                            alert('No Session!!');
+                        }
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+            }
+
+
+
+        } else {
+            if (assignmentvalue == "assignToDivision") {
+
+                $("#ToDivision").val(0);
+                $("#ToDepartment").val("");
+                $("#AdminID").val("");
+                $("#selectAdminManager").val("");
+                $("#selectAdminEmployee").val("");
+                // $("#byWorktype").val("");
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: "../task/getTaskForDivisinDTOs",
+                    data: { DivisionId: divisionId },
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+
+
+
+                        if (data.empty) {
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            // $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                        }
+
+                        if (role == null) {
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            //$('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                        }
+                        var role = data[0].SessionRole;
+
+                        if (role == "1") {
+
+                            $("#selectAdminTask").html("");
+                            var count = 0;
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            // $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+                            // $('#selectAdminTask').append('<option value="" disabled>Existing Tasks</option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#selectAdminTask').append(division);
+                            }
+
+                        }
+                        else if (role == "2" || role == "4") {
+                            alert('manager');
+                        }
+                        else if (role == "3") {
+                            alert('employee');
+                        }
+                        else {
+                            alert('No Session!!');
+                        }
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: "../task/getDepartmentDTOs",
+                    data: { divisionId: divisionId },
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+
+
+                        $("#selectAdminDepartment").html("");
+                        var count = 0;
+                        $('#selectAdminDepartment').empty();
+                        $('#selectAdminDepartment').append('<option value="" selected disabled> Please Choose a Department</option>');
+                        for (var i = 0; i < data.length; i++) {
+                            var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                            $('#selectAdminDepartment').append(division);
+                        }
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "../task/getWorktypeDTOs",
+                data: { DivisionID: divisionId },
+                dataType: "json",
+                success: function (data) {
+                    // get role of the user then if you are an admin then assign tasks to manager and employee
+                    // if you are manager then assign to employee
+                    // if you can self assign
+
+
+
+
+                    //  $("#selectAdminWorktype").html("");
+                    var count1 = 0;
+                    //  $('#selectAdminWorktype').empty();
+                    //  $('#selectAdminWorktype').append('<option value=""  ></option>');
+
+                    for (var i = 0; i < data.length; i++) {
+                        var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                        // $('#selectAdminWorktype').append(division);
+                    }
+
+                    //  $("#WorkerTypeField").show();
+
+                },
+                error: function () { alert('fail'); }
+            });
+
+            //$("#WorkerTypeField").show();
+
+        }
+
+
+
+    }
+
+    function setAdminDepartmentValues() {
+        var departmentId = $("#selectAdminDepartment").val();
+        var assignmentvalue = $("#selectAdminAssignment").val();
+        if (assignmentvalue == "assignbyworktype") {
+
+            $("#ToDivision").val("");
+            $("#ToDepartment").val("");
+            $("#AdminID").val("");
+            $("#selectAdminManager").val("");
+            $("#selectAdminEmployee").val("");
+            $("#byWorktype").val(0);
+
+
+            if (departmentId != "-196") {
+                $.ajax({
+                    type: 'POST',
+                    url: "../task/getTaskDTOs",
+                    data: { departmentId: departmentId },
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+
+
+
+                        if (data.empty) {
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            //   $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                        }
+
+                        if (role == null) {
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            // $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                        }
+                        var role = data[0].SessionRole;
+
+                        if (role == "1") {
+
+                            $("#selectAdminTask").html("");
+                            var count = 0;
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            // $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+                            // $('#selectAdminTask').append('<option value="" disabled>Existing Tasks</option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#selectAdminTask').append(division);
+                            }
+
+                            $("#AdminID").val("");
+
+                            $("#byWorktype").val(0);
+                            $("#selectAdminManager").val("");
+                            $("#selectAdminEmployee").val("");
+
+                        }
+                        else if (role == "2" || role == "4") {
+                            alert('manager');
+                        }
+                        else if (role == "3") {
+                            alert('employee');
+                        }
+                        else {
+                            alert('No Session!!');
+                        }
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: "../task/getTaskDTOs",
+                    data: { departmentId: departmentId },
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+
+
+
+                        if (data.empty) {
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            // $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                        }
+
+                        if (role == null) {
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            //  $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                        }
+                        var role = data[0].SessionRole;
+
+                        if (role == "1") {
+
+                            $("#selectAdminTask").html("");
+                            var count = 0;
+                            $('#selectAdminTask').empty();
+                            $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                            $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+                            $('#selectAdminTask').append('<option value="" disabled>Existing Tasks</option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#selectAdminTask').append(division);
+                            }
+
+                        }
+                        else if (role == "2" || role == "4") {
+                            alert('manager');
+                        }
+                        else if (role == "3") {
+                            alert('employee');
+                        }
+                        else {
+                            alert('No Session!!');
+                        }
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+            }
+
+
+
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: "../task/getTaskDTOs",
+                data: { departmentId: departmentId },
+                dataType: "json",
+                success: function (data) {
+                    // get role of the user then if you are an admin then assign tasks to manager and employee
+                    // if you are manager then assign to employee
+                    // if you can self assign
+
+
+
+                    if (data.empty) {
+                        $('#selectAdminTask').empty();
+                        $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                        $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                    }
+
+                    if (role == null) {
+                        $('#selectAdminTask').empty();
+                        $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                        $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+
+                    }
+                    var role = data[0].SessionRole;
+
+                    if (role == "1") {
+
+                        $("#selectAdminTask").html("");
+                        var count = 0;
+                        $('#selectAdminTask').empty();
+                        $('#selectAdminTask').append('<option value="" selected disabled> Please Choose a Task</option>');
+                        $('#selectAdminTask').append('<option value="0"> Create New Task</option>');
+                        $('#selectAdminTask').append('<option value="" disabled>Existing Tasks</option>');
+                        for (var i = 0; i < data.length; i++) {
+                            var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                            $('#selectAdminTask').append(division);
+                        }
+
+                    }
+                    else if (role == "2" || role == "4") {
+                        alert('manager');
+                    }
+                    else if (role == "3") {
+                        alert('employee');
+                    }
+                    else {
+                        alert('No Session!!');
+                    }
+
+
+                },
+                error: function () { alert('fail'); }
+            });
+        }
+
+    }
+
+    function setAdminWorkTypevalue() {
+        var divisionId = $("#selectAdminDivision").val();
+        var departmentId = $("#selectAdminDepartment").val();
+        var taskId = $("#selectAdminTask").val();
+        var assignmentvalue = $("#selectAdminAssignment").val();
+        //  var selectAdminWorktype = $("#selectAdminWorktype").val();
+
+        if ((divisionId != "" && divisionId != null) && (departmentId != "" && departmentId != null) && (taskId != "" && taskId != null) && (assignmentvalue != "" && assignmentvalue != null)) {
+            setAdminTaskValues();
+        }
+    }
+
+    function setAdminTaskValues() {
+        var divisionId = $("#selectAdminDivision").val();
+        var departmentId = $("#selectAdminDepartment").val();
+        var taskId = $("#selectAdminTask").val();
+        var assignmentvalue = $("#selectAdminAssignment").val();
+        // var selectAdminWorktype = $("#selectAdminWorktype").val();
+
+
+        if ($("#selectAdminTask").val() == "0") {
+
+
+            $("#assignnewtask").show();
+            $("#cost").val("");
+            $("#ceu").val("");
+            $("#hours").val("Select Hours").change();
+            $("#notes").val("");
+            if (assignmentvalue == "assignToDepartment") {
+                $("#ToDepartment").val("0");
+
+            } else {
+                $("#AdminID").val("0");
+            }
+
+            // $("#Course").show();
+            //$("#CanvasCourseId").val("").change();
+
+
+            //  $("#assignemployee").hide();
+            //$("#assignmanager").hide();
+
+            $.ajax({
+                type: 'POST',
+                url: "../Task/getTaskTypes",
+                dataType: "json",
+                success: function (data) {
+
+
+                    $("#newtasktype").html("");
+
+                    $('#newtasktype').empty();
+                    $('#newtasktype').append('<option value="" selected disabled> Please Choose a Task Type</option>');
+
+                    $('#newtasktype').append('<option value="0"> Create New Task Type</option>');
+                    $('#newtasktype').append('<option value="" disabled>Existing Task Types</option>');
+
+                    for (var i = 0; i < data.length; i++) {
+                        var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                        $('#newtasktype').append(division);
+
+                    }
+                    $("#assigntasktype").show();
+
+                },
+                error: function () { alert('fail'); }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "../task/getUserDTOs",
+                data: {
+                    divisionId: divisionId,
+                    departmentId: departmentId,
+                    taskId: taskId,
+                    assignmentvalue: assignmentvalue
+                    //Worktype: selectAdminWorktype,
+                },
+                dataType: "json",
+                success: function (data) {
+                    var assignmentvalue = $("#selectAdminAssignment").val();
+                    // get role of the user then if you are an admin then assign tasks to manager and employee
+                    // if you are manager then assign to employee
+                    // if you can self assign
+                    if (data.empty) {
+                        $("#selectAdminEmployee").html("");
+                        $("#selectAdminManager").html("");
+
+
+                    }
+                    if (data.File == "To Division") {
+                        $("#assignmanager").hide();
+                        $("#assignemployee").hide();
+
+                        $("#cost").val(data.Cost_);
+                        $("#ceu").val(data.CEU);
+                        $("#hours").val(data.Hours).change();
+                        $("#notes").val(data.Description);
+                        if (data.CourseId) {
+
+                            // $("#Course").show();
+                            //$("#CanvasCourseId").val(data.CourseId).change();
+
+                        } else if ($("#selectAdminTask").val() == "0") {
+                            //$("#CanvasCourseId").val("").change();
+
+                            $("#Course").show();
+                        } else {
+                            //$("#CanvasCourseId").val("").change();
+                            //$("#Course").hide();
+                        }
+
+
+                        $("#ToDivision").val(0);
+                        $("#AdminID").val("");
+                        $("#ToDepartment").val("");
+                        $("#assignnewtask").hide();
+                        $("#assigntasktype").hide();
+                        // $("#byWorktype").val("");
+                    } else if (data.File == "To Department") {
+                        $("#assignmanager").hide();
+                        $("#assignemployee").hide();
+
+                        $("#cost").val(data.Cost_);
+                        $("#ceu").val(data.CEU);
+                        $("#hours").val(data.Hours).change();
+                        $("#notes").val(data.Description);
+                        if (data.CourseId) {
+
+                            //$("#Course").show();
+                            // $("#CanvasCourseId").val(data.CourseId).change();
+
+                        } else if ($("#selectAdminTask").val() == "0") {
+                            //$("#CanvasCourseId").val("").change();
+
+                            $("#Course").show();
+                        } else {
+                            //$("#CanvasCourseId").val("").change();
+                            //$("#Course").hide();
+                        }
+
+
+                        $("#ToDepartment").val(0);
+                        $("#AdminID").val("");
+                        $("#ToDivision").val("");
+                        //$("#byWorktype").val("");
+
+                        $("#assignnewtask").hide();
+                        $("#assigntasktype").hide();
+                    } else if (data.File == "No User") {
+                        $("#assignmanager").hide();
+                        $("#assignemployee").hide();
+
+                        $("#cost").val(data.Cost_);
+                        $("#ceu").val(data.CEU);
+                        $("#hours").val(data.Hours).change();
+                        $("#notes").val(data.Description);
+                        if (data.CourseId) {
+
+                            //$("#Course").show();
+                            // $("#CanvasCourseId").val(data.CourseId).change();
+
+                        } else if ($("#selectAdminTask").val() == "0") {
+                            //$("#CanvasCourseId").val("").change();
+
+                            //$("#Course").show();
+                        } else {
+                            //$("#CanvasCourseId").val("").change();
+                            //$("#Course").hide();
+                        }
+
+                        $("#ToDepartment").val("");
+                        if (assignmentvalue == "assignbyworktype") {
+                            $("#byWorktype").val(0);
+                            $("#AdminID").val("");
+                        } else {
+                            // $("#byWorktype").val("");
+                            $("#AdminID").val(0);
+                        }
+
+                        $("#ToDivision").val("");
+
+                        $("#assignnewtask").hide();
+                        $("#assigntasktype").hide();
+                    }
+                    else if (data.length != 0 && assignmentvalue == "assignManager") {
+                        if (data[0].AssignUserRole == "Manager") {
+                            $("#selectAdminManager").html("");
+                            var count = 0;
+                            $('#selectAdminManager').empty();
+                            $('#selectAdminManager').append('<option value="" selected disabled> Please Choose a User</option>');
+                            if (data.length >= 2)
+                                $('#selectAdminManager').append('<option value="-66" ><b>Assign to all Users</b></option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#selectAdminManager').append(division);
+                            }
+
+                            $("#assignemployee").hide();
+                            $("#assignmanager").show();
+                            $("#AdminID").val("");
+                            $("#ToDivision").val("");
+                            $("#ToDepartment").val("");
+                            // $("#byWorktype").val("");
+                            //$("#assignnewtask").hide();
+                            // $("#assigntasktype").hide();
+
+
+                        }
+                    }
+                    else if (data.length != 0 && assignmentvalue == "assignEmployee") {
+                        if (data[0].AssignUserRole == "Employee") {
+                            $("#selectAdminEmployee").html("");
+                            var count = 0;
+                            $('#selectAdminEmployee').empty();
+                            $('#selectAdminEmployee').append('<option value="" selected disabled> Please Choose a User</option>');
+                            if (data.length >= 2)
+                                $('#selectAdminEmployee').append('<option value="-33"> <b>Assign to all Users</b></option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#selectAdminEmployee').append(division);
+                            }
+                            $("#assignemployee").show();
+                            $("#assignmanager").hide();
+                            $("#AdminID").val("");
+                            $("#ToDivision").val("");
+                            $("#ToDepartment").val("");
+                            // $("#byWorktype").val("");
+                            //  $("#assignnewtask").hide();
+                            // $("#assigntasktype").hide();
+                        }
+                    }
+                    else {
+                        var assignmentvalue = $("#selectAdminAssignment").val();
+                        if (assignmentvalue == "assignManager") {
+                            $("#selectAdminManager").html("");
+                            $('#selectAdminManager').empty();
+                            $('#selectAdminManager').append('<option value="" selected > Please Choose a User</option>');
+                            if (data.length >= 2)
+                                $('#selectAdminManager').append('<option value="-66"  > <b>Assign to all Users</b></option>');
+
+                            $("#assignmanager").show();
+                        } else {
+                            $("#assignmanager").hide();
+                        }
+
+                        if (assignmentvalue == "assignEmployee") {
+                            $("#selectAdminEmployee").html("");
+                            $('#selectAdminEmployee').empty();
+                            $('#selectAdminEmployee').append('<option value="" selected > Please Choose a User</option>');
+                            if (data.length >= 2)
+                                $('#selectAdminEmployee').append('<option value="-33"  > <b>Assign to all Users</b></option>');
+
+                            $("#assignemployee").show();
+                        } else {
+                            $("#assignemployee").hide();
+                        }
+
+                        //$("#cost").val("");
+                        //$("#ceu").val("");
+                        //$("#hours").val("");
+                        //$("#notes").val("");
+
+                        //$("#AdminID").val("0");
+                        // $("#assignnewtask").hide();
+                        //  $("#assigntasktype").hide();
+                    }
+
+                },
+                error: function () { alert('fail'); }
+            });
+        } else {
+            $("#assignnewtask").hide();
+            $("#assigntasktype").hide();
+
+            $.ajax({
+                type: 'POST',
+                url: "../task/getUserDTOs",
+                data: {
+                    divisionId: divisionId,
+                    departmentId: departmentId,
+                    taskId: taskId,
+                    assignmentvalue: assignmentvalue
+                    // Worktype: selectAdminWorktype,
+                },
+                dataType: "json",
+                success: function (data) {
+
+                    var assignmentvalue = $("#selectAdminAssignment").val();
+                    // get role of the user then if you are an admin then assign tasks to manager and employee
+                    // if you are manager then assign to employee
+                    // if you can self assign
+                    if (data.empty) {
+                        $("#selectAdminEmployee").html("");
+                        $("#selectAdminManager").html("");
+
+
+                    }
+                    if (data.File == "To Division") {
+                        $("#assignmanager").hide();
+                        $("#assignemployee").hide();
+
+                        $("#cost").val(data.Cost_);
+                        $("#ceu").val(data.CEU);
+                        $("#hours").val(data.Hours).change();
+                        $("#notes").val(data.Description);
+                        if (data.CourseId) {
+
+                            //  $("#Course").show();
+                            //$("#CanvasCourseId").val(data.CourseId).change();
+
+                        } else if ($("#selectAdminTask").val() == "0") {
+                            //$("#CanvasCourseId").val("").change();
+
+                            // $("#Course").show();
+                        } else {
+                            //$("#CanvasCourseId").val("").change();
+                            // $("#Course").hide();
+                        }
+
+
+                        $("#ToDivision").val(0);
+                        $("#AdminID").val("");
+                        $("#ToDepartment").val("");
+                        $("#assignnewtask").hide();
+                        $("#assigntasktype").hide();
+                        // $("#byWorktype").val("");
+                    } else if (data.File == "To Department") {
+                        $("#assignmanager").hide();
+                        $("#assignemployee").hide();
+
+                        $("#cost").val(data.Cost_);
+                        $("#ceu").val(data.CEU);
+                        $("#hours").val(data.Hours).change();
+                        $("#notes").val(data.Description);
+                        if (data.CourseId) {
+
+                            //$("#Course").show();
+                            // $("#CanvasCourseId").val(data.CourseId).change();
+
+                        } else if ($("#selectAdminTask").val() == "0") {
+                            //$("#CanvasCourseId").val("").change();
+
+                            $("#Course").show();
+                        } else {
+                            //$("#CanvasCourseId").val("").change();
+                            //$("#Course").hide();
+                        }
+
+
+                        $("#ToDepartment").val(0);
+                        $("#AdminID").val("");
+                        $("#ToDivision").val("");
+                        //$("#byWorktype").val("");
+
+                        $("#assignnewtask").hide();
+                        $("#assigntasktype").hide();
+                    } else if (data.File == "No User") {
+                        $("#assignmanager").hide();
+                        $("#assignemployee").hide();
+
+                        $("#cost").val(data.Cost_);
+                        $("#ceu").val(data.CEU);
+                        $("#hours").val(data.Hours).change();
+                        $("#notes").val(data.Description);
+                        if (data.CourseId) {
+
+                            //  $("#Course").show();
+                            // $("#CanvasCourseId").val(data.CourseId).change();
+
+                        } else if ($("#selectAdminTask").val() == "0") {
+                            //$("#CanvasCourseId").val("").change();
+
+                            //$("#Course").show();
+                        } else {
+                            //$("#CanvasCourseId").val("").change();
+                            //$("#Course").hide();
+                        }
+
+                        $("#ToDepartment").val("");
+                        if (assignmentvalue == "assignbyworktype") {
+                            $("#byWorktype").val(0);
+                            $("#AdminID").val("");
+                        } else {
+                            // $("#byWorktype").val("");
+                            $("#AdminID").val(0);
+                        }
+
+                        $("#ToDivision").val("");
+
+                        $("#assignnewtask").hide();
+                        $("#assigntasktype").hide();
+                    }
+                    else if (data.length != 0 && assignmentvalue == "assignManager") {
+                        if (data[0].AssignUserRole == "Manager") {
+                            $("#selectAdminManager").html("");
+                            var count = 0;
+                            $('#selectAdminManager').empty();
+                            $('#selectAdminManager').append('<option value="" selected disabled> Please Choose a User</option>');
+                            if (data.length >= 2)
+                                $('#selectAdminManager').append('<option value="-66"  > <b>Assign to all Users</b></option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#selectAdminManager').append(division);
+                            }
+
+                            $("#assignemployee").hide();
+                            $("#assignmanager").show();
+                            $("#AdminID").val("");
+                            $("#ToDivision").val("");
+                            $("#ToDepartment").val("");
+                            // $("#byWorktype").val("");
+                            //$("#assignnewtask").hide();
+                            // $("#assigntasktype").hide();
+
+
+                        }
+                    }
+                    else if (data.length != 0 && assignmentvalue == "assignEmployee") {
+                        if (data[0].AssignUserRole == "Employee") {
+                            $("#selectAdminEmployee").html("");
+                            var count = 0;
+                            $('#selectAdminEmployee').empty();
+                            $('#selectAdminEmployee').append('<option value="" selected disabled> Please Choose a User</option>');
+                            if (data.length >= 2)
+                                $('#selectAdminEmployee').append('<option value="-33"  > <b>Assign to all Users</b></option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#selectAdminEmployee').append(division);
+                            }
+                            $("#assignemployee").show();
+                            $("#assignmanager").hide();
+                            $("#AdminID").val("");
+                            $("#ToDivision").val("");
+                            $("#ToDepartment").val("");
+                            // $("#byWorktype").val("");
+                            //  $("#assignnewtask").hide();
+                            // $("#assigntasktype").hide();
+                        }
+                    }
+                    else {
+                        var assignmentvalue = $("#selectAdminAssignment").val();
+                        if (assignmentvalue == "assignManager") {
+                            $("#selectAdminManager").html("");
+                            $('#selectAdminManager').empty();
+                            $('#selectAdminManager').append('<option value="" selected > Please Choose a User</option>');
+                            if (data.length >= 2)
+                                $('#selectAdminManager').append('<option value="-66"  > <b>Assign to all Users</b></option>');
+                            $("#assignmanager").show();
+                        } else {
+                            $("#assignmanager").hide();
+                        }
+
+                        if (assignmentvalue == "assignEmployee") {
+                            $("#selectAdminEmployee").html("");
+                            $('#selectAdminEmployee').empty();
+                            $('#selectAdminEmployee').append('<option value="" selected > Please Choose a User</option>');
+                            if (data.length >= 2)
+                                $('#selectAdminEmployee').append('<option value="-33"  > <b>Assign to all Users</b></option>');
+
+                            $("#assignemployee").show();
+                        } else {
+                            $("#assignemployee").hide();
+                        }
+
+
+                        //$("#cost").val("");
+                        //$("#ceu").val("");
+                        //$("#hours").val("");
+                        //$("#notes").val("");
+
+                        //$("#AdminID").val("0");
+                        // $("#assignnewtask").hide();
+                        //  $("#assigntasktype").hide();
+                    }
+
+                },
+                error: function () { alert('fail'); }
+            });
+        }
+
+
+
+    }
+
+    function setnewtasktypevalues() {
+        if ($("#newtasktype").val() == "0")
+            $("#assignnewtasktypename").show();
+        else
+            $("#assignnewtasktypename").hide();
+
+
+    }
+
+    function frequencyCheck()
+    {
+        var s = $("#AdminID2").val();
+        
+        $("#AdminID").val(s);
+        $('#sbButton').attr('disabled', false);
+        var x1 = $("#radiotype1");
+        var x2 = $("#radiotype2");
+        var x3 = $("#radiotype3");
+        var x4 = $("#radiotype4");
+        var x5 = $("#radiotype5");
+        var x6 = $("#radiotype6");
+        var x11 = $("#radiotype-1");
+        if ($("#radiotype1").prop("checked") == true || x2.prop("checked") == true || x3.prop("checked") == true || x4.prop("checked") == true || x5.prop("checked") == true || x6.prop("checked") == true)
+        {
+
+            if (x6.prop("checked") == true)
+            {
+                //var fdays = $(".dayFreq:checked").val();
+                var fdays = $('#freqDays').val();
+                if (fdays == "")
+                {
+                    $("#spanmsg").text("Please Set Frequency");
+
+                    return false;
+                }
+                
+            }
+
+            var c = $("#FeqEndingDate").val();
+            if (c == "")
+            {
+                $("#FeqEndingDate").attr("required", true);
+                $("#spanmsg").text("Frequency ending date is required");
+                $("#Endate").attr("required", false);
+                document.getElementById("EndDate").value = "";
+
+                return false;
+            }
+            else
+            {
+                $("#FeqEndingDate").attr("required", false);
+                $("#spanmsg").text("");
+
+                return true;
+            }
+
+            
+
+        }
+        else
+        {
+            var c2 = $("#EndDate").val();
+
+            if (c2 == "")
+            {
+                $("#EndDate").attr("required", true);
+                $("#spanmsg").text("End date is required");
+                $("#FeqEndingDate").attr("required", false);
+                return false;
+            }
+            else
+            {
+                $("#EndDate").attr("required", false);
+                $("#spanmsg").text("");
+                return true;
+            }
+
+            $("#FeqEndingDate").attr("required", false);
+            $("#spanmsg").text("");
+            //      $(".radiotype").val(null);
+
+            return true;
+        }
+
+    }
+
+    function setAdminAssignValues() {
+
+        $("#newtasktypename").val("");
+        $("#assignnewtasktypename").hide();
+        var assignmentvalue = $("#selectAdminAssignment").val();
+        if (assignmentvalue == "assignbyworktype") {
+
+
+            $("#selectAdminTask").html("");
+            $('#selectAdminTask').empty();
+
+            $("#newtaskname").html("");
+            $('#newtaskname').empty();
+
+            $("#newtasktype").html("");
+            $('#newtasktype').empty();
+
+            $("#cost").val("");
+
+
+            $("#ceu").val("");
+
+
+            $("#hours").val("Select Hours").change();
+
+            $("#selectAdminManager").html("");
+            $('#selectAdminManager').empty();
+
+            $("#selectAdminEmploye").html("");
+            $('#selectAdminEmploye').empty();
+
+            $('#assignmanager').hide();
+            $('#assignemployee').hide();
+
+
+            $("#ToDivision").val("");
+            $("#ToDepartment").val("");
+            $('#AdminID').val("");
+            $('#ToDivision').val("");
+            $('#ToDepartment').val("");
+
+
+
+
+        } else {
+            if (assignmentvalue == "assignMe") {
+                // $("#WorkerTypeField").hide();
+                $("#selectAdminManager").val("");
+                $("#selectAdminEmployee").val("");
+
+            } else {
+                if (assignmentvalue == "assignEmployee") {
+
+                    $("#selectAdminManager").val("");
+                    $("#AdminID").val("");
+                }
+                if (assignmentvalue == "assignManager") {
+
+                    $("#selectAdminEmployee").val("");
+                    $("#AdminID").val("");
+                }
+                if (assignmentvalue == "assignToDepartment") {
+                    $("#selectAdminManager").val("");
+                    $("#selectAdminEmployee").val("");
+                    $("#AdminID").val("");
+                }
+                if (assignmentvalue == "assignToDivision") {
+                    $("#selectAdminManager").val("");
+                    $("#selectAdminEmployee").val("");
+                    $("#AdminID").val("");
+                }
+
+
+
+
+            }
+
+            // $("#byWorktype").val("");
+
+            if (assignmentvalue == "assignToDivision") {
+                $("#selectAdminDepartment").val("");
+                $("#DepartmentField").hide();
+            } else {
+                $("#DepartmentField").show();
+            }
+
+
+            $.ajax({
+                type: 'POST',
+                url: "../task/getDivisionDTOs",
+                dataType: "json",
+                success: function (data) {
+                    // get role of the user then if you are an admin then assign tasks to manager and employee
+                    // if you are manager then assign to employee
+                    // if you can self assign
+                    var role = data[0].SessionRole;
+
+                    if (role == "1") {
+
+                        $("#selectAdminDivision").html("");
+                        var count1 = 0;
+                        $('#selectAdminDivision').empty();
+                        $('#selectAdminDivision').append('<option value="" selected disabled> Please Choose a Division</option>');
+
+                        for (var i = 0; i < data.length; i++) {
+                            var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                            $('#selectAdminDivision').append(division);
+                        }
+                        //$("#AdminID").val(0);
+                    }
+                    else if (role == "2" || role == "4") {
+                        alert('manager');
+                    }
+                    else if (role == "3") {
+                        alert('employee');
+                    }
+                    else {
+                        alert('No Session!!');
+                    }
+                },
+                error: function () { alert('fail'); }
+            });
+        }
+
+    }
+</script>
+
+<script>
+
+         $('#DivisionField').hide();
+    $('#DepartmentField').hide();
+      function AssignTask1(id)
+      {
+          setAdminAssignValues();
+        $("#AssignAdminTask").modal("show");
+       $("#AdminID").val(id);
+       $("#AdminID2").val(id);
+       // $("#DivId").val(val);
+    }
+     function ChangeEmp() {
+
+        var id = $("#userid").val();
+       // var div = $("#DivId").val();
+        var type = $("#UType").val();
+         var dep = $("#TypeDepartmentID").val();
+         var div = $("#TypeDivisionID").val();
+         if (type == "3" || type == 3) {
+             if (dep == "" || dep == null) {
+
+                 $("#btnInfo").text("Department must be selected");
+                 return;
+             }
+         }
+         if (type == "2" || type == 2) {
+             if (div == "" || div == null) {
+
+                 $("#btnInfo").text("Division must be selected");
+                 return;
+             }
+         }
+         $("#changetypebtn").attr("disabled", true);
+
+         //var div
+         $.ajax({
+                    type: 'POST',
+                    url: "../task/ChangeUserType",
+                    data: { UserId: id,UserType:type,DepartmentId:dep,DivisionId:div},
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+
+                        $("#changetypebtn").attr("disabled", false);
+
+                            location.reload();
+
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+
+    }
+    
+    function ChangeUserType(id)
+    {
+        $("#ChangeEmpType").modal("show");
+       $("#userid").val(id);
+       // $("#DivId").val(val);
+    }
+
+    function selectUserType(val) {
+        if (val == 2) {
+            $("#TypeDivisionID").val("").change();
+           // $('#TypeDivisionID').empty();
+            $('#DivisionField').show();
+    $('#DepartmentField2').hide();
+        }
+        if (val == 3) {
+              $("#TypeDivisionID").val("").change();
+
+ $('#DivisionField').show();
+    $('#DepartmentField2').hide();
+        }
+    }
+    function getDepartment() {
+        var divisionId = $("#TypeDivisionID").val();
+
+        if ($("#UType").val() == "3" && divisionId!="") {
+            $.ajax({
+                type: 'POST',
+                url: "../task/getDepartmentDTOs",
+                data: { divisionId: divisionId },
+                dataType: "json",
+                success: function (data) {
+                    // get role of the user then if you are an admin then assign tasks to manager and employee
+                    // if you are manager then assign to employee
+                    // if you can self assign
+
+
+                    $("#TypeDepartmentID").html("");
+                    var count = 0;
+                    $('#TypeDepartmentID').empty();
+                    $('#TypeDepartmentID').append('<option value="" selected disabled> Please Choose a Department</option>');
+                    //  $('#TypeDepartmentID').append('<option value="-196"> Assign To All Departments Department</option>');
+                    for (var i = 0; i < data.length; i++) {
+                        var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                        $('#TypeDepartmentID').append(division);
+                    }
+                    $('#DepartmentField2').show();
+
+
+                },
+                error: function () { alert('fail'); }
+            });
+        }
+    }
+
+   
+    $(document).ready(function () {
+          $("#wait").css("display", "block");
+        $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetDisplayAdmin","Utilities")',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "CompanyID", "name": "CompanyID" },
+                    { "data": "FirstName", "name": "FirstName" },
+                    { "data": "DepartmentId", "name": "DepartmentId" },
+                    { "data": "Id", "name": "Id", "visible": false },
+                ],
+
+                'columnDefs': [
+                    {
+
+                        render: function (data, type, full, meta) {
+                            if (full.DepartmentId == 1)
+                            {
+                                
+                                return '<ul class="icons-list">' +
+                                        '<li class="dropdown">' +
+                                        '<a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>' +
+                                            '<ul class="dropdown-menu dropdown-menu-right">' +
+                                            '<li>' +
+                                                '<a style="margin-right:3px"  onclick="ChangeUserType(' + full.Id + ')">' +
+                                                'Change Type' +
+                                                '</a>' +
+                                            '</li>' +
+                                            '<li>' +
+                                                '<a style="margin-right:3px"  onclick="getAdminList(' + full.Id + ')">' +
+                                                'Transfer Task' +
+                                                '</a>' +
+                                            '</li>' +
+                                            '<li>' +
+                                                '<a style="margin-right:3px"  onclick="AssignTask1(' + full.Id + ')">' +
+                                                'Assign Task' +
+                                                '</a>' +
+                                            '</li>' +
+                                            '<li>' +
+                                                '<a title="Edit admin ' + full.FirstName + '" style="margin-right:3px"   onclick="editUser(' + full.Id + ')"><i class="icon-pencil"></i> Update</a>' +
+                                            '</li>' +
+                                            '<li>' +
+                                                '<a  onclick="deleteUser(' + full.Id + ')" data-toggle="modal" data-target="#deleteAdmin"><i class="icon-trash"></i>Delete</a>' +
+                                            '</li>' +
+                                            '</ul>' +
+                                        '</li>' +
+                                    '</ul>';
+ 
+                            } else {
+                                return '<ul class="icons-list">' +
+                                    '<li class="dropdown">' +
+                                    '<a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>' +
+                                        '<ul class="dropdown-menu dropdown-menu-right">' +
+                                            '<li>' +
+                                                '</a>' + '<a style="margin-right:3px" class="btn  btn-sm btn-success" onclick="AssignTask1(' + full.Id + ')">' +
+                                                'Assign Task' +
+                                                '</a>' +
+                                            '</li>' +
+                                        '</ul>' +
+                                    '</li>' +
+                                    '</ul>';
+
+                            }
+                        },
+                        targets: 2
+                    }
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+            })
+    });
+
+
+</script>
+<script>
+    function getDepartmentTurnOver() {
+        var divisionId = $("#TypeDivisionIDTurnOver").val();
+        if (divisionId != "") {
+            $.ajax({
+                type: 'POST',
+                url: "../task/getDepartmentDTOs",
+                data: { divisionId: divisionId },
+                dataType: "json",
+                success: function (data) {
+                    // get role of the user then if you are an admin then assign tasks to manager and employee
+                    // if you are manager then assign to employee
+                    // if you can self assign
+
+
+                    $("#TypeDepartmentIDTurnOver").html("");
+                    var count = 0;
+                    $('#TypeDepartmentIDTurnOver').empty();
+                    $('#TypeDepartmentIDTurnOver').append('<option value="" selected disabled> Please Choose a Department</option>');
+                    //  $('#TypeDepartmentID').append('<option value="-196"> Assign To All Departments Department</option>');
+                    for (var i = 0; i < data.length; i++) {
+                        var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                        $('#TypeDepartmentIDTurnOver').append(division);
+                    }
+                    $('#DepartmentField2TurnOver').show();
+
+
+                },
+                error: function () { alert('fail'); }
+            });
+        }
+
+
+    }
+    function selectUserTypeTurnOver(val)
+    {
+        if (val == 2)
+        {
+            $("#TypeDivisionIDTurnOver").val("").change();
+            // $('#TypeDivisionID').empty();
+            $('#DivisionFieldTurnOver').show();
+            $('#DepartmentField2TurnOver').hide();
+        }
+        if (val == 3)
+        {
+            $("#TypeDivisionIDTurnOver").val("").change();
+
+            $('#DivisionFieldTurnOver').show();
+            $('#DepartmentField2TurnOver').hide();
+        }
+        if (val == 1)
+        {
+            SetUserValues();
+            $('#UserFieldTurnOver').show();
+
+            
+        }
+    }
+    function ChangeEmpTurnOver() {
+
+        var id = $("#userid").val();
+        // var div = $("#DivId").val();
+        var type = $("#UTypeTurnOver").val();
+        var dep = $("#TypeDepartmentIDTurnOver").val();
+        var div = $("#TypeDivisionIDTurnOver").val();
+        if (type == "3" || type == 3) {
+            if (dep == "" || dep == null) {
+
+                $("#btnInfoTurnOver").text("Department must be selected");
+                return;
+            }
+        }
+        if (type == "2" || type == 2) {
+            if (div == "" || div == null) {
+
+                $("#btnInfoTurnOver").text("Division must be selected");
+                return;
+            }
+        }
+        $("#changetypebtnTurnOver").attr("disabled", true);
+
+        //var div
+        $.ajax({
+            type: 'POST',
+            url: "../task/ChangeUserType",
+            data: { UserId: id, UserType: type, DepartmentId: dep, DivisionId: div },
+            dataType: "json",
+            success: function (data) {
+                // get role of the user then if you are an admin then assign tasks to manager and employee
+                // if you are manager then assign to employee
+                // if you can self assign
+
+                $("#changetypebtn").attr("disabled", false);
+
+                location.reload();
+
+
+
+            },
+            error: function () { alert('fail'); }
+        });
+
+    }
+    function ChangeUserTurnOver(id) {
+        $("#UserTurnOverModal").modal("show");
+        $("#useridTurnOver").val(id);
+        // $("#DivId").val(val);
+    }
+    function SetUserValues()
+    {
+        var type = $("#UTypeTurnOver").val();
+        var divId = $("#TypeDivisionIDTurnOver").val();
+        var deptId = $("#TypeDepartmentIDTurnOver").val();
+        if (deptId == null || deptId=="")
+            deptId = -1;
+        if (divId == null || divId == "")
+            divId = -1;
+        $.ajax({
+            type: 'POST',
+            url: "../task/getUserDTO",
+            data: {
+                UType: type,
+                DivisionId: divId,
+                DepartmentId: deptId
+               
+            },
+            dataType: "json",
+            success: function (data) {
+
+                $("#selectAdminAdmin").html("");
+                var count = 0;
+                $('#selectAdminAdmin').empty();
+                $('#selectAdminAdmin').append('<option value="" selected disabled> Please Choose a User</option>');
+               
+                for (var i = 0; i < data.length; i++) {
+                    var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                    $('#selectAdminAdmin').append(division);
+                }
+                $('#UserFieldTurnOver').show();
+            },
+            error: function () { alert('fail'); }
+        });
+    }
+</script>
+<script type="text/javascript">
+
+    function editUser(id) {
+        document.getElementById("editUserId").value = id;
+        $("#IsMaster").attr('checked', false);
+        $.ajax({
+            type: 'POST',
+            url: "../Utilities/GetUserById",
+            data: { Id: id },
+            dataType: "json",
+            success: function (data) {
+                // get role of the user then if you are an admin then assign tasks to manager and employee
+                // if you are manager then assign to employee
+                // if you can self assign
+
+                $("#fname").val(data.FirstName);
+                $("#lname").val(data.LastName);
+                $("#email").val(data.Email);
+                $("#pass").val(data.Password);
+                $("#cpass").val(data.Password);
+                $("#pno").val(data.PhoneNumber);
+                $("#hno").val(data.HomeNumber);
+
+                if (data.IsMasterAdmin == 1) {
+                    $("#IsMaster").attr('checked', true);
+                }
+
+                $("#editUser").modal("show");
+
+            },
+            error: function () { alert('fail'); }
+        });
+
+    }
+
+    function deleteUser(id) {
+        document.getElementById("userid").value = id;
+    }
+
+    function validatePassword() {
+        var Password = $("#pass").val();
+        var Password1 = $("#cpass").val();
+
+        if (Password != Password1) {
+            $('#errorDisplay').show();
+            $('#updateSb').attr('disabled', true)
+        }
+        else {
+            $('#errorDisplay').hide();
+            $('#updateSb').attr('disabled', false)
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#Admins").css('background-color', '#0150A1');
+        $("#Admins").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+    });
+</script>
+
+<script>
+    //Work Done by Waqas, inorder to get Admin list for user turn over
+
+    function getAdminList(id)
+    {
+
+
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            url: '@Url.Action("GetUserListToChangeOver", "Utilities")',
+            data: { Id: id, Way:1 },
+            success: function (response)
+            {
+                $('#fromId').val(id);
+
+                $('#adminListTurnOver').find('option').remove().end();
+                
+                $("#adminListTurnOver").append('<option value="" disabled selected>Please Select Admin To Transfer Tasks</option>');
+                
+
+                var i = 0;
+                $.each(response, function ()
+                {
+                    $("#adminListTurnOver").append('<option value=' + response[i].Id + '>' + response[i].Name + '</option>');
+
+                    i++;
+                });
+
+                $('#UserTurnOverModal').modal('show');
+            },
+            error: function (response)
+            {
+                alert('Ajax Fail');
+            }
+
+        });
+    }
+</script>
+
+<script>
+    //Work Done by Waqas, to handle reminders dynamically on the basis of frequency selection
+    function setAdminReminderOption(freq) {
+        if (freq == 1 || freq == -1 || freq == 6) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>');
+        }
+        
+
+        if (freq == 2) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option>')
+        }
+        
+
+        if (freq == 3 || freq == 4 || freq == 5) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option> <option value="3">Monthly</option>')
+        }
+        
+    }
+
+    function setCustomAdminReminderOption(day) {
+        
+        if (day > 0 && day < 7) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option>');
+        }
+        else if (day > 6 && day < 31) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option>');
+        }
+        else if (day > 30) {
+            $('#adminDailyReminder').empty().append('<option value="">Select Type</option> <option value="1">Daily</option> <option value="2">Weekly</option> <option value="3">Monthly</option>');
+        }
+    }
+
+</script>

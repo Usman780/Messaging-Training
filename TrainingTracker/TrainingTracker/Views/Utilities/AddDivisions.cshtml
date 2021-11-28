@@ -1,0 +1,258 @@
+﻿@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout_lessfiles.cshtml";
+}
+@using TrainingTracker.Models
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<style>
+    .clr {
+        background-color: #008940;
+    }
+
+    .editclr {
+        color: white !important;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active">Division</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Divisions</b></h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>
+                        <a title="Add Division" class="btn btn-sm  bg-primary text-white" href="" data-toggle="modal" data-target="#myModal"> Add <i style="margin-top:-5%;" class="icon-plus-circle2"></i></a>
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <table class="table datatable-button-html5-basic">
+            <thead>
+                <tr>
+                    <th style="width:20px !important">Sr#</th>
+                    <th>Division Name</th>
+
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    List<Division> list = ViewBag.divisions;
+                    int i = 1;
+                    foreach (Division item in list)
+                    {
+
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                @item.Name
+                            </td>
+
+                            <td>
+                                <a class="btn btn-sm  clr " title="Edit Division" onclick="updateDivision(@item.Id,'@item.Name')">
+                                    <i class="icon-pencil editclr"></i>
+
+                                </a>
+
+                                <a title="View Division" class="btn btn-sm  bg-primary" href="@Url.Action("displayDivisionDetails","Utilities",new { sid = General_Purpose.EncryptId(item.Id), page1="Division" })"> View </a>
+                                @if (new DivisionBL().getDivisionsById(item.Id).Tags.Where(x => x.IsActive == 1).Count() == 0 && new DivisionBL().getDivisionsById(item.Id).Departments.Where(x => x.IsActive == 1).Count() == 0 && new DivisionBL().getDivisionsById(item.Id).Users.Where(x => (x.Role == 2 || x.Role == 4) && x.IsActive == 1).Count() == 0)
+                                {
+                                    <a title="Delete Division" data-toggle="modal" data-target="#deleteModal" class="btn btn-sm  btn-danger btn-sm" onclick="deleteDivision(@item.Id)">
+                                        <i class="icon-trash"></i>
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer text-muted">
+        <a href="#">Powered By </a>
+        <a href="http://nodlays.com" target="_blank">Nodlays</a>
+    </div>
+    <!-- /footer -->
+</div>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("AddDivisions","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Division</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division Name </label>
+                        <div class="col-lg-9">
+                            <input required class="form-control" type="text" maxlength="49" name="Name" onkeyup="vlidate(this,document.getElementById('error').id,document.getElementById('sb').id,'add')" />
+                        </div>
+                        <label id="errorDisplay" class="control-label text-danger" hidden> Division with same Name already exist in Database</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span id="error" hidden style="color:red">  Error, same name exist in System</span>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sb" class="btn btn-sm  bg-primary-400">Add Division</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="editDivision" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("UpdateDivisionAction","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Division</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division Name </label>
+                        <div class="col-lg-9">
+                            <input type="text" required maxlength="49" class="form-control" name="Name" id="updateDiv" onkeyup="vlidate(this,document.getElementById('updateerror').id,document.getElementById('updatesb').id)">
+                            <input type="hidden" class="form-control" name="Id" id="updateId">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span id="updateerror" hidden style="color:red">  Error, same name exist in System</span>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="updatesb" class="btn btn-sm  bg-primary-400">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal warning">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("DeleteDivision","Utilities")">
+                <input type="hidden" name="id" id="divisionId" />
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Delete Division</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <center> <h5>Are you sure you want to delete this division?</h5> </center>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-sm bg-primary-400">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function deleteArea(title,id,names,ids) {
+        swal({
+            title: "Edit",
+            text: '<form role="form" id="DeleteMeModal" action="/Area/Delete/' + areaId + '" id="contact-form" method="get"><div class="control-group"><label for="categoryName">You Are Going To Delete Area Permanently!</label></div></div></form>',
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#FF7043",
+            confirmButtonText: "Yes, delete it!"
+        }, function () {
+            $("#DeleteMeModal").submit();
+        });
+    }
+
+    function vlidate(title, errorDisplay, button,way="") {
+         var ID =$("#updateId").val();
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("divisionNameValidation","Utilities")',
+               timeout: 100000000,
+               data: { _data:title.value, ID:ID,way:way },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json != 1) {
+                       $('#' +errorDisplay).hide();
+                       $('#' +button).attr('disabled', false)
+                       }
+               else
+                   {
+                       $('#' + errorDisplay).show();
+                       $('#' +button).attr('disabled', true)
+
+               }
+
+               },
+               error: function (data) {
+                   alert(data)
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+    function updateDivision(vaid, name){
+
+        $("#updateDiv").val(name);
+        $("#updateId").val(vaid);
+        $('#editDivision').modal("show"); // open the modal
+    };
+
+
+
+    function deleteDivision(id)
+    {
+        $("#divisionId").val(id);
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#Division").css('background-color', '#0150A1');
+        $("#Division").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+
+    });
+</script>

@@ -1,0 +1,285 @@
+﻿
+@{
+    ViewBag.Title = "Backup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    input[type=radio], input[type=checkbox] {
+        width: 15px;
+        height: 15px;
+        padding-bottom: 10px;
+    }
+
+    .control-label {
+        padding-bottom: 10px;
+    }
+</style>
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active">Backup</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+
+<br />
+
+
+<button type="button" data-toggle="modal" data-target="#modal-Report" id="modalopener" hidden>
+    Open modal
+</button>
+
+<div class="content">
+
+    <div id="reportmodal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content login-form">
+
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group" id="delText">Your report is generating in background.When it will complete, the download link w'll be send to your mail address. It will take few minutes <small class="display-block"></small></h5>
+                </div>
+
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">Close</button>
+                    <br />
+                </center>
+                <br />
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title">Data Backup</h3></center>
+            <div class="heading-elements">
+                @*<ul class="icons-list">
+                                <li>
+                                    <a href="@Url.Action("AddManager","Utilities")" class="btn btn-sm  bg-primary-400" style="color:white;"> Add Manager <i class="icon-plus-circle2"></i></a>
+                                </li>
+                    </ul>*@
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                @*<form action="@Url.Action("downloadBackup","Utilities")" id="backupData" method="post">*@
+
+                <div class="col-md-12">
+                    <p><strong>Include:</strong></p><br />
+                    <div class="">
+                        <label class="switch">
+                            <span style="margin-left:60px;"> Select_All</span>
+                            <input type="checkbox" name="all" id="all" onchange="togglecheckboxes('data')" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <br />
+                    <div class="col-md-3">
+                        @*<label class="control-label"> <input type="checkbox" name="manager" class="data" /> Managers</label>*@
+                        <label class="switch">
+                            <span style="margin-left:60px;"> Managers</span>
+                            <input type="checkbox" name="manager" class="data" id="manager" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @*<label class="control-label"> <input type="checkbox" name="employee" class="data" /> Employees</label>*@
+                        <label class="switch">
+                            <span style="margin-left:60px;"> Employees</span>
+                            <input type="checkbox" name="employee" class="data" id="employee" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        @*<label class="control-label"> <input type="checkbox" name="task"  class="data"/> Tasks</label>*@
+                        <label class="switch">
+                            <span style="margin-left:60px;"> Tasks</span>
+                            <input type="checkbox" name="task" class="data" id="task" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @*<label class="control-label"> <input type="checkbox" name="groupTask" class="data" /> Group Tasks</label>*@
+                        <label class="switch">
+                            <span style="margin-left:60px;"> Group_Tasks</span>
+                            <input type="checkbox" name="groupTask" class="data" id="gtask" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        @*<label class="control-label"> <input type="checkbox" name="employeeTaskFalse" class="data" /> Employee Tasks</label>*@
+                        <label class="switch">
+                            <span style="margin-left:60px;"> Employee_Tasks</span>
+                            <input type="checkbox" name="employeeTaskFalse" class="data" id="etask" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @*<label class="control-label"> <input type="checkbox" name="managerTask"  class="data"/> Manager Tasks</label>*@
+                        <label class="switch">
+                            <span style="margin-left:60px;"> Manager_Tasks</span>
+                            <input type="checkbox" name="managerTask" class="data" id="mtask" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <br /><br />
+                <div class="col-md-12">
+                    <p class="text-primary" id="err">*Select atleast one option to download.</p>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-sm  btn-success" value="Download" id="download" onclick="downloadhandle(1)" />
+                </div>
+                @*</form>*@
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    var isAllCheck = false;
+    function togglecheckboxes(cn) {
+
+        var cbarray = document.getElementsByClassName(cn);
+        for (var i = 0; i < cbarray.length; i++) {
+
+            cbarray[i].checked = !isAllCheck
+        }
+        isAllCheck = !isAllCheck;
+    }
+
+    $('#all').click(function () {
+
+        $('.data').trigger('click');
+    });
+    $(document).ready(function () {
+        $('#err').show();
+    })
+    //    if ($('.data').prop('checked', false)) {
+    //        $('#download').prop('disabled', true);
+    //    }
+    //    else {
+    //        $('#download').prop('disabled', false);
+    //    }
+    //
+    function downloadhandle(va) {
+        if ($('input[type="checkbox"]:checked').length <= 0) {
+            $('#download').prop('disabled', true);
+            $('#err').show();
+        }
+        else
+        {
+            $('#download').prop('disabled', false);
+            $('#err').hide();
+            if (va == 1)
+            {
+                //$('#backupData').submit();
+
+                var manager = 0;
+                var employee = 0;
+                var task = 0;
+                var gtask = 0;
+                var etask = 0;
+                var mtask = 0;
+
+                
+                if ($('#manager').is(":checked")) {
+                    manager = 1;
+                }
+                else {
+                    manager = 0;
+                }
+                if ($('#employee').is(":checked")) {
+                    employee = 1;
+                }
+                else {
+                    employee = 0;
+                }
+                if ($('#task').is(":checked")) {
+                    task = 1;
+                }
+                else {
+                    task = 0;
+                }
+                if ($('#gtask').is(":checked")) {
+                    gtask = 1;
+                }
+                else {
+                    gtask = 0;
+                }
+                if ($('#etask').is(":checked")) {
+                    etask = 1;
+                }
+                else {
+                    etask = 0;
+                }
+                if ($('#mtask').is(":checked")) {
+                    mtask = 1;
+                }
+                else {
+                    mtask = 0;
+                }
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: "../Utilities/AsyncdownloadBackup",
+                    data:
+                    {
+                        manager1: manager,
+                        employee1: employee,
+                        managerTask1: mtask,
+                        employeeTask1: etask,
+                        task1: task,
+                        groupTask1: gtask
+                    },
+                    success: function (data)
+                    {
+                        
+                        document.getElementById("modalopener").click();
+                        //$("#modal-Report").modal("show");
+                    },
+                    error: function ()
+                    {
+                        alert('fail');
+                    }
+                });
+            }
+        }
+    }
+
+
+    $('.data').change(function () {
+        downloadhandle(0);
+    })
+    $('#all').change(function () {
+        downloadhandle(0);
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $("#Backup").css('background-color', '#0150A1');
+        $("#Backup").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+
+    });
+</script>

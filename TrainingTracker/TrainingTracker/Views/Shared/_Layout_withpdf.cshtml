@@ -1,0 +1,858 @@
+﻿@using TrainingTracker.Models;
+@using TrainingTracker.Helper_Classes;
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL
+@{
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+    User user = new UserBL().getUsersById(logedinuser.Id);
+
+    //   List<Course> canvascourse = General_Purpose.GetCanvasUserCourses();
+    Company comp = new CompanyBL().getCompanyById(Convert.ToInt32(logedinuser.Company));
+    List<FavoriteReport> frlist = new FavoriteReportBL().getFavoriteReportList().Where(x => x.User_Id == logedinuser.Id).ToList();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="~/Content/landing_page/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/Content/landing_page/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Content/landing_page/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/landing_page/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Content/landing_page/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/Content/landing_page/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Content/landing_page/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/Content/landing_page/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/landing_page/favicon/apple-icon-180x180.png">
+    @*<link rel="icon" type="image/png" sizes="192x192" href="~/Content/landing_page/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="~/Content/landing_page/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="~/Content/landing_page/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="~/Content/landing_page/favicon/favicon-16x16.png">*@
+    <link rel="icon" href="~/Content/Images/ig.png" type="image/x-icon" sizes="16x16">
+    <link rel="manifest" href="~/Content/landing_page/favicon/manifest.json">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/Content/landing_page/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Zuptu Task Management App</title>
+
+    <!-- Global stylesheets -->
+    @{Html.RenderAction("cssCache", "Home");}
+    @{Html.RenderAction("jsCache", "Home");}
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <!-- Theme JS files -->
+    <!-- /theme JS files -->
+    <style>
+
+        /*.lowPriorityButton {*/
+           /* background-color: #4CAF50;*/
+            /*border: none;
+            color: white;
+            padding: 2px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            border-radius: 3px;
+        }*/
+    /*    .mediumPriorityButton {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 2px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            border-radius: 3px;
+        }
+        .highPriorityButton {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 2px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            border-radius: 3px;
+        }*/
+        .sidebar-default .navigation li.active > a:hover {
+            background-color: white !important;
+            color: #0150A1 !important;
+        }
+
+        .sidebar-default .navigation li.disabled > a:hover {
+            background-color: white !important;
+            color: #0150A1 !important;
+        }
+
+        .sidebar-default .navigation li.disabled > a:focus {
+            background-color: transparent;
+        }
+
+        .sidebar-default .navigation > li.active > a:hover {
+            background-color: white !important;
+            color: #0150A1 !important;
+        }
+
+        .sidebar-default .navigation > li.active > a:focus {
+            background-color: #f5f5f5;
+            color: #333333;
+        }
+
+        .datatable-header {
+            display: block !important;
+        }
+
+        .sidebar {
+            height: 860px !important;
+        }
+
+        #DataTables_Table_0_filter, .dt-buttons, .dataTables_length {
+            display: block !important;
+        }
+
+        .file input[type=file] {
+            position: absolute;
+            font-size: 50px;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            /*// background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);*/
+            background: url(../../Content/assets/images/loadergif.gif) center no-repeat #fff;
+            opacity: 1.0;
+        }
+
+        .ajaxloader {
+            background-image: url('../../Content/assets/images/loadergif.gif');
+            background-repeat: no-repeat;
+            background-size: 64px 64px;
+            display: none;
+            margin-top: 15px;
+            width: 69px;
+            height: 89px;
+            position: absolute;
+            top: 50%;
+            left: 47%;
+            padding: 2px;
+        }
+
+        .mrgn {
+            margin-top: 40px;
+        }
+
+        .btn-success {
+            color: #fff !important;
+            background-color: #008940 !important;
+            border-color: #008940 !important;
+        }
+
+        .bg-secondary {
+            margin-bottom: 2px !important;
+        }
+
+        input:checked + .slider {
+            background-color: #008940 !important;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #C0C0C0 !important;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .bg-teal-400 {
+            background-color: #f9f9f9 !important;
+            color: black !important;
+            border-color: white !important;
+        }
+
+        .dataTable thead .sorting:after, .dataTable thead .sorting:before, .dataTable thead .sorting_asc:after, .dataTable thead .sorting_desc:after {
+            display: none !important;
+        }
+
+        .modal-content {
+            border-radius: 0px !important;
+        }
+
+         li ul li{
+            border-bottom:1px solid #C0C0C0 !important;
+            
+        }
+         .dataTable thead .sorting:before, .dataTable thead .sorting:after, .dataTable thead .sorting_asc:after, .dataTable thead .sorting_desc:after, .dataTable thead .sorting_asc_disabled:after, .dataTable thead .sorting_desc_disabled:after {
+    content: '';
+    font-family: 'icomoon';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    font-size: 12px;
+    margin-top: -6px;
+    display: none !important;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+        .bootstrap-timepicker-widget table td input {
+            width: 40px !important;
+            margin: -4px !important;
+            text-align: justify !important;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="hidden" value="@user.LowPriorityColor" id="LpPColor" />
+    <input type="hidden" value="@user.MediumPriorityColor" id="MdPColor" />
+    <input type="hidden" value="@user.HighPriorityColor" id="HiPColor" />
+    <input type="hidden" value="@logedinuser.Company" id="loginCompanyId" />
+    <input type="hidden" value="@logedinuser.Id" id="loginUserId" />
+
+    <script>
+        $(document).ready(function () {
+            var lp = $("#LpPColor").val();
+            var Mp = $("#MdPColor").val();
+            var Hp = $("#HiPColor").val();
+            if (lp == "") {
+
+                $("<style>").text(".lowPriorityButton {background-color: #008940; border: none;color: white;padding: 2px 8px; text-align: center; text-decoration: none; display: inline-block;  font-size: 12px;margin: 4px 2px; border-radius: 3px; }").appendTo("head");
+
+                //$(".lowPriorityButton").css("background-color", "#008940", 'important');
+
+            } else {
+                var data = "background-color:" + lp + "; border: none;color: white;padding: 2px 8px; text-align: center; text-decoration: none; display: inline-block;  font-size: 12px;margin: 4px 2px; border-radius: 3px;";
+                $("<style>").text(".lowPriorityButton { " + data + " }").appendTo("head");
+
+                //$(".lowPriorityButton").css("background-color", lp, 'important');
+
+            }
+            if (Mp == "") {
+
+                $("<style>").text(".mediumPriorityButton {background-color: #ce2029; border: none;color: white;padding: 2px 8px; text-align: center; text-decoration: none; display: inline-block;  font-size: 12px;margin: 4px 2px; border-radius: 3px; }").appendTo("head");
+
+                //$(".lowPriorityButton").css("background-color", "#008940", 'important');
+
+            } else {
+                var data = "background-color:" + Mp + "; border: none;color: white;padding: 2px 8px; text-align: center; text-decoration: none; display: inline-block;  font-size: 12px;margin: 4px 2px; border-radius: 3px;";
+                $("<style>").text(".mediumPriorityButton { " + data + " }").appendTo("head");
+
+                //$(".lowPriorityButton").css("background-color", lp, 'important');
+
+            }
+            if (Hp == "") {
+
+                $("<style>").text(".highPriorityButton {background-color: #0150A1; border: none;color: white;padding: 2px 8px; text-align: center; text-decoration: none; display: inline-block;  font-size: 12px;margin: 4px 2px; border-radius: 3px; }").appendTo("head");
+
+                //$(".lowPriorityButton").css("background-color", "#008940", 'important');
+
+            } else {
+                var data = "background-color:" + Hp + "; border: none;color: white;padding: 2px 8px; text-align: center; text-decoration: none; display: inline-block;  font-size: 12px;margin: 4px 2px; border-radius: 3px;";
+                $("<style>").text(".highPriorityButton { " + data + " }").appendTo("head");
+
+                //$(".lowPriorityButton").css("background-color", lp, 'important');
+
+            }
+
+        });
+    </script>
+
+
+    <div id="modal-Report" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content login-form">
+
+
+                <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-folder-upload"></i></div>
+                    <h5 class="content-group" id="delText">Your report is being generated in the background. Upon completion, the download link will be sent to you via email as well as shown at your notification bar. It will take a few minutes.<small class="display-block"></small></h5>
+                </div>
+
+                <center>
+                    <button type="button" data-dismiss="modal" class="btn btn-sm  bg-primary">Close</button>
+                    <br />
+                </center>
+                <br />
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Modal -->
+    <div id="userProfileModal" class="modal fade">
+        <div class="modal-dialog modal-sm">
+
+
+            <!-- User details (with sample pattern) -->
+            <div class="content-group">
+                <div class="panel-body bg-blue border-radius-top text-center" style="background-image: url(http://demo.interface.club/limitless/assets/images/bg.png); background-size: contain; border:1px solid black;">
+
+                    <button type="button" class="close" data-dismiss="modal" style="font-weight:bold; color:red;">&times;</button>
+
+                    <div class="content-group-sm">
+
+
+
+                        <h5 class="text-semibold no-margin-bottom" id="upmcompany">
+                            Company
+                        </h5>
+
+                        <span class="display-block" id="upmdesignation">Designation</span>
+                    </div>
+
+                    <a class="display-inline-block content-group-sm">
+                        <img id="upmimg" src="~/Content/Images/ig.png" class="img-circle img-responsive" alt="" style="width: 120px; height: 120px;" data-toggle="modal" data-target="#userProfilePictureModal">
+                    </a>
+
+                    <ul class="list-inline no-margin-bottom">
+                        <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon"><i class="icon-phone" title="contact" id="upmcontact2"></i></a></li>
+                        <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon"><i class="icon-envelop4" title="email" id="upmemail2"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-body no-border-top no-border-radius-top" style="border:1px solid black;">
+                    <div class="form-group mt-5">
+                        <label class="text-semibold">Full name:</label>
+                        <span class="pull-right-sm" id="upmname">Victoria Anna Davidson</span>
+                    </div>
+
+                    <div class="form-group" id="upmdivholder">
+                        <label class="text-semibold" id="upmdivision2">Division/ Department:</label>
+                        <span class="pull-right-sm" id="upmdivision">division</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-semibold">Phone number:</label>
+                        <span class="pull-right-sm" id="upmcontact">+3630 8911837</span>
+                    </div>
+
+
+                    <div class="form-group no-margin-bottom">
+                        <label class="text-semibold">Personal Email:</label>
+                        <span class="pull-right-sm" id="upmemail">personal@domain.com</span>
+                    </div>
+                </div>
+            </div>
+            <!-- /user details (with sample pattern) -->
+
+
+
+
+
+        </div>
+    </div>
+    <!-- User Profile Modal -->
+    <!-- User Profile Picture Modal -->
+    <center id="userProfilePictureModal" class="modal" style="margin-top:50px">
+        <img src="~/Content/Images/ig.png" class="modal-content img-responsive" style="max-height:90%; max-width:90%" id="upmimg2">
+        <br />
+        <button class="btn btn-danger" data-dismiss="modal">Close</button>
+    </center>
+    <!-- User Profile Picture Modal -->
+    <!-- Deleted User modal -->
+    <div class="modal fade" id="userDeletedModal">
+
+        <div class="modal-dialog" style="margin-top:250px;">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="border:1px solid black">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title text-center text-pink-600">User Deleted</h4>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Deleted User modal -->
+
+
+    <div class="loader"></div>
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $(".loader").fadeOut("slow");
+        });
+
+    </script>
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-inverse bg-primary">
+        <div class="col-lg-12 col-sm-12">
+            <div class="col-1">
+                <div class="col-6"></div>
+                <div class="col-6">
+                    <div class="navbar-header">
+
+                        <img style="height:40px;width:40px;margin-top:3%;margin-left:5%" src="~/Content/Images/navlogo.png" />
+                        <ul class="nav navbar-nav visible-xs-block">
+
+                            @*<li><a class="help-block"><i class="icon-help"></i></a></li>*@
+                            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+                        </ul>
+
+                        @* <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Content/assets/images/logo_light.png" alt=""></a>*@
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-11">
+
+                <div class="col-4"></div>
+                <div class="col-8">
+
+                    <div class="col-11">
+                        <h4 class="pull-right">@comp.Name &nbsp;&nbsp;&nbsp; <a target="_blank" style="font-size:20px; color:white" href="@Url.Action("Contact","Home")">Help</a></h4>
+                    </div>
+                    <div style="margin-top:15px" class="col-1">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="navbar-right" id="notificationDiv">
+
+
+                <ul class="nav navbar-nav">
+                    @{
+                        List<ExtensionRequest> newlist = new List<ExtensionRequest>();
+                        List<FileDownloadLink> FDlist = new List<FileDownloadLink>();
+
+
+                    }
+                    @if (((logedinuser.Role == (int)Enums.Role.Manager || logedinuser.Role == (int)Enums.Role.Cordinator) || logedinuser.Role == (int)Enums.Role.Admin))
+                    {
+
+                        newlist = General_Purpose.GetActiveExtensionRequests();
+
+                    }
+                    @if (((logedinuser.Role == (int)Enums.Role.Manager || logedinuser.Role == (int)Enums.Role.Cordinator) || logedinuser.Role == (int)Enums.Role.Admin || logedinuser.Role == (int)Enums.Role.Trainee))
+                    {
+                        FDlist = new FileDownloadLinkBL().getFileDownloadLinkList().Where(x => x.UserId == logedinuser.Id && Convert.ToDateTime(x.CreatedAt).AddDays(1) >= DateTime.Now).ToList();
+                        int Count2 = FDlist.Where(x => x.IsDownloaded != 1).Count();
+                        int finalCount = newlist.Count + Count2;
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-bell2"></i>
+                                <span class="visible-xs-inline-block position-right">NOTIFICATIONS</span>
+                                @if (finalCount > 0)
+                                {
+
+                                    <span class="badge bg-danger" id="notificationCount">@finalCount</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger" id="notificationCount" style="display:none;">0</span>
+                                }
+                            </a>
+
+                            <div class="dropdown-menu dropdown-content">
+                                <div class="dropdown-content-heading">
+                                    NOTIFICATIONS
+                                    @*<ul class="icons-list">
+                                            <li><a href="#"><i class="icon-menu7"></i></a></li>
+                                        </ul>*@
+                                </div>
+
+                                <ul class="media-list dropdown-content-body width-350" id="notificationList">
+
+                                    @foreach (ExtensionRequest item in newlist.OrderByDescending(x => x.Id))
+                                    {
+                                        User us = new User();
+                                        string url = "";
+                                        string TaskName = "";
+                                        string ImgURL = "";
+                                        int userProfileId = -1;
+
+                                        if (item.User_TaskId != null)
+                                        {
+
+
+                                            us = new UserBL().getUsersById((int)item.User_Task.UserID);
+
+                                            if (us != null)
+                                            {
+                                                userProfileId = us.Id;
+
+                                                if (us.Image != null && us.Image != "")
+                                                {
+                                                    ImgURL = us.Image;
+
+                                                    //ImgURL = "~/Content/Images/ig.png";
+                                                }
+                                            }
+
+                                            Task t = new TaskBL().getTasksById((int)item.User_Task.TaskID);
+                                            TaskName = t.Name;
+                                            if (us.Role == 3)
+                                            {
+                                                url = ProjectVaraiables.SYSTEM_URL + "/Task/TaskDetails?v=" + General_Purpose.EncryptId((int)item.User_TaskId) + "&isModal=01";
+                                            }
+                                            else
+                                            {
+                                                url = ProjectVaraiables.SYSTEM_URL + "/Manager/TaskDetails?v=" + General_Purpose.EncryptId((int)item.User_TaskId) + "&isModal=01";
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            GroupTask_User gtu = item.GroupTasks_Details.GroupTask_User.Where(x => x.LeadRole == 1 && x.IsActive == 1).FirstOrDefault();
+
+                                            if (gtu != null)
+                                            {
+                                                userProfileId = gtu.User.Id;
+
+                                                if (gtu.User.Image != null && gtu.User.Image != "")
+                                                {
+                                                    ImgURL = gtu.User.Image;
+
+                                                    //  ImgURL = "~/Content/Images/ig.png";
+                                                }
+                                            }
+
+                                            if (item.GroupTasks_Details.CreatedBy == logedinuser.Id || logedinuser.Role == 1)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                continue;
+                                            }
+
+                                            TaskName = item.GroupTasks_Details.GroupTask.Name;
+                                            url = ProjectVaraiables.SYSTEM_URL + "/Task/grouptaskdetails?v=" + General_Purpose.EncryptId((int)item.GroupTaskDetails_Id) + "&isModal=01";
+
+                                        }
+
+
+
+                                        <li class="media">
+                                            <div class="media-left">
+                                                @if (ImgURL != "")
+                                                {
+                                                    string URL = General_Purpose.RefreshImageSignature((int)userProfileId);
+                                                    <a href="#" onclick="openUserProfileModal('@userProfileId')" class="btn-rounded btn-icon btn-xs"><img src="@URL" class="img-circle img-sm" alt=""></a>
+
+                                                }
+                                                else
+                                                {
+                                                    <a href="#" onclick="openUserProfileModal('@userProfileId')" class="btn-rounded btn-icon btn-xs"><img src="~/Content/Images/ig.png" class="img-circle img-sm" alt=""></a>
+
+                                                }
+                                            </div>
+
+                                            <div class="media-body">
+
+                                                <a href="@url" target="_blank">@TaskName's</a> Employee <span class="text-semibold">Requested</span> for Extention.
+                                                @if (item.CreatedAt != null)
+                                                {
+                                                    <div class="media-annotation">@item.CreatedAt.Value.ToString("MM/dd/yyyy hh:mm tt")</div>
+                                                }
+                                            </div>
+
+                                        </li>
+
+
+                                    }
+                                    @foreach (FileDownloadLink item in FDlist.OrderByDescending(x => x.Id))
+                                    {
+                                        <li class="media">
+                                            <div class="media-left">
+                                                <a href="#" class="btn-rounded btn-icon btn-xs">
+                                                    <img src="../Content/Images/report.jpg" class="img-circle img-sm" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                Your Report <b>@item.ReportTitle</b> is Ready to
+                                                <a href="@item.ReportLink" target="_blank">Download</a>
+                                                <div class="media-annotation">@item.CreatedAt.Value.ToString("MM/dd/yyyy hh:mm tt")</div>
+                                            </div>
+                                            @if (item.IsDownloaded != 1)
+                                            {
+                                                <div class="media-right">
+
+                                                    <span style="color:blue"><b>(New)</b></span>
+
+                                                </div>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </li>
+                    }
+
+                    <li class="dropdown">
+
+
+                        <div class="dropdown-menu dropdown-content width-350">
+
+
+                            <input type="hidden" id="impmsg" value="@ViewBag.message" />
+
+                            <div class="dropdown-content-footer">
+                                <a href="#" data-popup="tooltip" title="All messages"><i class="icon-menu display-block"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            @Html.Partial("_Partial_SideMenuBar")
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <!-- Page header -->
+                <!-- /page header -->
+                <!-- Content area -->
+                @RenderBody()
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+        <!-- /Chating Section -->
+
+
+        @{
+            string companyName = comp.Name;
+            string userName = user.FirstName + " " + user.LastName;
+            string userEmail = user.Email;
+            string userPassword = StringCipher.Decrypt(user.Password, "zuptu");
+            string chatHeaderUrl = ProjectVaraiables.ChatSupportURL + "/Agent/ChatSupportHeader?companyName=" + companyName + "&name=" + userName + "&email=" + userEmail + "&password=" + userPassword;
+            string chatUrl = ProjectVaraiables.ChatSupportURL + "/Agent/ClientFormSupport?companyName=" + companyName + "&name=" + userName + "&email=" + userEmail + "&password=" + userPassword;
+        }
+
+
+        <input type="hidden" id="chatHeaderUrl" value="@chatHeaderUrl" />
+        <input type="hidden" id="chatUrl" value="@chatUrl" />
+
+        <div style="position: fixed; left: 0; bottom: 0; width: 100%; text-align: right; z-index:10" class="collapse chatDiv">
+
+        </div>
+
+        <div id="chatHeaderDiv" style="border-radius:10px 10px 0px 0px; position: fixed; right: 0; bottom: 0; margin-right:5px; z-index:10; height:50px;">
+            <iframe id="chatHeaderIframe" style="border-radius: 10px 10px 0px 0px;" src="@chatHeaderUrl" scrolling="no"></iframe>
+        </div>
+
+
+        <div id="chatHeaderToggle" style="position:fixed; bottom:12px; right:25px; z-index:11;">
+            <i class="icon-arrow-up12 text-white text-bold" onclick="openChat()" id="iframeToggleIcon"></i>
+            <i class="icon-spinner spinner text-white text-bold" style="display:none;" id="iframeSpinner"></i>
+        </div>
+
+        <!-- /Chating Section -->
+
+    </div>
+
+    <!--This Script is used to opne modal by clicking on any user picture icon in notification, comments or employee sections-->
+    <script>
+
+        function openUserProfileModal(id) {
+
+            if (id == -1)
+            {
+                $("#userDeletedModal").modal('show');
+            }
+            else
+            {
+
+                $.ajax({
+                        dataType: "json",
+                        type: "POST",
+                        url: '@Url.Action("GetUserProfileModalDTOs", "Task")',
+                        data: { Id: id},
+                        success: function (response)
+                        {
+                            if (response == null) {
+                                alert("No Record Found")
+                            }
+                            else
+                            {
+
+                                $("#upmcompany").text(response.Company);
+                                $("#upmdesignation").text(response.Designation);
+                                $("#upmimg").attr("src", response.Profile);
+                                $("#upmimg2").attr("src", response.Profile);
+                                $("#upmname").text(response.Name);
+                                if (response.Designation == "Employee")
+                                {
+                                    $("#upmdivision2").text("Department: ");
+
+                                }
+                                if (response.Designation == "Manager")
+                                {
+                                    $("#upmdivision2").text("Division: ");
+
+                                }
+                                if (response.Designation == "Administrator") {
+                                    $("#upmdivholder").css("display", "none");
+                                }
+                                else {
+                                    $("#upmdivholder").css("display", "");
+                                }
+                                $("#upmdivision").text(response.Division);
+                                $("#upmcontact2").attr("title", response.Contact);
+                                $("#upmemail2").attr("title", response.Email);
+                                $("#upmcontact").text(response.Contact);
+                                $("#upmemail").text(response.Email);
+
+                                $("#userProfileModal").modal('show');
+
+                            }
+
+                        },
+                        error: function (response)
+                        {
+                            alert('Error');
+                        }
+
+
+                });
+
+
+
+            }
+        }
+    </script>
+
+    <!--This Script is used to opne modal by clicking on user profile icon-->
+    <script>
+
+        function openMyProfile() {
+            var profile = document.getElementById("myprofilepicture").value
+
+            $("#upmimg2").attr("src", profile);
+            $("#userProfilePictureModal").modal('show');
+        }
+    </script>
+
+
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var cid = $("#loginCompanyId").val();
+            var lid = $("#loginUserId").val();
+
+            var chat = $.connection.notificationHub; //get connection with "NotificationHub.cs" class in "DataHub" folder
+
+            $.connection.hub.start().done(function () { });
+
+
+            chat.client.broadcastExtensionNotification = function (response, companyId) //function will be triggered whenever extension request submitted/accepted / rejected
+            {
+                if (response == "1") {
+
+                    if (parseInt(cid) == companyId) {
+                        $("#notificationDiv").load(location.href + " #notificationDiv");
+                    }
+                }
+
+            };
+
+            chat.client.broadcastReportNotification = function (response, userId, link, ReportName, datetime) //function will be triggered whenever extension request submitted/accepted / rejected
+            {
+                if (response == "1") {
+                    if (parseInt(lid) == userId) {
+                        //    var count = $("#notificationCount").text();
+                        //    if (count == "0") {
+                        //        $("#notificationCount").show();
+                        //    }
+                        //    $("#notificationCount").text(parseInt(count) + 1);
+
+                        //    $("#notificationList").prepend('<li class="media"><div class="media-left"><a href="#" class="btn-rounded btn-icon btn-xs"><img src="../Content/Images/report.jpg" class="img-circle img-sm" alt=""></a></div><div class="media-body">Your Report "' + ReportName + '" is Ready to <a href="' + link + '" target="_blank">Download</a > <div class="media-annotation" >' + datetime + '</div ></div ></li > ');
+                        $("#notificationDiv").load(location.href + " #notificationDiv");
+                    }
+                }
+
+            };
+
+        });
+
+    </script>
+
+
+    <!--following script is used to handle chat support div (toggling)-->
+    <script>
+
+        var chatHeaderUrl = $('#chatHeaderUrl').val();
+        var chatUrl = $('#chatUrl').val();
+
+        function openChat() {
+            $('#iframeToggleIcon').hide()
+            $('#iframeSpinner').show()
+            $('.chatDiv').append('<div>' +
+                '<i class="icon-cross icon-2x text-bold text-danger" id="chatCloseIcon" onclick="closeChat()"></i>' +
+                '</div>' +
+                '<iframe id="chatIframe" src="' + chatUrl + '" height="550" scrolling="no"></iframe>');
+
+            $('#chatIframe').on('load', function () {
+                $("#chatCloseIcon").show();
+                $('.chatDiv').collapse('toggle');
+                $("#chatHeaderDiv").hide();
+                $("#chatHeaderToggle").hide();
+
+                $('#iframeToggleIcon').show()
+                $('#iframeSpinner').hide()
+
+                $('#chatHeaderDiv').empty();
+            });
+        }
+
+
+        function closeChat() {
+            $("#chatCloseIcon").hide();
+
+            $('#chatHeaderDiv').append('<iframe id="chatHeaderIframe" style="border-radius: 10px 10px 0px 0px;" src="' + chatHeaderUrl + '" scrolling="no"></iframe>');
+
+            $('#chatHeaderIframe').on('load', function () {
+                $('.chatDiv').collapse('toggle');
+                $('.chatDiv').empty();
+                $("#chatHeaderDiv").show();
+                $("#chatHeaderToggle").show();
+            });
+        }
+
+    </script>
+</body>
+</html>

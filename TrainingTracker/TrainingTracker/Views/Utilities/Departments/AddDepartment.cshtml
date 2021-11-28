@@ -1,0 +1,438 @@
+﻿
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+
+
+@{
+
+    CheckAuthenticationDTO logedinuser = General_Purpose.CheckAuthentication();
+
+ }
+
+<style>
+    #AddForm {
+        background-color: #808080;
+        padding: 20px;
+    }
+
+    #backbtn {
+        margin-left: 20px;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+
+<!--Bread Crumb line-->
+
+
+
+@{
+    if (ViewBag.Id != null)
+    {
+
+        Division depdiv = new DivisionBL().getDivisionsById(General_Purpose.DecryptId(ViewBag.Id));
+
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li><a href="@Url.Action("displayDivision","Utilities")">Division</a></li>
+                    <li class="active"><a href="@Url.Action("displayDivisionDetails","Utilities" , new { sid = ViewBag.Id, page1="Division" })">@depdiv.Name</a></li>
+                    <li class="active">Departments</li>
+
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary pull-left" href="@Url.Action("displayDivisionDetails","Utilities" , new { sid = ViewBag.Id, page1="Division" })">Back</a>
+        <br />
+        <br />
+    }
+    else
+    {
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li class="active">Departments</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+
+        <br />
+    }
+}
+
+<input type="hidden" id="logedinRole" value="@logedinuser.Role" />
+
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>List of Departments</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    @if (logedinuser.Role == 1)
+                    {
+                        <li>
+                            <a href="" data-target="#myModal" data-toggle="modal" class="btn bg-primary-400 text-white btn-sm"> Add <i style="margin-top:-5%;" class="icon-plus-circle2"></i></a>
+                        </li>
+                    }
+                    @*<li>
+            <a data-action="collapse"></a>
+        </li>*@
+
+                </ul>
+            </div>
+        </div>
+
+        <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th style="width:20px !important">Sr#</th>
+                    <th>Name</th>
+                    <th>Division Name</th>
+
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("AddDepartments","Utilities")">
+                <input type="hidden" value="@ViewBag.Id" name="DeptId" />
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Add Department</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Department</label>
+                        <div class="col-lg-9">
+                            <input required type="text" maxlength="150" class="form-control" name="Name" id="adddepartment" onkeyup="vlidate(document.getElementById('adddepartment').id,document.getElementById('divisionID').id, document.getElementById('errorDisplay').id, document.getElementById('sb').id)" />
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Divisions</label>
+                        <div class="col-lg-9">
+                            <select required class="select" onchange="vlidate()" id="divisionID" name="DivisionID">
+                                <option disabled value="">Select division</option>
+                                @foreach (var item in ViewBag.divisions)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <label id="errorDisplay" class="control-label text-danger" hidden><b>Name not available in the selected division</b></label>
+                    </div>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sb" class="btn btn-sm  bg-primary-400">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="editDepart" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" action="@Url.Action("UpdateDepartmentAction","Utilities")">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Update Department</h4>
+                    <input type="hidden" value="@ViewBag.Id" name="DeptId" />
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Department</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" required maxlength="49" name="Name" id="updateDepartment" onkeyup="vlidate(document.getElementById('updateDepartment').id,document.getElementById('updateDivisionID').id, document.getElementById('updateerrorDisplay').id, document.getElementById('updatesb').id)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Divisions</label>
+                        <div class="col-lg-9">
+                            <select required class="select" id="updateDivisionID" name="DivisionID">
+                                <option disabled value="">Select division</option>
+                                @foreach (var item in ViewBag.divisions)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+                <input type="hidden" name="Id" id="depId" value="" />
+                <div class="modal-footer">
+                    <label id="updateerrorDisplay" class="control-label text-danger" hidden> Name not Available in the System !</label>
+
+                    <button type="button" class="btn  btn-sm btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="updatesb" class="btn  btn-sm btn-primary bg-primary-400">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("deleteDepartment","Utilities")">
+                <input type="hidden" name="id" id="departmentid" />
+                <input type="hidden" value="@ViewBag.Id" name="DeptId" />
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="exampleModalLabel"><b>Warning</b></h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <h5>Are you sure you want to delete this department?</h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <label id="errorDisplay" class="control-label text-danger" hidden><b>Name not available in the selected division</b></label>
+                    </div>
+                    <button type="button" class="btn  btn-sm btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-sm btn-danger btn-sm">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#wait").css("display", "block");
+        $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetdisplayDepartment","Utilities")',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+
+                "columns": [
+                 { "data": "SerialNo", "name": "SerialNo" },
+                    { "data": "DepartmentName", "name": "DepartmentName" },
+                    { "data": "DivisionName", "name": "DivisionName" },
+
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs':
+                [
+                    {
+                        "targets": 1,
+
+                        "render": function (data, type, full, meta)
+                        {
+                            return '<a href="../Utilities/displayDepartmentDetails?sid=' + full.EncryptedId +'&way=setupDep">' + full.DepartmentName + '</a>';
+                        }
+                    },
+                    {
+
+                        render: function (data, type, full, meta)
+                        {
+
+                            var s = "0";
+                            var ww = "@ViewBag.Id";
+                            var role = $("#logedinRole").val();
+
+                            if (ww != null && ww!="")
+                            {
+                                s = "1";
+                            }
+                            if (role == 1)
+                            {
+                                if (full.IsActive == 11) {
+
+                                    return '<a class="btn btn-primary btn-sm" href="../Analysis/departmentAnalysis?sid=' + full.EncryptedId + '&way=' + s + '">' +
+                                        ' View Analytics' +
+                                        ' </a>' +
+                                        ' <a class="btn btn-success btn-sm" onclick="setSelectedIndex(' + full.DivisionId + ',\'' + full.DepartmentName + '\' ,' + full.Id + ')">' +
+                                        ' <i class="icon-pencil"></i>' +
+                                        ' </a>' +
+                                        '  <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="deleteDepartment(' + full.Id + ')">' +
+                                        '    <i class="icon-trash"></i>' +
+                                        ' </a>';
+
+                                }
+                                else {
+                                    return '<a class="btn btn-primary btn-sm" href="../Analysis/departmentAnalysis?sid=' + full.EncryptedId + '&way=' + s + '">' +
+                                        ' View Analytics' +
+                                        ' </a>' +
+                                        ' <a class="btn btn-success btn-sm" onclick="setSelectedIndex(' + full.DivisionId + ',\'' + full.DepartmentName + '\',' + full.Id + ')">' +
+                                        ' <i class="icon-pencil"></i>' +
+                                        ' </a>';
+                                }
+                            }
+                            else if (role == 2)
+                            {
+                                if (full.IsActive == 11) {
+
+                                    return '<a class="btn btn-primary btn-sm" href="../Analysis/departmentAnalysis?sid=' + full.EncryptedId + '&way=' + s + '">' +
+                                        ' View Analytics' +
+                                        ' </a>';
+
+                                }
+                                else
+                                {
+                                    return '<a class="btn btn-primary btn-sm" href="../Analysis/departmentAnalysis?sid=' + full.EncryptedId + '&way=' + s + '">' +
+                                        ' View Analytics' +
+                                        ' </a>';
+                                }
+                            }
+                        },
+                        targets: 3
+                    }@*@Url.Action("sendMailInviteManager", "Utilities", new { id = i.Id, em = item.Email, fn = item.FirstName, isUtilityPage = true })*@
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+            })
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    function deleteDepartment(Id) {
+
+        $("#departmentid").val(Id);
+    }
+
+
+
+    function deleteArea(title,id,names,ids) {
+        swal({
+            title: "Edit",
+            text: '<form role="form" id="DeleteMeModal" action="/Area/Delete/' + areaId + '" id="contact-form" method="get"><div class="control-group"><label for="categoryName">You Are Going To Delete Area Permanently!</label></div></div></form>',
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#FF7043",
+            confirmButtonText: "Yes, delete it!"
+        }, function () {
+            $("#DeleteMeModal").submit();
+        });
+    }
+
+
+    function vlidate(name,divId,error,button) {
+
+        var sele = $('#' + divId).val();
+        var name = $('#' + name).val();
+
+        $.ajax({
+
+               type: 'POST',
+               url: '@Url.Action("departmentNameValidation", "Utilities")',
+               timeout: 100000000,
+               data: { _data: name, divId:sele },
+               dataType: "json",
+               success: function (json) {
+
+                   if (json != 1) {
+                       $('#' + error).hide();
+                       $('#' + button).attr('disabled', false)
+                       }
+               else
+                   {
+                       $('#' + error).show();
+                       $('#' + button).attr('disabled', true)
+
+               }
+
+               },
+               error: function (data) {
+
+                   $('.loading3').hide();
+                   $('#curvechart_error').show();
+                   $('#curve_chart').hide();
+               }
+           });
+   }
+
+    function setSelectedIndex(valsearch,name,vaid) {
+        //var s = $('#updateDivisionID');
+        $("select#updateDivisionID option")
+            .each(function () {
+                //this.selected = (this.value == valsearch);
+                $("#updateDivisionID option[value=" + valsearch + "]").attr("selected", true).change();
+            });
+        //$("#updateDivisionID").
+        $("#updateDepartment").val(name);
+        $("#depId").val(vaid);
+        $('#editDepart').modal("show");
+
+
+
+    }
+
+</script>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#Department").css('background-color', '#0150A1', 'important');
+        $("#Department").css('color', '#ffffff', 'important');
+        $("#dropdown4").css('display', 'block', 'important');
+    });
+</script>

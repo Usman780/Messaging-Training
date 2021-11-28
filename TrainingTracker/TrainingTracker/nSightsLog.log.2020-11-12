@@ -1,0 +1,484 @@
+2020-11-11 10:11:11,785 INFO MonitoringLogger - BlobManager function started
+2020-11-11 10:15:24,028 INFO MonitoringLogger - BlobManager function started
+2020-11-11 10:15:44,184 INFO MonitoringLogger - BlobManager function started
+2020-11-11 10:39:56,113 INFO MonitoringLogger - Hussnain Logedout from Zuptu
+2020-11-11 14:05:06,005 INFO MonitoringLogger - BlobManager function started
+2020-11-11 14:06:58,728 INFO MonitoringLogger - BlobManager function started
+2020-11-11 14:08:05,250 INFO MonitoringLogger - BlobManager function started
+2020-11-11 14:08:56,605 INFO MonitoringLogger - BlobManager function started
+2020-11-11 14:08:58,885 INFO MonitoringLogger - BlobManager function started
+2020-11-11 14:14:06,541 INFO MonitoringLogger - BlobManager function started
+2020-11-11 14:53:29,258 INFO MonitoringLogger - BlobManager function started
+2020-11-11 14:53:57,683 INFO MonitoringLogger - Hussnain's Logedout from Zuptu
+2020-11-11 15:27:23,102 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:27:24,196 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:27:29,407 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:27:29,407 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:27:29,539 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:27:30,075 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:27:30,328 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:27:30,723 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:27:32,251 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 15:27:32,413 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 15:28:26,706 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:28:26,978 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:28:27,804 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 15:32:40,624 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:32:40,897 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:37:02,154 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:37:02,514 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:37:04,329 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 15:40:44,205 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:40:44,567 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:40:46,407 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 15:43:37,730 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 15:43:42,741 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 15:43:42,783 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 15:43:42,823 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 15:43:42,841 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 15:43:45,533 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--15-43-42.pdf
+2020-11-11 15:43:57,344 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 15:44:02,393 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 15:44:02,397 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 15:44:02,400 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 15:44:02,404 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 15:44:05,100 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--15-44-02.pdf
+2020-11-11 15:44:05,607 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 15:44:10,581 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 15:44:10,584 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 15:44:10,588 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 15:44:10,590 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 15:44:13,287 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--15-44-10.pdf
+2020-11-11 15:45:42,042 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:45:42,408 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:47:43,093 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:47:43,445 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:48:59,776 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:49:01,798 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:49:53,063 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:49:53,420 INFO MonitoringLogger - BlobManager function started
+2020-11-11 15:52:06,688 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:54:05,637 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 15:54:07,371 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 15:54:07,433 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 15:54:07,448 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 15:54:07,454 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 15:54:07,458 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--15-54-07.pdf
+2020-11-11 15:54:08,417 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 15:54:10,410 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 15:54:10,414 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 15:54:10,416 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 15:54:10,420 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 15:54:10,423 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--15-54-10.pdf
+2020-11-11 15:54:19,542 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 15:54:21,277 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 15:54:21,280 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 15:54:21,284 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 15:54:21,288 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 15:54:21,562 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--15-54-21.pdf
+2020-11-11 15:54:23,353 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 15:54:25,085 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 15:54:25,088 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 15:54:25,091 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 15:54:25,094 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 15:54:25,371 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--15-54-25.pdf
+2020-11-11 15:54:26,454 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 15:54:28,394 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 15:54:28,399 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 15:54:28,402 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 15:54:28,413 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 15:54:28,686 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--15-54-28.pdf
+2020-11-11 15:54:42,260 INFO MonitoringLogger - Task Details Page
+2020-11-11 15:54:42,646 INFO MonitoringLogger - BlobManager function started
+2020-11-11 16:18:03,206 INFO MonitoringLogger - Hussnain Logedout from Zuptu
+2020-11-11 16:25:33,034 INFO MonitoringLogger - Task Details Page
+2020-11-11 16:25:33,446 INFO MonitoringLogger - BlobManager function started
+2020-11-11 16:26:50,728 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 16:26:53,234 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 16:26:53,306 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 16:26:53,310 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 16:26:53,316 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 16:26:53,320 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--16-26-53.pdf
+2020-11-11 16:26:55,772 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 16:26:58,339 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 16:26:58,343 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 16:26:58,347 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 16:26:58,354 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 16:26:58,359 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--16-26-58.pdf
+2020-11-11 16:26:58,729 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 16:27:01,351 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 16:27:01,355 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 16:27:01,358 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 16:27:01,363 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 16:27:01,367 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--16-27-01.pdf
+2020-11-11 16:29:42,044 INFO MonitoringLogger - Task Details Page
+2020-11-11 16:29:42,319 INFO MonitoringLogger - BlobManager function started
+2020-11-11 16:29:43,413 INFO MonitoringLogger - Task Details Page
+2020-11-11 16:29:43,767 INFO MonitoringLogger - BlobManager function started
+2020-11-11 16:33:50,471 INFO MonitoringLogger - Task Details Page
+2020-11-11 16:33:50,748 INFO MonitoringLogger - BlobManager function started
+2020-11-11 16:33:51,231 INFO MonitoringLogger - Task Details Page
+2020-11-11 16:33:51,587 INFO MonitoringLogger - BlobManager function started
+2020-11-11 16:36:30,962 INFO MonitoringLogger - Task Details Page
+2020-11-11 16:36:31,244 INFO MonitoringLogger - BlobManager function started
+2020-11-11 16:38:02,844 INFO MonitoringLogger - Task Details Page
+2020-11-11 16:38:03,117 INFO MonitoringLogger - BlobManager function started
+2020-11-11 17:09:11,822 INFO MonitoringLogger - BlobManager function started
+2020-11-11 17:09:12,896 INFO MonitoringLogger - BlobManager function started
+2020-11-11 17:09:13,832 INFO MonitoringLogger - BlobManager function started
+2020-11-11 17:09:56,093 INFO MonitoringLogger - BlobManager function started
+2020-11-11 17:09:57,707 INFO MonitoringLogger - BlobManager function started
+2020-11-11 17:10:08,414 INFO MonitoringLogger - BlobManager function started
+2020-11-11 17:41:52,356 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 17:41:52,524 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 17:41:52,537 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 17:41:52,546 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--17-41-52.pdf
+2020-11-11 17:42:00,898 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 17:42:00,906 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 17:42:00,909 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 17:42:00,913 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--17-42-00.pdf
+2020-11-11 17:53:24,559 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 17:53:24,745 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 17:53:24,752 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 17:53:25,293 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--17-53-24.pdf
+2020-11-11 17:53:57,923 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 17:53:57,926 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 17:53:57,932 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 17:53:58,468 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--17-53-57.pdf
+2020-11-11 17:54:53,325 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 17:54:53,328 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 17:54:53,334 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 17:54:53,876 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--17-54-53.pdf
+2020-11-11 17:56:27,365 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:00:24,752 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:00:52,378 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:01:58,471 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:02:04,342 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:02:56,596 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:03:06,059 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:03:50,323 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:04:48,712 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:06:00,830 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:17:09,762 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:17:20,503 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:43:46,117 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:43:46,443 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:43:46,910 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:44:23,671 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:44:25,925 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:44:32,967 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:44:51,605 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:44:54,485 INFO MonitoringLogger - BlobManager function started
+2020-11-11 18:45:17,307 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:08:06,860 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:08:06,925 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:08:06,931 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:08:08,290 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-08-06.pdf
+2020-11-11 19:08:19,985 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:08:19,988 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:08:19,992 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:08:21,347 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-08-19.pdf
+2020-11-11 19:08:27,513 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:08:27,516 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:08:27,519 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:08:28,874 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-08-27.pdf
+2020-11-11 19:09:57,483 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:09:57,537 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:09:57,549 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:09:58,907 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-09-57.pdf
+2020-11-11 19:14:27,204 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:15:11,675 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:15:43,359 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:15:43,364 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:15:43,371 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:15:43,918 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-15-43.pdf
+2020-11-11 19:15:50,101 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:15:50,105 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:15:50,108 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:15:50,648 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-15-50.pdf
+2020-11-11 19:15:55,962 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:15:55,966 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:15:55,970 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:15:56,511 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-15-55.pdf
+2020-11-11 19:16:21,684 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:16:59,313 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:16:59,316 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:16:59,320 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:16:59,324 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-16-59.pdf
+2020-11-11 19:17:03,104 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:17:03,107 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:17:03,112 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:17:03,116 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-17-03.pdf
+2020-11-11 19:17:07,297 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:17:07,302 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:17:07,305 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:17:07,308 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-17-07.pdf
+2020-11-11 19:17:13,049 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:17:58,997 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:19:28,161 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:21:43,940 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:41:14,744 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:41:29,673 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:47:18,475 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:47:27,893 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:47:35,729 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:47:43,320 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:48:40,298 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:49:31,415 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:50:20,837 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:50:20,841 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:50:20,846 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:50:21,666 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-50-20.pdf
+2020-11-11 19:50:25,564 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:50:25,568 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:50:25,572 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:50:26,389 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-50-25.pdf
+2020-11-11 19:50:29,595 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:50:29,598 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:50:29,606 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:50:30,426 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-50-29.pdf
+2020-11-11 19:51:02,267 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:51:02,271 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:51:02,276 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:51:02,282 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-51-02.pdf
+2020-11-11 19:51:07,163 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:51:07,166 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:51:07,169 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:51:07,173 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-51-07.pdf
+2020-11-11 19:51:11,509 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:51:11,512 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:51:11,519 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:51:11,522 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--19-51-11.pdf
+2020-11-11 19:51:53,372 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-11-11 19:54:02,111 INFO MonitoringLogger - Task Details Page
+2020-11-11 19:54:02,441 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:54:37,345 INFO MonitoringLogger - Task Details Page
+2020-11-11 19:54:37,628 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:55:08,219 INFO MonitoringLogger - Task Details Page
+2020-11-11 19:55:08,542 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:55:47,537 INFO MonitoringLogger - Task Details Page
+2020-11-11 19:55:47,820 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:55:57,743 INFO MonitoringLogger - Task Details Page
+2020-11-11 19:55:58,044 INFO MonitoringLogger - BlobManager function started
+2020-11-11 19:56:36,440 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 19:56:39,648 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 19:56:39,651 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:56:39,654 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:56:39,657 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:56:39,661 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--19-56-39.pdf
+2020-11-11 19:56:40,083 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 19:56:43,266 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 19:56:43,271 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:56:43,276 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:56:43,279 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:56:43,282 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--19-56-43.pdf
+2020-11-11 19:56:43,619 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 19:56:47,358 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 19:56:47,361 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:56:47,364 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:56:47,368 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:56:47,372 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--19-56-47.pdf
+2020-11-11 19:57:03,537 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 19:57:07,888 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 19:57:07,891 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:57:07,896 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:57:07,899 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:57:07,904 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--19-57-07.pdf
+2020-11-11 19:57:08,290 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 19:57:11,891 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 19:57:11,894 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:57:11,898 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:57:11,902 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:57:11,906 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--19-57-11.pdf
+2020-11-11 19:57:12,298 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 19:57:15,817 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 19:57:15,820 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 19:57:15,823 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 19:57:15,826 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 19:57:15,829 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--19-57-15.pdf
+2020-11-11 20:01:40,749 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:01:40,753 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:01:40,756 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:01:41,332 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-01-40.pdf
+2020-11-11 20:01:45,992 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:01:45,995 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:01:45,999 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:01:46,539 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-01-45.pdf
+2020-11-11 20:01:48,959 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:01:48,964 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:01:48,967 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:01:49,536 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-01-48.pdf
+2020-11-11 20:02:21,982 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:02:21,986 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:02:21,989 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:02:21,993 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-02-21.pdf
+2020-11-11 20:02:24,589 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:02:24,594 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:02:24,599 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:02:24,605 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-02-24.pdf
+2020-11-11 20:02:27,382 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:02:27,386 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:02:27,389 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:02:27,392 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-02-27.pdf
+2020-11-11 20:03:08,964 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:06:07,793 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:06:17,898 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:08:38,951 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:09:35,804 INFO MonitoringLogger - Hussnain's Logedout from Zuptu
+2020-11-11 20:09:39,971 INFO MonitoringLogger -  Logedout from Zuptu
+2020-11-11 20:16:38,362 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:16:38,641 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:16:49,906 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:16:50,185 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:17:16,764 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 20:17:19,111 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 20:17:19,270 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:17:19,279 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:17:19,326 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:17:19,596 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--20-17-19.pdf
+2020-11-11 20:17:21,890 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 20:17:23,962 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 20:17:23,965 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:17:23,969 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:17:23,973 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:17:24,244 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--20-17-23.pdf
+2020-11-11 20:17:24,923 INFO MonitoringLogger - Pdf generation method called
+2020-11-11 20:17:27,108 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-11 20:17:27,111 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:17:27,115 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:17:27,118 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:17:27,387 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-11-11--20-17-27.pdf
+2020-11-11 20:18:06,776 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:18:24,918 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:18:24,923 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:18:24,926 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:18:25,198 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-18-24.pdf
+2020-11-11 20:18:29,310 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:18:29,315 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:18:29,318 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:18:29,604 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-18-29.pdf
+2020-11-11 20:18:32,113 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:18:32,116 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:18:32,120 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:18:32,390 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-18-32.pdf
+2020-11-11 20:18:51,822 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:19:24,280 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:19:33,505 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:20:28,866 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:20:48,804 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:21:50,057 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:22:25,222 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:22:46,632 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-11-11 20:23:47,773 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:23:48,052 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:24:03,507 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:24:03,779 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:24:09,660 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:24:09,947 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:24:39,931 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:24:44,045 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:24:44,051 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:24:44,054 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:24:44,326 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-24-44.pdf
+2020-11-11 20:24:47,859 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:24:47,864 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:24:47,867 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:24:48,140 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-24-47.pdf
+2020-11-11 20:24:51,052 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-11 20:24:51,056 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-11 20:24:51,059 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-11 20:24:51,365 INFO MonitoringLogger - E:\Zuptu\TrainingTracker\TrainingTracker\\Content\Backup\Manager2020-11-11--20-24-51.pdf
+2020-11-11 20:24:58,207 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:25:46,906 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:26:23,457 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:26:41,090 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:27:14,680 INFO MonitoringLogger - Hussnain's Logedout from Zuptu
+2020-11-11 20:28:25,911 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:28:26,356 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:28:26,419 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:28:26,790 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:28:27,058 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:28:27,340 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:28:28,028 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 20:28:28,862 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 20:29:00,113 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:29:00,386 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:29:01,217 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 20:29:03,882 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:29:04,156 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:29:05,132 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 20:29:08,782 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:29:09,060 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:29:41,880 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:29:42,241 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:29:43,076 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 20:29:44,905 INFO MonitoringLogger - Task Details Page
+2020-11-11 20:29:45,330 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:29:46,155 INFO MonitoringLogger - Comment's ParentID : 
+2020-11-11 20:31:17,929 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:31:18,399 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:31:19,118 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:33:50,833 INFO MonitoringLogger - BlobManager function started
+2020-11-11 20:34:43,127 INFO MonitoringLogger - BlobManager function started
+2020-11-12 15:46:20,200 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 15:55:08,837 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 15:55:21,462 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-12 15:55:21,466 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-12 15:55:21,468 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-12 15:55:21,471 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-12 15:55:27,699 INFO MonitoringLogger - C:\DotNet_Projects\Zuptu Projects\Zuptu Aug 2020\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-12-11--15-55-21.pdf
+2020-11-12 15:55:27,757 INFO MonitoringLogger - Task Details Page
+2020-11-12 15:55:28,623 INFO MonitoringLogger - BlobManager function started
+2020-11-12 15:55:29,893 INFO MonitoringLogger - BlobManager function started
+2020-11-12 15:58:59,224 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 16:00:02,363 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-12 16:00:07,317 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-12 16:00:07,320 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-12 16:00:07,322 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-12 16:00:17,693 INFO MonitoringLogger - C:\DotNet_Projects\Zuptu Projects\Zuptu Aug 2020\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-12-11--16-00-03.pdf
+2020-11-12 16:00:33,049 INFO MonitoringLogger - BlobManager function started
+2020-11-12 16:03:42,935 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-11-12 16:05:21,247 INFO MonitoringLogger - UBS Logedout from Zuptu
+2020-11-12 16:08:47,732 INFO MonitoringLogger - BlobManager function started
+2020-11-12 16:09:20,536 INFO MonitoringLogger - BlobManager function started
+2020-11-12 16:11:50,397 INFO MonitoringLogger - BlobManager function started
+2020-11-12 16:14:13,739 INFO MonitoringLogger - BlobManager function started
+2020-11-12 16:16:36,644 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 16:17:39,930 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-12 16:17:39,933 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-12 16:17:39,936 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-12 16:17:39,939 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-12 16:19:57,974 INFO MonitoringLogger - C:\DotNet_Projects\Zuptu Projects\Zuptu Aug 2020\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-12-11--16-17-39.pdf
+2020-11-12 16:22:12,051 INFO MonitoringLogger - BlobManager function started
+2020-11-12 16:25:33,536 INFO MonitoringLogger - BlobManager function started
+2020-11-12 21:48:34,608 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 21:53:11,677 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 21:53:32,300 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-12 21:53:32,306 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-12 21:53:32,310 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-12 21:53:32,315 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-12 21:53:40,622 INFO MonitoringLogger - C:\DotNet_Projects\Zuptu Projects\Zuptu Aug 2020\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-12-11--21-53-32.pdf
+2020-11-12 21:54:34,184 INFO MonitoringLogger - BlobManager function started
+2020-11-12 22:00:50,323 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 22:01:14,285 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-12 22:01:14,289 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-12 22:01:14,292 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-12 22:01:14,295 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-12 22:01:18,403 INFO MonitoringLogger - C:\DotNet_Projects\Zuptu Projects\Zuptu Aug 2020\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-12-11--22-01-14.pdf
+2020-11-12 22:01:40,104 INFO MonitoringLogger - BlobManager function started
+2020-11-12 22:18:45,862 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 22:19:09,299 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-12 22:19:09,304 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-12 22:19:09,307 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-12 22:19:09,310 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-12 22:19:19,151 INFO MonitoringLogger - C:\DotNet_Projects\Zuptu Projects\Zuptu Aug 2020\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-12-11--22-19-09.pdf
+2020-11-12 22:19:27,780 INFO MonitoringLogger - BlobManager function started
+2020-11-12 22:25:07,087 INFO MonitoringLogger - Pdf generation method called
+2020-11-12 22:25:52,567 INFO MonitoringLogger - Pdf generation method search completed
+2020-11-12 22:25:52,570 INFO MonitoringLogger - Pdf generation inner method 0 called
+2020-11-12 22:25:52,572 INFO MonitoringLogger - Pdf generation inner method 1 called
+2020-11-12 22:25:52,575 INFO MonitoringLogger - Pdf generation inner method 2 called
+2020-11-12 22:26:16,091 INFO MonitoringLogger - C:\DotNet_Projects\Zuptu Projects\Zuptu Aug 2020\TrainingTracker\TrainingTracker\\Content\Backup\Employee2020-12-11--22-25-52.pdf
+2020-11-12 22:26:23,396 INFO MonitoringLogger - BlobManager function started
+2020-11-12 22:27:41,398 INFO MonitoringLogger - BlobManager function started
+2020-11-12 22:39:55,716 INFO MonitoringLogger - BlobManager function started

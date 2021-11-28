@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <center><h3 class="panel-title"><b>Tag</b></h3></center>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li>
+                        <a data-action="collapse"></a>
+                    </li>
+                    <li>
+                        <a data-action="reload"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-inline" method="post" action="@Url.Action("UpdateTagAction","Utilities")">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">Update Tag</label>
+                    <input type="text" maxlength="150" required class="form-control" name="Name" value="@ViewBag.Tag.Name" />
+                    <input type="hidden" name="Id" value="@ViewBag.Tag.Id" />
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Division</label>
+                    <div class="col-lg-9">
+                        <select required class="form-control" name="DivisionId">
+                            <option selected value="@ViewBag.division.Id">@ViewBag.division.Name</option>
+                            @foreach (var item in ViewBag.divisions)
+    {
+        if (item.Name != ViewBag.division.Name)
+        {
+                        <option value=@item.Id>@item.Name</option>
+}
+}
+                         
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-lg-3">
+                    <label class="control-label"></label>
+                    <input type="submit" value="Update" class="btn btn-sm  btn-success form-control" />
+                </div>
+            </form>
+        </div>
+
+        <table class="table datatable-button-html5-basic">
+            <thead>
+                <tr>
+                    <th>Sr#</th>
+                    <th>Name</th>
+                    <th>Division Name</th>
+
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                  
+                    int i = 0;
+                    foreach (Tag item in ViewBag.Tags)
+                    {
+
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Division.Name
+                    </td>
+
+
+                    <td>
+                        <a class="btn btn-sm  btn-success" href="@Url.Action("UpdateTagAction","Utilities",new { id = item.Id })">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        <a class="btn btn-sm  btn-danger" href="@Url.Action("DeleteTag","Utilities",new { id = item.Id })">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                        i++;
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign tasks to multiple trainees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" maxlength="150" class="form-control" name="" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select task</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-sm btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign tasks to multiple trainees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" maxlength="150" class="form-control" name="" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select task</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function deleteArea(title, id, names, ids) {
+        swal({
+            title: "Edit",
+            text: '<form role="form" id="DeleteMeModal" action="/Area/Delete/' + areaId + '" id="contact-form" method="get"><div class="control-group"><label for="categoryName">You Are Going To Delete Area Permanently!</label></div></div></form>',
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#FF7043",
+            confirmButtonText: "Yes, delete it!"
+        }, function () {
+            $("#DeleteMeModal").submit();
+        });
+    }
+</script>

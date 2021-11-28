@@ -1,0 +1,769 @@
+﻿
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using TrainingTracker.Models
+@using TrainingTracker.HelpingClasses
+@using TrainingTracker.BL
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/bootbox.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<style>
+    #backbtn {
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+
+
+<!--Bread Crumb line-->
+<div class="bg-white">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Set-Up</li>
+            <li class="active">Managers</li>
+        </ul>
+    </div>
+</div>
+<!--Bread Crumb line-->
+<br />
+
+@{
+    if (ViewBag.Id != "")
+    {
+        @*<!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li class="active"><a href="@Url.Action("displayDivision","Utilities")">Division</a></li>
+                    <li class="active"><a href="@Url.Action("displayDivisionDetails", "Utilities", new { sid = ViewBag.Id, page1="Division" })">@div.Name</a></li>
+                    <li class="active">Managers</li>
+
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />
+        <a id="backbtn" class="btn btn-sm bg-primary" href="@Url.Action("displayDivisionDetails", "Utilities", new { sid = ViewBag.Id, page1="Division" })">Back</a>
+        <br />*@
+    }
+    else
+    {
+        @*<!--Bread Crumb line-->
+        <div class="bg-white">
+            <div class="breadcrumb-line">
+                <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Auth")"><i class="icon-home2 position-left"></i> Home</a></li>
+                    <li class="active">Set-Up</li>
+                    <li class="active">Managers</li>
+                </ul>
+            </div>
+        </div>
+        <!--Bread Crumb line-->
+        <br />*@
+
+    }
+}
+<div class="content">
+    <!-- Basic initialization -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <input type="hidden" id="DMang" name="id" value="@ViewBag.Id" />
+            <center><h3 class="panel-title"><b>List of Managers</b></h3></center>
+
+            <div id="wait" class="ajaxloader"><br><center class="mrgn"><b>Loading...</b></center> </div>
+
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    @if (true == true)//session check for number of managers
+                    {
+                        <li>
+                            <a href="@Url.Action("AddManager", "Utilities", new { divisionId=ViewBag.Id , page = "list"})" class="btn  btn-sm bg-primary-400" style="color:white;"> Add Manager <i style="margin-top:-5%;" class="icon-plus-circle2"></i></a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li>
+                            <button class="btn btn-sm  bg-primary-400" style="color:white;" disabled> Add Manager <i class="icon-plus-circle2"></i></button>
+                        </li>
+
+                    }
+                    <li>
+                        <a href="@Url.Action("ExportManagers", "ExportReport")" class="btn  btn-sm bg-primary-400" style="color:white;"> Export Managers</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <table id="example" class="table datatable-button-html5-basic table-striped table-bordered table-hover">
+
+            <thead>
+                <tr>
+                    <th style="width:20px !important">Sr#</th>
+                    <th>Name</th>
+                    <th>Division</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            @*<tbody>
+
+                    @{
+
+                        int j = 1;
+
+                        foreach (User item in ViewBag.Managers)
+                        {
+
+                            <tr>
+                                <td>@j</td>
+
+                                <td>
+                                    @item.FirstName  @item.LastName
+                                </td>
+                                <td>
+                                    @if (item.Division != null)
+                                    {
+                                        @item.Division.Name
+                                    }
+                                </td>
+
+                                @{if (item.Role == 2)
+                                    {
+                                        <td>Manager</td>
+                                    }
+                                    else if (item.Role == 4)
+                                    {
+                                        <td>Cordinator</td>
+                                    }
+                                }
+                                <td>
+                                    @if (item.IsActive == 2)
+                                    {
+                                        <a class="btn btn-sm  bg-secondary" href="@Url.Action("sendMailInviteManager", "Utilities", new { id = item.Id, em = item.Email, fn = item.FirstName, isUtilityPage = true })">
+                                            Send Invite Again
+                                        </a>
+
+                                        <a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager('@item.Id')">
+                                            <i class="icon-trash"></i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-sm  bg-secondary" href="@Url.Action("displayMangAnalaysis", "Analysis", new { sid =  HttpUtility.UrlEncode(General_Purpose.Encrypt(item.Id ))})">
+                                            View Analytics
+                                        </a>
+
+                                        <a class="btn  btn-sm btn-primary" href="@Url.Action("UpdateManager","Utilities",new { sid =  HttpUtility.UrlEncode(General_Purpose.Encrypt(item.Id )) })">
+                                            Update
+                                        </a>
+
+                                        <a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager('@item.Id')">
+                                            <i class="icon-trash"></i>
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                            j++;
+                        }
+                    }
+
+                </tbody>*@
+        </table>
+    </div>
+</div>
+
+
+
+<div id="UserTurnOverModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Transfer User Tasks</h4>
+
+            </div>
+            <form action="@Url.Action("PostTurnOverTask","Task")" method="post">
+                <div class="modal-body">
+
+                    <input type="hidden" name="FromId" id="fromId" />
+                    <input type="hidden" name="Way" value="manager" />
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Select User</label> <i id="turnOverUserSpiner" class="icon-spinner spinner" style="display:none"></i>
+                        <select class="select" onchange="getUserList(this.value)" required>
+                            <option selected disabled value="">Please select User Type</option>
+                            <option value="1">Admins</option>
+                            <option value="2">Managers</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group col-md-12" id="turnOverUserDiv" hidden>
+                        <label class="control-label" id="turnOverUserLabel">Select User</label>
+                        <select class="select" name="ToId" id="turnOverUserOption" required>
+                            <option selected disabled value="">Please select User</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <span id="btnInfoTurnOver" style="color:red"></span>
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-sm  bg-primary-400">Change</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign Tasks to Multiple Trainees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="150" name="" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select task</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="EditTag" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Assign Tasks to Multiple Trainees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tag</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" maxlength="150" name="" id="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Division</label>
+                        <div class="col-lg-9">
+                            <select class="form-control">
+                                <option disabled selected value="">Select Tag</option>
+                                <option value="">abc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm  btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("deleteUser","Utilities")">
+                <input type="hidden" name="id" id="managerid" />
+                <input type="hidden" name="accessLevel" value="2" />
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title"><b>Delete Manager</b></h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <h5>Are you sure you want to delete this manager?</h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">No</button>
+                    <button type="submit" id="sb" class="btn btn-sm  bg-primary-400">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="ChangeEmpType" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Change User Type</h4>
+                <input type="hidden" id="usertype" />
+                <input type="hidden" id="userid" />
+
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-md-12">
+                    <label class="control-label">Select Type</label>
+                    <select class="select" id="UType" onchange="selectUserType(this.value)" required>
+                        <option selected disabled value="">Please select Type</option>
+
+
+                        <option value="1">Admin</option>
+
+                        <option value="3">Employee</option>
+                        @*<option value="3">Employee</option>*@
+
+
+                    </select>
+                    <br />
+                    <br />
+
+                    <div id="DivisionField" style="display:none;">
+                        <label class="control-label">Select Division</label>
+                        <select class="select" onchange="getDepartment(this.value)" name="TypeDivisionID" id="TypeDivisionID">
+                            <option value="">Select Divsion</option>
+                            @foreach (Division d in ViewBag.Divisions)
+                            {
+                                <option value="@d.Id">@d.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+
+                  
+                    <div id="DepartmentField" style="display: none">
+                        <label class="control-label">Select Department</label>
+                        <select class="select" name="TypeDepartmentID" id="TypeDepartmentID" required>
+                        </select>
+                    </div>
+                    <br />
+                    <div id="managerField">
+                        <label control-label"><span class="text-danger">*</span>Managers <span style="color:blue">Alternative Manager to take its all Responsibilities</span></label>
+                        <div>
+                            <select class="select-results-color" required name="managerId" id="selectAdminManager">
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <span id="btnInfo" style="color:red"></span>
+                <button type="button" class="btn btn-sm  btn-default" data-dismiss="modal">Close</button>
+                <button onclick="ChangeEmp()" id="changetypebtn" class="btn btn-sm  bg-primary-400">Change</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+
+     $('#DivisionField').hide();
+    $('#DepartmentField').hide();
+
+     function ChangeEmp() {
+
+        var id = $("#userid").val();
+       // var div = $("#DivId").val();
+         var type = $("#UType").val();
+         var manager = $("#selectAdminManager").val();
+         if (type == "" || type == null) {
+             $("#btnInfo").text("User type must be selected");
+             return;
+         }
+         if (manager == "" || manager == null) {
+             $("#btnInfo").text("Manager must be selected");
+             return;
+         }
+         var dep = $("#TypeDepartmentID").val();
+         if (type == "3" || type == 3) {
+             if (dep == "" || dep == null) {
+
+                 $("#btnInfo").text("Department must be selected");
+                 return;
+             }
+         }
+         $("#changetypebtn").attr("disabled", true);
+
+         $.ajax({
+                    type: 'POST',
+                    url: "../task/ChangeUserType",
+             data: { UserId: id, UserType: type, DepartmentId: dep, managerId: manager},
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+                        if (data == "0" || data == 0) {
+                            $("#changetypebtn").attr("disabled", false);
+                            $("#btnInfo").text("Manager and User Type must be selected");
+                            return;
+                        } else if (data == "00" || data == 00) {
+                            $("#changetypebtn").attr("disabled", false);
+                            $("#btnInfo").text("User Type must be selected");
+                            return;
+                        } else {
+                            $("#changetypebtn").attr("disabled", false);
+
+                            location.reload();
+                        }
+
+                      
+
+
+                    },
+             error: function () {
+                 $("#changetypebtn").attr("disabled", false);
+
+                 alert('fail');
+             }
+                });
+
+    }
+
+    function ChangeUserType(id)
+    {
+        $.ajax({
+            type: 'POST',
+            url: "../task/getManagersDTO",
+            data: {
+                CurrentMangerId: id,
+            },
+            dataType: "json",
+            success: function (data) {
+
+                
+               
+                    
+                        $("#selectAdminManager").html("");
+                        var count = 0;
+                        $('#selectAdminManager').empty();
+                        $('#selectAdminManager').append('<option value="" selected disabled> Please Choose a Manager</option>');
+                      
+                        for (var i = 0; i < data.length; i++) {
+                            var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                            $('#selectAdminManager').append(division);
+                        }
+
+
+
+                    
+              
+            },
+            error: function () { alert('fail'); }
+        });
+        $("#ChangeEmpType").modal("show");
+       $("#userid").val(id);
+       // $("#DivId").val(val);
+    }
+    function selectUserType(val) {
+        if (val == 3) {
+            $('#DivisionField').show();
+    $('#DepartmentField').hide();
+        }
+        if (val == 1) {
+ $('#DivisionField').hide();
+    $('#DepartmentField').hide();
+        }
+    }
+    function getDepartment() {
+        var divisionId = $("#TypeDivisionID").val();
+          $.ajax({
+                    type: 'POST',
+                    url: "../task/getDepartmentDTOs",
+                    data: { divisionId: divisionId },
+                    dataType: "json",
+                    success: function (data) {
+                        // get role of the user then if you are an admin then assign tasks to manager and employee
+                        // if you are manager then assign to employee
+                        // if you can self assign
+
+
+                            $("#TypeDepartmentID").html("");
+                            var count = 0;
+                            $('#TypeDepartmentID').empty();
+                            $('#TypeDepartmentID').append('<option value="" selected disabled> Please Choose a Department</option>');
+                          //  $('#TypeDepartmentID').append('<option value="-196"> Assign To All Departments Department</option>');
+                            for (var i = 0; i < data.length; i++) {
+                                var division = '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+                                $('#TypeDepartmentID').append(division);
+                            }
+                            $('#DepartmentField').show();
+
+
+                    },
+                    error: function () { alert('fail'); }
+                });
+    }
+
+
+    $(document).ready(function () {
+        var t =$("#DMang").val();
+        $("#wait").css("display", "block");
+        $('#example').DataTable(
+            {
+                "ajax": {
+                    "url": '@Url.Action("GetDisplayManager","Utilities")',
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                 { "data": "SerialNo", "name": "SerialNo" },
+                    { "data": "Name", "name": "Name" },
+                    { "data": "DivisionName", "name": "DivisionName" },
+                    { "data": "Role", "name": "Role" },
+                    //{ "data": "IsActive", "name": "IsActive" },
+                    //{ "data": "EncryptedId", "name": "EncryptedId", "visible": false },
+                    ////{ "data": "FirstName", "name": "FirstName", "visible": false },
+                    //{ "data": "Email", "name": "Email", "visible": false },
+                    { "data": "Id", "name": "Id" },
+                ],
+
+                'columnDefs': [
+                    {
+
+                        render: function (data, type, full, meta) {
+                            //' <a class="btn btn-sm  bg-secondary" href="Url.Action("sendMailInviteManager", "Utilities", new { id = ' + full.Id + ', em ='+ full.Email+', fn = '+full.FirstName+', isUtilityPage = true })">Send Invite Again</a>
+                            if (full.IsActive == 2) {
+
+                                return '<ul class="icons-list">' +
+                                    '<li class="dropdown">' +
+                                    '<a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>' +
+                                    '<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '<li>' +
+                                             '<a title="' + full.Email + '" style="margin-right:3px"  href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage=' + 'true' + '">Send Invite Again </a>' +
+                                        '</li>' +
+                                        '<li>' +
+                                             '<a  data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i> Delete</a>' +
+                                        '</li>' +
+                                    '</ul>' +
+                                    '</li>' +
+                                    '</ul>';
+
+                                     //return '<a class="btn btn-sm  bg-secondary" href="../Utilities/sendMailInviteManager?id=' + full.Id + '&em=' + full.Email + '&fn=' + full.FirstName + '&isUtilityPage='+'true'+'">Send Invite Again </a><a class="btn  btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i></a>';
+                            } else {
+                                if (full.Temp == 1) {
+                                    var dd = "DisplayManager";
+
+                                    return '<ul class="icons-list">' +
+                                        '<li class="dropdown">' +
+                                        '<a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>' +
+                                        '<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '<li>' +
+                                              '<a style="margin-right:3px" href="../Analysis/displayMangAnalaysis?sid=' + full.EncryptedId + '&page=' + t + '">View Analytics</a>' +
+                                        '</li>' +
+                                        '<li>' +
+                                            '<a href="../Utilities/UpdateManager?sid=' + full.EncryptedId + '&way=' + dd + '">' +
+                                            'Update' +
+                                            '</a>' +
+                                        '</li>' +
+                                        '<li>' +
+                                            '<a style="margin-right:3px" onclick="openTurnOverModal(' + full.Id + ')">' +
+                                            'Transfer Task' +
+                                            '</a>' +
+                                        '</li>' +
+                                        '<li>' +
+                                            '<a style="margin-right:3px" onclick="ChangeUserType(' + full.Id + ')">' +
+                                            'Change Type' +
+                                            '</a>'
+                                        '</li>' +
+                                        '</ul>' +
+                                        '</li>' +
+                                        '</ul>';
+
+                                } else {
+                                    var dd = "DisplayManager";
+
+                                    return '<ul class="icons-list">' +
+                                        '<li class="dropdown">' +
+                                        '<a href="#" class="btn btn-sm dropdown-toggle bg-primary-400 text-white" data-toggle="dropdown">Actions <i class="icon-menu7"></i> </a>' +
+                                        '<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '<li>' +
+                                            '<a style="margin-right:3px"  href="../Analysis/displayMangAnalaysis?sid=' + full.EncryptedId + '">View Analytics</a>' +
+                                        '</li>' +
+                                        '<li>' +
+                                        '<a style="margin-right:3px"  href="../Utilities/UpdateManager?sid=' + full.EncryptedId + '&way=' + dd + '">' +
+                                        'Update' +
+                                        '</a>' +
+                                        '</li>' +
+                                        '<li>' +
+                                            '<a style="margin-right:3px" onclick="openTurnOverModal(' + full.Id + ')">' +
+                                            'Transfer Task' +
+                                            '</a>' +
+                                        '</li>' +
+                                        '<li>' +
+                                        '<a style="margin-right:3px" onclick="ChangeUserType(' + full.Id + ')">' +
+                                        'Change Type' +
+                                        '</a>' +
+                                        '</li>' +
+                                        '<li>' +
+                                                '<a data-toggle="modal" data-target="#deleteModal" onclick="deleteManager(' + full.Id + ')"><i class="icon-trash"></i>Delete</a>' +
+                                        '</li>' +
+                                        '</ul>' +
+                                        '</li>' +
+                                        '</ul>';
+  
+
+                                }
+                                 }
+                        },
+                        targets: 4
+                    }@*@Url.Action("sendMailInviteManager", "Utilities", new { id = i.Id, em = item.Email, fn = item.FirstName, isUtilityPage = true })*@
+                ],
+
+                "serverSide": "true",
+                "order": [0, "asc"],
+                "processing": "true",
+                "language":
+                {
+                    "processing": "Processing... Please wait"
+                },
+                         initComplete: function () {
+                  //$.unblockUI();
+                    $("#wait").css("display", "none");
+             },
+            })
+    });
+
+
+</script>
+
+
+<script type="text/javascript">
+
+    function deleteManager(Id) {
+        $("#managerid").val(Id);
+    }
+
+    function deleteArea(title, id, names, ids) {
+        swal({
+            title: "Edit",
+            text: '<form role="form" id="DeleteMeModal" action="/Area/Delete/' + areaId + '" id="contact-form" method="get"><div class="control-group"><label for="categoryName">You Are Going To Delete Area Permanently!</label></div></div></form>',
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#FF7043",
+            confirmButtonText: "Yes, delete it!"
+        }, function () {
+            $("#DeleteMeModal").submit();
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#Managers").css('background-color', '#0150A1');
+        $("#Managers").css('color', '#ffffff');
+        $("#dropdown4").css('display', 'block', 'important');
+    });
+</script>
+
+<script>
+
+    //work done by Waqas, for Users' Transfer Task 
+    function openTurnOverModal(fromId)
+    {
+        $('#fromId').val(fromId);
+        $('#turnOverUserDiv').hide();
+
+        $('#UserTurnOverModal').modal('show');
+    }
+
+    function getUserList(type)
+    {
+        $('#turnOverUserDiv').hide();
+
+        var id = $('#fromId').val();
+
+        $('#turnOverUserSpiner').show();
+
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            url: '@Url.Action("GetUserListToChangeOver", "Utilities")',
+            data: { Id: id, UserType: type, Way : 2 },
+            success: function (response)
+            {
+                if (type == 1)
+                {
+                    $('#turnOverUserLabel').text("Select Admin");
+
+                    $('#turnOverUserOption').find('option').remove().end();
+
+                    $("#turnOverUserOption").append('<option value="" disabled selected>Please Select Admin To Transfer Tasks</option>');
+                }
+                else
+                {
+                    $('#turnOverUserLabel').text("Select Manager");
+
+                    $('#turnOverUserOption').find('option').remove().end();
+
+                    $("#turnOverUserOption").append('<option value="" disabled selected>Please Select Manager To Transfer Tasks</option>');
+                }
+
+
+
+                var i = 0;
+                $.each(response, function ()
+                {
+                    $("#turnOverUserOption").append('<option value=' + response[i].Id + '>' + response[i].Name + '</option>');
+
+                    i++;
+                });
+
+                $('#turnOverUserSpiner').hide();
+
+                $('#turnOverUserDiv').show();
+            },
+            error: function (response)
+            {
+                alert('Ajax Fail');
+            }
+
+        });
+    }
+</script>
